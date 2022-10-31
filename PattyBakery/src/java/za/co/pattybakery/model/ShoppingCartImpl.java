@@ -3,6 +3,7 @@ package za.co.pattybakery.model;
 
 import java.time.LocalDate;
 import java.util.List;
+import za.co.pattybakery.Order;
 import za.co.pattybakery.ShoppingCart;
 
 public abstract class ShoppingCartImpl implements ShoppingCart{
@@ -17,30 +18,33 @@ public abstract class ShoppingCartImpl implements ShoppingCart{
         this.orderNumber = orderNumber;
         this.date = date;
     }
-
+    
     @Override
     public void addOrder(Order order, List<Order> orders) {
-        this.addOrder(order, orders);
+       
     }
     
     @Override
     public List<Order> getOrders() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        return orders;
     }
 
     @Override
     public Double getTotalprice() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        return totalPrice;
     }
 
     @Override
     public Integer getOrderNumber() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
+        return orderNumber;
     }
 
     @Override
     public LocalDate getDate() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+      
+        return date;
     }
-    
 }
