@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 import za.co.pattybakery.Order;
 import za.co.pattybakery.ShoppingCart;
+import za.co.pattybakery.exception.ShoppingCartException;
 
 public abstract class ShoppingCartImpl implements ShoppingCart{
     private List<Order> orders;
@@ -20,10 +21,11 @@ public abstract class ShoppingCartImpl implements ShoppingCart{
     }
     
     @Override
-    public void addOrder(Order order, List<Order> orders) {
-        if(order == null & orders == null){
-            
+    public void addOrder(Order order, List<Order> orders) throws ShoppingCartException{
+        if(order == null && orders == null){
+            throw new ShoppingCartException("");
         }
+        orders.add(order);
     }
     
     @Override
