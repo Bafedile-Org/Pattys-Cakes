@@ -59,7 +59,7 @@ public class ProductImpl implements Product {
     @Override
     public void setIngredients(String ingredients) throws ProductException {
         if (ingredients == null) {
-            throw new ProductIngredient(INGREDIENTS_ERROR_MSG);
+            throw new ProductException(INGREDIENTS_ERROR_MSG);
         }
         this.ingredients = ingredients;
     }

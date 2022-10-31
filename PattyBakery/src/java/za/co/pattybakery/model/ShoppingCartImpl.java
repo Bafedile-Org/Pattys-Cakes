@@ -21,7 +21,9 @@ public abstract class ShoppingCartImpl implements ShoppingCart{
     
     @Override
     public void addOrder(Order order, List<Order> orders) {
-       
+        if(order == null & orders == null){
+            
+        }
     }
     
     @Override

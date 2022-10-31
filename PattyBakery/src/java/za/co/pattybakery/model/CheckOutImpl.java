@@ -19,7 +19,7 @@ public class CheckOutImpl implements CheckOut{
     @Override
     public void setShoppingCart(ShoppingCart shoppingCart){
         if(shoppingCart == null){
-           
+            setShoppingCart(shoppingCart);
         }
         this.shoppingCart = shoppingCart;
     }
@@ -33,7 +33,7 @@ public class CheckOutImpl implements CheckOut{
     @Override
     public void setPayment(Payment payment) {
         if(payment == null){
-            
+            setPayment(payment);
         }
         this.payment = payment;
     }
@@ -47,7 +47,7 @@ public class CheckOutImpl implements CheckOut{
     @Override
     public void setAddress(String address) {
         if(address == null){
-            
+            setAddress(address);
         }
         this.address = address;
     }
