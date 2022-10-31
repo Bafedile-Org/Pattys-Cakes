@@ -1,6 +1,10 @@
 
 package za.co.pattybakery;
 
+/**
+ *
+ * @author Hlawulani
+ */
 public interface Payment {
     public void setAmount(String amount);
     public String getAmount();
