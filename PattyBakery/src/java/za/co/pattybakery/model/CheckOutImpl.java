@@ -4,7 +4,7 @@ package za.co.pattybakery.model;
 import za.co.pattybakery.CheckOut;
 import za.co.pattybakery.Payment;
 import za.co.pattybakery.ShoppingCart;
-
+import za.co.pattybakery.exception.CheckOutException;
 
 public class CheckOutImpl implements CheckOut{
     private ShoppingCart shoppingCart;
@@ -18,33 +18,44 @@ public class CheckOutImpl implements CheckOut{
     }
     
     @Override
-    public void setShoppingCart(ShoppingCart shoppingCart) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setShoppingCart(ShoppingCart shoppingCart)throws CheckOutException {
+        if(shoppingCart == null){
+           throw new CheckOutException("");
+        }
+        this.shoppingCart = shoppingCart;
     }
-
+    
     @Override
     public ShoppingCart getShoppingCart() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        return shoppingCart;
     }
 
     @Override
-    public void setPayment(Payment payment) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setPayment(Payment payment)throws CheckOutException {
+        if(payment == null){
+            throw new CheckOutException("");
+        }
+        this.payment = payment;
     }
 
     @Override
     public Payment getPayment() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
+        return payment;
     }
 
     @Override
-    public void setAddress(String address) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setAddress(String address) throws CheckOutException {
+        if(address == null){
+            throw new CheckOutException("");
+        }
+        this.address = address;
     }
 
     @Override
     public String getAddress() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
+        return address;
     }
-    
 }
