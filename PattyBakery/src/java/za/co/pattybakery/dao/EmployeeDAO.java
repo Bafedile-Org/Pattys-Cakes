@@ -9,7 +9,7 @@ import za.co.pattybakery.model.EmployeeImpl;
  */
 public interface EmployeeDAO {
 
-    void addEmployee(EmployeeImpl customer);
+    void addEmployee(EmployeeImpl employee);
 
     EmployeeImpl getEmployeeById(Integer employeeId);
 

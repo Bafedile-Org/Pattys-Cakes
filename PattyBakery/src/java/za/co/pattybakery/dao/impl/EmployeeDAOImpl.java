@@ -6,11 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import za.co.pattyBakery.Employee;
-import za.co.pattyBakery.Person;
 import za.co.pattybakery.dao.EmployeeDAO;
 import za.co.pattybakery.model.EmployeeImpl;
-import za.co.pattybakery.model.PersonImpl;
 
 /**
  *
