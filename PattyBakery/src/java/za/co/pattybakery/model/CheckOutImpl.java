@@ -5,7 +5,6 @@ import za.co.pattybakery.CheckOut;
 import za.co.pattybakery.Payment;
 import za.co.pattybakery.ShoppingCart;
 
-
 public class CheckOutImpl implements CheckOut{
     private ShoppingCart shoppingCart;
     private String address;
@@ -18,33 +17,44 @@ public class CheckOutImpl implements CheckOut{
     }
     
     @Override
-    public void setShoppingCart(ShoppingCart shoppingCart) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void setShoppingCart(ShoppingCart shoppingCart){
+        if(shoppingCart == null){
+           
+        }
+        this.shoppingCart = shoppingCart;
     }
-
+    
     @Override
     public ShoppingCart getShoppingCart() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+        return shoppingCart;
     }
 
     @Override
     public void setPayment(Payment payment) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(payment == null){
+            
+        }
+        this.payment = payment;
     }
 
     @Override
     public Payment getPayment() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
+        return payment;
     }
 
     @Override
     public void setAddress(String address) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if(address == null){
+            
+        }
+        this.address = address;
     }
 
     @Override
     public String getAddress() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+       
+        return address;
     }
-    
 }
