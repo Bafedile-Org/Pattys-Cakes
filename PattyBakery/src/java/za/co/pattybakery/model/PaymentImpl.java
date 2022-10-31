@@ -11,7 +11,6 @@ public class PaymentImpl implements Payment{
         this.amount = amount;
         this.email = email;
     }
-    
 
     @Override
     public void setAmount(String amount) {
