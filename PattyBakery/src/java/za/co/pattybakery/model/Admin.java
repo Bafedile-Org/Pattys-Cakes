@@ -12,7 +12,6 @@ public class Admin extends EmployeeImpl {
     }
 
     public Admin(String name, String surname, String idNumber, String address, String tel, String email, Integer personId, String title) {
-
         super(personId, name, surname, idNumber, address, tel, email, title);
     }
 
