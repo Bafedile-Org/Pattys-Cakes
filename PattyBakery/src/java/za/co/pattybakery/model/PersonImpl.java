@@ -1,4 +1,4 @@
-package za.co.pattyBakery.moodle;
+package za.co.pattybakery.model;
 
 import za.co.pattyBakery.Person;
 
