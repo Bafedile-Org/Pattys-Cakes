@@ -1,4 +1,4 @@
-package za.co.pattyBakery.moodle;
+package za.co.pettyBakery.model;
 
 /**
  *
