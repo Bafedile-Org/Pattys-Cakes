@@ -1,4 +1,4 @@
-package za.co.pettyBakery.model;
+package za.co.pattyBakery.model;
 
 /**
  *
