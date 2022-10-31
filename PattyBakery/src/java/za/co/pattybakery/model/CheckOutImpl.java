@@ -4,6 +4,7 @@ package za.co.pattybakery.model;
 import za.co.pattybakery.CheckOut;
 import za.co.pattybakery.Payment;
 import za.co.pattybakery.ShoppingCart;
+import za.co.pattybakery.exception.CheckOutException;
 
 public class CheckOutImpl implements CheckOut{
     private ShoppingCart shoppingCart;
@@ -17,9 +18,9 @@ public class CheckOutImpl implements CheckOut{
     }
     
     @Override
-    public void setShoppingCart(ShoppingCart shoppingCart){
+    public void setShoppingCart(ShoppingCart shoppingCart)throws CheckOutException {
         if(shoppingCart == null){
-           
+           throw new CheckOutException("");
         }
         this.shoppingCart = shoppingCart;
     }
@@ -31,9 +32,9 @@ public class CheckOutImpl implements CheckOut{
     }
 
     @Override
-    public void setPayment(Payment payment) {
+    public void setPayment(Payment payment)throws CheckOutException {
         if(payment == null){
-            
+            throw new CheckOutException("");
         }
         this.payment = payment;
     }
@@ -45,9 +46,9 @@ public class CheckOutImpl implements CheckOut{
     }
 
     @Override
-    public void setAddress(String address) {
+    public void setAddress(String address) throws CheckOutException {
         if(address == null){
-            
+            throw new CheckOutException("");
         }
         this.address = address;
     }

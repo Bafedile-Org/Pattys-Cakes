@@ -3,9 +3,10 @@ package za.co.pattybakery;
 
 import java.time.LocalDate;
 import java.util.List;
+import za.co.pattybakery.exception.ShoppingCartException;
 
 public interface ShoppingCart {
-    public void addOrder(Order order, List<Order> orders);
+    public void addOrder(Order order, List<Order> orders) throws ShoppingCartException;
     public List<Order> getOrders();
     public Double getTotalprice();
     public Integer getOrderNumber();
