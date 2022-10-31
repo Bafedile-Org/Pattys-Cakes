@@ -11,7 +11,7 @@ public class CustomerImpl extends PersonImpl {
     }
 
     public CustomerImpl(String name, String surname, String idNumber, String address, String tel, String email, Integer personId) {
-        super(name, surname, idNumber, address, tel, email, personId);
+        super(personId, name, surname, idNumber, address, tel, email);
     }
 
 }
