@@ -13,8 +13,15 @@ public class ProductImpl implements Product {
     private Double price;
     private String nutrientInfo, ingredients, category;
 
-    public ProductImpl(Integer productId, Double price, String category, String nutrientInfo, String ingredients) {
+    public ProductImpl() {
+    }
 
+    public ProductImpl(Integer productId, Double price, String category, String nutrientInfo, String ingredients) throws ProductException {
+        this.setCategory(category);
+        this.setIngredients(ingredients);
+        this.setNutrientInfo(nutrientInfo);
+        this.setPrice(price);
+        this.setProductId(productId);
     }
 
     @Override
@@ -59,7 +66,7 @@ public class ProductImpl implements Product {
     @Override
     public void setIngredients(String ingredients) throws ProductException {
         if (ingredients == null) {
-            throw new ProductIngredient(INGREDIENTS_ERROR_MSG);
+            throw new ProductException(INGREDIENTS_ERROR_MSG);
         }
         this.ingredients = ingredients;
     }
