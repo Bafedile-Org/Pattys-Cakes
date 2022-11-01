@@ -11,14 +11,13 @@ import za.co.pattybakery.dao.IngredientsDAO;
  * @author Hlawulani
  */
 public class IngredientsDAOImpl implements IngredientsDAO{
-    private PreparedStatement preparedStatement;
-    private ResultSet resultSet;
+    private PreparedStatement ps;
+    private ResultSet rs;
 
     public IngredientsDAOImpl(PreparedStatement preparedStatement, ResultSet resultSet) {
-        this.preparedStatement = preparedStatement;
-        this.resultSet = resultSet;
+        this.ps = preparedStatement;
+        this.rs = resultSet;
     }
-    
 
     @Override
     public void addIngrideint(String ingredient) {

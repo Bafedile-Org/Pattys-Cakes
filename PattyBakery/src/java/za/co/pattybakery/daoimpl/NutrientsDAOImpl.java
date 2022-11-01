@@ -11,17 +11,17 @@ import za.co.pattybakery.dao.NutrientsDAO;
  * @author Hlawulani
  */
 public class NutrientsDAOImpl implements NutrientsDAO{
-    private PreparedStatement preparedStatement;
-    private ResultSet resultSet;
+    private PreparedStatement ps;
+    private ResultSet rs;
 
     public NutrientsDAOImpl(PreparedStatement preparedStatement, ResultSet resultSet) {
-        this.preparedStatement = preparedStatement;
-        this.resultSet = resultSet;
+        this.ps = preparedStatement;
+        this.rs = resultSet;
     }
 
     @Override
     public void addNutrient(String nutrient) {
-        
+        ps.addBatch(nutrient);
     }
 
     @Override
@@ -41,5 +41,6 @@ public class NutrientsDAOImpl implements NutrientsDAO{
 
     @Override
     public void close(PreparedStatement preparedStatement, ResultSet resultsSet) {
+        
     }
 }

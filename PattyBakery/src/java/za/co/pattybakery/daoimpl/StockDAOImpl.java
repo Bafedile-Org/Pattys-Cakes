@@ -12,16 +12,17 @@ import za.co.pattybakery.dao.StockDAO;
  * @author Hlawulani
  */
 public class StockDAOImpl implements StockDAO{
-    private PreparedStatement preparedStatement;
-    private ResultSet resultSet;
+    private PreparedStatement ps;
+    private ResultSet rs;
 
     public StockDAOImpl(PreparedStatement preparedStatement, ResultSet resultSet) {
-        this.preparedStatement = preparedStatement;
-        this.resultSet = resultSet;
+        this.ps = preparedStatement;
+        this.rs = resultSet;
     }
     
     @Override
     public void addStock(Product productId) {
+        ps.addBatch();
     }
 
     @Override
