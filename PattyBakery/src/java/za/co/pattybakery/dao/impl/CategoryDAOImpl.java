@@ -17,75 +17,91 @@ public class CategoryDAOImpl implements CategoryDAO {
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
     private Connection con = null;
-   
-    public CategoryDAOImpl(){
+
+    public CategoryDAOImpl() {
     }
+
     @Override
     public void addCategory(String category) {
-        try{
-            if(con != null){
+        try {
+            if (con != null) {
                 preparedStatement = con.prepareStatement("INSERT INTO category (category) VALUES(?)");
                 preparedStatement.setString(1, category);
                 preparedStatement.executeUpdate();
             }
-        }
-        catch(SQLException sql){
+        } catch (SQLException sql) {
             System.out.println("Error occured..!!" + sql.getMessage());
-        }
-        finally{
+        } finally {
             close(preparedStatement, resultSet);
         }
     }
 
     @Override
-    public void updateCategory(Integer categoryId, String category) {
-        try{
-            if(con != null){
-                preparedStatement = con.prepareStatement("UPDATE category SET category =? WHERE categoryId = ?");
+    public void updateCategory(Integer cat_id, String category) {
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("UPDATE category SET category =? WHERE cat_id = ?");
                 preparedStatement.setString(1, category);
-                preparedStatement.setInt(2, categoryId);
+                preparedStatement.setInt(2, cat_id);
                 preparedStatement.executeQuery();
             }
-        }catch(SQLException sql){
-            System.out.println("Error: " + sql.getMessage());       
-        }
-        finally{
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
             close(preparedStatement, resultSet);
         }
     }
 
     @Override
-    public void removeCategory(Integer categoryId) {
-        try{
-            if(con != null){
-                preparedStatement = con.prepareStatement("DELETE FROM category WHERE categoryId = ?");
-                preparedStatement.setInt(1, categoryId);
+    public void removeCategory(Integer cat_id) {
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("DELETE FROM category WHERE cat_id = ?");
+                preparedStatement.setInt(1, cat_id);
                 preparedStatement.executeQuery();
             }
-        }
-        catch(SQLException sql){
+        } catch (SQLException sql) {
             System.out.println("Error: " + sql.getMessage());
         }
     }
+
+    @Override
+    public String getCategoryById(Integer categoryId) {
+        String category = null;
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT category FROM category WHERE cat_id =?");
+                preparedStatement.setInt(1, categoryId);
+                resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    category = resultSet.getString("category");
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+        return category;
+    }
+
     @Override
     public List<String> getAllCategory() {
         List<String> categories = new ArrayList<>();
-        
-        try{
-        if(con != null){
-            preparedStatement = con.prepareStatement("SELECT * FROM category");
-            resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
-            categories.add(resultSet.getString("category"));
-             }
+
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT * FROM category");
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    categories.add(resultSet.getString("category"));
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
         }
-    }
-    catch(SQLException sql){
-        System.out.println("Error: " + sql.getMessage());
-    }
-        finally{
-        close(preparedStatement, resultSet);
-    }
         return categories;
     }
 }

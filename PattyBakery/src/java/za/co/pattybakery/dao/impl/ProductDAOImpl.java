@@ -31,8 +31,8 @@ public class ProductDAOImpl implements ProductDAO {
         try {
             if (conn != null) {
                 preparedStatement = conn.prepareStatement("INSERT INTO product  VALUES(?,?,"
-                        + "(SELECT nutrient_id FROM nutrient WHERE nutrient_info =?),"
-                        + "(SELECT ingredient_id FROM ingredients WHERE ingredient=?),"
+                        + "(SELECT nutr_id FROM nutrients WHERE nutrient =?),"
+                        + "(SELECT ingr_id FROM ingredients WHERE ingredient=?),"
                         + "(SELECT cat_id FROM category WHERE category= ?));");
                 preparedStatement.setString(1, product.getProductId());
                 preparedStatement.setDouble(2, product.getPrice());
@@ -110,7 +110,7 @@ public class ProductDAOImpl implements ProductDAO {
     public void updateProductIngredient(String productId, String ingredient) {
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE product SET  ingredient_id =(SELECT ingredient_id FROM ingredients WHERE ingredient=?)  WHERE prod_id = ?");
+                preparedStatement = conn.prepareStatement("UPDATE product SET  ingr_id =(SELECT ingr_id FROM ingredients WHERE ingredient=?)  WHERE prod_id = ?");
                 preparedStatement.setString(1, ingredient);
                 preparedStatement.setString(2, productId);
                 preparedStatement.executeUpdate();
@@ -146,11 +146,14 @@ public class ProductDAOImpl implements ProductDAO {
         Product product = null;
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("SELECT * FROM customer;");
+                preparedStatement = conn.prepareStatement("SELECT * FROM product;");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    product = new ProductImpl(resultSet.getString("prod_id"), resultSet.getDouble("price"), resultSet.getString("category"), resultSet.getString("nutrient_info"),
-                            resultSet.getString("ingredient"));
+                    product = new ProductImpl(resultSet.getString("prod_id"),
+                            resultSet.getDouble("price"),
+                            new CategoryDAOImpl().getCategoryById(resultSet.getInt("cat_id")),
+                            new NutrientsDAOImpl().getNutrientById(resultSet.getString("nutr_id")),
+                            new IngredientsDAOImpl().getIngredientById(resultSet.getString("ingredient")));
                     products.add(product);
                 }
             }

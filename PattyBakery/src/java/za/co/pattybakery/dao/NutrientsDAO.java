@@ -1,4 +1,3 @@
-
 package za.co.pattybakery.dao;
 
 import java.util.List;
@@ -7,9 +6,15 @@ import java.util.List;
  *
  * @author Hlawulani
  */
-public interface NutrientsDAO extends Close{
-    public void addNutrient(String nutrient);
-    public void updateNutrient(Integer nutrientId, String nutrient);
-    public void removeNutrient(Integer nutrientId);
+public interface NutrientsDAO extends Close {
+
+    public void addNutrient(String nutrientId, String nutrient);
+
+    public void updateNutrient(String nutrientId, String nutrient);
+
+    public void removeNutrient(String nutrientId);
+
+    public String getNutrientById(String nutrientId);
+
     public List<String> getAllNutrients();
 }
