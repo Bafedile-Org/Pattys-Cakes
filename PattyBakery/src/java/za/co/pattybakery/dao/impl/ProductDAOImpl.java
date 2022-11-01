@@ -149,7 +149,8 @@ public class ProductDAOImpl implements ProductDAO {
                 preparedStatement = conn.prepareStatement("SELECT * FROM product;");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    product = new ProductImpl(resultSet.getString("prod_id"), resultSet.getDouble("price"),
+                    product = new ProductImpl(resultSet.getString("prod_id"),
+                            resultSet.getDouble("price"),
                             new CategoryDAOImpl().getCategoryById(resultSet.getInt("cat_id")),
                             new NutrientsDAOImpl().getNutrientById(resultSet.getString("nutr_id")),
                             new IngredientsDAOImpl().getIngredientById(resultSet.getString("ingredient")));
