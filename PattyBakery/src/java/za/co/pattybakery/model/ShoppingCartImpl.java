@@ -1,6 +1,10 @@
 
 package za.co.pattybakery.model;
 
+/**
+ *
+ * @author Hlawulani
+ */
 import java.time.LocalDate;
 import java.util.List;
 import za.co.pattybakery.Order;

@@ -1,5 +1,10 @@
 package za.co.pattybakery.model;
 
+/**
+ *
+ * @author Hlawulani
+ */
+
 import za.co.pattybakery.CheckOut;
 import za.co.pattybakery.Payment;
 import za.co.pattybakery.ShoppingCart;

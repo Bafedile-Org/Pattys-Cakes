@@ -1,5 +1,9 @@
 package za.co.pattybakery;
 
+/**
+ *
+ * @author Hlawulani
+ */
 import za.co.pattybakery.exception.CheckOutException;
 
 public interface CheckOut {
