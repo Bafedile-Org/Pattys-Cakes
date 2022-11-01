@@ -20,7 +20,6 @@ public class CustomerServImpl implements CustomerDAO {
     @Override
     public void addCustomer(Person customer) {
         if (customer == null) {
-
         }
         customerDAOImpl.addCustomer(customer);
     }
