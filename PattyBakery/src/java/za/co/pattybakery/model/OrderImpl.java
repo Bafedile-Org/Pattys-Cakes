@@ -17,6 +17,11 @@ public class OrderImpl implements Order {
     public OrderImpl() {
     }
 
+    public OrderImpl(Product product, Integer quantity) throws OrderException {
+        this.setProduct(product);
+        this.setQuantity(quantity);
+    }
+
     public OrderImpl(Product product, Integer quantity, Double totalPrice) throws OrderException {
         this.setProduct(product);
         this.setQuantity(quantity);
@@ -54,7 +59,7 @@ public class OrderImpl implements Order {
         if (totalPrice < 0) {
             throw new OrderException(ORDER_TOTAL_PRICE_ERROR_MSG);
         }
-        this.totalPrice = totalPrice;
+        this.totalPrice *= quantity;
     }
 
     @Override
