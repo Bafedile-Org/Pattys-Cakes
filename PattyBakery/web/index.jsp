@@ -1,7 +1,7 @@
 <%-- 
     Document   : index
     Created on : Oct 31, 2022, 8:42:56 AM
-    Author     : Bridget Bapela
+    Author     : Hlawulani Baloyi
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
