@@ -1,4 +1,3 @@
-
 package za.co.pattybakery.model;
 
 /**
@@ -11,48 +10,66 @@ import za.co.pattybakery.Order;
 import za.co.pattybakery.ShoppingCart;
 import za.co.pattybakery.exception.ShoppingCartException;
 
-public abstract class ShoppingCartImpl implements ShoppingCart{
-    private List<Order> orders;
-    private Double totalPrice;
-    private Integer orderNumber;
-    private LocalDate date;
+public class ShoppingCartImpl implements ShoppingCart {
 
-    public ShoppingCartImpl(List<Order> orders, Double totalPrice, Integer orderNumber, LocalDate date) {
+    private List<Order> orders;
+    private Double totalPrice = 0.0;
+    private String orderNumber;
+    private LocalDate date;
+    private Boolean deliveryStatus;
+
+    public ShoppingCartImpl(List<Order> orders, Double totalPrice, String orderNumber, LocalDate date) {
         this.orders = orders;
         this.totalPrice = totalPrice;
         this.orderNumber = orderNumber;
         this.date = date;
+        this.deliveryStatus = false;
     }
-    
+
+    public ShoppingCartImpl(List<Order> orders, String orderNumber, LocalDate date, Boolean deliveryStatus) {
+        this.orders = orders;
+        this.orderNumber = orderNumber;
+        this.date = date;
+        this.deliveryStatus = deliveryStatus;
+    }
+
     @Override
-    public void addOrder(Order order, List<Order> orders) throws ShoppingCartException{
-        if(order == null && orders == null){
+    public void addOrder(Order order, List<Order> orders) throws ShoppingCartException {
+        if (order == null && orders == null) {
             throw new ShoppingCartException("");
         }
         orders.add(order);
     }
-    
+
     @Override
     public List<Order> getOrders() {
-        
+
         return orders;
     }
 
     @Override
     public Double getTotalprice() {
-        
+        orders.forEach(order -> {
+            totalPrice += order.getTotalPrice();
+        });
         return totalPrice;
     }
 
     @Override
-    public Integer getOrderNumber() {
-       
+    public String getOrderNumber() {
+
         return orderNumber;
     }
 
     @Override
     public LocalDate getDate() {
-      
+
         return date;
+    }
+
+    @Override
+
+    public Boolean getDeliveryStatus() {
+        return deliveryStatus;
     }
 }
