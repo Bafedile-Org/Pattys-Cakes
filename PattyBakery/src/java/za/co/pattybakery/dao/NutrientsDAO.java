@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface NutrientsDAO extends Close{
     public void addNutrient(String nutrient);
-    public void updateNutrient(Integer nutrientId, String nutrient);
-    public void removeNutrient(Integer nutrientId);
+    public void updateNutrient(Integer nutrientsId, String nutrients);
+    public void removeNutrient(Integer nutrientsId);
     public List<String> getAllNutrients();
 }
