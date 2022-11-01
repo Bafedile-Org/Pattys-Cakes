@@ -1,5 +1,5 @@
 
-package za.co.pattybakery.daoimpl;
+package za.co.pattybakery.dao.impl;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

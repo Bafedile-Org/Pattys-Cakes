@@ -1,45 +1,47 @@
 
-package za.co.pattybakery.daoimpl;
+package za.co.pattybakery.dao.impl;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
-import za.co.pattybakery.dao.NutrientsDAO;
+import za.co.pattybakery.dao.IngredientsDAO;
 
 /**
  *
  * @author Hlawulani
  */
-public class NutrientsDAOImpl implements NutrientsDAO{
+public class IngredientsDAOImpl implements IngredientsDAO{
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
-    public NutrientsDAOImpl(PreparedStatement preparedStatement, ResultSet resultSet) {
+    public IngredientsDAOImpl(PreparedStatement preparedStatement, ResultSet resultSet) {
         this.preparedStatement = preparedStatement;
         this.resultSet = resultSet;
     }
+    
 
     @Override
-    public void addNutrient(String nutrient) {
+    public void addIngrideint(String ingredient) {
         
     }
 
     @Override
-    public void updateNutrient(Integer nutrientsId, String nutrients) {
+    public void updateIngredient(Integer ingredientId, String ingredient) {
         
     }
 
     @Override
-    public void removeNutrient(Integer nutrientsId) {
+    public void removeIngredient(Integer ingredientId) {
         
     }
 
     @Override
-    public List<String> getAllNutrients() {
-        return getAllNutrients();
+    public List<String> getAllIngredient() {
+        return null;
     }
 
     @Override
     public void close(PreparedStatement preparedStatement, ResultSet resultsSet) {
     }
+    
 }
