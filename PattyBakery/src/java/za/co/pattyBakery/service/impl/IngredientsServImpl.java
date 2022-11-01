@@ -12,24 +12,16 @@ public class IngredientsServImpl implements IngredientsDAO {
     private IngredientsDAO ingredientDAOImpl;
 
     @Override
-    public void addIngrideint(String ingredient) {
-        if (ingredient == null) {
-
-        }
-        ingredientDAOImpl.addIngrideint(ingredient);
-    }
-
-    @Override
-    public void updateIngredient(Integer ingredientId, String ingredient) {
-        if (ingredient == null || ingredientId <= 0) {
+    public void updateIngredient(String ingredientId, String ingredient) {
+        if (ingredient == null || ingredientId == null) {
             return;
         }
         ingredientDAOImpl.updateIngredient(ingredientId, ingredient);
     }
 
     @Override
-    public void removeIngredient(Integer ingredientId) {
-        if (ingredientId <= 0) {
+    public void removeIngredient(String ingredientId) {
+        if (ingredientId == null) {
             return;
         }
         ingredientDAOImpl.removeIngredient(ingredientId);
@@ -38,6 +30,22 @@ public class IngredientsServImpl implements IngredientsDAO {
     @Override
     public List<String> getAllIngredient() {
         return ingredientDAOImpl.getAllIngredient();
+    }
+
+    @Override
+    public void addIngridient(String ingredient, Integer quantity) {
+        if (ingredient == null || quantity <= 0) {
+            return;
+        }
+        ingredientDAOImpl.addIngridient(ingredient, quantity);
+    }
+
+    @Override
+    public String getIngredientById(String ingredientId) {
+        if (ingredientId == null) {
+            return null;
+        }
+        return ingredientDAOImpl.getIngredientById(ingredientId);
     }
 
 }
