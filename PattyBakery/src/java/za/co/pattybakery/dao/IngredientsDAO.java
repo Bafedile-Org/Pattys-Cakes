@@ -10,7 +10,7 @@ public interface IngredientsDAO extends Close {
 
     public void addIngridient(String ingredient, Integer quantity);
 
-    public void updateIngredient(Integer ingredientId, String ingredient);
+    public void updateIngredient(String ingredientId, String ingredient);
 
     public void removeIngredient(String ingredientId);
 

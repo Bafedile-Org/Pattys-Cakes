@@ -39,12 +39,12 @@ public class IngredientsDAOImpl implements IngredientsDAO {
     }
 
     @Override
-    public void updateIngredient(Integer ingredientId, String ingredient) {
+    public void updateIngredient(String ingredientId, String ingredient) {
         try {
             if (con != null) {
                 preparedStatement = con.prepareStatement("UPDATE ingredients SET ingredient = ? WHERE ingr_id = ?");
                 preparedStatement.setString(1, ingredient);
-                preparedStatement.setInt(2, ingredientId);
+                preparedStatement.setString(2, ingredientId);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException sql) {
