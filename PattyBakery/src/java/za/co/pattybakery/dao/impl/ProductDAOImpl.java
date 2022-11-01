@@ -46,6 +46,8 @@ public class ProductDAOImpl implements ProductDAO {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
 
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -65,6 +67,8 @@ public class ProductDAOImpl implements ProductDAO {
         } catch (SQLException | ProductException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
         return product;
     }
@@ -80,6 +84,8 @@ public class ProductDAOImpl implements ProductDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -95,6 +101,8 @@ public class ProductDAOImpl implements ProductDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -110,6 +118,8 @@ public class ProductDAOImpl implements ProductDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -125,6 +135,8 @@ public class ProductDAOImpl implements ProductDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -145,6 +157,8 @@ public class ProductDAOImpl implements ProductDAO {
         } catch (SQLException | ProductException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
         return products;
     }

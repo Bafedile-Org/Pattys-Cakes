@@ -38,6 +38,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
 
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -57,6 +59,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
         return employee;
     }
@@ -72,6 +76,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -87,6 +93,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -102,6 +110,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -117,6 +127,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -137,6 +149,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
         return employees;
     }

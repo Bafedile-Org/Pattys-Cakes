@@ -7,7 +7,7 @@ import za.co.pattybakery.model.EmployeeImpl;
  *
  * @author Dimakatso Sebatane
  */
-public interface EmployeeDAO {
+public interface EmployeeDAO extends Close {
 
     void addEmployee(EmployeeImpl employee);
 

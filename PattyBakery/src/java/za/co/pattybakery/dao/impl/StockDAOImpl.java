@@ -1,4 +1,3 @@
-
 package za.co.pattybakery.dao.impl;
 
 import java.sql.PreparedStatement;
@@ -11,7 +10,8 @@ import za.co.pattybakery.dao.StockDAO;
  *
  * @author Hlawulani
  */
-public class StockDAOImpl implements StockDAO{
+public class StockDAOImpl implements StockDAO {
+
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
@@ -19,14 +19,14 @@ public class StockDAOImpl implements StockDAO{
         this.preparedStatement = preparedStatement;
         this.resultSet = resultSet;
     }
-    
+
     @Override
     public void addStock(Product productId) {
     }
 
     @Override
     public void updateStockQuantity(Integer productId, Integer quantity) {
-        
+
     }
 
     @Override
@@ -34,8 +34,4 @@ public class StockDAOImpl implements StockDAO{
         return getAllStocks();
     }
 
-    @Override
-    public void close(PreparedStatement preparedStatement, ResultSet resultsSet) {
-        
-    }
 }

@@ -42,6 +42,7 @@ public class CustomerDAOImpl implements CustomerDAO {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
 
         } finally {
+            close(preparedStatement, resultSet);
         }
 
     }
@@ -62,6 +63,8 @@ public class CustomerDAOImpl implements CustomerDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
         return customer;
     }
@@ -77,6 +80,8 @@ public class CustomerDAOImpl implements CustomerDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -92,6 +97,8 @@ public class CustomerDAOImpl implements CustomerDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -107,6 +114,8 @@ public class CustomerDAOImpl implements CustomerDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -122,6 +131,8 @@ public class CustomerDAOImpl implements CustomerDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
     }
 
@@ -142,6 +153,8 @@ public class CustomerDAOImpl implements CustomerDAO {
         } catch (SQLException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
+            close(preparedStatement, resultSet);
+
         }
         return customers;
     }

@@ -1,4 +1,3 @@
-
 package za.co.pattybakery.dao.impl;
 
 import java.sql.PreparedStatement;
@@ -10,7 +9,8 @@ import za.co.pattybakery.dao.CategoryDAO;
  *
  * @author Hlawulani
  */
-public class CategoryDAOImpl implements CategoryDAO{
+public class CategoryDAOImpl implements CategoryDAO {
+
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
@@ -21,24 +21,22 @@ public class CategoryDAOImpl implements CategoryDAO{
 
     @Override
     public void addCategory(String category) {
-        
+
     }
 
     @Override
     public void updateCategory(Integer categoryId, String category) {
-        
+
     }
 
     @Override
     public void removeCategory(Integer categoryId) {
-        
+
     }
 
     @Override
     public List<String> getAllCategory() {
         return getAllCategory();
     }
-    @Override
-    public void close(PreparedStatement preparedStatement, ResultSet resultsSet) {
-    }
+
 }

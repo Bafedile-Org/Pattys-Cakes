@@ -1,4 +1,3 @@
-
 package za.co.pattybakery.dao.impl;
 
 import java.sql.PreparedStatement;
@@ -10,7 +9,8 @@ import za.co.pattybakery.dao.IngredientsDAO;
  *
  * @author Hlawulani
  */
-public class IngredientsDAOImpl implements IngredientsDAO{
+public class IngredientsDAOImpl implements IngredientsDAO {
+
     private PreparedStatement preparedStatement;
     private ResultSet resultSet;
 
@@ -18,21 +18,20 @@ public class IngredientsDAOImpl implements IngredientsDAO{
         this.preparedStatement = preparedStatement;
         this.resultSet = resultSet;
     }
-    
 
     @Override
     public void addIngrideint(String ingredient) {
-        
+
     }
 
     @Override
     public void updateIngredient(Integer ingredientId, String ingredient) {
-        
+
     }
 
     @Override
     public void removeIngredient(Integer ingredientId) {
-        
+
     }
 
     @Override
@@ -40,8 +39,4 @@ public class IngredientsDAOImpl implements IngredientsDAO{
         return null;
     }
 
-    @Override
-    public void close(PreparedStatement preparedStatement, ResultSet resultsSet) {
-    }
-    
 }

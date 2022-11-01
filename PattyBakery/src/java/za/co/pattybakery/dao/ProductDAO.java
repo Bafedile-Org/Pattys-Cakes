@@ -7,7 +7,7 @@ import za.co.pattybakery.Product;
  *
  * @author Dimakatso Sebatane
  */
-public interface ProductDAO {
+public interface ProductDAO extends Close {
 
     void addProduct(Product product);
 
