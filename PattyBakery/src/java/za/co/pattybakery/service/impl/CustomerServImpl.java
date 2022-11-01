@@ -20,7 +20,10 @@ public class CustomerServImpl implements CustomerDAO {
     @Override
     public void addCustomer(Person customer) {
         if (customer == null) {
+<<<<<<< HEAD
 
+=======
+>>>>>>> parent of 389267f (Merge branch 'Bridget-dev' into master-dev)
         }
         customerDAOImpl.addCustomer(customer);
     }
