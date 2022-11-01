@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface IngredientsDAO extends Close{
     public void addIngrideint(String ingredient);
-    public void updateIngredient(Integer ingredientsId, String ingredients);
-    public void removeIngredient(Integer ingredientsId);
+    public void updateIngredient(Integer ingredientId, String ingredient);
+    public void removeIngredient(Integer ingredientId);
     public List<String> getAllIngredient();
 }
