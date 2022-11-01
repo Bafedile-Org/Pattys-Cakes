@@ -9,14 +9,14 @@ import za.co.pattybakery.exception.ProductException;
  */
 public class ProductImpl implements Product {
 
-    private Integer productId;
+    private String productId;
     private Double price;
     private String nutrientInfo, ingredients, category;
 
     public ProductImpl() {
     }
 
-    public ProductImpl(Integer productId, Double price, String category, String nutrientInfo, String ingredients) throws ProductException {
+    public ProductImpl(String productId, Double price, String category, String nutrientInfo, String ingredients) throws ProductException {
         this.setCategory(category);
         this.setIngredients(ingredients);
         this.setNutrientInfo(nutrientInfo);
@@ -25,15 +25,15 @@ public class ProductImpl implements Product {
     }
 
     @Override
-    public void setProductId(Integer productId) throws ProductException {
-        if (productId == 0) {
+    public void setProductId(String productId) throws ProductException {
+        if (productId == null) {
             throw new ProductException(PRODUCT_ID_ERROR_MSG);
         }
         this.productId = productId;
     }
 
     @Override
-    public Integer getProductId() {
+    public String getProductId() {
         return productId;
     }
 

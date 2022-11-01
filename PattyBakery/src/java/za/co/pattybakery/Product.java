@@ -8,15 +8,15 @@ import za.co.pattybakery.exception.ProductException;
  */
 public interface Product {
 
-    String CATEGORY_ERROR_MSG = "";
-    String INGREDIENTS_ERROR_MSG = "";
-    String NUTRIENT_INFO_ERROR_MSG = "";
-    String PRODUCT_PRICE_ERROR_MSG = "";
-    String PRODUCT_ID_ERROR_MSG = "";
+    String CATEGORY_ERROR_MSG = "Category Can Not Be Null!!!";
+    String INGREDIENTS_ERROR_MSG = "Ingredients Can Not Be Null!!!";
+    String NUTRIENT_INFO_ERROR_MSG = "Nutrient Inforation Can Not Be Null!!!";
+    String PRODUCT_PRICE_ERROR_MSG = "Product Price Can Not Be Less Than Zero!!!";
+    String PRODUCT_ID_ERROR_MSG = "Product Id  Can Not Be Zero!!!";
 
-    void setProductId(Integer productId) throws ProductException;
+    void setProductId(String productId) throws ProductException;
 
-    Integer getProductId();
+    String getProductId();
 
     void setPrice(Double price) throws ProductException;
 
