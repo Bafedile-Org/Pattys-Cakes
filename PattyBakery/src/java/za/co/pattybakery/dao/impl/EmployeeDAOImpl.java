@@ -48,11 +48,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         EmployeeImpl employee = null;
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("SELECT * FROM employee WHERE employee_id = ?");
+                preparedStatement = conn.prepareStatement("SELECT * FROM employee WHERE emp_id = ?");
                 preparedStatement.setInt(1, employeeId);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    employee = new EmployeeImpl(resultSet.getInt("customer_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),
+                    employee = new EmployeeImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),
                             resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("address"), resultSet.getString("title"));
                 }
             }
@@ -69,7 +69,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public void removeEmployee(Integer employeeId) {
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("DELETE  FROM employee WHERE employee_id = ?");
+                preparedStatement = conn.prepareStatement("DELETE  FROM employee WHERE emp_id = ?");
                 preparedStatement.setInt(1, employeeId);
                 preparedStatement.executeUpdate();
             }
@@ -85,7 +85,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public void updateEmployeeTel(Integer employeeId, String tel) {
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE employee SET  tel =?  WHERE employee_id = ?");
+                preparedStatement = conn.prepareStatement("UPDATE employee SET  tel =?  WHERE emp_id = ?");
                 preparedStatement.setString(1, tel);
                 preparedStatement.setInt(2, employeeId);
                 preparedStatement.executeUpdate();
@@ -102,7 +102,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public void updateEmployeeEmail(Integer employeeId, String email) {
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE employee SET  email =?  WHERE employee_id = ?");
+                preparedStatement = conn.prepareStatement("UPDATE employee SET  email =?  WHERE emp_id = ?");
                 preparedStatement.setString(1, email);
                 preparedStatement.setInt(2, employeeId);
                 preparedStatement.executeUpdate();
@@ -119,7 +119,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public void updateEmployeeAddress(Integer employeeId, String address) {
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE employee SET  address =?  WHERE employee_id = ?");
+                preparedStatement = conn.prepareStatement("UPDATE employee SET  address =?  WHERE emp_id = ?");
                 preparedStatement.setString(1, address);
                 preparedStatement.setInt(2, employeeId);
                 preparedStatement.executeUpdate();
@@ -141,7 +141,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
                 preparedStatement = conn.prepareStatement("SELECT * FROM customer;");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    employee = new EmployeeImpl(resultSet.getInt("customer_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),
+                    employee = new EmployeeImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),
                             resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("address"), resultSet.getString("title"));
                     employees.add(employee);
                 }

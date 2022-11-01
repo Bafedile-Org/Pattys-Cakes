@@ -78,7 +78,7 @@ public class DatabaseConnect {
     public void ProductTable() {
         PreparedStatement stat = null;
         try {
-            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS product (prod_id VARCHAR(10) PRIMARY KEY,nutr_id VARCHAR(10) NOT NULL ,"
+            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS product (prod_id VARCHAR(10) PRIMARY KEY,price Double, nutr_id VARCHAR(10) NOT NULL ,"
                     + "ingr_id VARCHAR(10) NOT NULL ,cat_id VARCHAR(10) NOT NULL REFERENCES category(cat_id),"
                     + "FOREIGN KEY(nutr_id) REFERENCES nutrients(nutr_id),FOREIGN Key(ingr_id) REFERENCES ingredients(ingr_id))");
             stat.executeUpdate();
@@ -149,7 +149,7 @@ public class DatabaseConnect {
         PreparedStatement stat = null;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS stock (prod_id VARCHAR(10) NOT NULL,"
-                    + "quanity INTEGER(255),FOREIGN KEY(prod_id) REFERENCES product(prod_id))");
+                    + "quantity INTEGER(255),FOREIGN KEY(prod_id) REFERENCES product(prod_id))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create Stock table.." + sql.getMessage());

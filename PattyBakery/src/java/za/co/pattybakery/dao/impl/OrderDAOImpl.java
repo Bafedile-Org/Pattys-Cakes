@@ -36,11 +36,11 @@ public class OrderDAOImpl implements OrderDAO {
         try {
             if (conn != null) {
                 for (Order order : shoppingCart.getOrders()) {
-                    preparedStatement = conn.prepareStatement("INSERT INTO order VALUES(?,?,?,?,?);");
+                    preparedStatement = conn.prepareStatement("INSERT INTO orders VALUES(?,?,?,?,?);");
                     preparedStatement.setString(1, shoppingCart.getOrderNumber());
                     preparedStatement.setString(2, order.getProduct().getProductId());
-                    preparedStatement.setBoolean(3, shoppingCart.getDeliveryStatus());
-                    preparedStatement.setInt(4, order.getQuantity());
+                    preparedStatement.setInt(3, order.getQuantity());
+                    preparedStatement.setBoolean(4, shoppingCart.getDeliveryStatus());
                     preparedStatement.setDate(5, Date.valueOf(shoppingCart.getDate()));
                     preparedStatement.executeUpdate();
                 }
@@ -58,7 +58,7 @@ public class OrderDAOImpl implements OrderDAO {
     public void updateOrderDeliveryStatus(String orderId, Boolean status) {
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE order  SET  delivery_status =?  WHERE order_id = ?");
+                preparedStatement = conn.prepareStatement("UPDATE orders  SET  delivered =?  WHERE order_id = ?");
                 preparedStatement.setBoolean(1, status);
                 preparedStatement.setString(2, orderId);
                 preparedStatement.executeUpdate();
@@ -74,7 +74,7 @@ public class OrderDAOImpl implements OrderDAO {
     public void removeOrder(String orderId) {
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("DELETE  FROM order WHERE order_id = ?");
+                preparedStatement = conn.prepareStatement("DELETE  FROM orders WHERE order_id = ?");
                 preparedStatement.setString(1, orderId);
                 preparedStatement.executeUpdate();
             }
@@ -92,13 +92,13 @@ public class OrderDAOImpl implements OrderDAO {
         ShoppingCart order;
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("SELECT * FROM order");
+                preparedStatement = conn.prepareStatement("SELECT * FROM orders");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     order = new ShoppingCartImpl(getOrderById(resultSet.getString("order_id")),
                             resultSet.getString("order_id"),
                             resultSet.getDate("date").toLocalDate(),
-                            resultSet.getBoolean("delivery_status"));
+                            resultSet.getBoolean("delivered"));
                     orders.add(order);
                 }
             }
@@ -117,7 +117,7 @@ public class OrderDAOImpl implements OrderDAO {
         List<Order> orders = new ArrayList<>();
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("SELECT * FROM order WHERE orderId=?");
+                preparedStatement = conn.prepareStatement("SELECT * FROM orders WHERE order_id=?");
                 preparedStatement.setString(1, orderId);
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
