@@ -11,15 +11,15 @@ public interface ProductDAO {
 
     void addProduct(Product product);
 
-    Product getProductById(Integer productId);
+    Product getProductById(String productId);
 
-    void removeProduct(Integer productId);
+    void removeProduct(String productId);
 
-    void updateProductPrice(Integer productId, Double price);
+    void updateProductPrice(String productId, Double price);
 
-    void updateProductIngredient(Integer productId, String ingredient);
+    void updateProductIngredient(String productId, String ingredient);
 
-    void updateProductCategory(Integer productId, String category);
+    void updateProductCategory(String productId, String category);
 
     List<Product> getAllProducts();
 }

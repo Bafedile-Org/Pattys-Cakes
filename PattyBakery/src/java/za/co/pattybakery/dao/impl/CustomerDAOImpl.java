@@ -28,7 +28,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     public void addCustomer(Person customer) {
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("INSERT INTO customer (name, surname,identityNum,tel, email, address) VALUES(?,?,?,?,?,?);");
+                preparedStatement = conn.prepareStatement("INSERT INTO customer (name, surname,idNum,tel, email, address) VALUES(?,?,?,?,?,?);");
                 preparedStatement.setString(1, customer.getName());
                 preparedStatement.setString(2, customer.getSurname());
                 preparedStatement.setString(3, customer.getIdNumber());
@@ -51,11 +51,11 @@ public class CustomerDAOImpl implements CustomerDAO {
         Person customer = null;
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("SELECT * FROM customer WHERE customer_id = ?");
+                preparedStatement = conn.prepareStatement("SELECT * FROM customer WHERE cust_id = ?");
                 preparedStatement.setInt(1, customerId);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    customer = new PersonImpl(resultSet.getInt("customer_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),
+                    customer = new PersonImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),
                             resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("address"));
                 }
             }
@@ -70,7 +70,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     public void removeCustomer(Integer customerId) {
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("DELETE  FROM customer WHERE customer_id = ?");
+                preparedStatement = conn.prepareStatement("DELETE  FROM customer WHERE cust_id = ?");
                 preparedStatement.setInt(1, customerId);
                 preparedStatement.executeUpdate();
             }
@@ -84,7 +84,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     public void updateCustomerTel(Integer customerId, String tel) {
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE customer SET  tel =?  WHERE customer_id = ?");
+                preparedStatement = conn.prepareStatement("UPDATE customer SET  tel =?  WHERE cust_id = ?");
                 preparedStatement.setString(1, tel);
                 preparedStatement.setInt(2, customerId);
                 preparedStatement.executeUpdate();
@@ -99,7 +99,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     public void updateCustomerEmail(Integer customerId, String email) {
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE customer SET  email =?  WHERE customer_id = ?");
+                preparedStatement = conn.prepareStatement("UPDATE customer SET  email =?  WHERE cust_id = ?");
                 preparedStatement.setString(1, email);
                 preparedStatement.setInt(2, customerId);
                 preparedStatement.executeUpdate();
@@ -114,7 +114,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     public void updateCustomerAddress(Integer customerId, String address) {
         try {
             if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE customer SET  address =?  WHERE customer_id = ?");
+                preparedStatement = conn.prepareStatement("UPDATE customer SET  address =?  WHERE cust_id = ?");
                 preparedStatement.setString(1, address);
                 preparedStatement.setInt(2, customerId);
                 preparedStatement.executeUpdate();
@@ -134,7 +134,7 @@ public class CustomerDAOImpl implements CustomerDAO {
                 preparedStatement = conn.prepareStatement("SELECT * FROM customer;");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    customer = new PersonImpl(resultSet.getInt("customer_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),
+                    customer = new PersonImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),
                             resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("address"));
                     customers.add(customer);
                 }

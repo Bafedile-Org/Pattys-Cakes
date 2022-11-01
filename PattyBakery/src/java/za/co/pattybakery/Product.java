@@ -14,9 +14,9 @@ public interface Product {
     String PRODUCT_PRICE_ERROR_MSG = "Product Price Can Not Be Less Than Zero!!!";
     String PRODUCT_ID_ERROR_MSG = "Product Id  Can Not Be Zero!!!";
 
-    void setProductId(Integer productId) throws ProductException;
+    void setProductId(String productId) throws ProductException;
 
-    Integer getProductId();
+    String getProductId();
 
     void setPrice(Double price) throws ProductException;
 
