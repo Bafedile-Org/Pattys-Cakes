@@ -7,6 +7,45 @@
     Author     : Dimakatso Sebatane
 >>>>>>> Deekay-dev
 */
+.topnav i{
+    float:right;
+}
+.topnav h1, h1{
+    font-size: 40px;
+    font-family: "Pacifico"
+}
+img { 
+    padding:12px 0px;
+    width: 500px;  
+    height: 450px;   
+} 
+.parent {
+    display: flex;
+}
+.parent p, .parent ul{
+    margin-left: 15%;
+}
+.parent ul li{
+    width: 150%;
+}
+.price {
+    padding:17px 0px;
+}
+#b, #b1{
+    background: #2C88CB;
+    margin-right: 355px;
+}
+label{
+    border-style: solid;
+    font-size: 20px;
+    margin-left: 10%;
+}
+#label_div{
+    padding: 20px 0px;
+}
+#b{
+    border: none;
+}
 body{
     background: #C799BA;
 }
