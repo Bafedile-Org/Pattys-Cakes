@@ -2,8 +2,15 @@
     Created on : 03 Nov 2022, 9:11:59 AM
     Author     : Dimakatso Sebatane
 */
+.topnav i,topnav h1{
+    float:right;
+}
+.topnav i,topnav h1{
+    font-size: 40px;
+    font-family:"Pacifico";
+}
 
 body{
     background: #C799BA;
-    
+   
 }
