@@ -25,12 +25,5 @@
              
             </nav>
         </header>
-        
-        
-        
-        
-        
-        
-        
     </body>
 </html>

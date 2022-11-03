@@ -6,7 +6,7 @@
 .topnav i{
     float:right;
 }
-.topnav h1{
+.topnav h1,h1{
     font-size:40px;
     font-family:"Pacifico";
     font-style: normal;
@@ -15,3 +15,40 @@
 body{
     background:#C799BA;
 }
+
+.item_name{
+    padding: 12px 0px;
+}
+ 
+.item_name label{
+    margin-left: 5%;
+    
+    font-size: 25px;
+    border-style: solid;
+}
+.cupcakes_img div{
+    float:left;
+    
+}
+.cupcakes_img div img {
+    margin-right: 15px;
+  }
+  .container{
+      padding: 17px 0px;
+      clear: left;
+      width:100%;
+  }
+  #price-button{
+     margin-left: 0%;clear: left;
+      background: #2C88CB; 
+      border: none; 
+      color: #000000;  
+  }
+  #add-to-cart-button{
+      clear: left;
+      margin-left:28%;
+      background: #2C88CB; 
+      box-shadow: 0 3px 13px -2px rgba(0,0,0,.15);
+      color: #000000;  
+  }
+ 
