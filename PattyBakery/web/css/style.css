@@ -1,7 +1,13 @@
 /* 
+<<<<<<< HEAD
+    Created on : 03 Nov 2022, 9:11:56 AM
+    Author     :  Hlawulani
+=======
     Created on : 03 Nov 2022, 9:11:59 AM
     Author     : Dimakatso Sebatane
+>>>>>>> Deekay-dev
 */
+<<<<<<< HEAD
 
 .topnav i{
     float:right;
@@ -52,3 +58,8 @@ body{
 #cart_button{
     margin-left:26%;
 }
+=======
+body{
+    background: #C799BA;
+}
+>>>>>>> Gain-dev
