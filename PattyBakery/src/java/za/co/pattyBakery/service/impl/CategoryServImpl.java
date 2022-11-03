@@ -46,7 +46,7 @@ public class CategoryServImpl implements CategoryDAO {
 
     @Override
     public String getCategoryById(Integer categoryId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return categoryDAOImpl.getCategoryById(categoryId);
     }
 
 }
