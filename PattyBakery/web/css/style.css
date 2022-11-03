@@ -2,15 +2,16 @@
     Created on : 03 Nov 2022, 9:11:59 AM
     Author     : Dimakatso Sebatane
 */
-.topnav i,topnav h1{
+
+.topnav i{
     float:right;
 }
-.topnav i,topnav h1{
-    font-size: 40px;
+.topnav h1{
+    font-size:40px;
     font-family:"Pacifico";
+    font-style: normal;
 }
 
 body{
-    background: #C799BA;
-   
+    background:#C799BA;
 }
