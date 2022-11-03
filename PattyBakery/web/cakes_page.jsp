@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cakes page</title>
+        <link rel='stylesheet' href='css/style.css'>
     </head>
     <body>
         <header>
@@ -21,6 +22,5 @@
                 </div>
             </nav>
         </header>
-        <h1>Hello World!</h1>
     </body>
 </html>
