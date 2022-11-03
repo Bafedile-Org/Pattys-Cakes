@@ -6,12 +6,49 @@
 .topnav i{
     float:right;
 }
-.topnav h1{
+.topnav h1,h1{
     font-size:40px;
     font-family:"Pacifico";
-    font-style: normal;
 }
 
 body{
     background:#C799BA;
+}
+
+#img_list{
+    list-style: none;
+}
+.images-container{
+    width:100%;
+}
+.cookies_img img{
+    padding:12px 0px;
+    width:500px;
+    height:400px;
+
+}
+
+.cookies_img div{
+    display:inline-block;
+    float:left;
+}
+
+#img_price{
+    clear:left;
+    padding:17px 0px;
+}
+
+#img_price button{
+    background:#2C88CB;
+    font-size:18px;
+}
+#cookie_label{
+    font-size:20px;
+    border-style:solid;
+}
+#price_button{
+    border:none;
+}
+#cart_button{
+    margin-left:26%;
 }
