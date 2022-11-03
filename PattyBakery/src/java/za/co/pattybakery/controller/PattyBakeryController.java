@@ -10,14 +10,13 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Bridget Bapela
+ * @author Dimakatso Sebatane
  */
 @WebServlet(name = "PattyBakeryController", urlPatterns = {"/home"})
 public class PattyBakeryController extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
