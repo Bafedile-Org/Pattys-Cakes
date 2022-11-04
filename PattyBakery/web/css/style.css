@@ -1,210 +1,58 @@
 /* 
-<<<<<<< HEAD
-    Created on : 03 Nov 2022, 9:11:56 AM
-    Author     :  Hlawulani
-=======
     Created on : 03 Nov 2022, 9:11:59 AM
     Author     : Dimakatso Sebatane
->>>>>>> Deekay-dev
 */
+
 .topnav i{
     float:right;
 }
-.topnav h1, h1{
-    font-size: 40px;
-    font-family: "Pacifico"
-}
-img { 
-    padding:12px 0px;
-    width: 500px;  
-    height: 450px;   
-} 
-.parent {
-    display: flex;
-}
-.parent p, .parent ul{
-    margin-left: 15%;
-}
-.parent ul li{
-    width: 150%;
-}
-.price {
-    padding:17px 0px;
-}
-#b, #b1{
-    background: #2C88CB;
-    margin-right: 355px;
-}
-label{
-    border-style: solid;
-    font-size: 20px;
-    margin-left: 10%;
-}
-#label_div{
-    padding: 20px 0px;
-}
-#b{
-    border: none;
-}
-body{
-    background: #C799BA;
-}
-.top h1{
-    background: #D9D9D9;
-    font-size: 40px;
-    font-family: "Pacifico";
-    text-align: center;
-}
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
-}
-.container{
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #C799BA;
-    column-gap: 30px;
-}
-.containers{
-    margin-top: 5%;
-    height: 100vh;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #C799BA;
-    column-gap: 30px;
-}
-.form{
-    position: absolute;
-    max-width: 430px;
-    width: 100%;
-    padding: 30px;
-    border-radius: 6px;
-    background: #FFF;
-}
-.form.signup{
-    opacity: 0;
-    pointer-events: none;
-}
-.forms.show-signup .form.signup{
-    opacity: 1;
-    pointer-events: auto;
-}
-.forms.show-signup .form.login{
-    opacity: 0;
-    pointer-events: none;
-}
-header{
-    font-size: 28px;
-    font-weight: 600;
-    color: #232836;
-    text-align: center;
-}
-form{
-    margin-top: 30px;
-}
-.form .field{
-    position: relative;
-    height: 50px;
-    width: 100%;
-    margin-top: 20px;
-    border-radius: 6px;
-}
-.field input,
-.field button{
-    height: 100%;
-    width: 100%;
-    border: none;
-    font-size: 16px;
-    font-weight: 400;
-    border-radius: 6px;
-}
-.field input{
-    outline: none;
-    padding: 0 15px;
-    border: 1px solid#CACACA;
-}
-.field input:focus{
-    border-bottom-width: 2px;
-}
-.eye-icon{
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    font-size: 18px;
-    color: #8b8b8b;
-    cursor: pointer;
-    padding: 5px;
-}
-.field button{
-    color: #fff;
-    background-color: #0171d3;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-.field button:hover{
-    background-color: #016dcb;
-}
-.form-link{
-    text-align: center;
-    margin-top: 10px;
-}
-.form-link span,
-.form-link a{
-    font-size: 14px;
-    font-weight: 400;
-    color: #232836;
-}
-.form a{
-    color: #0171d3;
-    text-decoration: none;
-}
-.form-content a:hover{
-    text-decoration: underline;
-}
-.line{
-    position: relative;
-    height: 1px;
-    width: 100%;
-    margin: 36px 0;
-    background-color: #d4d4d4;
-}
-.line::before{
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: #FFF;
-    color: #8b8b8b;
-    padding: 0 15px;
-}
-.media-options a{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.topnav h1,h1{
+    font-size:40px;
+    font-family:"Pacifico";
+    font-style: normal;
 }
 
-a.facebook .facebook-icon{
-    height: 28px;
-    width: 28px;
-    color: #0171d3;
-    font-size: 20px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #fff;
+body{
+    background:#C799BA;
 }
-@media screen and (max-width: 400px) {
-    .form{
-        padding: 20px 10px;
-    }
+
+.item_name{
+    padding: 12px 0px;
+}
+ 
+.item_name{
+    margin-left: 5%;
+    
+    font-size: 25px;
+    border-style: solid;
+}
+.cupcakes_img div{
+      padding: 12px 0px;
+    float:left;
     
 }
+.cupcakes_img div img {
+    margin-right: 15px;
+  }
+  .cont{
+      padding: 17px 0px;
+      clear: left;
+      width:100%;
+  }
+
+  #price-button{
+     margin-left: 0%;clear: left;
+      background: #2C88CB; 
+      border: none; 
+      color: #000000;  
+  }
+  #add-to-cart-button{
+      clear: left;
+      margin-left:28%;
+      background: #2C88CB; 
+      box-shadow: 0 3px 13px -2px rgba(0,0,0,.15);
+      color: #000000;  
+  }
+  .body{
+    background:#C799BA;  
+  }
