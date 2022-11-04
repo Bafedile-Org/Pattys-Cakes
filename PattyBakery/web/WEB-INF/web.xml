@@ -60,7 +60,10 @@
         <servlet-name>Doughnuts</servlet-name>
         <url-pattern>/doughnuts</url-pattern>
     </servlet-mapping>
-  <servlet>
+  
+
+
+    <servlet>
         <servlet-name>Home</servlet-name>
         <jsp-file>/index.jsp</jsp-file>
     </servlet>
@@ -109,6 +112,10 @@
         <url-pattern>/stores</url-pattern>
     </servlet-mapping>
   
+
+    
+    
+    
     <session-config>
         <session-timeout>
             30
