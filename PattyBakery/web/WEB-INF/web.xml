@@ -98,17 +98,27 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ForgotPass</servlet-name>
-        <url-pattern>/reset_pass</url-pattern>
+        <url-pattern>/reset</url-pattern>
     </servlet-mapping>
   
 
     <servlet>
         <servlet-name>Stores</servlet-name>
-        <jsp-file>/ourStores.jsp</jsp-file>
+        <jsp-file>/ourStores_page.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>Stores</servlet-name>
         <url-pattern>/stores</url-pattern>
+    </servlet-mapping>
+  
+
+    <servlet>
+        <servlet-name>Cakes</servlet-name>
+        <jsp-file>/cakes_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Cakes</servlet-name>
+        <url-pattern>/cakes</url-pattern>
     </servlet-mapping>
   
 

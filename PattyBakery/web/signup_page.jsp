@@ -53,7 +53,7 @@
                         </div>
                     </form>
                     <div class="form-link">
-                        <span>Already have an account? <a href="login_page.jsp">Login</a></span>
+                        <span>Already have an account? <a href="login">Login</a></span>
                     </div>
                 </div>
                 <div class="line"></div>

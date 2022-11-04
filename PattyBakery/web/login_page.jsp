@@ -27,14 +27,14 @@
                            <i class='bx bx-hide eye-icon'></i>
                         </div>
                         <div class="form-link">
-                            <span>Forgot password?<a href="forgot_password_page.jsp">Forgot passowrd</a></span>
+                            <span>Forgot password?<a href="reset">Forgot passowrd</a></span>
                         </div>
                         <div class="field button-field">
                             <button>Login</button>
                         </div>
                     </form>
                     <div class="form-link">
-                        <span>Don't have an account?<a href="signup_page.jsp">Signup</a></span>
+                        <span>Don't have an account?<a href="signup">Signup</a></span>
                     </div>
                 </div>
                 <div class="line"></div>
