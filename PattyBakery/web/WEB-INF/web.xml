@@ -24,7 +24,7 @@
 
     <servlet>
         <servlet-name>CupCakes</servlet-name>
-        <jsp-file>cupcakes_page.jsp</jsp-file>
+        <jsp-file>/cupcakes_page.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>CupCakes</servlet-name>
@@ -63,22 +63,12 @@
   
 
     <servlet>
-        <servlet-name></servlet-name>
-        <jsp-file></jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name></servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-  
-
-    <servlet>
         <servlet-name>Home</servlet-name>
-        <jsp-file>index.jsp</jsp-file>
+        <jsp-file>/index.jsp</jsp-file>
     </servlet>
     <servlet-mapping>
         <servlet-name>Home</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/home</url-pattern>
     </servlet-mapping>
   
 
@@ -122,17 +112,6 @@
     </servlet-mapping>
   
 
-    <servlet>
-        <servlet-name></servlet-name>
-        <jsp-file></jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name></servlet-name>
-        <url-pattern>/</url-pattern>
-    </servlet-mapping>
-    
-    
-    
     
     
     <session-config>
