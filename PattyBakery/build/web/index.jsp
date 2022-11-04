@@ -23,9 +23,9 @@
                         Patty's Bakery   
                         <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                             <div class="dropdown-content">
-                                <a  href="#">About Us</a>
-                                <a  href="#">Our Stores</a>
-                                <a href="#">Signup/Signin</a>
+                                <a  href="aboutUs">About Us</a>
+                                <a  href="stores">Our Stores</a>
+                                <a href="signup">Signup/Signin</a>
                             </div>
                         </i>
                     </h1>
@@ -42,19 +42,19 @@
                                 <input type="radio" name="r" id="r5" >
                 
                                 <div class="slide s1">
-                                    <a href="#"><img src="assets/cookies/cokkies_pic2.jpg" alt="Plain Coffee Cookies"></a>
+                                    <a href="cookies"><img src="assets/cookies/cokkies_pic2.jpg" alt="Plain Coffee Cookies"></a>
                                 </div>
                                 <div class="slide ">
-                                    <a href="#"><img src="assets/cakes/rainbow_cake3.jpg" alt="Rainbow Cake"></a>
+                                    <a href="cakes"><img src="assets/cakes/rainbow_cake3.jpg" alt="Rainbow Cake"></a>
                                 </div>
                                 <div class="slide ">
-                                    <a href="#"><img src="assets/personal_pies/blueberry pies.jpg" alt="Blueberry Pies"></a>
+                                    <a href="pies"><img src="assets/personal_pies/blueberry pies.jpg" alt="Blueberry Pies"></a>
                                 </div>
                                 <div class="slide ">
-                                    <a href="#"><img src="assets/doughnuts/dougnuts2.jpg" alt="Glazed Simpsons Doughnuts"></a>
+                                    <a href="doughnuts"><img src="assets/doughnuts/dougnuts2.jpg" alt="Glazed Simpsons Doughnuts"></a>
                                 </div>
                                 <div class="slide ">
-                                    <a href="#"><img src="assets/muffins/muffins_and_cupcakes.png" alt="Muffins And  Cupcakes"></a>
+                                    <a href="cupcakes"><img src="assets/muffins/muffins_and_cupcakes.png" alt="Muffins And  Cupcakes"></a>
                                 </div>
    
         

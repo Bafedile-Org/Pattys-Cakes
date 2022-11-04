@@ -28,7 +28,10 @@
     font-size:40px;
     font-family:"Pacifico";
 }
-
+.topnav h1 a{
+    text-decoration:none;
+    color:black;
+}
 
 .dropdown-content{
     display:none;
@@ -108,7 +111,7 @@ body{
 
 .contact-div{
     margin-left:10%;
-    margin-top:40%;
+    margin-top:50%;
     width:400px;
     height:200px;
     background: lightgray;
