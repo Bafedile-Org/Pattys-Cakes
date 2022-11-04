@@ -1,6 +1,6 @@
 <%-- 
-    Document   : cookies_page
-    Created on : 03 Nov 2022, 9:16:29 AM
+    Document   : doughnuts_page
+    Created on : 03 Nov 2022, 3:04:02 PM
     Author     : Dimakatso Sebatane
 --%>
 
@@ -27,15 +27,15 @@
             </nav>
         </header>
 
-        <h1 align='center'>Cookies</h1>
+        <h1 align='center'>Doughnuts</h1>
 
         <div class="images-container">
             <div class="cookies_img" >
 
                 <div align='center'>
-                    <label id='cookie_label'><strong>Vanilla Cookies</strong></label>
+                    <label id='cookie_label'><strong>Glazed Simpsons Doughnuts</strong></label>
                     <br>
-                    <img src="assets/cookies/cookies_p.jpg" alt="cookies" >
+                    <img src="assets/doughnuts/dougnuts3.jpg" alt="cookies" >
                 </div>
                 <div>
                     <article>
@@ -75,9 +75,9 @@
             <div class="cookies_img" >
 
                 <div align='center'>
-                    <label id='cookie_label'><strong>Plain Coffee Cookies</strong></label>
+                    <label id='cookie_label'><strong>Glazed Simpsons Doughnuts</strong></label>
                     <br>
-                    <img src="assets/cookies/cokkies_pic2.jpg" alt="cookies" >
+                    <img src="assets/doughnuts/dougnuts2.jpg" alt="cookies" >
                 </div>
                 <div>
                     <article>
@@ -114,9 +114,9 @@
             <div class="cookies_img" >
 
                 <div align='center'>
-                    <label id='cookie_label'><strong>Chocolate Cookie</strong></label>
+                    <label id='cookie_label'><strong>Chocolate Cream Doughnuts</strong></label>
                     <br>
-                    <img src="assets/cookies/cookies_pic1.jpg" alt="cookies" >
+                    <img src="assets/doughnuts/dougnuts4.jpg" alt="cookies" >
                 </div>
                 <div>
                     <article>
@@ -149,10 +149,6 @@
             </div>
 
         </div>
-
-
-
-
-
     </body>
 </html>
+
