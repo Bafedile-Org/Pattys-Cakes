@@ -11,9 +11,14 @@ import java.sql.SQLException;
  */
 public class DatabaseConnect {
 
-    Connection con = null;
+    static Connection con = null;
+    private static DatabaseConnect dbCon;
 
-    public DatabaseConnect() {
+    static {
+        dbCon = new DatabaseConnect();
+    }
+
+    private DatabaseConnect() {
         try {
             Class.forName("org.gjt.mm.mysql.Driver");
         } catch (ClassNotFoundException cnf) {
@@ -29,7 +34,9 @@ public class DatabaseConnect {
             System.out.println("Failed to Connect...." + sql.getMessage());
         }
         System.out.println("Connection Achieved.");
+
         CustomerTable();
+
         EmployeeTable();
         IngredientsTable();
         NutrientsTable();
@@ -38,9 +45,18 @@ public class DatabaseConnect {
         StockTable();
         OrderTable();
         TotalOrderTable();
+        createLoginTable();
     }
 
-    public void createDatabase() {
+    public static DatabaseConnect getInstance() {
+        return dbCon;
+    }
+
+    public Connection getConnection() {
+        return con;
+    }
+
+    private static void createDatabase() {
         PreparedStatement stat = null;
         try {
             con.prepareStatement("CREATE DATABASE IF NOT EXISTS pattyBakery").executeUpdate();
@@ -51,7 +67,16 @@ public class DatabaseConnect {
         }
     }
 
-    public void CustomerTable() {
+    private static void createLoginTable() {
+        try {
+            con.prepareStatement("CREATE TABLE IF NOT EXISTS login (id INTEGER NOT NULL,email VARCHAR(20) NOT NULL, password VARCHAR(40) NOT NULL,"
+                    + " FOREIGN KEY(id) REFERENCES customer(cust_id))").executeUpdate();
+        } catch (SQLException sql) {
+            System.out.println("Failed to create login table.." + sql.getMessage());
+        }
+    }
+
+    private static void CustomerTable() {
         PreparedStatement stat = null;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS customer (cust_id INTEGER AUTO_INCREMENT PRIMARY KEY,name VARCHAR(20),"
@@ -63,7 +88,7 @@ public class DatabaseConnect {
         System.out.println("Customer table created");
     }
 
-    public void EmployeeTable() {
+    private static void EmployeeTable() {
         PreparedStatement stat = null;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS employee (emp_id INTEGER AUTO_INCREMENT PRIMARY KEY,name VARCHAR(20),"
@@ -75,7 +100,7 @@ public class DatabaseConnect {
         System.out.println("Employee table created");
     }
 
-    public void ProductTable() {
+    private static void ProductTable() {
         PreparedStatement stat = null;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS product (prod_id VARCHAR(10) PRIMARY KEY,price Double, nutr_id VARCHAR(10) NOT NULL ,"
@@ -88,7 +113,7 @@ public class DatabaseConnect {
         System.out.println("Product table created");
     }
 
-    public void IngredientsTable() {
+    private static void IngredientsTable() {
         PreparedStatement stat = null;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS ingredients (ingr_id VARCHAR(10) PRIMARY KEY,"
@@ -100,7 +125,7 @@ public class DatabaseConnect {
         System.out.println("Ingredients table created");
     }
 
-    public void NutrientsTable() {
+    private static void NutrientsTable() {
         PreparedStatement stat = null;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS nutrients (nutr_id VARCHAR(10) PRIMARY KEY,nutrient VARCHAR(100))");
@@ -111,7 +136,7 @@ public class DatabaseConnect {
         System.out.println("Nutrient table created");
     }
 
-    public void CategoryTable() {
+    private static void CategoryTable() {
         PreparedStatement stat = null;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS category (cat_id INTEGER AUTO_INCREMENT PRIMARY KEY,category VARCHAR(100))");
@@ -122,7 +147,7 @@ public class DatabaseConnect {
         System.out.println("Category table created");
     }
 
-    public void OrderTable() {
+    private static void OrderTable() {
         PreparedStatement stat = null;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS orders (order_id VARCHAR(10) PRIMARY KEY,prod_id VARCHAR(10) NOT NULL ,quantity INTEGER,delivered BOOLEAN,date DATE,FOREIGN KEY(prod_id) REFERENCES product(prod_id))");
@@ -133,7 +158,7 @@ public class DatabaseConnect {
         System.out.println("Order table created");
     }
 
-    public void TotalOrderTable() {
+    private static void TotalOrderTable() {
         PreparedStatement stat = null;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS total_orders (order_id VARCHAR(10) NOT NULL ,"
@@ -145,7 +170,7 @@ public class DatabaseConnect {
         System.out.println("TotalOrder table created");
     }
 
-    public void StockTable() {
+    private static void StockTable() {
         PreparedStatement stat = null;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS stock (prod_id VARCHAR(10) NOT NULL,"
