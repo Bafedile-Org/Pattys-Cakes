@@ -19,39 +19,40 @@
         <header>
             <nav>
                 <div class="topnav">
-                <h1>Patty's Bakery <i class="fa fa-shopping-cart" style="font-size:24px"></i></h1>
+                    <h1>Patty's Bakery <i class="fa fa-shopping-cart" style="font-size:24px"></i></h1>
                 </div>
             </nav>
         </header>
                 <h1 align='center'> Personal pies</h1>
-                <div label_div>
-            <label><strong>Blueberry Pies</strong></label><br>
+                    <div label_div>
+                        <label><strong>Blueberry Pies</strong></label><br>
                <div class="parent">
-                <img src='assets/personal_pies/blueberry pies.jpg'>
-                <article>
-                    <p id="img_list"><strong>Ingredients:</strong>
+                    <img src='assets/personal_pies/blueberry pies.jpg'>
+                        <article>
+                            <p id="img_list"><strong>Ingredients:</strong>
                     <ul>
                         <li>Blueberries</li>
                         <li>Pie crust</li>
                         <li>Sugar</li>
                         <li>Cornstarch</li>
                     </ul>
-                    <p id="img_list"><string>Nutrients:</string>
+                        <p id="img_list"><string>Nutrients:</string>
                     <ul>
-                       <li> 0.1g fat</li>
-                       <li> 4g carbohydrate</li>
+                        <li> 0.1g fat</li>
+                        <li> 4g carbohydrate</li>
                         <li>0.2g protein</li>
                     </ul>
                 </article>
-               </div>
+            </div>
             <div class="price">
                 <button id="b">R59.99</button>
-              <button id="b1">add to cart</button>
+                <button id="b1">add to cart</button>
             </div>
             <div class="button">
                 <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
-            </div></div>
-            <div class="label_div">
+            </div>
+                    </div>
+                <div class="label_div">
             </div>
                 <div label_div>
             <label><strong>Blueberry Pies</strong></label><br>
@@ -61,43 +62,43 @@
                     <p id="img_list"><strong>Ingredients:</strong>
                     <ul>
                       <li> Flour</li>
-                       <li>  Kosher Salt</li>
-                        <li> Sugar</li>
-                       <li>  Unsalted Butter</li>
-                       <li>  Egg</li>
+                        <li>  Kosher Salt</li>
+                            <li> Sugar</li>
+                                <li>  Unsalted Butter</li>
+                            <li>  Egg</li>
                         <li> Cinnamon powder</li>
                     </ul>
-                    <p id="img_list"><string>Nutrients:</string>
+                        <p id="img_list"><string>Nutrients:</string>
                     <ul>
                        <li> 0.1g fat</li>
-                       <li> 4g carbohydrate</li>
+                            <li> 4g carbohydrate</li>
                         <li>0.2g protein</li>
                     </ul>
                 </article>
                </div>
             <div class="price">
-                <button id="b">R54.50</button>
-              <button id="b1">add to cart</button>
+                    <button id="b">R54.50</button>
+                <button id="b1">add to cart</button>
             </div>
-            <div class="button">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
+                <div class="button">
+                    <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
             </div></div>
-            <div class="label_div">
+                <div class="label_div">
             </div>
                 <div label_div>
             <label><strong>Strawberry pie</strong></label><br>
-               <div class="parent">
-                <img src='assets/personal_pies/strawberry pie.jpg'>
+                <div class="parent">
+                    <img src='assets/personal_pies/strawberry pie.jpg'>
                 <article>
                     <p id="img_list"><strong>Ingredients:</strong>
                     <ul>
                          <li>Pie shells</li>
-                         <li>Strawberries</li>
-                         <li>Sugar</li>
-                         <li>Cornstarch</li>
+                            <li>Strawberries</li>
+                                <li>Sugar</li>
+                            <li>Cornstarch</li>
                          <li>Strawberry flavored Jell-O</li>
                     </ul>
-                    <p id="img_list"><string>Nutrients:</string>
+                        <p id="img_list"><string>Nutrients:</string>
                     <ul>
                        <li> 4g carbohydrate</li>
                         <li>0.1g protein</li>
@@ -105,15 +106,13 @@
                 </article>
                </div>
             <div class="price">
-                <button id="b">R54.49</button>
+                    <button id="b">R54.49</button>
               <button id="b1">add to cart</button>
             </div>
             <div class="button">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
+                    <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
             </div></div>
-            <div class="label_div">
+                <div class="label_div">
             </div>
-     
-
     </body>
 </html>
