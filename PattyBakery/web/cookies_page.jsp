@@ -69,8 +69,6 @@
             </div>
 
         </div><br><br>
-
-
         <div class="images-container">
             <div class="cookies_img" >
 
@@ -147,12 +145,6 @@
             <div >
                 <i class="fa fa-exclamation-triangle">contains nuts</i>
             </div>
-
         </div>
-
-
-
-
-
     </body>
 </html>
