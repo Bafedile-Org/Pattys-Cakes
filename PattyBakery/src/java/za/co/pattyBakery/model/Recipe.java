@@ -51,7 +51,9 @@ public class Recipe {
 
     public String getRecipe() {
         recipe = "";
-        ingredients.stream().forEach(list -> recipe.concat(String.format("%n- %s%n", list)));
+        for (String ingredient : ingredients) {
+            recipe += String.format("%n- %s", ingredient);
+        }
         return recipe;
     }
 
