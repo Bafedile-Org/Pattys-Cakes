@@ -31,7 +31,7 @@ public class IngredientsDAOImpl implements IngredientsDAO {
     public void addIngridient(String ingredientId, String ingredient, Integer quantity) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO ingredients (ingr_id,ingredient,quantity) VALUE(?,?,?)");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO ingredients (ingr_id,ingredient,quantity) VALUE(?,?,?)");
                 preparedStatement.setString(1, ingredientId);
                 preparedStatement.setString(2, ingredient);
                 preparedStatement.setInt(3, quantity);
@@ -114,4 +114,21 @@ public class IngredientsDAOImpl implements IngredientsDAO {
         return ingridients;
     }
 
+    public List<String> getAllIngredientsId() {
+        List<String> ingridientsId = new ArrayList<>();
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT ingr_id FROM ingredients");
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    ingridientsId.add(resultSet.getString("ingr_id"));
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+        return ingridientsId;
+    }
 }

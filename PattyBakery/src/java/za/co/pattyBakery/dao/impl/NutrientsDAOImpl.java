@@ -31,7 +31,7 @@ public class NutrientsDAOImpl implements NutrientsDAO {
     public void addNutrient(String nutrientId, String nutrient) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO nutrients VALUE(?,?)");
+                preparedStatement = con.prepareStatement("INSERT IGNORE  INTO nutrients VALUE(?,?)");
                 preparedStatement.setString(1, nutrientId);
                 preparedStatement.setString(2, nutrient);
                 preparedStatement.executeUpdate();
