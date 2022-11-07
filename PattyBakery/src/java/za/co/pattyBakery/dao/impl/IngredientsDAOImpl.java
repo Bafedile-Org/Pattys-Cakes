@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import za.co.pattyBakery.database.DatabaseConnect;
 import za.co.pattybakery.dao.IngredientsDAO;
 
 /**
@@ -19,17 +20,22 @@ public class IngredientsDAOImpl implements IngredientsDAO {
     private Connection con = null;
 
     public IngredientsDAOImpl() {
+        con = DatabaseConnect.getInstance().getConnection();
+    }
 
+    public IngredientsDAOImpl(Connection con) {
+        this.con = con;
     }
 
     @Override
-    public void addIngridient(String ingredient, Integer quantity) {
+    public void addIngridient(String ingredientId, String ingredient, Integer quantity) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO ingredients (ingredient,quantity) VALUE(?,?)");
-                preparedStatement.setString(1, ingredient);
-                preparedStatement.setInt(2, quantity);
-                preparedStatement.executeQuery();
+                preparedStatement = con.prepareStatement("INSERT INTO ingredients (ingr_id,ingredient,quantity) VALUE(?,?,?)");
+                preparedStatement.setString(1, ingredientId);
+                preparedStatement.setString(2, ingredient);
+                preparedStatement.setInt(3, quantity);
+                preparedStatement.executeUpdate();
             }
         } catch (SQLException sql) {
             System.out.println("Error: " + sql.getMessage());

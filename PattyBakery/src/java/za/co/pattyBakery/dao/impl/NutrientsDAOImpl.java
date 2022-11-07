@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import za.co.pattyBakery.database.DatabaseConnect;
 import za.co.pattybakery.dao.NutrientsDAO;
 
 /**
@@ -19,7 +20,11 @@ public class NutrientsDAOImpl implements NutrientsDAO {
     private Connection con = null;
 
     public NutrientsDAOImpl() {
+        con = DatabaseConnect.getInstance().getConnection();
+    }
 
+    public NutrientsDAOImpl(Connection con) {
+        this.con = con;
     }
 
     @Override

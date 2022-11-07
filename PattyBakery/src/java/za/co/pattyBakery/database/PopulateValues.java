@@ -3,11 +3,12 @@ package za.co.pattyBakery.database;
 import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import static za.co.pattyBakery.database.DatabaseConnect.con;
+import za.co.pattybakery.dao.NutrientsDAO;
+import za.co.pattybakery.dao.impl.IngredientsDAOImpl;
+import za.co.pattybakery.dao.impl.NutrientsDAOImpl;
 
 /**
  *
@@ -26,14 +27,10 @@ public class PopulateValues {
         List<String> nutrients = new ArrayList<>(Arrays.asList(arrNutr));
         List<String> nutrientsId = getNutrIdList(nutrients);
         PreparedStatement stat;
-        try {
-            for (int i = 0; i < nutrients.size(); i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO nutrients(nutr_id,nutrient) VALUES('%s','%s')", nutrientsId.get(i), nutrients.get(i))).executeUpdate();
-            }
-
-        } catch (SQLException ex) {
-            System.out.println("Failed to add nutrients...." + ex.getMessage());
+        for (int i = 0; i < nutrients.size(); i++) {
+            new NutrientsDAOImpl(con).addNutrient(nutrientsId.get(i), nutrients.get(i));
         }
+
         System.out.println("Nutrients Added");
     }
 
@@ -47,14 +44,11 @@ public class PopulateValues {
         List<String> ingredientId = getIngredientIdList(ingredients);
         SecureRandom random = new SecureRandom();
         PreparedStatement stat;
-        try {
-            for (int i = 0; i < ingredients.size(); i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO ingredients(ingr_id,ingredient,quantity) VALUES('%s','%s',%d)", ingredientId.get(i), ingredients.get(i), random.nextInt(20))).executeUpdate();
-            }
 
-        } catch (SQLException ex) {
-            System.out.println("Failed to add ingredients" + ex.getMessage());
+        for (int i = 0; i < ingredients.size(); i++) {
+            new IngredientsDAOImpl(con).addIngridient(ingredientId.get(i), ingredients.get(i), random.nextInt(20));
         }
+
         System.out.println("Ingredients Added");
     }
 
@@ -76,4 +70,7 @@ public class PopulateValues {
         return nutrientIdList;
     }
 
+    public void addRecipe() {
+
+    }
 }

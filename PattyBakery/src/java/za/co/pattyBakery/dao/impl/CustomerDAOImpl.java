@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import za.co.pattyBakery.Person;
+import za.co.pattyBakery.database.DatabaseConnect;
 import za.co.pattybakery.dao.CustomerDAO;
 import za.co.pattybakery.model.PersonImpl;
 
@@ -18,17 +19,21 @@ public class CustomerDAOImpl implements CustomerDAO {
 
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
-    private Connection conn = null;
+    private Connection con = null;
 
     public CustomerDAOImpl() {
+        con = DatabaseConnect.getInstance().getConnection();
+    }
 
+    public CustomerDAOImpl(Connection con) {
+        this.con = con;
     }
 
     @Override
     public void addCustomer(Person customer) {
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("INSERT INTO customer (name, surname,idNum,tel, email, address) VALUES(?,?,?,?,?,?);");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("INSERT INTO customer (name, surname,idNum,tel, email, address) VALUES(?,?,?,?,?,?);");
                 preparedStatement.setString(1, customer.getName());
                 preparedStatement.setString(2, customer.getSurname());
                 preparedStatement.setString(3, customer.getIdNumber());
@@ -51,8 +56,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     public Person getCustomerById(Integer customerId) {
         Person customer = null;
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("SELECT * FROM customer WHERE cust_id = ?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT * FROM customer WHERE cust_id = ?");
                 preparedStatement.setInt(1, customerId);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
@@ -72,8 +77,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public void removeCustomer(Integer customerId) {
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("DELETE  FROM customer WHERE cust_id = ?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("DELETE  FROM customer WHERE cust_id = ?");
                 preparedStatement.setInt(1, customerId);
                 preparedStatement.executeUpdate();
             }
@@ -88,8 +93,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public void updateCustomerTel(Integer customerId, String tel) {
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE customer SET  tel =?  WHERE cust_id = ?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("UPDATE customer SET  tel =?  WHERE cust_id = ?");
                 preparedStatement.setString(1, tel);
                 preparedStatement.setInt(2, customerId);
                 preparedStatement.executeUpdate();
@@ -105,8 +110,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public void updateCustomerEmail(Integer customerId, String email) {
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE customer SET  email =?  WHERE cust_id = ?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("UPDATE customer SET  email =?  WHERE cust_id = ?");
                 preparedStatement.setString(1, email);
                 preparedStatement.setInt(2, customerId);
                 preparedStatement.executeUpdate();
@@ -122,8 +127,8 @@ public class CustomerDAOImpl implements CustomerDAO {
     @Override
     public void updateCustomerAddress(Integer customerId, String address) {
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE customer SET  address =?  WHERE cust_id = ?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("UPDATE customer SET  address =?  WHERE cust_id = ?");
                 preparedStatement.setString(1, address);
                 preparedStatement.setInt(2, customerId);
                 preparedStatement.executeUpdate();
@@ -141,8 +146,8 @@ public class CustomerDAOImpl implements CustomerDAO {
         List<Person> customers = new ArrayList<>();
         Person customer = null;
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("SELECT * FROM customer;");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT * FROM customer;");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     customer = new PersonImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),

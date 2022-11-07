@@ -2,7 +2,9 @@
     Created on : 03 Nov 2022, 9:11:59 AM
     Author     : Dimakatso Sebatane
 */
-
+/***
+Remember to work on the ingredients overlap in the cookies
+**/
 .top-head{
     margin:0px;
     padding:0px;
@@ -88,6 +90,9 @@ body{
     float:left;
 }
 
+/*.cookies_img div article{
+   display:flex;
+}*/
 #img_price{
     clear:left;
     padding:17px 0px;

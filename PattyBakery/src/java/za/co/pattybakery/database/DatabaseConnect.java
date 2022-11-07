@@ -23,6 +23,10 @@ public class DatabaseConnect {
     }
 
     private DatabaseConnect() {
+        connect();
+    }
+
+    public void connect() {
         try {
             Class.forName("org.gjt.mm.mysql.Driver");
         } catch (ClassNotFoundException cnf) {
@@ -62,6 +66,7 @@ public class DatabaseConnect {
     }
 
     public Connection getConnection() {
+        connect();
         return con;
     }
 
