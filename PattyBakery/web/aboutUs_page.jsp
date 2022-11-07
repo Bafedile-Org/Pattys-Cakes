@@ -12,9 +12,24 @@
 <head>
     <title>About us Page</title>
     <link rel="stylesheet" href="css/style.css">
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-    
+    <header>
+        <div class="topnav" >
+                    <h1 align="center" id='home-header1'>
+                        Patty's Bakery   
+                        <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
+                            <div class="dropdown-content">
+                                <a href="home">Home</a>
+                                <a  href="aboutUs">About Us</a>
+                                <a  href="stores">Our Stores</a>
+                                <a href="signup">Signup/Signin</a>
+                            </div>
+                        </i>
+                    </h1>
+                </div>
+    </header>
     <section class="background firstsection">
         <div class="box-main">
             <div class="firstHalf" align="center">

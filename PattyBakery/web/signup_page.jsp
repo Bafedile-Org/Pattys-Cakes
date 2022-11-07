@@ -13,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-            <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
     </head>
     <body>
         <nav>
@@ -53,7 +53,7 @@
                         </div>
                     </form>
                     <div class="form-link">
-                        <span>Already have an account? <a href="login_page.jsp">Login</a></span>
+                        <span>Already have an account? <a href="login">Login</a></span>
                     </div>
                 </div>
                 <div class="line"></div>

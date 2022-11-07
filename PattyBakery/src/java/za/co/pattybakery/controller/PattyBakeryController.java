@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Dimakatso Sebatane
  */
-@WebServlet(name = "PattyBakeryController", urlPatterns = {"/home"})
+@WebServlet(name = "PattyBakeryController", urlPatterns = {"/bakery"})
 public class PattyBakeryController extends HttpServlet {
 
     /**

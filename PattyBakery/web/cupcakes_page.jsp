@@ -19,29 +19,24 @@
         <header>
             <nav>
                 <div class="topnav" >
-                    <h1>Patty's Bakery   <i class="fa fa-shopping-cart" style="font-size:24px">0</i></h1>
+                     <h1>
+                        <a href="home"> Patty's Bakery   
+                            <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
+                    </h1>
 
                 </div>
 
             </nav>
         </header>
         <h1 align="center">Cupcakes </h1>
-
-        <div class="cupcakes_img">
-
-            <div>
-                <div class="item_name"> 
-                    
-                </div>
-                <label style="margin-left: 5%;
-
-                       font-size: 25px;
-                       border-style: solid"><strong>Coffee and Walnut Cupcakes</strong></label><br>
-                <img src="assets/cupcakes/coffeecupcake.jfif" alt="cookies" width="500" height="400"> <br> 
-            </div>
-            <div>
+        <div id="label_div">
+            <label><strong>Coffee and Walnut Cupcakes</strong></label><br>
+        <div class="parent">
+            
+                <img src="assets/cupcakes/coffeecupcake.jfif">
+            <article>
+            <p id="img_list"><strong>Ingredients:</strong>
                 <ul>
-                    <li>Ingredients</li><ul>
                         <li>unsalted butter</li>
                         <li>eggs</li>
                         <li>brown sugar</li>
@@ -51,7 +46,7 @@
                         <li>icing sugar</li>
                         <li>sprinkles</li>
                     </ul>
-                    <li>Nutrients</li><ul>
+                        <p id="img_list"><strong> Nutrients:</strong>
                         <li>Calories 502</li>
                         <li>Fat 30g</li>
                         <li>Saturated fat 15g</li>
@@ -63,14 +58,15 @@
                         <li>Sodium 26mg</li>
                         <li>Protein 5g</li>
                     </ul>
-
-                </ul>
+            </article>
             </div>  
-            <div class="cont">  
-                <button id="price-button">R45.99</button>  
-                <button id="add-to-cart-button"> Add to cart</button>  
+                <div class="price">
+                <button id="b">R45.99</button>  
+                <button id="b1"> Add to cart</button>  
             </div>
-        </div>
+       <div class="botom">
+            <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
+        </div></div>
         <div class="cupcakes_img">
 
             <div>

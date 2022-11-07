@@ -19,9 +19,10 @@
         <header>
             <nav>
                 <div class="topnav">
-                    <h1>Patty's Bakery <i class="fa fa-shopping-cart" style="font-size:24px"></i></h1>
-                </div>
-                <div class="topnav">
+                      <h1>
+                        <a href="home"> Patty's Bakery   
+                        <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
+                    </h1>
                 </div>
             </nav>
         </header>
@@ -31,8 +32,9 @@
         <div class="parent">
             <img src='assets/cakes/caramel-cake-5.jpg'>
             <article>
-            <p id="img_list"><strong> Ingredients: </strong>
+            <p id="img_list"><strong>Ingredients:</strong>
             <ul>
+                
                 <li>Cups white sugar</li>
                 <li>Cups butter</li>
                 <li>Large eggs</li>
@@ -42,6 +44,7 @@
                 <li>Cups whole milk</li>
                 <li>Teaspoon vanilla extract</li>
             </ul>
+                
             <p id="img_list"><strong> Nutrients:</strong>
                 <ul>
                 <li>Cups white sugar</li>

@@ -19,7 +19,10 @@
         <header>
             <nav>
                 <div class="topnav">
-                    <h1>Patty's Bakery <i class="fa fa-shopping-cart" style="font-size:24px"></i></h1>
+                      <h1>
+                        <a href="home"> Patty's Bakery   
+                            <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
+                    </h1>
                 </div>
             </nav>
         </header>
@@ -36,7 +39,7 @@
                         <li>Sugar</li>
                         <li>Cornstarch</li>
                     </ul>
-                        <p id="img_list"><string>Nutrients:</string>
+                        <p id="img_list"><strong>Nutrients:</strong>
                     <ul>
                         <li> 0.1g fat</li>
                         <li> 4g carbohydrate</li>
@@ -68,7 +71,7 @@
                             <li>  Egg</li>
                         <li> Cinnamon powder</li>
                     </ul>
-                        <p id="img_list"><string>Nutrients:</string>
+                        <p id="img_list"><strong>Nutrients:</strong>
                     <ul>
                        <li> 0.1g fat</li>
                             <li> 4g carbohydrate</li>
@@ -98,7 +101,7 @@
                             <li>Cornstarch</li>
                          <li>Strawberry flavored Jell-O</li>
                     </ul>
-                        <p id="img_list"><string>Nutrients:</string>
+                        <p id="img_list"><strong>Nutrients:</strong>
                     <ul>
                        <li> 4g carbohydrate</li>
                         <li>0.1g protein</li>
