@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -52,18 +54,34 @@ public class DatabaseConnect {
         return dbCon;
     }
 
+    public void runME() {
+        String[] arr = {"Salt", "Orange Zest", "Shortening", "Orange Juice", "Cranberries",
+            "Pecans", "Vegetable Oil", "Carrot", "Raisins", "Caster Sugar", "Gluten Free Self Raising Flour", "Cocoa Powder", "Custard Powder",
+            "Dark Chocolate", "Icing Sugar", "Almond Milke", "Dairy Free Milk", "White Wine Vinegar", "Dairy Free Spread", "Chocolate Chips",
+            "Dried Cranberries", "Cream Of Tartar", "Emulsifier", "Unsweetened Cocoa", "Dried Yeast", "Creme Fraiche"};
+    }
+
     public Connection getConnection() {
         return con;
     }
 
+    public List<String> getNutrIdList(List<String> nutrientsList) {
+        List<String> nutrientIdList = new ArrayList<>();
+        for (int i = 0; i < nutrientsList.size(); i++) {
+            nutrientIdList.add(i + "NT");
+        }
+
+        return nutrientIdList;
+    }
+
     private static void createDatabase() {
-        PreparedStatement stat = null;
         try {
             con.prepareStatement("CREATE DATABASE IF NOT EXISTS pattyBakery").executeUpdate();
+
             con.prepareStatement("USE pattyBakery").executeUpdate();
 
-        } catch (SQLException ex) {
-
+        } catch (SQLException sql) {
+            System.out.println("Failed to create database.." + sql.getMessage());
         }
     }
 
