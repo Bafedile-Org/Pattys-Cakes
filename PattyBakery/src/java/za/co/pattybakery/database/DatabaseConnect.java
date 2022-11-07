@@ -1,9 +1,13 @@
 package za.co.pattyBakery.database;
 
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -41,11 +45,15 @@ public class DatabaseConnect {
         IngredientsTable();
         NutrientsTable();
         CategoryTable();
+        RecipeTable();
         ProductTable();
         StockTable();
         OrderTable();
         TotalOrderTable();
         createLoginTable();
+        //Populate tables 
+        populateNutr();
+        populateIngr();
     }
 
     public static DatabaseConnect getInstance() {
@@ -54,6 +62,61 @@ public class DatabaseConnect {
 
     public Connection getConnection() {
         return con;
+    }
+
+    public void populateNutr() {
+        String[] arrNutr = {"Calories", "Fat", "Carbohydrates", "Protein", "Saturated Fat", "Trans Fat", "Cholesterol", "Fiber", "Sugar", "Sodium"};
+        List<String> nutrients = new ArrayList<>(Arrays.asList(arrNutr));
+        List<String> nutrientsId = getNutrIdList(nutrients);
+        PreparedStatement stat = null;
+        try {
+            for (int i = 0; i < nutrients.size(); i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO nutrients(nutr_id,nutrient) VALUES('%s','%s')", nutrientsId.get(i), nutrients.get(i))).executeUpdate();
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Failed to add nutrients...." + ex.getMessage());
+        }
+        System.out.println("Nutrients Added");
+    }
+
+    public void populateIngr() {
+        String[] arrIngr = {"Unsalted Butter", "Eggs", "Brown Sugar", "Self Raising Flour", "Instant Coffee Granules", "Walnuts", "Icing Sugar", "Sprinkles", "Quick Muffin Mix",
+            "Ground Cinnamon", "Milk", "Apple Sauce", "Vanila Extract", "Blue Berries", "Baking Powder", "Ground Nutmeg", "Baking Soda", "Ground Ginger", "Salt", "Orange Zest", "Shortening", "Orange Juice", "Cranberries",
+            "Pecans", "Vegetable Oil", "Carrot", "Raisins", "Caster Sugar", "Gluten Free Self Raising Flour", "Cocoa Powder", "Custard Powder",
+            "Dark Chocolate", "Icing Sugar", "Almond Milke", "Dairy Free Milk", "White Wine Vinegar", "Dairy Free Spread", "Chocolate Chips",
+            "Dried Cranberries", "Cream Of Tartar", "Emulsifier", "Unsweetened Cocoa", "Dried Yeast", "Creme Fraiche"};
+        List<String> ingredients = new ArrayList<>(Arrays.asList(arrIngr));
+        List<String> ingredientId = getIngredientIdList(ingredients);
+        SecureRandom random = new SecureRandom();
+        PreparedStatement stat = null;
+        try {
+            for (int i = 0; i < ingredients.size(); i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO ingredients(ingr_id,ingredient,quantity) VALUES('%s','%s',%d)", ingredientId.get(i), ingredients.get(i), random.nextInt(20))).executeUpdate();
+            }
+
+        } catch (SQLException ex) {
+            System.out.println("Failed to add ingredients" + ex.getMessage());
+        }
+        System.out.println("Ingredients Added");
+    }
+
+    public List<String> getIngredientIdList(List<String> IngredientList) {
+        List<String> IngredientIdList = new ArrayList<>();
+        for (int i = 0; i < IngredientList.size(); i++) {
+            IngredientIdList.add((i + 1) + "ING");
+        }
+
+        return IngredientIdList;
+    }
+
+    public List<String> getNutrIdList(List<String> nutrientsList) {
+        List<String> nutrientIdList = new ArrayList<>();
+        for (int i = 0; i < nutrientsList.size(); i++) {
+            nutrientIdList.add((i + 1) + "NT");
+        }
+
+        return nutrientIdList;
     }
 
     private static void createDatabase() {
@@ -104,8 +167,8 @@ public class DatabaseConnect {
         PreparedStatement stat = null;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS product (prod_id VARCHAR(10) PRIMARY KEY,price Double, nutr_id VARCHAR(10) NOT NULL ,"
-                    + "ingr_id VARCHAR(10) NOT NULL ,cat_id VARCHAR(10) NOT NULL REFERENCES category(cat_id),"
-                    + "FOREIGN KEY(nutr_id) REFERENCES nutrients(nutr_id),FOREIGN Key(ingr_id) REFERENCES ingredients(ingr_id))");
+                    + "recp_id VARCHAR(10) NOT NULL ,cat_id INTEGER NOT NULL,"
+                    + "FOREIGN KEY(nutr_id) REFERENCES nutrients(nutr_id),FOREIGN Key(recp_id) REFERENCES recipe(recp_id),FOREIGN KEY(cat_id)  REFERENCES category(cat_id))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create product table.." + sql.getMessage());
@@ -123,6 +186,18 @@ public class DatabaseConnect {
             System.out.println("Failed to create ingredients table.." + sql.getMessage());
         }
         System.out.println("Ingredients table created");
+    }
+
+    private static void RecipeTable() {
+        PreparedStatement stat = null;
+        try {
+            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS recipe (recp_id VARCHAR(10) ,"
+                    + "ingr_id VARCHAR(10),PRIMARY KEY(recp_id,ingr_id),FOREIGN KEY(ingr_id) REFERENCES ingredients(ingr_id))");
+            stat.executeUpdate();
+        } catch (SQLException sql) {
+            System.out.println("Failed to create recipe table.." + sql.getMessage());
+        }
+        System.out.println("Recipe table created");
     }
 
     private static void NutrientsTable() {
