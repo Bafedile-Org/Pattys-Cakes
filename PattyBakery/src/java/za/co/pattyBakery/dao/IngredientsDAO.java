@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface IngredientsDAO extends Close {
 
-    public void addIngridient(String ingredient, Integer quantity);
+    public void addIngridient(String ingredientId, String ingredient, Integer quantity);
 
     public void updateIngredient(String ingredientId, String ingredient);
 

@@ -33,11 +33,11 @@ public class IngredientsServImpl implements IngredientsDAO {
     }
 
     @Override
-    public void addIngridient(String ingredient, Integer quantity) {
+    public void addIngridient(String ingredientId, String ingredient, Integer quantity) {
         if (ingredient == null || quantity <= 0) {
             return;
         }
-        ingredientDAOImpl.addIngridient(ingredient, quantity);
+        ingredientDAOImpl.addIngridient(ingredientId, ingredient, quantity);
     }
 
     @Override

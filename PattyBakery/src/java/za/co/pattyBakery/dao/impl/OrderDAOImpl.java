@@ -10,6 +10,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import za.co.pattyBakery.database.DatabaseConnect;
 import za.co.pattybakery.Order;
 import za.co.pattybakery.Product;
 import za.co.pattybakery.ShoppingCart;
@@ -26,17 +27,22 @@ public class OrderDAOImpl implements OrderDAO {
 
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
-    private Connection conn = null;
+    private Connection con = null;
 
     public OrderDAOImpl() {
+        con = DatabaseConnect.getInstance().getConnection();
+    }
+
+    public OrderDAOImpl(Connection con) {
+        this.con = con;
     }
 
     @Override
     public void addOrder(ShoppingCart shoppingCart) {
         try {
-            if (conn != null) {
+            if (con != null) {
                 for (Order order : shoppingCart.getOrders()) {
-                    preparedStatement = conn.prepareStatement("INSERT INTO orders VALUES(?,?,?,?,?);");
+                    preparedStatement = con.prepareStatement("INSERT INTO orders VALUES(?,?,?,?,?);");
                     preparedStatement.setString(1, shoppingCart.getOrderNumber());
                     preparedStatement.setString(2, order.getProduct().getProductId());
                     preparedStatement.setInt(3, order.getQuantity());
@@ -57,8 +63,8 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public void updateOrderDeliveryStatus(String orderId, Boolean status) {
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE orders  SET  delivered =?  WHERE order_id = ?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("UPDATE orders  SET  delivered =?  WHERE order_id = ?");
                 preparedStatement.setBoolean(1, status);
                 preparedStatement.setString(2, orderId);
                 preparedStatement.executeUpdate();
@@ -73,8 +79,8 @@ public class OrderDAOImpl implements OrderDAO {
     @Override
     public void removeOrder(String orderId) {
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("DELETE  FROM orders WHERE order_id = ?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("DELETE  FROM orders WHERE order_id = ?");
                 preparedStatement.setString(1, orderId);
                 preparedStatement.executeUpdate();
             }
@@ -91,8 +97,8 @@ public class OrderDAOImpl implements OrderDAO {
         Set<ShoppingCart> orders = new HashSet<>();
         ShoppingCart order;
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("SELECT * FROM orders");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT * FROM orders");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     order = new ShoppingCartImpl(getOrderById(resultSet.getString("order_id")),
@@ -116,8 +122,8 @@ public class OrderDAOImpl implements OrderDAO {
         Order order = null;
         List<Order> orders = new ArrayList<>();
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("SELECT * FROM orders WHERE order_id=?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT * FROM orders WHERE order_id=?");
                 preparedStatement.setString(1, orderId);
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {

@@ -28,6 +28,10 @@ public class RecipeDAOImpl implements RecipeDAO {
         con = DatabaseConnect.getInstance().getConnection();
     }
 
+    public RecipeDAOImpl(Connection con) {
+        this.con = con;
+    }
+
     @Override
     public void addRecipe(Recipe recipe) {
         try {
