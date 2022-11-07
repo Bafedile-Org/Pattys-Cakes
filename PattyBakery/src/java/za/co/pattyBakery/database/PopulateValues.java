@@ -39,7 +39,9 @@ public class PopulateValues {
             "Ground Cinnamon", "Milk", "Apple Sauce", "Vanila Extract", "Blue Berries", "Baking Powder", "Ground Nutmeg", "Baking Soda", "Ground Ginger", "Salt", "Orange Zest", "Shortening", "Orange Juice", "Cranberries",
             "Pecans", "Vegetable Oil", "Carrot", "Raisins", "Caster Sugar", "Gluten Free Self Raising Flour", "Cocoa Powder", "Custard Powder",
             "Dark Chocolate", "Icing Sugar", "Almond Milke", "Dairy Free Milk", "White Wine Vinegar", "Dairy Free Spread", "Chocolate Chips",
-            "Dried Cranberries", "Cream Of Tartar", "Emulsifier", "Unsweetened Cocoa", "Dried Yeast", "Creme Fraiche"};
+            "Dried Cranberries", "Cream Of Tartar", "Emulsifier", "Unsweetened Cocoa", "Dried Yeast", "Creme Fraiche", "Pie Crust", "Cornstartch", "Kosher Salt",
+            "Strawberries", "Strawberry Flavored Jell-O"};
+
         List<String> ingredients = new ArrayList<>(Arrays.asList(arrIngr));
         List<String> ingredientId = getIngredientIdList(ingredients);
         SecureRandom random = new SecureRandom();
@@ -103,4 +105,75 @@ public class PopulateValues {
         }
 
     }
+
+    public void addDoughnutsRecipies() {
+
+        List<String> recipeIdList = getRecipeIdList();
+//        List<String> ingredientsIdList = new IngredientsDAOImpl().getAllIngredientsId();
+        Integer glzedSimpsonsIngrId[] = {45, 4, 28, 11, 1, 2, 46};
+        Integer chocolateDoughnutsIngrId[] = {45, 4, 28, 11, 1, 2, 46, 32};
+
+        try {
+            for (int i = 0; i < glzedSimpsonsIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "4RES", glzedSimpsonsIngrId[i] + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < glzedSimpsonsIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "5RES", glzedSimpsonsIngrId[i] + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < chocolateDoughnutsIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "6RES", chocolateDoughnutsIngrId[i] + "ING")).executeUpdate();
+            }
+
+        } catch (SQLException sql) {
+
+        }
+
+    }
+
+    public void addMuffinsRecipies() {
+
+        Integer blueberryIngrId[] = {9, 3, 10, 11, 2, 12, 13, 14};
+        Integer cranberriesIngrId[] = {3, 15, 16, 10, 17, 18, 19, 20, 21, 22, 2, 13, 23, 24};
+        Integer carrotIngrId[] = {4, 15, 17, 10, 18, 16, 19, 2, 3, 25, 13, 26, 27, 24};
+
+        try {
+            for (int i = 0; i < blueberryIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "10RES", blueberryIngrId[i] + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < cranberriesIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "11RES", cranberriesIngrId[i] + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < carrotIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "12RES", carrotIngrId[i] + "ING")).executeUpdate();
+            }
+
+        } catch (SQLException sql) {
+
+        }
+
+    }
+
+    public void addPersonalRecipies() {
+
+        Integer blueberryIngrId[] = {9, 3, 10, 11, 2, 12, 13, 14};
+        Integer cranberriesIngrId[] = {3, 15, 16, 10, 17, 18, 19, 20, 21, 22, 2, 13, 23, 24};
+        Integer carrotIngrId[] = {4, 15, 17, 10, 18, 16, 19, 2, 3, 25, 13, 26, 27, 24};
+
+        try {
+            for (int i = 0; i < blueberryIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "10RES", blueberryIngrId[i] + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < cranberriesIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "11RES", cranberriesIngrId[i] + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < carrotIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "12RES", carrotIngrId[i] + "ING")).executeUpdate();
+            }
+
+        } catch (SQLException sql) {
+
+        }
+
+    }
+
 }

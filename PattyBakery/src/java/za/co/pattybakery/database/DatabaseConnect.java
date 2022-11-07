@@ -60,6 +60,8 @@ public class DatabaseConnect {
         p.populateNutr();
         p.populateIngr();
         p.addCakeRecipies();
+        p.addDoughnutsRecipies();
+        p.addMuffinsRecipies();
     }
 
     public static DatabaseConnect getInstance() {
