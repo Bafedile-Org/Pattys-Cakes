@@ -113,11 +113,4 @@ public class NutrientsDAOImpl implements NutrientsDAO {
         return nutrients;
     }
 
-    public void addRecipe() {
-        List<String> ingredientIdList = new IngredientsDAOImpl().getAllIngredient();
-        List<String> recipeIdList = getAllNutrients();
-        Integer[] chocolateCookies = {4, 39, 23, 1, 3, 2, 17, 13, 19};
-        Integer[] plainCoffeeCookies = {4, 39, 23, 1, 3, 2, 17, 1, 19};
-        Integer[] vanilaCookies = {4, 39, 23, 1, 3, 2, 17, 13, 19};
-    }
 }

@@ -103,4 +103,52 @@ public class PopulateValues {
         }
 
     }
+
+    public void addCookiesRecipe() {
+        // List<String> ingredientIdList = new IngredientsDAOImpl().getAllIngredient();
+        List<String> recipeIdList = getRecipeIdList();
+        Integer[] chocolateCookiesIdList = {4, 39, 23, 1, 3, 2, 17, 13, 19};
+        Integer[] plainCoffeeCookiesIdList = {4, 39, 23, 1, 3, 2, 17, 1, 19};
+        Integer[] vanilaCookiesIdList = {4, 39, 23, 1, 3, 2, 17, 13, 19};
+
+        try {
+            for (int i = 0; i < chocolateCookiesIdList.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "7RES", chocolateCookiesIdList[i] + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < plainCoffeeCookiesIdList.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "8RES", plainCoffeeCookiesIdList[i] + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < vanilaCookiesIdList.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "9RES", vanilaCookiesIdList[i] + "ING")).executeUpdate();
+            }
+
+        } catch (SQLException sql) {
+            System.out.println(sql.getMessage());
+        }
+
+    }
+
+    public void addCupcakesRecipe() {
+        //List<String> ingredientIdList = new IngredientsDAOImpl().getAllIngredient();
+        List<String> recipeIdList = getRecipeIdList();
+        Integer[] coffeeWalnutCupcakeIdList = {1, 2, 3, 4, 5, 6, 7, 8};
+        Integer[] gluttenFreeChocolateIdList = {1, 28, 2, 29, 30, 31, 13, 35, 32, 7};
+        Integer[] veganVanilaCupcakeIdList = {4, 28, 35, 13, 25, 37, 38, 34, 8};
+
+        try {
+            for (int i = 0; i < coffeeWalnutCupcakeIdList.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "7RES", coffeeWalnutCupcakeIdList + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < gluttenFreeChocolateIdList.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "8RES", gluttenFreeChocolateIdList[i] + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < veganVanilaCupcakeIdList.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "9RES", veganVanilaCupcakeIdList[i] + "ING")).executeUpdate();
+            }
+
+        } catch (SQLException sql) {
+            System.out.println(sql.getMessage());
+        }
+
+    }
 }
