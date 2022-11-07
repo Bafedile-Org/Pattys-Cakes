@@ -59,6 +59,7 @@ public class DatabaseConnect {
         PopulateValues p = new PopulateValues(con);
         p.populateNutr();
         p.populateIngr();
+        p.addCakeRecipies();
     }
 
     public static DatabaseConnect getInstance() {
@@ -66,7 +67,7 @@ public class DatabaseConnect {
     }
 
     public Connection getConnection() {
-        connect();
+//        connect();
         return con;
     }
 

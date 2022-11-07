@@ -1,5 +1,8 @@
 
+import java.sql.Connection;
+import za.co.pattyBakery.dao.impl.RecipeDAOImpl;
 import za.co.pattyBakery.database.DatabaseConnect;
+import za.co.pattyBakery.model.Recipe;
 
 /**
  *
@@ -8,6 +11,9 @@ import za.co.pattyBakery.database.DatabaseConnect;
 public class Main {
 
     public static void main(String[] args) {
-        DatabaseConnect dbCon = DatabaseConnect.getInstance();
+        Connection dbCon = DatabaseConnect.getInstance().getConnection();
+
+        Recipe recipe = new RecipeDAOImpl(dbCon).getRecipeById("1RES");
+        System.out.println(recipe.toString());
     }
 }

@@ -48,4 +48,10 @@ public class IngredientsServImpl implements IngredientsDAO {
         return ingredientDAOImpl.getIngredientById(ingredientId);
     }
 
+    @Override
+    public List<String> getAllIngredientsId() {
+
+        return ingredientDAOImpl.getAllIngredientsId();
+    }
+
 }

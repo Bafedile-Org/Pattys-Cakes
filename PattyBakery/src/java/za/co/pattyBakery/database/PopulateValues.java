@@ -3,10 +3,10 @@ package za.co.pattyBakery.database;
 import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import za.co.pattybakery.dao.NutrientsDAO;
 import za.co.pattybakery.dao.impl.IngredientsDAOImpl;
 import za.co.pattybakery.dao.impl.NutrientsDAOImpl;
 
@@ -70,7 +70,37 @@ public class PopulateValues {
         return nutrientIdList;
     }
 
-    public void addRecipe() {
+    public List<String> getRecipeIdList() {
+        List<String> recipeIdList = new ArrayList<>();
+        for (int i = 0; i < 18; i++) {
+            recipeIdList.add((i + 1) + "RES");
+        }
+
+        return recipeIdList;
+    }
+
+    public void addCakeRecipies() {
+
+        List<String> recipeIdList = getRecipeIdList();
+//        List<String> ingredientsIdList = new IngredientsDAOImpl().getAllIngredientsId();
+        Integer caramelCakeIngrId[] = {3, 1, 2, 4, 15, 19, 36, 13};
+        Integer marigueCakeIngrId[] = {3, 2, 4, 15, 42, 41};
+        Integer chocolateCakeIngrId[] = {3, 1, 2, 4, 43, 19};
+
+        try {
+            for (int i = 0; i < caramelCakeIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "1RES", caramelCakeIngrId[i] + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < marigueCakeIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "2RES", marigueCakeIngrId[i] + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < chocolateCakeIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "3RES", chocolateCakeIngrId[i] + "ING")).executeUpdate();
+            }
+
+        } catch (SQLException sql) {
+
+        }
 
     }
 }
