@@ -23,6 +23,16 @@
   
 
     <servlet>
+        <servlet-name>Muffins</servlet-name>
+        <jsp-file>/muffins_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Muffins</servlet-name>
+        <url-pattern>/muffins</url-pattern>
+    </servlet-mapping>
+  
+
+    <servlet>
         <servlet-name>CupCakes</servlet-name>
         <jsp-file>/cupcakes_page.jsp</jsp-file>
     </servlet>
