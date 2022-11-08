@@ -15,8 +15,8 @@ public class BakeryListener implements ServletContextListener {
     @Override
     public void contextInitialized(ServletContextEvent sce) {
         ServletContext context = sce.getServletContext();
-        Connection con = DatabaseConnect.getInstance().getConnection();
-        context.setAttribute("con", con);
+//        Connection con = DatabaseConnect.getInstance().getConnection();
+//        context.setAttribute("con", con);
     }
 
     @Override

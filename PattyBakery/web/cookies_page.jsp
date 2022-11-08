@@ -4,6 +4,7 @@
     Author     : Dimakatso Sebatane
 --%>
 
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,7 +20,7 @@
         <header>
             <nav>
                 <div class="topnav" >
-                     <h1>
+                    <h1>
                         <a href="home"> Patty's Bakery   
                             <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
                     </h1>
@@ -42,11 +43,17 @@
                         <ul>
                             <li  id='img_list'><strong>Ingredients</strong>
                                 <ul>
-                                    <li>All-purpose flour</li>
-                                    <li>Chocolate chips</li>
-                                    <li>Dried cranberries</li>
-                                    <li>Butter</li>
-                                    <li>Egg</li>
+                                    <%
+                                        List<String> vanilaIngr = (List<String>) request.getAttribute("vanila");
+                                        for (String ingredient : vanilaIngr) {
+                                            out.println(String.format("<li>%s</li>", ingredient));
+                                        }
+                                    %>
+                                    //                                   <li>All-purpose flour</li>
+                                    //                                    <li>Chocolate chips</li>
+                                    //                                    <li>Dried cranberries</li>
+                                    //                                    <li>Butter</li>
+                                    //                                    <li>Egg</li>
                                 </ul>
                             </li>
                             <li  id='img_list'><strong>Nutrients</strong>

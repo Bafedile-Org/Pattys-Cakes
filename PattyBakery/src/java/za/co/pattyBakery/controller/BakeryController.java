@@ -2,26 +2,21 @@ package za.co.pattyBakery.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import static jdk.nashorn.internal.objects.NativeDebug.getContext;
 
 /**
  *
  * @author Dimakatso Sebatane
  */
-@WebServlet(name = "PattyBakeryController", urlPatterns = {"/bakery"})
-public class PattyBakeryController extends HttpServlet {
-
-    Connection con = (Connection) getContext("con");
+@WebServlet(name = "BakeryController", urlPatterns = "/bakery_control")
+public class BakeryController extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -36,10 +31,10 @@ public class PattyBakeryController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet PattyBakeryController</title>");
+            out.println("<title>Servlet BakeryController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet PattyBakeryController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet BakeryController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }

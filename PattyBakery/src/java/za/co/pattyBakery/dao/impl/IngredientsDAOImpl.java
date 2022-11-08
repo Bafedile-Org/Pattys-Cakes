@@ -114,6 +114,7 @@ public class IngredientsDAOImpl implements IngredientsDAO {
         return ingridients;
     }
 
+    @Override
     public List<String> getAllIngredientsId() {
         List<String> ingridientsId = new ArrayList<>();
         try {
