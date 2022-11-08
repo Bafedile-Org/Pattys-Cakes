@@ -1,13 +1,9 @@
 package za.co.pattyBakery.database;
 
-import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 /**
  *
@@ -57,7 +53,15 @@ public class DatabaseConnect {
 
         //Populate tables 
         PopulateValues p = new PopulateValues(con);
-        p.addAll();
+        p.populateNutr();
+        p.populateIngr();
+        p.populateCategoryTable();
+        p.addCakeRecipies();
+        p.addDoughnutsRecipies();
+        p.addMuffinsRecipies();
+        p.addCookiesRecipies();
+        p.addPersonalRecipies();
+        p.addCupcakesRecipies();
     }
 
     public static DatabaseConnect getInstance() {
@@ -116,7 +120,7 @@ public class DatabaseConnect {
     private static void ProductTable() {
         PreparedStatement stat;
         try {
-            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS product (prod_id VARCHAR(10) PRIMARY KEY,price Double, nutr_id VARCHAR(10) NOT NULL ,"
+            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS product (prod_id VARCHAR(10) PRIMARY KEY,prod_name VARCHAR(200),price Double, nutr_id VARCHAR(10) NOT NULL ,"
                     + "recp_id VARCHAR(10) NOT NULL ,cat_id INTEGER NOT NULL,"
                     + "FOREIGN KEY(nutr_id) REFERENCES nutrients(nutr_id),FOREIGN Key(recp_id) REFERENCES recipe(recp_id),FOREIGN KEY(cat_id)  REFERENCES category(cat_id))");
             stat.executeUpdate();
@@ -164,7 +168,7 @@ public class DatabaseConnect {
     private static void CategoryTable() {
         PreparedStatement stat;
         try {
-            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS category (cat_id INTEGER AUTO_INCREMENT PRIMARY KEY,category VARCHAR(100))");
+            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS category (cat_id INTEGER PRIMARY KEY,category VARCHAR(100))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create category table.." + sql.getMessage());

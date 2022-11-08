@@ -16,11 +16,11 @@ public class CategoryServImpl implements CategoryDAO {
     }
 
     @Override
-    public void addCategory(String category) {
-        if (category == null) {
+    public void addCategory(Integer categoryId, String category) {
+        if (category == null || categoryId <= 0) {
 
         }
-        categoryDAOImpl.addCategory(category);
+        categoryDAOImpl.addCategory(categoryId, category);
     }
 
     @Override
