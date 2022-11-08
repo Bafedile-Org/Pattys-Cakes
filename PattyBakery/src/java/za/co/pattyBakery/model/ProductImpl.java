@@ -11,17 +11,62 @@ public class ProductImpl implements Product {
 
     private String productId;
     private Double price;
-    private String nutrientInfo, ingredients, category;
+    private String nutrientInfo, ingredients, category, nutrientId, recipeId, productName;
+    private Integer categoryId;
 
     public ProductImpl() {
     }
 
-    public ProductImpl(String productId, Double price, String category, String nutrientInfo, String ingredients) throws ProductException {
+    public ProductImpl(String productId, String productName,
+            Double price, String category, String nutrientInfo, String ingredients) throws ProductException {
         this.setCategory(category);
+        this.setProductName(productName);
         this.setIngredients(ingredients);
         this.setNutrientInfo(nutrientInfo);
         this.setPrice(price);
         this.setProductId(productId);
+    }
+
+    public ProductImpl(String productId, String productName,
+            Double price, Integer categoryId, String nutrientId, String recipeId) throws ProductException {
+        this.setCategoryId(categoryId);
+        this.setProductName(productName);
+        this.setRecipeId(recipeId);
+        this.setNutrientId(nutrientId);
+        this.setPrice(price);
+        this.setProductId(productId);
+    }
+
+    /**
+     * @return the nutrientId
+     */
+    @Override
+    public String getNutrientId() {
+        return nutrientId;
+    }
+
+    /**
+     * @param nutrientId the nutrientId to set
+     */
+    @Override
+    public void setNutrientId(String nutrientId) {
+        this.nutrientId = nutrientId;
+    }
+
+    /**
+     * @return the recipeId
+     */
+    @Override
+    public String getRecipeId() {
+        return recipeId;
+    }
+
+    /**
+     * @param recipeId the recipeId to set
+     */
+    @Override
+    public void setRecipeId(String recipeId) {
+        this.recipeId = recipeId;
     }
 
     @Override
@@ -87,6 +132,36 @@ public class ProductImpl implements Product {
     @Override
     public String getCategory() {
         return category;
+    }
+
+    /**
+     * @return the categoryId
+     */
+    @Override
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    /**
+     * @param categoryId the categoryId to set
+     */
+    @Override
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
+    }
+
+    /**
+     * @return the productName
+     */
+    public String getProductName() {
+        return productName;
+    }
+
+    /**
+     * @param productName the productName to set
+     */
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
 }

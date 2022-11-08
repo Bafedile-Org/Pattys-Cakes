@@ -14,6 +14,22 @@ public interface Product {
     String PRODUCT_PRICE_ERROR_MSG = "Product Price Can Not Be Less Than Zero!!!";
     String PRODUCT_ID_ERROR_MSG = "Product Id  Can Not Be Zero!!!";
 
+    public String getNutrientId();
+
+    public String getProductName();
+
+    public void setProductName(String productName);
+
+    public void setNutrientId(String nutrientId);
+
+    public String getRecipeId();
+
+    public void setRecipeId(String ingredientsId);
+
+    public Integer getCategoryId();
+
+    public void setCategoryId(Integer categoryId);
+
     void setProductId(String productId) throws ProductException;
 
     String getProductId();

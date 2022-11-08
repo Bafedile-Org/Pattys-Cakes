@@ -7,8 +7,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import za.co.pattybakery.Product;
+import za.co.pattybakery.dao.ProductDAO;
 import za.co.pattybakery.dao.impl.IngredientsDAOImpl;
 import za.co.pattybakery.dao.impl.NutrientsDAOImpl;
+import za.co.pattybakery.dao.impl.ProductDAOImpl;
+import za.co.pattybakery.exception.ProductException;
+import za.co.pattybakery.model.ProductImpl;
 
 /**
  *
@@ -20,6 +25,24 @@ public class PopulateValues {
 
     public PopulateValues(Connection con) {
         this.con = con;
+    }
+
+    public void addAll() {
+        populateNutr();
+        populateIngr();
+        addCakeRecipies();
+        addDoughnutsRecipies();
+        addMuffinsRecipies();
+        addCookiesRecipies();
+        addPersonalRecipies();
+        addCupcakesRecipies();
+
+        addCakesProduct();
+        addDoughnutsProduct();
+        addMuffinsProduct();
+        addCookiesProduct();
+        addPersonalPiesProduct();
+        addCupCakesProduct();
     }
 
     public void populateNutr() {
@@ -106,15 +129,15 @@ public class PopulateValues {
 
     public void addDoughnutsRecipies() {
 
-        Integer glzedSimpsonsIngrId[] = {45, 4, 28, 11, 1, 2, 46};
+        Integer glazedSimpsonsIngrId[] = {45, 4, 28, 11, 1, 2, 46};
         Integer chocolateDoughnutsIngrId[] = {45, 4, 28, 11, 1, 2, 46, 32};
 
         try {
-            for (int i = 0; i < glzedSimpsonsIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "4RES", glzedSimpsonsIngrId[i] + "ING")).executeUpdate();
+            for (int i = 0; i < glazedSimpsonsIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "4RES", glazedSimpsonsIngrId[i] + "ING")).executeUpdate();
             }
-            for (int i = 0; i < glzedSimpsonsIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "5RES", glzedSimpsonsIngrId[i] + "ING")).executeUpdate();
+            for (int i = 0; i < glazedSimpsonsIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "5RES", glazedSimpsonsIngrId[i] + "ING")).executeUpdate();
             }
             for (int i = 0; i < chocolateDoughnutsIngrId.length; i++) {
                 con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "6RES", chocolateDoughnutsIngrId[i] + "ING")).executeUpdate();
@@ -151,19 +174,19 @@ public class PopulateValues {
 
     public void addPersonalRecipies() {
 
-        Integer blueberryIngrId[] = {9, 3, 10, 11, 2, 12, 13, 14};
-        Integer cranberriesIngrId[] = {3, 15, 16, 10, 17, 18, 19, 20, 21, 22, 2, 13, 23, 24};
-        Integer carrotIngrId[] = {4, 15, 17, 10, 18, 16, 19, 2, 3, 25, 13, 26, 27, 24};
+        Integer blueberryIngrId[] = {14, 45, 3, 46};
+        Integer appleIngrId[] = {4, 46, 3, 1, 2, 10};
+        Integer strawberryIngrId[] = {47, 48, 3, 46, 49};
 
         try {
             for (int i = 0; i < blueberryIngrId.length; i++) {
                 con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "13RES", blueberryIngrId[i] + "ING")).executeUpdate();
             }
-            for (int i = 0; i < cranberriesIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "14RES", cranberriesIngrId[i] + "ING")).executeUpdate();
+            for (int i = 0; i < appleIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "14RES", appleIngrId[i] + "ING")).executeUpdate();
             }
-            for (int i = 0; i < carrotIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "15RES", carrotIngrId[i] + "ING")).executeUpdate();
+            for (int i = 0; i < strawberryIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id, ingr_id) VALUES ('%s','%s')", "15RES", strawberryIngrId[i] + "ING")).executeUpdate();
             }
 
             System.out.println("Personal pies table created");
@@ -217,6 +240,120 @@ public class PopulateValues {
             System.out.println("Cupcakes recipe failed to added" + sql.getMessage());
         }
         System.out.println("Cupcakes recipe added");
+    }
+
+    public void addCakesProduct() {
+        Double[] prices = {256.50, 449.50, 159.50};
+        String[] nutrientsIds = {"1NT"};
+        String[] recipeIds = {"1RES", "2RES", "3RES"};
+        try {
+            Product caramelCake = new ProductImpl("1PRO", "Caramel Cake", prices[0], 2, nutrientsIds[0], recipeIds[0]);
+            Product MargueCake = new ProductImpl("2PRO", "Margue Cake", prices[1], 2, nutrientsIds[0], recipeIds[1]);
+            Product chocolateCake = new ProductImpl("3PRO", "Chocolate Cake", prices[2], 2, nutrientsIds[0], recipeIds[2]);
+
+            ProductDAO productDao = new ProductDAOImpl(con);
+            productDao.addProductByIds(MargueCake);
+            productDao.addProductByIds(caramelCake);
+            productDao.addProductByIds(chocolateCake);
+        } catch (ProductException sql) {
+            System.out.println("product insert failed" + sql.getMessage());
+        }
+        System.out.println("product added");
+    }
+
+    public void addCookiesProduct() {
+        Double[] prices = {75.99, 32.49, 28.69};
+        String[] nutrientsIds = {"1NT"};
+        String[] recipeIds = {"16RES", "17RES", "18RES"};
+        try {
+            Product vanilaCookie = new ProductImpl("4PRO", "Vanila Cookies", prices[0], 2, nutrientsIds[0], recipeIds[0]);
+            Product chocolateCookie = new ProductImpl("5PRO", "Chocolate Cookies", prices[1], 2, nutrientsIds[0], recipeIds[1]);
+            Product plainCookie = new ProductImpl("6PRO", "Plain Coffee Cookies", prices[2], 2, nutrientsIds[0], recipeIds[2]);
+
+            ProductDAO productDao = new ProductDAOImpl(con);
+            productDao.addProductByIds(vanilaCookie);
+            productDao.addProductByIds(chocolateCookie);
+            productDao.addProductByIds(plainCookie);
+        } catch (ProductException sql) {
+            System.out.println("product insert failed" + sql.getMessage());
+        }
+        System.out.println("product added");
+    }
+
+    public void addCupCakesProduct() {
+        Double[] prices = {45.99, 48.99, 40.99};
+        String[] nutrientsIds = {"1NT"};
+        String[] recipeIds = {"7RES", "8RES", "9RES"};
+        try {
+            Product walnutCupcakes = new ProductImpl("7PRO", "Walnut Cupcakes", prices[0], 2, nutrientsIds[0], recipeIds[0]);
+            Product chocolateCupcakes = new ProductImpl("8PRO", "Gluten Free Chocolate Cupcakes", prices[1], 2, nutrientsIds[0], recipeIds[1]);
+            Product vanillaCupcakes = new ProductImpl("9PRO", "Vegan Vanilla Cupcakes", prices[2], 2, nutrientsIds[0], recipeIds[2]);
+
+            ProductDAO productDao = new ProductDAOImpl(con);
+            productDao.addProductByIds(walnutCupcakes);
+            productDao.addProductByIds(chocolateCupcakes);
+            productDao.addProductByIds(vanillaCupcakes);
+        } catch (ProductException sql) {
+            System.out.println("product insert failed" + sql.getMessage());
+        }
+        System.out.println("product added");
+    }
+
+    public void addPersonalPiesProduct() {
+        Double[] prices = {59.99, 54.49, 54.49};
+        String[] nutrientsIds = {"1NT"};
+        String[] recipeIds = {"13RES", "14RES", "15RES"};
+        try {
+            Product blueberryPies = new ProductImpl("10PRO", "Blueberry Pies", prices[0], 2, nutrientsIds[0], recipeIds[0]);
+            Product applePies = new ProductImpl("11PRO", "Apple Pies", prices[1], 2, nutrientsIds[0], recipeIds[1]);
+            Product strawberryPies = new ProductImpl("12PRO", "Strawberry Pies", prices[2], 2, nutrientsIds[0], recipeIds[2]);
+
+            ProductDAO productDao = new ProductDAOImpl(con);
+            productDao.addProductByIds(blueberryPies);
+            productDao.addProductByIds(applePies);
+            productDao.addProductByIds(strawberryPies);
+        } catch (ProductException sql) {
+            System.out.println("product insert failed" + sql.getMessage());
+        }
+        System.out.println("product added");
+    }
+
+    public void addMuffinsProduct() {
+        Double[] prices = {38.99, 45.99, 50.00};
+        String[] nutrientsIds = {"1NT"};
+        String[] recipeIds = {"10RES", "11RES", "12RES"};
+        try {
+            Product blueberryMuffins = new ProductImpl("13PRO", "Blueberry Muffins", prices[0], 2, nutrientsIds[0], recipeIds[0]);
+            Product cranberryMuffins = new ProductImpl("14PRO", "Cranbery Muffins", prices[1], 2, nutrientsIds[0], recipeIds[1]);
+            Product carrotMuffins = new ProductImpl("15PRO", "Carrot Muffins", prices[2], 2, nutrientsIds[0], recipeIds[2]);
+
+            ProductDAO productDao = new ProductDAOImpl(con);
+            productDao.addProductByIds(blueberryMuffins);
+            productDao.addProductByIds(cranberryMuffins);
+            productDao.addProductByIds(carrotMuffins);
+        } catch (ProductException sql) {
+            System.out.println("product insert failed" + sql.getMessage());
+        }
+        System.out.println("product added");
+    }
+
+    public void addDoughnutsProduct() {
+        Double[] prices = {90.99, 85.99, 59.99};
+        String[] nutrientsIds = {"1NT"};
+        String[] recipeIds = {"4RES", "5RES", "6RES"};
+        try {
+            Product glazedDoughnutsLove = new ProductImpl("16PRO", "Glazed Simpsons Love Doughnuts", prices[0], 2, nutrientsIds[0], recipeIds[0]);
+            Product glazedDoughnuts = new ProductImpl("17PRO", "Glazed Simpsons  Doughnuts", prices[1], 2, nutrientsIds[0], recipeIds[1]);
+            Product chocolateDoughnuts = new ProductImpl("18PRO", "Chocolate Doughnuts", prices[2], 2, nutrientsIds[0], recipeIds[2]);
+
+            ProductDAO productDao = new ProductDAOImpl(con);
+            productDao.addProductByIds(glazedDoughnutsLove);
+            productDao.addProductByIds(glazedDoughnuts);
+            productDao.addProductByIds(chocolateDoughnuts);
+        } catch (ProductException sql) {
+            System.out.println("product insert failed" + sql.getMessage());
+        }
+        System.out.println("product added");
     }
 
 }

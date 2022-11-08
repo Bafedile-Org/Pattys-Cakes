@@ -58,6 +58,29 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
+    public void addProductByIds(Product product) {
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("INSERT INTO product  VALUES(?,?,?,?,?,?);");
+                preparedStatement.setString(1, product.getProductId());
+                preparedStatement.setString(2, product.getProductName());
+                preparedStatement.setDouble(3, product.getPrice());
+                preparedStatement.setInt(4, product.getCategoryId());
+                preparedStatement.setString(5, product.getNutrientId());
+                preparedStatement.setString(6, product.getRecipeId());
+                preparedStatement.executeUpdate();
+            }
+
+        } catch (SQLException sql) {
+            System.out.println(String.format("Error: %s%n", sql.getMessage()));
+
+        } finally {
+            close(preparedStatement, resultSet);
+
+        }
+    }
+
+    @Override
     public Product getProductById(String productId) {
         Product product = null;
         try {
@@ -66,8 +89,8 @@ public class ProductDAOImpl implements ProductDAO {
                 preparedStatement.setString(1, productId);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    product = new ProductImpl(resultSet.getString("prod_id"), resultSet.getDouble("price"), resultSet.getString("category"), resultSet.getString("nutrient_info"),
-                            resultSet.getString("ingredient"));
+                    product = new ProductImpl(resultSet.getString("prod_id"), resultSet.getString("prod_name"), resultSet.getDouble("price"), resultSet.getString("category"), resultSet.getString("nutrient_info"),
+                            resultSet.getString("recp_id"));
                 }
             }
         } catch (SQLException | ProductException sql) {
@@ -155,11 +178,11 @@ public class ProductDAOImpl implements ProductDAO {
                 preparedStatement = con.prepareStatement("SELECT * FROM product;");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    product = new ProductImpl(resultSet.getString("prod_id"),
+                    product = new ProductImpl(resultSet.getString("prod_id"), resultSet.getString("prod_name"),
                             resultSet.getDouble("price"),
                             new CategoryDAOImpl().getCategoryById(resultSet.getInt("cat_id")),
                             new NutrientsDAOImpl().getNutrientById(resultSet.getString("nutr_id")),
-                            new IngredientsDAOImpl().getIngredientById(resultSet.getString("ingredient")));
+                            new IngredientsDAOImpl().getIngredientById(resultSet.getString("recp_id")));
                     products.add(product);
                 }
             }

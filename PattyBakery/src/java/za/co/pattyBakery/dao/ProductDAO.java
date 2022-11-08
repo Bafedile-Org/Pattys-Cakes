@@ -11,6 +11,8 @@ public interface ProductDAO extends Close {
 
     void addProduct(Product product);
 
+    public void addProductByIds(Product product);
+
     Product getProductById(String productId);
 
     void removeProduct(String productId);

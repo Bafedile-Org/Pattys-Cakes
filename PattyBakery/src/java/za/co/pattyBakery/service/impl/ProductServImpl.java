@@ -70,4 +70,12 @@ public class ProductServImpl implements ProductDAO {
         return productDAOImpl.getAllProducts();
     }
 
+    @Override
+    public void addProductByIds(Product product) {
+        if (product == null) {
+
+        }
+        productDAOImpl.addProductByIds(product);
+    }
+
 }
