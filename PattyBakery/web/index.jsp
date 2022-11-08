@@ -26,14 +26,15 @@
                                 <a  href="aboutUs">About Us</a>
                                 <a  href="stores">Our Stores</a>
                                 <a href="signup">Signup/Signin</a>
+                                <a href="management_login_page.jsp">Management</a>
                             </div>
                         </i>
                     </h1>
                 </div>
             </nav>
         </header>
-                    <div class="slidershow middle">
-                        <div class="slides">
+                <div class="slidershow middle">
+                    <div class="slides">
                             <input type="radio" name="r" id="r1" checked>
                             <input type="radio" name="r" id="r2" >
                             <input type="radio" name="r" id="r3" >

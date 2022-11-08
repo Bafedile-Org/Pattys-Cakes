@@ -7,7 +7,6 @@
     padding:0px;
 }
 .home-head{
-
     margin:0px;
     padding:0px;
     background:lightgray;
@@ -21,6 +20,7 @@
     background-image:url(../assets/patty_pic_chef.jpg);
     background-size: cover;
 }
+
 .topnav i{
     float:right;
 }
@@ -407,6 +407,40 @@ a.facebook .facebook-icon{
     .form{
         padding: 20px 10px;
     }
-
 }
+        
+.btn-group button {
+    margin: 1px;
+    align-items: center;
+    border: 1px solid black; 
+    color: black; 
+    padding: 10px 24px; 
+    cursor: pointer; 
+    float: left; 
+}
+.btn-group  {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+/*.input-field input{
+    margin: 0px;
+    margin-top: 10%;
+   
+}*/
+/*.input-fields  input{
+    margin-top: 9%;
+}*/
+
+.form-content form{
+    margin-top:12%;
+}
+.form-contents form{
+    margin-top:10%;
+}
+
+
 
