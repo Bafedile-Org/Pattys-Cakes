@@ -42,7 +42,7 @@ public class OrderDAOImpl implements OrderDAO {
         try {
             if (con != null) {
                 for (Order order : shoppingCart.getOrders()) {
-                    preparedStatement = con.prepareStatement("INSERT INTO orders VALUES(?,?,?,?,?);");
+                    preparedStatement = con.prepareStatement("INSERT IGNORE INTO orders VALUES(?,?,?,?,?);");
                     preparedStatement.setString(1, shoppingCart.getOrderNumber());
                     preparedStatement.setString(2, order.getProduct().getProductId());
                     preparedStatement.setInt(3, order.getQuantity());

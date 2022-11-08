@@ -38,4 +38,12 @@ public class StockServImpl implements StockDAO {
         return stockDAOImpl.getAllStocks();
     }
 
+    @Override
+    public void addStockById(String productId, Integer quantity) {
+        if (productId == null || quantity <= 0) {
+            return;
+        }
+        stockDAOImpl.addStockById(productId, quantity);
+    }
+
 }

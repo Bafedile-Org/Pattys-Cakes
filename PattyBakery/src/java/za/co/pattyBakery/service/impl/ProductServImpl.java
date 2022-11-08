@@ -78,4 +78,9 @@ public class ProductServImpl implements ProductDAO {
         productDAOImpl.addProductByIds(product);
     }
 
+    @Override
+    public List<String> getAllProductsIds() {
+        return productDAOImpl.getAllProductsIds();
+    }
+
 }

@@ -35,8 +35,24 @@ public class StockDAOImpl implements StockDAO {
     public void addStock(Product product, Integer quantity) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO stock  VALUE(?,?)");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO stock  VALUES(?,?)");
                 preparedStatement.setString(1, product.getProductId());
+                preparedStatement.setInt(2, quantity);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+    }
+
+    @Override
+    public void addStockById(String productId, Integer quantity) {
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO stock  VALUES(?,?)");
+                preparedStatement.setString(1, productId);
                 preparedStatement.setInt(2, quantity);
                 preparedStatement.executeUpdate();
             }

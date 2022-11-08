@@ -36,7 +36,7 @@ public class ProductDAOImpl implements ProductDAO {
     public void addProduct(Product product) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO product  VALUES(?,?,"
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO product  VALUES(?,?,"
                         + "(SELECT nutr_id FROM nutrients WHERE nutrient =?),"
                         + "(SELECT ingr_id FROM ingredients WHERE ingredient=?),"
                         + "(SELECT cat_id FROM category WHERE category= ?));");
@@ -61,13 +61,13 @@ public class ProductDAOImpl implements ProductDAO {
     public void addProductByIds(Product product) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO product  VALUES(?,?,?,?,?,?);");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO product VALUES(?,?,?,?,?,?);");
                 preparedStatement.setString(1, product.getProductId());
                 preparedStatement.setString(2, product.getProductName());
                 preparedStatement.setDouble(3, product.getPrice());
-                preparedStatement.setInt(4, product.getCategoryId());
-                preparedStatement.setString(5, product.getNutrientId());
-                preparedStatement.setString(6, product.getRecipeId());
+                preparedStatement.setString(4, product.getNutrientId());
+                preparedStatement.setString(5, product.getRecipeId());
+                preparedStatement.setInt(6, product.getCategoryId());
                 preparedStatement.executeUpdate();
             }
 
@@ -195,4 +195,23 @@ public class ProductDAOImpl implements ProductDAO {
         return products;
     }
 
+    @Override
+    public List<String> getAllProductsIds() {
+        List<String> productIds = new ArrayList<>();
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT prod_id FROM product;");
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    productIds.add(resultSet.getString("prod_Id"));
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println(String.format("Error: %s%n", sql.getMessage()));
+        } finally {
+            close(preparedStatement, resultSet);
+
+        }
+        return productIds;
+    }
 }

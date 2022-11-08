@@ -30,7 +30,7 @@ public class OrderPriceDAOImpl implements OrderPriceDAO {
     public void addOrderPrice(ShoppingCart shoppingCart) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO total_orders VALUES(?,?);");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO total_orders VALUES(?,?);");
                 preparedStatement.setString(1, shoppingCart.getOrderNumber());
                 preparedStatement.setDouble(2, shoppingCart.getTotalprice());
                 preparedStatement.executeUpdate();

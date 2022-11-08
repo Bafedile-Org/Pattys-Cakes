@@ -32,7 +32,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public void addEmployee(EmployeeImpl employee) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO employee (name, surname,identityNum,tel, email, address,title) VALUES(?,?,?,?,?,?,?);");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO employee (name, surname,identityNum,tel, email, address,title) VALUES(?,?,?,?,?,?,?);");
                 preparedStatement.setString(1, employee.getName());
                 preparedStatement.setString(2, employee.getSurname());
                 preparedStatement.setString(3, employee.getIdNumber());

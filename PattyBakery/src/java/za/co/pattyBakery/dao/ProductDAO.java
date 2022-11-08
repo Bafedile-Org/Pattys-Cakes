@@ -24,4 +24,6 @@ public interface ProductDAO extends Close {
     void updateProductCategory(String productId, String category);
 
     List<Product> getAllProducts();
+
+    public List<String> getAllProductsIds();
 }

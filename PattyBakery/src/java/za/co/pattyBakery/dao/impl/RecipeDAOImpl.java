@@ -38,7 +38,7 @@ public class RecipeDAOImpl implements RecipeDAO {
             if (con != null) {
 
                 for (int i = 0; i < recipe.getIngredients().size(); i++) {
-                    preparedStatement = con.prepareStatement("INSERT INTO recipe (recp_id,ingr_id) VALUE(?,(SELECT ingr_id FROM ingredients WHERE ingredient=?))");
+                    preparedStatement = con.prepareStatement("INSERT IGNORE INTO recipe (recp_id,ingr_id) VALUE(?,(SELECT ingr_id FROM ingredients WHERE ingredient=?))");
                     preparedStatement.setString(1, recipe.getRecipeId());
                     preparedStatement.setString(2, recipe.getIngredients().get(i));
                     preparedStatement.executeUpdate();
@@ -102,7 +102,7 @@ public class RecipeDAOImpl implements RecipeDAO {
         try {
             if (con != null) {
 
-                preparedStatement = con.prepareStatement("INSERT INTO recipe (ingr_id) VALUE((SELECT ingr_id FROM ingredients WHERE ingredient=?))");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO recipe (ingr_id) VALUE((SELECT ingr_id FROM ingredients WHERE ingredient=?))");
                 preparedStatement.setString(1, recipeId);
                 preparedStatement.setString(2, ingredient);
                 preparedStatement.executeUpdate();

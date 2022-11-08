@@ -33,7 +33,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     public void addCustomer(Person customer) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO customer (name, surname,idNum,tel, email, address) VALUES(?,?,?,?,?,?);");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO customer (name, surname,idNum,tel, email, address) VALUES(?,?,?,?,?,?);");
                 preparedStatement.setString(1, customer.getName());
                 preparedStatement.setString(2, customer.getSurname());
                 preparedStatement.setString(3, customer.getIdNumber());
