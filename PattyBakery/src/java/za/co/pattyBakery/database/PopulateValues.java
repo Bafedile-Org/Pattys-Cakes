@@ -13,7 +13,7 @@ import za.co.pattybakery.dao.impl.NutrientsDAOImpl;
 
 /**
  *
- * @author Dimakatso Sebatane
+ * @author Bridget Bapela
  */
 public class PopulateValues {
 
