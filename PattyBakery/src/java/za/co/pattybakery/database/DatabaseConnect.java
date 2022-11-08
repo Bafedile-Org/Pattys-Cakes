@@ -1,9 +1,13 @@
 package za.co.pattyBakery.database;
 
+import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -56,8 +60,8 @@ public class DatabaseConnect {
         p.populateNutr();
         p.populateIngr();
         p.addCakeRecipies();
-        p.addCookiesRecipe();
-        p.addCupcakesRecipe();
+        p.addDoughnutsRecipies();
+        p.addMuffinsRecipies();
     }
 
     public static DatabaseConnect getInstance() {
