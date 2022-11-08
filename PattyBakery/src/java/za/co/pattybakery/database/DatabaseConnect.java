@@ -62,6 +62,9 @@ public class DatabaseConnect {
         p.addCakeRecipies();
         p.addDoughnutsRecipies();
         p.addMuffinsRecipies();
+        p.addCookiesRecipies();
+        p.addPersonalRecipies();
+        p.addCupcakesRecipies();
     }
 
     public static DatabaseConnect getInstance() {
