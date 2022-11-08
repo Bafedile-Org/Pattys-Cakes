@@ -28,11 +28,12 @@ public class CategoryDAOImpl implements CategoryDAO {
     }
 
     @Override
-    public void addCategory(String category) {
+    public void addCategory(Integer categoryId, String category) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO category (category) VALUES(?)");
-                preparedStatement.setString(1, category);
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO category (cat_id,category) VALUES(?,?)");
+                preparedStatement.setInt(1, categoryId);
+                preparedStatement.setString(2, category);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException sql) {

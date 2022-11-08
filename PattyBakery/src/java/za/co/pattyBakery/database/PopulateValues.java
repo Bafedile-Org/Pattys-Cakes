@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import za.co.pattybakery.dao.impl.CategoryDAOImpl;
 import za.co.pattybakery.dao.impl.IngredientsDAOImpl;
 import za.co.pattybakery.dao.impl.NutrientsDAOImpl;
 
@@ -34,6 +35,18 @@ public class PopulateValues {
         System.out.println("Nutrients Added");
     }
 
+    public void populateCategoryTable() {
+        String[] arrCategory = {"Cookies", "Cakes", "Doughnuts", "Cupcakes", "Muffins", "Personal Pies"};
+        List<String> category = new ArrayList<>(Arrays.asList(arrCategory));
+        List<Integer> categoryId = getCategoryIdList(category);
+        PreparedStatement stat;
+        for (int i = 0; i < category.size(); i++) {
+            new CategoryDAOImpl(con).addCategory(categoryId.get(i), category.get(i));
+        }
+
+        System.out.println("Categories Added");
+    }
+
     public void populateIngr() {
         String[] arrIngr = {"Unsalted Butter", "Eggs", "Brown Sugar", "Self Raising Flour", "Instant Coffee Granules", "Walnuts", "Icing Sugar", "Sprinkles", "Quick Muffin Mix",
             "Ground Cinnamon", "Milk", "Apple Sauce", "Vanila Extract", "Blue Berries", "Baking Powder", "Ground Nutmeg", "Baking Soda", "Ground Ginger", "Salt", "Orange Zest", "Shortening", "Orange Juice", "Cranberries",
@@ -52,6 +65,15 @@ public class PopulateValues {
         }
 
         System.out.println("Ingredients Added");
+    }
+
+    public List<Integer> getCategoryIdList(List<String> categoryList) {
+        List<Integer> categoryIdList = new ArrayList<>();
+        for (int i = 0; i < categoryList.size(); i++) {
+            categoryIdList.add(i + 1);
+        }
+
+        return categoryIdList;
     }
 
     public List<String> getIngredientIdList(List<String> IngredientList) {
