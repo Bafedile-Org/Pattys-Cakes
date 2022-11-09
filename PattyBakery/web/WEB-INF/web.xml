@@ -132,13 +132,15 @@
         <!--<welcome-file>cupcakes_page.jsp</welcome-file>-->
         <!--<welcome-file>cookies_page.jsp</welcome-file>-->
         <!--welcome-file>management_login_page.jsp</welcome-file-->
-        <welcome-file>management_page.jsp</welcome-file>
+        <!--<welcome-file>management_page.jsp</welcome-file>-->
         <!--<welcome-file>doughnuts_page.jsp</welcome-file>-->
         <!--<welcome-file>index.jsp</welcome-file>-->
         <!-- <welcome-file>stock_page.jsp</welcome-file>-->
         <!--<welcome-file>ingredient_page.jsp</welcome-file>-->
         <!--<welcome-file>stock_page.jsp</welcome-file>-->
         <!-- <welcome-file>order_page.jsp</welcome-file>-->
+        <welcome-file>checkOut_page.jsp</welcome-file>
+
 
        
     </welcome-file-list>
