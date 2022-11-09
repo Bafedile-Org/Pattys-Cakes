@@ -27,7 +27,7 @@
     <body>
         <nav class="home-head">
             <div class="topnav">
-                <h1 align="center" id="home-header1"> Bakery Ingredients management site
+                <h1 align="center" id="home-header1"> Bakery Employee management site
                     <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                         <div class="dropdown-content">
                         <a href="management_page.jsp">Back</a>
@@ -36,7 +36,10 @@
                 </h1>
             </div>
         </nav>
-           <div class="form-contents">
+        <div>
+            Today's date: <%= (new java.util.Date()).toLocaleString()%>
+        </div>
+           <div class="form-content">
              <form action="#">
                 <div class="input-field" style="text-align: center">
                     <input type="name" placeholder="Name" class="name" size="50">
@@ -44,15 +47,15 @@
                 <div class="input-field" style="text-align: center">
                     <input type="surname" placeholder="Surname" class="surname" size="50">
                 </div>
-                   <div class="input-field" style="text-align: center">
-                       <div class="dropdown-content">
-                           <input type="tittle" placeholder="Delivary Status" class="tittle" size="50">
-                                <a href="home">Home</a>
-                                <a  href="aboutUs">About Us</a>
-                                <a  href="stores">Our Stores</a>
-                                <a href="signup">Signup/Signin</a>
-                            </div>
-                    
+                <div class="input-field" style="text-align: center">
+                 <input type="tittle" placeholder="Tittle" class="tittle" size="34">
+                <select id = "myList" onchange = "favTutorial()" >
+                <option>Choose Tittle</option>
+                <option> Mr </option>
+                <option> Ms </option>
+                <option> Dr </option>
+                <option> Mr </option>
+                </select>
                 </div>
                 <div class="input-field" style="text-align: center">
                     <input type="idNumber" placeholder="ID Number" class="idNumber" size="50">
@@ -71,6 +74,7 @@
             <button>Add</button>
             <button>Remove</button>
             <button>Update</button>
-          </div></div>
+          </div>
+        </div>
     </body>
 </html>

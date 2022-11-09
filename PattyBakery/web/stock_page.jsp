@@ -36,10 +36,19 @@
                 </h1>
             </div>
         </nav>
+        <div>
+            Today's date: <%= (new java.util.Date()).toLocaleString()%>
+        </div>
         <div class="form-content">
              <form action="#">
                 <div class="input-field" style="text-align: center">
-                    <input type="pruductId" placeholder="ProductID" class="pruductId" size="50">
+                 <input type="productId" placeholder="Product ID" class="productId" size="33">
+                <select id = "myList" onchange = "favTutorial()" >
+                <option>Select ID type</option>
+                <option> #124547434 </option>
+                <option> #5442677 </option>
+                
+                </select>
                 </div>
                 
                 <div class="input-field" style="text-align: center">

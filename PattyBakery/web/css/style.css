@@ -419,8 +419,8 @@ a.facebook .facebook-icon{
     float: left; 
 }
 .btn-group  {
-  margin: 0;
-  position: absolute;
+  margin-left: 27%;
+  position: relative;
   top: 50%;
   left: 50%;
   -ms-transform: translate(-50%, -50%);
@@ -439,8 +439,9 @@ a.facebook .facebook-icon{
     margin-top:12%;
 }
 .form-contents form{
-    margin-top:10%;
+    margin-top:8%;
 }
+
 
 
 

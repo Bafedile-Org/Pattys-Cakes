@@ -38,6 +38,9 @@
             </div>
         </nav>
         </header>
+        <div>
+            Today's date: <%= (new java.util.Date()).toLocaleString()%>
+        </div>
          <section class="container forms">
             <div class="form login">
                 <div class="form-content">
@@ -54,7 +57,7 @@
                             <span>Forgot password?<a href="reset">Forgot passowrd</a></span>
                         </div>
                         <div class="field button-field">
-                            <button><span>Login <a href="management_page"></a></span></button>
+                            <button><span>Login <a href="management_page.jsp"></a></span></button>
                         </div>
                     </form>
                 </div>

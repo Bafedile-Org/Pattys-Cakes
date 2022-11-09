@@ -27,7 +27,7 @@
     <body>
          <nav class="home-head">
             <div class="topnav">
-                <h1 align="center" id="home-header1"> Bakery Ingredients management site
+                <h1 align="center" id="home-header1"> Bakery Order management site
                     <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                         <div class="dropdown-content">
                         <a href="management_page.jsp">Back</a>
@@ -36,6 +36,9 @@
                 </h1>
             </div>
         </nav>
+        <div>
+            Today's date: <%= (new java.util.Date()).toLocaleString()%>
+        </div>
            <div class="form-contents">
              <form action="#">
                 <div class="input-field" style="text-align: center">
@@ -51,7 +54,7 @@
                     <input type="delivaryStatus" placeholder="Delivary Status" class="delivaryStatus" size="50">
                 </div>
                  <div class="input-field" style="text-align: center">
-                    <input type="date" placeholder="Date" class="date" size="50">
+                    <input type="date" placeholder="Date" class="date" size="150">
                 </div>
              </form>
             <div class="btn-group" style="text-align: center">

@@ -31,6 +31,7 @@
            <div class="topnav">
                 <h1 align="center" id='home-header1'>
                     Patty's Bakery Management
+                  
                 <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                     <div class="dropdown-content">
                         <a href="home">Logout</a>
@@ -41,10 +42,13 @@
                     </div>
                 </i>
             </h1>
+                 
            </div>
            </nav>
         </header>
-        
+        <div>
+            Today's date: <%= (new java.util.Date()).toLocaleString()%>
+        </div>
                 <div class="w3-container">
                 <div class="w3-content w3-display-container" style="max-width:800px">
                    
