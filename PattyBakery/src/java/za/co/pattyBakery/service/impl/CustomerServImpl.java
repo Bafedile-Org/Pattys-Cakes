@@ -1,9 +1,9 @@
-package za.co.pattybakery.service.impl;
+package za.co.pattyBakery.service.impl;
 
 import java.util.List;
 import za.co.pattyBakery.Person;
-import za.co.pattybakery.dao.CustomerDAO;
-import za.co.pattybakery.dao.impl.CustomerDAOImpl;
+import za.co.pattyBakery.dao.CustomerDAO;
+import za.co.pattyBakery.dao.impl.CustomerDAOImpl;
 
 /**
  *

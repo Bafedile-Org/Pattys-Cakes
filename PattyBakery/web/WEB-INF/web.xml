@@ -107,6 +107,15 @@
         <servlet-name>Cakes</servlet-name>
         <url-pattern>/cakes</url-pattern>
     </servlet-mapping>
+      <!-- #######################################################################################-->
+<!--    <servlet>
+        <servlet-name>bc</servlet-name>
+        <servlet-class>za.co.pattyBakery.controller.BakeryController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>bc</servlet-name>
+        <url-pattern>/bakec</url-pattern>
+    </servlet-mapping>-->
     <!-- #######################################################################################-->
     <session-config>
         

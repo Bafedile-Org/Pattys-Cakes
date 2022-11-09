@@ -1,4 +1,4 @@
-package za.co.pattybakery.model;
+package za.co.pattyBakery.model;
 
 import za.co.pattyBakery.Person;
 

@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import za.co.pattyBakery.dao.RecipeDAO;
 import za.co.pattyBakery.database.DatabaseConnect;
 import za.co.pattyBakery.model.Recipe;
-import za.co.pattybakery.dao.impl.IngredientsDAOImpl;
+import za.co.pattyBakery.dao.impl.IngredientsDAOImpl;
 
 /**
  *

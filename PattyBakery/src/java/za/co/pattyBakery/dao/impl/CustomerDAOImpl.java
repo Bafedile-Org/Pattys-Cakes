@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao.impl;
+package za.co.pattyBakery.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import za.co.pattyBakery.Person;
 import za.co.pattyBakery.database.DatabaseConnect;
-import za.co.pattybakery.dao.CustomerDAO;
-import za.co.pattybakery.model.PersonImpl;
+import za.co.pattyBakery.dao.CustomerDAO;
+import za.co.pattyBakery.model.PersonImpl;
 
 /**
  *

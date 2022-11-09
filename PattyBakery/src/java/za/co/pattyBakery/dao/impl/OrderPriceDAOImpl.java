@@ -1,12 +1,12 @@
-package za.co.pattybakery.dao.impl;
+package za.co.pattyBakery.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import za.co.pattyBakery.database.DatabaseConnect;
-import za.co.pattybakery.ShoppingCart;
-import za.co.pattybakery.dao.OrderPriceDAO;
+import za.co.pattyBakery.ShoppingCart;
+import za.co.pattyBakery.dao.OrderPriceDAO;
 
 /**
  *

@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao.impl;
+package za.co.pattyBakery.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.List;
 import za.co.pattyBakery.Person;
 import za.co.pattyBakery.database.DatabaseConnect;
-import za.co.pattybakery.Product;
-import za.co.pattybakery.dao.ProductDAO;
-import za.co.pattybakery.exception.ProductException;
-import za.co.pattybakery.model.PersonImpl;
-import za.co.pattybakery.model.ProductImpl;
+import za.co.pattyBakery.Product;
+import za.co.pattyBakery.dao.ProductDAO;
+import za.co.pattyBakery.exception.ProductException;
+import za.co.pattyBakery.model.PersonImpl;
+import za.co.pattyBakery.model.ProductImpl;
 
 /**
  *
@@ -89,7 +89,7 @@ public class ProductDAOImpl implements ProductDAO {
                 preparedStatement.setString(1, productId);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    product = new ProductImpl(resultSet.getString("prod_id"), resultSet.getString("prod_name"), resultSet.getDouble("price"), resultSet.getString("category"), resultSet.getString("nutrient_info"),
+                    product = new ProductImpl(resultSet.getString("prod_id"), resultSet.getString("prod_name"), resultSet.getDouble("price"), new CategoryDAOImpl(con).getCategoryById(resultSet.getInt("cat_id")), new NutrientsDAOImpl(con).getNutrientById(resultSet.getString("nutr_id")),
                             resultSet.getString("recp_id"));
                 }
             }

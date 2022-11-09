@@ -1,6 +1,6 @@
-package za.co.pattybakery;
+package za.co.pattyBakery;
 
-import za.co.pattybakery.exception.PaymentException;
+import za.co.pattyBakery.exception.PaymentException;
 
 public interface Payment {
 

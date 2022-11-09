@@ -1,4 +1,4 @@
-package za.co.pattybakery.exception;
+package za.co.pattyBakery.exception;
 
 /**
  *

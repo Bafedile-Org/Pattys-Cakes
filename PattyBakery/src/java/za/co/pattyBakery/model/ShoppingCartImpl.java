@@ -1,4 +1,4 @@
-package za.co.pattybakery.model;
+package za.co.pattyBakery.model;
 
 /**
  *
@@ -6,9 +6,9 @@ package za.co.pattybakery.model;
  */
 import java.time.LocalDate;
 import java.util.List;
-import za.co.pattybakery.Order;
-import za.co.pattybakery.ShoppingCart;
-import za.co.pattybakery.exception.ShoppingCartException;
+import za.co.pattyBakery.Order;
+import za.co.pattyBakery.ShoppingCart;
+import za.co.pattyBakery.exception.ShoppingCartException;
 
 public class ShoppingCartImpl implements ShoppingCart {
 

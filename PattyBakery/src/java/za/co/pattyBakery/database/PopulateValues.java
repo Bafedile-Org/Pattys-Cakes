@@ -8,17 +8,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import za.co.pattybakery.Product;
-import za.co.pattybakery.dao.ProductDAO;
+import za.co.pattyBakery.Product;
+import za.co.pattyBakery.dao.ProductDAO;
 
-import za.co.pattybakery.dao.impl.CategoryDAOImpl;
+import za.co.pattyBakery.dao.impl.CategoryDAOImpl;
 
-import za.co.pattybakery.dao.impl.IngredientsDAOImpl;
-import za.co.pattybakery.dao.impl.NutrientsDAOImpl;
-import za.co.pattybakery.dao.impl.ProductDAOImpl;
-import za.co.pattybakery.dao.impl.StockDAOImpl;
-import za.co.pattybakery.exception.ProductException;
-import za.co.pattybakery.model.ProductImpl;
+import za.co.pattyBakery.dao.impl.IngredientsDAOImpl;
+import za.co.pattyBakery.dao.impl.NutrientsDAOImpl;
+import za.co.pattyBakery.dao.impl.ProductDAOImpl;
+import za.co.pattyBakery.dao.impl.StockDAOImpl;
+import za.co.pattyBakery.exception.ProductException;
+import za.co.pattyBakery.model.ProductImpl;
 
 /**
  *

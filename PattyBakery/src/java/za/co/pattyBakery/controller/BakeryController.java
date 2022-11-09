@@ -7,12 +7,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import za.co.pattyBakery.Product;
+import za.co.pattyBakery.dao.ProductDAO;
+import za.co.pattyBakery.dao.RecipeDAO;
+import za.co.pattyBakery.dao.impl.ProductDAOImpl;
+import za.co.pattyBakery.model.Recipe;
+import za.co.pattyBakery.service.impl.RecipeServImpl;
 
 /**
  *
  * @author Dimakatso Sebatane
  */
-@WebServlet(name = "BakeryController", urlPatterns = "/bakery_control")
+@WebServlet(name = "BakeryController", urlPatterns = {"/bakery_control"})
 public class BakeryController extends HttpServlet {
 
     /**
@@ -37,6 +43,24 @@ public class BakeryController extends HttpServlet {
             out.println("<h1>Servlet BakeryController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
+        }
+    }
+
+    protected void setIngredientAttributes(String[] recipeIds, String[] strings, HttpServletRequest request) {
+        RecipeDAO recipeServImpl = new RecipeServImpl();
+        for (int i = 0; i < recipeIds.length; i++) {
+            Recipe recipe = recipeServImpl.getRecipeById(recipeIds[i]);
+            request.setAttribute(strings[i], recipe.getIngredients());
+        }
+    }
+
+    protected void setProductName(String[] productIds, String[] productNames, String[] productPrices, String[] productNutrients, HttpServletRequest request) {
+        ProductDAO productServImpl = new ProductDAOImpl();
+        for (int i = 0; i < productIds.length; i++) {
+            Product product = productServImpl.getProductById(productIds[i]);
+            request.setAttribute(productNames[i], product.getProductName());
+            request.setAttribute(productPrices[i], product.getPrice());
+            request.setAttribute(productNutrients[i], product.getNutrientInfo());
         }
     }
 

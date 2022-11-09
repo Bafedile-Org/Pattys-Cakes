@@ -75,6 +75,11 @@ body{
 #img_list{
     list-style: none;
 }
+
+#img_list ul{
+    width:100%;
+    margin-left:30%;
+}
 .images-container{
     width:100%;
 }
@@ -88,6 +93,11 @@ body{
 .cookies_img div{
     display:inline-block;
     float:left;
+}
+
+.cookies_img div article{
+        margin-left:25%;
+        margin-top:25%; 
 }
 
 /*.cookies_img div article{

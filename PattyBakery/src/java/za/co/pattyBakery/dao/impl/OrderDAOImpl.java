@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao.impl;
+package za.co.pattyBakery.dao.impl;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -11,13 +11,13 @@ import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 import za.co.pattyBakery.database.DatabaseConnect;
-import za.co.pattybakery.Order;
-import za.co.pattybakery.Product;
-import za.co.pattybakery.ShoppingCart;
-import za.co.pattybakery.dao.OrderDAO;
-import za.co.pattybakery.exception.OrderException;
-import za.co.pattybakery.model.OrderImpl;
-import za.co.pattybakery.model.ShoppingCartImpl;
+import za.co.pattyBakery.Order;
+import za.co.pattyBakery.Product;
+import za.co.pattyBakery.ShoppingCart;
+import za.co.pattyBakery.dao.OrderDAO;
+import za.co.pattyBakery.exception.OrderException;
+import za.co.pattyBakery.model.OrderImpl;
+import za.co.pattyBakery.model.ShoppingCartImpl;
 
 /**
  *

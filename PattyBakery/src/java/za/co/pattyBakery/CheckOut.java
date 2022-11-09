@@ -1,10 +1,10 @@
-package za.co.pattybakery;
+package za.co.pattyBakery;
 
 /**
  *
  * @author Hlawulani
  */
-import za.co.pattybakery.exception.CheckOutException;
+import za.co.pattyBakery.exception.CheckOutException;
 
 public interface CheckOut {
 

@@ -34,7 +34,10 @@
             <div class="cookies_img" >
 
                 <div align='center'>
-                    <label id='cookie_label'><strong>Vanilla Cookies</strong></label>
+                    <label id='cookie_label'><strong><%
+                        String name = (String) request.getAttribute("vanilaName");
+                        out.println(name);
+                            %></strong></label>
                     <br>
                     <img src="assets/cookies/cookies_p.jpg" alt="cookies" >
                 </div>
@@ -49,17 +52,14 @@
                                             out.println(String.format("<li>%s</li>", ingredient));
                                         }
                                     %>
-                                    //                                   <li>All-purpose flour</li>
-                                    //                                    <li>Chocolate chips</li>
-                                    //                                    <li>Dried cranberries</li>
-                                    //                                    <li>Butter</li>
-                                    //                                    <li>Egg</li>
                                 </ul>
                             </li>
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
-                                    <li>Fat 9.8g</li>
-                                    <li>Protein 2.9g</li>
+                                    <%
+                                        String vanilaNutrients = (String)request.getAttribute("vanilaNu");
+                                            out.println(String.format("<li>%s</li>",vanilaNutrients));
+                                    %>
                                 </ul>
                             </li>
                         </ul>
@@ -68,7 +68,10 @@
 
             </div>
             <div id='img_price'>
-                <button id='price_button'>R75.99</button>
+                <button id='price_button'><%
+                    Double price = (Double)request.getAttribute("vanilaPrice");
+                    out.println("R"+price);
+                    %></button>
                 <button id='cart_button'>add to cart</button>
             </div>
             <div >
@@ -80,7 +83,10 @@
             <div class="cookies_img" >
 
                 <div align='center'>
-                    <label id='cookie_label'><strong>Plain Coffee Cookies</strong></label>
+                    <label id='cookie_label'><strong><%
+                        name = (String) request.getAttribute("plainName");
+                        out.println(name);
+                            %></strong></label>
                     <br>
                     <img src="assets/cookies/cokkies_pic2.jpg" alt="cookies" >
                 </div>
@@ -89,16 +95,20 @@
                         <ul>
                             <li  id='img_list'><strong>Ingredients</strong>
                                 <ul>
-                                    <li>All-purpose flour</li>
-                                    <li>Chocolate chips</li>
-                                    <li>Butter</li>
-                                    <li>Egg</li>
+                                    <%
+                                        List<String> plainIngr = (List<String>) request.getAttribute("plain");
+                                        for (String ingredient : plainIngr) {
+                                            out.println(String.format("<li>%s</li>", ingredient));
+                                        }
+                                    %>
                                 </ul>
                             </li>
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
-                                    <li>Fat 5.8g</li>
-                                    <li>Protein 1.2g</li>
+                                   <%
+                                       String plainNutrients = (String)request.getAttribute("plainNu");
+                                            out.println(String.format("<li>%s</li>",plainNutrients));
+                                    %>
                                 </ul>
                             </li>
                         </ul>
@@ -107,7 +117,10 @@
 
             </div>
             <div id='img_price'>
-                <button id='price_button'>R32.49</button>
+               <button id='price_button'><%
+                     price = (Double)request.getAttribute("plainPrice");
+                    out.println("R"+price);
+                    %></button>
                 <button id='cart_button'>add to cart</button>
             </div>
             <div >
@@ -119,7 +132,10 @@
             <div class="cookies_img" >
 
                 <div align='center'>
-                    <label id='cookie_label'><strong>Chocolate Cookie</strong></label>
+                    <label id='cookie_label'><strong><%
+                        name = (String) request.getAttribute("chocolateName");
+                        out.println(name);
+                            %></strong></label>
                     <br>
                     <img src="assets/cookies/cookies_pic1.jpg" alt="cookies" >
                 </div>
@@ -128,16 +144,20 @@
                         <ul>
                             <li  id='img_list'><strong>Ingredients</strong>
                                 <ul>
-                                    <li>All-purpose flour</li>
-                                    <li>Chocolate chips</li>
-                                    <li>Butter</li>
-                                    <li>Egg</li>
+                                    <%
+                                        List<String> chocolateIngr = (List<String>) request.getAttribute("chocolate");
+                                        for (String ingredient : chocolateIngr) {
+                                            out.println(String.format("<li>%s</li>", ingredient));
+                                        }
+                                    %>
                                 </ul>
                             </li>
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
-                                    <li>Fat 5.8g</li>
-                                    <li>Protein 1.2g</li>
+                                     <%
+                                       String chocolateNutrients = (String)request.getAttribute("chocolateNu");
+                                            out.println(String.format("<li>%s</li>",chocolateNutrients));
+                                    %>
                                 </ul>
                             </li>
                         </ul>
@@ -146,7 +166,10 @@
 
             </div>
             <div id='img_price'>
-                <button id='price_button'>R32.49</button>
+                <button id='price_button'><%
+                     price = (Double)request.getAttribute("chocolatePrice");
+                    out.println("R"+price);
+                    %></button>
                 <button id='cart_button'>add to cart</button>
             </div>
             <div >
