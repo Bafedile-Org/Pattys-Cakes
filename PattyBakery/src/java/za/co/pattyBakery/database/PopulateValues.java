@@ -46,6 +46,16 @@ public class PopulateValues {
 
         System.out.println("Categories Added");
     }
+//    public void populateEmployeeTable() {
+//        List<Integer> categoryId = getCategoryIdList(category);
+//        PreparedStatement stat;
+//        for (int i = 0; i < category.size(); i++) {
+//           new CategoryDAOImpl(con).addCategory(categoryId.get(i), category.get(i));
+//            new EmployeeDAOImpl(con).addEmployee(employee);
+//        }
+//
+//        System.out.println("Categories Added");
+//    }
 
     public void populateIngr() {
         String[] arrIngr = {"Unsalted Butter", "Eggs", "Brown Sugar", "Self Raising Flour", "Instant Coffee Granules", "Walnuts", "Icing Sugar", "Sprinkles", "Quick Muffin Mix",
