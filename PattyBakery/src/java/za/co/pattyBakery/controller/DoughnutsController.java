@@ -11,23 +11,22 @@ import javax.servlet.http.HttpServletResponse;
  *
  * @author Dimakatso Sebatane
  */
-@WebServlet(name = "CakesController", urlPatterns = {"/cakes_control"})
+@WebServlet(name = "PersonalPiesController", urlPatterns = {"/doughnuts_control"})
+public class DoughnutsController extends BakeryController {
 
-public class CakesController extends BakeryController {
-
-    String[] recipeIds = {"1RES", "2RES", "3RES"};
-    String[] productIds = {"1PRO", "2PRO", "3PRO"};
-    String[] strings = {"caramel", "margue", "chocolate"};
-    String[] productNames = {"caramelName", "margueName", "chocolateName"};
-    String[] productPrices = {"caramelPrice", "marguePrice", "chocolatePrice"};
-    String[] productNutrients = {"caramelNu", "margueNu", "chocolateNu"};
+    String[] recipeIds = {"4RES", "5RES", "6RES"};
+    String[] productIds = {"16PRO", "17PRO", "18PRO"};
+    String[] strings = {"glazedLove", "glazed", "chocolate"};
+    String[] productNames = {"glazedLoveName", "glazedName", "chocolateName"};
+    String[] productPrices = {"glazedLovePrice", "glazedPrice", "chocolatePrice"};
+    String[] productNutrients = {"glazedLoveNu", "glazedNu", "chocolateNu"};
 
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         setIngredientAttributes(recipeIds, strings, request);
         setProductName(productIds, productNames, productPrices, productNutrients, request);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cakes");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("doughnuts");
         dispatcher.forward(request, response);
     }
 }

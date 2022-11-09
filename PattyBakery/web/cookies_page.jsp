@@ -20,16 +20,23 @@
         <header>
             <nav>
                 <div class="topnav" >
+
                     <h1>
                         <a href="home"> Patty's Bakery   
-                            <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
+                            <i class="fa fa-shopping-cart" style="font-size:24px;">0</i></a>
                     </h1>
+
                 </div>
             </nav>
         </header>
+        <h1> 
+            <a align="left" href="home" style="color:black">
+                <i class="fa fa-arrow-left" aria-hidden="true">
+                </i>
+            </a>
+            <pre align="center"><h1>Cookies</h1></pre>
 
-        <h1 align='center'>Cookies</h1>
-
+        </h1>
         <div class="images-container">
             <div class="cookies_img" >
 
@@ -57,8 +64,8 @@
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
                                     <%
-                                        String vanilaNutrients = (String)request.getAttribute("vanilaNu");
-                                            out.println(String.format("<li>%s</li>",vanilaNutrients));
+                                        String vanilaNutrients = (String) request.getAttribute("vanilaNu");
+                                        out.println(String.format("<li>%s</li>", vanilaNutrients));
                                     %>
                                 </ul>
                             </li>
@@ -69,8 +76,8 @@
             </div>
             <div id='img_price'>
                 <button id='price_button'><%
-                    Double price = (Double)request.getAttribute("vanilaPrice");
-                    out.println("R"+price);
+                    Double price = (Double) request.getAttribute("vanilaPrice");
+                    out.println("R" + price);
                     %></button>
                 <button id='cart_button'>add to cart</button>
             </div>
@@ -105,9 +112,9 @@
                             </li>
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
-                                   <%
-                                       String plainNutrients = (String)request.getAttribute("plainNu");
-                                            out.println(String.format("<li>%s</li>",plainNutrients));
+                                    <%
+                                        String plainNutrients = (String) request.getAttribute("plainNu");
+                                        out.println(String.format("<li>%s</li>", plainNutrients));
                                     %>
                                 </ul>
                             </li>
@@ -117,9 +124,9 @@
 
             </div>
             <div id='img_price'>
-               <button id='price_button'><%
-                     price = (Double)request.getAttribute("plainPrice");
-                    out.println("R"+price);
+                <button id='price_button'><%
+                    price = (Double) request.getAttribute("plainPrice");
+                    out.println("R" + price);
                     %></button>
                 <button id='cart_button'>add to cart</button>
             </div>
@@ -154,9 +161,9 @@
                             </li>
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
-                                     <%
-                                       String chocolateNutrients = (String)request.getAttribute("chocolateNu");
-                                            out.println(String.format("<li>%s</li>",chocolateNutrients));
+                                    <%
+                                        String chocolateNutrients = (String) request.getAttribute("chocolateNu");
+                                        out.println(String.format("<li>%s</li>", chocolateNutrients));
                                     %>
                                 </ul>
                             </li>
@@ -167,8 +174,8 @@
             </div>
             <div id='img_price'>
                 <button id='price_button'><%
-                     price = (Double)request.getAttribute("chocolatePrice");
-                    out.println("R"+price);
+                    price = (Double) request.getAttribute("chocolatePrice");
+                    out.println("R" + price);
                     %></button>
                 <button id='cart_button'>add to cart</button>
             </div>
