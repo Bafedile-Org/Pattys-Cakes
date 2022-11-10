@@ -54,7 +54,7 @@
                     <a href="doughnuts_control"><img src="assets/doughnuts/dougnuts2.jpg" alt="Glazed Simpsons Doughnuts"></a>
                 </div>
                 <div class="slide ">
-                    <a href="cupcakes"><img src="assets/muffins/muffins_and_cupcakes.png" alt="Muffins And  Cupcakes"></a>
+                    <a href="cupcakes_control"><img src="assets/muffins/muffins_and_cupcakes.png" alt="Muffins And  Cupcakes"></a>
                 </div>
 
 

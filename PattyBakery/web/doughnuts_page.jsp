@@ -29,8 +29,8 @@
         </header>
 
          <h1> 
-            <a align="left" href="home" style="color:black">
-                <i class="fa fa-arrow-left" aria-hidden="true">
+            <a align="left" href="home" style="color:black;width:5%;">
+               <i class="fa fa-arrow-left" aria-hidden="true" style="float:left">
                 </i>
             </a>
             <pre align="center"><h1>Doughnuts</h1></pre>

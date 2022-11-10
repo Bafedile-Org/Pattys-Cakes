@@ -1,9 +1,11 @@
 /* 
     Created on : 03 Nov 2022, 9:11:59 AM
-    Author     : Dimakatso Sebatane
-*/
+    Author     : Dimakatso Sebatane*/
 
-.topnav i{
+
+*{
+    
+    .topnav i{
     float:right;
 }
 .topnav h1,h1{
@@ -19,7 +21,7 @@ body{
 .item_name{
     padding: 12px 0px;
 }
- 
+
 .item_name{
     margin-left: 5%;
 
@@ -27,9 +29,15 @@ body{
     border-style: solid;
 }
 .cupcakes_img div{
-      padding: 12px 0px;
+    padding: 12px 0px;
     float:left;
+}
 
+.cupcakes label{
+    margin-left:15%;
+}
+#cup_ingr ul{
+    background-color:white;
 }
 .cupcakes{
     clear:left;
@@ -51,6 +59,7 @@ body{
     color: #000000;
 }
 #add-to-cart-button{
+    width:12px;
     clear: left;
     margin-left:28%;
     background: #2C88CB; 
@@ -60,5 +69,6 @@ body{
 .topnav h1 a{
     text-decoration: none;
     color:black;
-    
+
+}
 }

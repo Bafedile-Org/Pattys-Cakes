@@ -18,6 +18,7 @@ Remember to work on the ingredients overlap in the cookies
 #home-header1{
     font-size:50px;
 }
+
 .home-body{
     margin:0px;
     padding:0px;
@@ -38,7 +39,9 @@ Remember to work on the ingredients overlap in the cookies
     text-decoration:none;
     color:black;
 }
-
+.fa-arrow-left{
+    display:none;
+}
 .dropdown-content{
     display:none;
     position:absolute;
@@ -83,6 +86,8 @@ body{
     width:100%;
     margin-left:30%;
 }
+
+
 .images-container{
     width:100%;
 }
@@ -440,4 +445,5 @@ a.facebook .facebook-icon{
     font-size:25px;
 
 }
+
 

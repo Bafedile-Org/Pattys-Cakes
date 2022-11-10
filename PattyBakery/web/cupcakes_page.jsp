@@ -4,6 +4,7 @@
     Author     : Bridget Bapela
 --%>
 
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -18,7 +19,7 @@
         <header>
             <nav>
                 <div class="topnav" >
-                     <h1 align="center">
+                    <h1 align="center">
                         <a href="home"> Patty's Bakery   
                             <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
                     </h1>
@@ -27,126 +28,135 @@
 
             </nav>
         </header>
-        <h1 align="center">Cupcakes/ <a href="muffins">Muffins</a></h1>
+        <h1> 
+            <a align="left" href="home" style="color:black;width:5%;">
+                <i class="fa fa-arrow-left" aria-hidden="true" style="float:left">
+                </i>
+            </a>
+            <pre align="center"><h1>Cupcakes/<a href="muffins_control">Muffins</a></h1></pre>
 
-        <div class="cupcakes_img">
+        </h1>
+
+        <div class="cupcakes_img" style="margin-left:2%;">
+
             <div class="cupcakes">
-                <label style="margin-left: 5%;
+
+                <label style="margin-left: 25%;
                        font-size: 25px;
-                       border-style: solid"><strong>Coffee and Walnut Cupcakes</strong></label><br>
+                       border-style: solid;margin-top:10%">
+                    <strong><%
+                        String name = (String) request.getAttribute("walnutName");
+                        out.println(name);
+                        %></strong>
+                </label><br>
                 <img id="cup_img" src="assets/cupcakes/coffeecupcake.jfif" alt="cookies" width="500" height="400"> <br> 
             </div>
-            <div>
-                <ul>
-                    <li>Ingredients</li><ul>
-                        <li>unsalted butter</li>
-                        <li>eggs</li>
-                        <li>brown sugar</li>
-                        <li>self raising flour</li>
-                        <li>instant coffee granules</li>
-                        <li>walnuts</li>
-                        <li>icing sugar</li>
-                        <li>sprinkles</li>
+            <div id="cup_ingr">
+                <ul style="margin-top:20%;">
+                     <p><strong>Ingredients</strong></p><ul>
+                        <%
+                            List<String> ingredients = (List<String>) request.getAttribute("walnut");
+                            for (String ingredient : ingredients) {
+                                out.println(String.format("<li>%s</li>", ingredient));
+                            }
+                        %>
                     </ul>
-                    <li>Nutrients</li><ul>
-                        <li>Calories 502</li>
-                        <li>Fat 30g</li>
-                        <li>Saturated fat 15g</li>
-                        <li>Trans fat 1g</li>
-                        <li>cholesterol 105mg</li>
-                        <li>Carbs 56g</li>
-                        <li>Fiber 1g</li>
-                        <li>Sugar 43g</li>
-                        <li>Sodium 26mg</li>
-                        <li>Protein 5g</li>
+                    <p><strong>Nutrients</strong></p><ul>
+                        <%
+                            String nutrients = (String) request.getAttribute("walnutNu");
+                            out.println(String.format("<li>%s</li>", nutrients));
+                        %>
                     </ul>
 
                 </ul>
             </div>  
             <div class="cont">  
-                <button id="price-button">R45.99</button>  
+                <button id="price-button"><%
+                    Double price = (Double) request.getAttribute("walnutPrice");
+                    out.println("R" + price);
+                    %></button>  
                 <button id="add-to-cart-button"> Add to cart</button>  
             </div>
         </div>
-        <div class="cupcakes_img">
+        <div class="cupcakes_img" style="margin-left:2%;">
 
             <div class="cupcakes">
-                <label style="margin-left: 5%;
 
+                 <label style="margin-left: 15%;
                        font-size: 25px;
-                       border-style: solid"><strong>Gluten Free Chocolate Cupcakes</strong></label><br>
+                       border-style: solid;margin-top:10%">
+                    <strong><%
+                        name = (String) request.getAttribute("chocolateName");
+                        out.println(name);
+                        %></strong>
+                </label><br>
                 <img id="cup_img" src="assets/cupcakes/glutten_free_chocolate_cupcakes.jpg" alt="cookies" width="500" height="400"> <br> 
             </div>
             <div>
-                <ul>
-                    <li>Ingredients</li><ul>
-                        <li>unsalted butter</li>
-                        <li>eggs</li>
-                        <li>brown sugar</li>
-                        <li>self raising flour</li>
-                        <li>instant coffee granules</li>
-                        <li>walnuts</li>
-                        <li>icing sugar</li>
-                        <li>sprinkles</li>
+                <ul style="margin-top:20%;">
+                     <p><strong>Ingredients</strong></p><ul>
+                        <%
+                            ingredients = (List<String>) request.getAttribute("chocolate");
+                            for (String ingredient : ingredients) {
+                                out.println(String.format("<li>%s</li>", ingredient));
+                            }
+                        %>
                     </ul>
-                    <li>Nutrients</li><ul>
-                        <li>Calories 502</li>
-                        <li>Fat 30g</li>
-                        <li>Saturated fat 15g</li>
-                        <li>Trans fat 1g</li>
-                        <li>cholesterol 105mg</li>
-                        <li>Carbs 56g</li>
-                        <li>Fiber 1g</li>
-                        <li>Sugar 43g</li>
-                        <li>Sodium 26mg</li>
-                        <li>Protein 5g</li>
+                    <p><strong>Nutrients</strong></p><ul>
+                        <%
+                            nutrients = (String) request.getAttribute("chocolateNu");
+                            out.println(String.format("<li>%s</li>", nutrients));
+                        %>
                     </ul>
 
                 </ul>
             </div>  
             <div class="cont">  
-                <button id="price-button">R45.99</button>  
+                <button id="price-button"><%
+                    price = (Double) request.getAttribute("chocolatePrice");
+                    out.println("R" + price);
+                    %></button>  
                 <button id="add-to-cart-button"> Add to cart</button>  
             </div>
         </div>
-        <div class="cupcakes_img">
+       <div class="cupcakes_img" style="margin-left:2%;">
 
             <div class="cupcakes">
-                 <label style="margin-left: 5%;
 
+                 <label style="margin-left: 25%;
                        font-size: 25px;
-                       border-style: solid"><strong>Vegan Vanilla Cupcakes</strong></label><br>
+                       border-style: solid;margin-top:10%">
+                    <strong><%
+                        name = (String) request.getAttribute("vanilaName");
+                        out.println(name);
+                        %></strong>
+                </label><br>
                 <img id="cup_img" src="assets/cupcakes/IMG_3165.webp" alt="cookies" width="500" height="400"> <br> 
             </div>
             <div>
-                <ul>
-                    <li>Ingredients</li><ul>
-                        <li>unsalted butter</li>
-                        <li>eggs</li>
-                        <li>brown sugar</li>
-                        <li>self raising flour</li>
-                        <li>instant coffee granules</li>
-                        <li>walnuts</li>
-                        <li>icing sugar</li>
-                        <li>sprinkles</li>
+               <ul style="margin-top:20%;">
+                     <p><strong>Ingredients</strong></p><ul>
+                        <%
+                            ingredients = (List<String>) request.getAttribute("vanila");
+                            for (String ingredient : ingredients) {
+                                out.println(String.format("<li>%s</li>", ingredient));
+                            }
+                        %>
                     </ul>
-                    <li>Nutrients</li><ul>
-                        <li>Calories 502</li>
-                        <li>Fat 30g</li>
-                        <li>Saturated fat 15g</li>
-                        <li>Trans fat 1g</li>
-                        <li>cholesterol 105mg</li>
-                        <li>Carbs 56g</li>
-                        <li>Fiber 1g</li>
-                        <li>Sugar 43g</li>
-                        <li>Sodium 26mg</li>
-                        <li>Protein 5g</li>
+                     <p><strong>Nutrients</strong></p><ul>
+                        <%
+                            nutrients = (String) request.getAttribute("vanilaNu");
+                            out.println(String.format("<li>%s</li>", nutrients));
+                        %>
                     </ul>
 
                 </ul>
             </div>  
             <div class="cont">  
-                <button id="price-button">R45.99</button>  
+                <button id="price-button"><%
+                    price = (Double) request.getAttribute("vanilaPrice");
+                    out.println("R" + price);
+                    %></button>  
                 <button id="add-to-cart-button"> Add to cart</button>  
             </div>
         </div>
