@@ -472,7 +472,8 @@ a.facebook .facebook-icon{
 }
 
 .leftside {
-    background-image: url("../assets/checkout.jpg");
+    
+    background-image: url(../assets/categories.jpg);
     width: 35rem;
     display: inline-flex;
     align-items: center;

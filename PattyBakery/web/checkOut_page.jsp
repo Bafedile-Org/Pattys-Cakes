@@ -22,7 +22,7 @@
                 <h1 align="center" id="home-header1"> Check out
                     <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                         <div class="dropdown-content">
-                        <a href="management_page.jsp">Back</a>
+                        <a href="confirmation_page.jsp">Back</a>
                         </div>
                     </i>
                 </h1>

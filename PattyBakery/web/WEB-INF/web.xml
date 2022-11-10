@@ -139,7 +139,9 @@
         <!--<welcome-file>ingredient_page.jsp</welcome-file>-->
         <!--<welcome-file>stock_page.jsp</welcome-file>-->
         <!-- <welcome-file>order_page.jsp</welcome-file>-->
-        <welcome-file>checkOut_page.jsp</welcome-file>
+       <!-- <welcome-file>checkOut_page.jsp</welcome-file>-->
+               <welcome-file>confirmation_page.jsp</welcome-file>
+
 
 
        

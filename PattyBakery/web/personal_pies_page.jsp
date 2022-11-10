@@ -51,7 +51,7 @@
                 <button id="b">R59.99</button>
                 <button id="b1">add to cart</button>
             </div>
-            <div class="button">
+            <div class="buttom">
                 <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
             </div>
                     </div>
@@ -83,7 +83,7 @@
                     <button id="b">R54.50</button>
                 <button id="b1">add to cart</button>
             </div>
-                <div class="button">
+                <div class="buttom">
                     <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
             </div></div>
                 <div class="label_div">
@@ -112,7 +112,7 @@
                     <button id="b">R54.49</button>
               <button id="b1">add to cart</button>
             </div>
-            <div class="button">
+            <div class="buttom">
                     <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
             </div></div>
                 <div class="label_div">
