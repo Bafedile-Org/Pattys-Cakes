@@ -14,6 +14,6 @@ public class Main {
         Connection dbCon = DatabaseConnect.getInstance().getConnection();
 
         Recipe recipe = new RecipeDAOImpl(dbCon).getRecipeById("13RES");
-        System.out.println(recipe.toString());
+        //System.out.println(recipe.toString());
     }
 }

@@ -10,7 +10,7 @@
   width: 100%;
   height: 100%;
   margin: 0;
-  background-color:#C799BA;
+  background-color:#D9D9D9;
   font-family: 'Roboto', sans-serif;
   clear:left;
 }
@@ -21,7 +21,7 @@
   width: 750px;
   height: 423px;
   margin: 80px auto;
-  background: #C799BA;
+  background: #D9D9D9;
   box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
   border-radius: 6px;
  
@@ -67,6 +67,7 @@
   color: #43484D;
   font-weight: 300;
 }
+
 .checkout{
     clear: left;
      text-align: center;
@@ -110,7 +111,7 @@ input:focus {
     justify-content: center;
   }
   .image img {
-    width: 50%;
+    width: 60%;
   }
   .image,
   .quantity,
