@@ -1,7 +1,7 @@
-package za.co.pattybakery.dao;
+package za.co.pattyBakery.dao;
 
 import java.util.List;
-import za.co.pattybakery.Product;
+import za.co.pattyBakery.Product;
 
 /**
  *
@@ -10,6 +10,8 @@ import za.co.pattybakery.Product;
 public interface ProductDAO extends Close {
 
     void addProduct(Product product);
+
+    public void addProductByIds(Product product);
 
     Product getProductById(String productId);
 
@@ -22,4 +24,6 @@ public interface ProductDAO extends Close {
     void updateProductCategory(String productId, String category);
 
     List<Product> getAllProducts();
+
+    public List<String> getAllProductsIds();
 }

@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao;
+package za.co.pattyBakery.dao;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface IngredientsDAO extends Close {
 
-    public void addIngridient(String ingredient, Integer quantity);
+    public void addIngridient(String ingredientId, String ingredient, Integer quantity);
 
     public void updateIngredient(String ingredientId, String ingredient);
 
@@ -17,4 +17,6 @@ public interface IngredientsDAO extends Close {
     public String getIngredientById(String ingredientId);
 
     public List<String> getAllIngredient();
+
+    public List<String> getAllIngredientsId();
 }

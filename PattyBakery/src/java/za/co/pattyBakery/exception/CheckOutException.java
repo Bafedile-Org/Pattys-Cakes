@@ -1,13 +1,12 @@
-
-package za.co.pattybakery.exception;
+package za.co.pattyBakery.exception;
 
 /**
  *
  * @author Hlawulani
  */
+public class CheckOutException extends Exception {
 
-public class CheckOutException extends Exception{
-    public CheckOutException(String msg){
+    public CheckOutException(String msg) {
         super(msg);
     }
 }

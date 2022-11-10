@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao.impl;
+package za.co.pattyBakery.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import za.co.pattybakery.dao.NutrientsDAO;
+import za.co.pattyBakery.database.DatabaseConnect;
+import za.co.pattyBakery.dao.NutrientsDAO;
 
 /**
  *
@@ -19,14 +20,18 @@ public class NutrientsDAOImpl implements NutrientsDAO {
     private Connection con = null;
 
     public NutrientsDAOImpl() {
+        con = DatabaseConnect.getInstance().getConnection();
+    }
 
+    public NutrientsDAOImpl(Connection con) {
+        this.con = con;
     }
 
     @Override
     public void addNutrient(String nutrientId, String nutrient) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO nutrients VALUE(?,?)");
+                preparedStatement = con.prepareStatement("INSERT IGNORE  INTO nutrients VALUE(?,?)");
                 preparedStatement.setString(1, nutrientId);
                 preparedStatement.setString(2, nutrient);
                 preparedStatement.executeUpdate();

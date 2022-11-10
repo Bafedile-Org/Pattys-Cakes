@@ -1,7 +1,7 @@
 package za.co.pattyBakery.service.impl;
 
 import java.util.List;
-import za.co.pattybakery.dao.IngredientsDAO;
+import za.co.pattyBakery.dao.IngredientsDAO;
 
 /**
  *
@@ -33,11 +33,11 @@ public class IngredientsServImpl implements IngredientsDAO {
     }
 
     @Override
-    public void addIngridient(String ingredient, Integer quantity) {
+    public void addIngridient(String ingredientId, String ingredient, Integer quantity) {
         if (ingredient == null || quantity <= 0) {
             return;
         }
-        ingredientDAOImpl.addIngridient(ingredient, quantity);
+        ingredientDAOImpl.addIngridient(ingredientId, ingredient, quantity);
     }
 
     @Override
@@ -46,6 +46,12 @@ public class IngredientsServImpl implements IngredientsDAO {
             return null;
         }
         return ingredientDAOImpl.getIngredientById(ingredientId);
+    }
+
+    @Override
+    public List<String> getAllIngredientsId() {
+
+        return ingredientDAOImpl.getAllIngredientsId();
     }
 
 }

@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao.impl;
+package za.co.pattyBakery.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import za.co.pattybakery.dao.CategoryDAO;
+import za.co.pattyBakery.database.DatabaseConnect;
+import za.co.pattyBakery.dao.CategoryDAO;
 
 /**
  *
@@ -19,14 +20,20 @@ public class CategoryDAOImpl implements CategoryDAO {
     private Connection con = null;
 
     public CategoryDAOImpl() {
+        con = DatabaseConnect.getInstance().getConnection();
+    }
+
+    public CategoryDAOImpl(Connection con) {
+        this.con = con;
     }
 
     @Override
-    public void addCategory(String category) {
+    public void addCategory(Integer categoryId, String category) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO category (category) VALUES(?)");
-                preparedStatement.setString(1, category);
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO category (cat_id,category) VALUES(?,?)");
+                preparedStatement.setInt(1, categoryId);
+                preparedStatement.setString(2, category);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException sql) {

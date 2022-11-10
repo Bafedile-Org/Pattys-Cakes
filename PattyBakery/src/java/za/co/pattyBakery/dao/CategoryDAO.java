@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao;
+package za.co.pattyBakery.dao;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface CategoryDAO extends Close {
 
-    public void addCategory(String category);
+    public void addCategory(Integer categoryId, String category);
 
     public void updateCategory(Integer categoryId, String category);
 

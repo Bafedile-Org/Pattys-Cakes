@@ -19,6 +19,10 @@ public class DatabaseConnect {
     }
 
     private DatabaseConnect() {
+        connect();
+    }
+
+    public void connect() {
         try {
             Class.forName("org.gjt.mm.mysql.Driver");
         } catch (ClassNotFoundException cnf) {
@@ -36,16 +40,20 @@ public class DatabaseConnect {
         System.out.println("Connection Achieved.");
 
         CustomerTable();
-
         EmployeeTable();
         IngredientsTable();
         NutrientsTable();
         CategoryTable();
+        RecipeTable();
         ProductTable();
         StockTable();
         OrderTable();
         TotalOrderTable();
         createLoginTable();
+
+        //Populate tables 
+        PopulateValues p = new PopulateValues(con);
+        p.addAll();
     }
 
     public static DatabaseConnect getInstance() {
@@ -53,11 +61,12 @@ public class DatabaseConnect {
     }
 
     public Connection getConnection() {
+//        connect();
         return con;
     }
 
     private static void createDatabase() {
-        PreparedStatement stat = null;
+        PreparedStatement stat;
         try {
             con.prepareStatement("CREATE DATABASE IF NOT EXISTS pattyBakery").executeUpdate();
             con.prepareStatement("USE pattyBakery").executeUpdate();
@@ -77,7 +86,7 @@ public class DatabaseConnect {
     }
 
     private static void CustomerTable() {
-        PreparedStatement stat = null;
+        PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS customer (cust_id INTEGER AUTO_INCREMENT PRIMARY KEY,name VARCHAR(20),"
                     + "surname VARCHAR(20),idNum VARCHAR(13),tel VARCHAR(20),email VARCHAR(20),address VARCHAR(20))");
@@ -89,7 +98,7 @@ public class DatabaseConnect {
     }
 
     private static void EmployeeTable() {
-        PreparedStatement stat = null;
+        PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS employee (emp_id INTEGER AUTO_INCREMENT PRIMARY KEY,name VARCHAR(20),"
                     + "surname VARCHAR(20),idNum VARCHAR(13),tel VARCHAR(20),email VARCHAR(20),address VARCHAR(20),title VARCHAR(20))");
@@ -101,11 +110,11 @@ public class DatabaseConnect {
     }
 
     private static void ProductTable() {
-        PreparedStatement stat = null;
+        PreparedStatement stat;
         try {
-            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS product (prod_id VARCHAR(10) PRIMARY KEY,price Double, nutr_id VARCHAR(10) NOT NULL ,"
-                    + "ingr_id VARCHAR(10) NOT NULL ,cat_id VARCHAR(10) NOT NULL REFERENCES category(cat_id),"
-                    + "FOREIGN KEY(nutr_id) REFERENCES nutrients(nutr_id),FOREIGN Key(ingr_id) REFERENCES ingredients(ingr_id))");
+            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS product (prod_id VARCHAR(10) PRIMARY KEY,prod_name VARCHAR(200),price Double, nutr_id VARCHAR(10) NOT NULL ,"
+                    + "recp_id VARCHAR(10) NOT NULL ,cat_id INTEGER NOT NULL,"
+                    + "FOREIGN KEY(nutr_id) REFERENCES nutrients(nutr_id),FOREIGN Key(recp_id) REFERENCES recipe(recp_id),FOREIGN KEY(cat_id)  REFERENCES category(cat_id))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create product table.." + sql.getMessage());
@@ -114,7 +123,7 @@ public class DatabaseConnect {
     }
 
     private static void IngredientsTable() {
-        PreparedStatement stat = null;
+        PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS ingredients (ingr_id VARCHAR(10) PRIMARY KEY,"
                     + "ingredient VARCHAR(100),quantity INTEGER(50))");
@@ -125,8 +134,20 @@ public class DatabaseConnect {
         System.out.println("Ingredients table created");
     }
 
+    private static void RecipeTable() {
+        PreparedStatement stat;
+        try {
+            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS recipe (recp_id VARCHAR(10) ,"
+                    + "ingr_id VARCHAR(10),PRIMARY KEY(recp_id,ingr_id),FOREIGN KEY(ingr_id) REFERENCES ingredients(ingr_id))");
+            stat.executeUpdate();
+        } catch (SQLException sql) {
+            System.out.println("Failed to create recipe table.." + sql.getMessage());
+        }
+        System.out.println("Recipe table created");
+    }
+
     private static void NutrientsTable() {
-        PreparedStatement stat = null;
+        PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS nutrients (nutr_id VARCHAR(10) PRIMARY KEY,nutrient VARCHAR(100))");
             stat.executeUpdate();
@@ -137,9 +158,9 @@ public class DatabaseConnect {
     }
 
     private static void CategoryTable() {
-        PreparedStatement stat = null;
+        PreparedStatement stat;
         try {
-            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS category (cat_id INTEGER AUTO_INCREMENT PRIMARY KEY,category VARCHAR(100))");
+            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS category (cat_id INTEGER PRIMARY KEY,category VARCHAR(100))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create category table.." + sql.getMessage());
@@ -148,7 +169,7 @@ public class DatabaseConnect {
     }
 
     private static void OrderTable() {
-        PreparedStatement stat = null;
+        PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS orders (order_id VARCHAR(10) PRIMARY KEY,prod_id VARCHAR(10) NOT NULL ,quantity INTEGER,delivered BOOLEAN,date DATE,FOREIGN KEY(prod_id) REFERENCES product(prod_id))");
             stat.executeUpdate();
@@ -159,7 +180,7 @@ public class DatabaseConnect {
     }
 
     private static void TotalOrderTable() {
-        PreparedStatement stat = null;
+        PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS total_orders (order_id VARCHAR(10) NOT NULL ,"
                     + "totalAmount DOUBLE,FOREIGN KEY(order_id) REFERENCES orders(order_id))");
@@ -171,7 +192,7 @@ public class DatabaseConnect {
     }
 
     private static void StockTable() {
-        PreparedStatement stat = null;
+        PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS stock (prod_id VARCHAR(10) NOT NULL,"
                     + "quantity INTEGER(255),FOREIGN KEY(prod_id) REFERENCES product(prod_id))");

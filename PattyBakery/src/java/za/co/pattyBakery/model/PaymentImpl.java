@@ -1,7 +1,7 @@
-package za.co.pattybakery.model;
+package za.co.pattyBakery.model;
 
-import za.co.pattybakery.Payment;
-import za.co.pattybakery.exception.PaymentException;
+import za.co.pattyBakery.Payment;
+import za.co.pattyBakery.exception.PaymentException;
 
 public class PaymentImpl implements Payment {
 

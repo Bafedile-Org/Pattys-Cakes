@@ -1,14 +1,13 @@
-package za.co.pattybakery.model;
+package za.co.pattyBakery.model;
 
 /**
  *
  * @author Hlawulani
  */
-
-import za.co.pattybakery.CheckOut;
-import za.co.pattybakery.Payment;
-import za.co.pattybakery.ShoppingCart;
-import za.co.pattybakery.exception.CheckOutException;
+import za.co.pattyBakery.CheckOut;
+import za.co.pattyBakery.Payment;
+import za.co.pattyBakery.ShoppingCart;
+import za.co.pattyBakery.exception.CheckOutException;
 
 public class CheckOutImpl implements CheckOut {
 

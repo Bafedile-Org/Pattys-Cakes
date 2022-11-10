@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao.impl;
+package za.co.pattyBakery.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import za.co.pattybakery.dao.EmployeeDAO;
-import za.co.pattybakery.model.EmployeeImpl;
+import za.co.pattyBakery.database.DatabaseConnect;
+import za.co.pattyBakery.dao.EmployeeDAO;
+import za.co.pattyBakery.model.EmployeeImpl;
 
 /**
  *
@@ -17,13 +18,21 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 
     private PreparedStatement preparedStatement = null;
     private ResultSet resultSet = null;
-    private Connection conn = null;
+    private Connection con = null;
+
+    public EmployeeDAOImpl() {
+        con = DatabaseConnect.getInstance().getConnection();
+    }
+
+    public EmployeeDAOImpl(Connection con) {
+        this.con = con;
+    }
 
     @Override
     public void addEmployee(EmployeeImpl employee) {
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("INSERT INTO employee (name, surname,identityNum,tel, email, address,title) VALUES(?,?,?,?,?,?,?);");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO employee (name, surname,identityNum,tel, email, address,title) VALUES(?,?,?,?,?,?,?);");
                 preparedStatement.setString(1, employee.getName());
                 preparedStatement.setString(2, employee.getSurname());
                 preparedStatement.setString(3, employee.getIdNumber());
@@ -47,8 +56,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public EmployeeImpl getEmployeeById(Integer employeeId) {
         EmployeeImpl employee = null;
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("SELECT * FROM employee WHERE emp_id = ?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT * FROM employee WHERE emp_id = ?");
                 preparedStatement.setInt(1, employeeId);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
@@ -68,8 +77,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public void removeEmployee(Integer employeeId) {
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("DELETE  FROM employee WHERE emp_id = ?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("DELETE  FROM employee WHERE emp_id = ?");
                 preparedStatement.setInt(1, employeeId);
                 preparedStatement.executeUpdate();
             }
@@ -84,8 +93,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public void updateEmployeeTel(Integer employeeId, String tel) {
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE employee SET  tel =?  WHERE emp_id = ?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("UPDATE employee SET  tel =?  WHERE emp_id = ?");
                 preparedStatement.setString(1, tel);
                 preparedStatement.setInt(2, employeeId);
                 preparedStatement.executeUpdate();
@@ -101,8 +110,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public void updateEmployeeEmail(Integer employeeId, String email) {
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE employee SET  email =?  WHERE emp_id = ?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("UPDATE employee SET  email =?  WHERE emp_id = ?");
                 preparedStatement.setString(1, email);
                 preparedStatement.setInt(2, employeeId);
                 preparedStatement.executeUpdate();
@@ -118,8 +127,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     @Override
     public void updateEmployeeAddress(Integer employeeId, String address) {
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("UPDATE employee SET  address =?  WHERE emp_id = ?");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("UPDATE employee SET  address =?  WHERE emp_id = ?");
                 preparedStatement.setString(1, address);
                 preparedStatement.setInt(2, employeeId);
                 preparedStatement.executeUpdate();
@@ -137,8 +146,8 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         List<EmployeeImpl> employees = new ArrayList<>();
         EmployeeImpl employee = null;
         try {
-            if (conn != null) {
-                preparedStatement = conn.prepareStatement("SELECT * FROM customer;");
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT * FROM customer;");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
                     employee = new EmployeeImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),

@@ -10,8 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cupcakes Page</title>
-        <link rel = "stylesheet" href="css/style.css">
-        <!--<link rel="stylesheet" href="assets/all.css">-->
+        <link rel = "stylesheet" href="css/styles.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
     </head>
@@ -19,7 +18,7 @@
         <header>
             <nav>
                 <div class="topnav" >
-                     <h1>
+                     <h1 align="center">
                         <a href="home"> Patty's Bakery   
                             <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
                     </h1>
@@ -28,6 +27,7 @@
 
             </nav>
         </header>
+
         <h1 align="center">Cupcakes </h1>
         <div id="label_div">
             <label><strong>Coffee and Walnut Cupcakes</strong></label><br>
@@ -35,7 +35,18 @@
             
                 <img src="assets/cupcakes/coffeecupcake.jfif">
             <article>
-            <p id="img_list"><strong>Ingredients:</strong>
+
+        <h1 align="center">Cupcakes/ <a href="muffins">Muffins</a></h1>
+
+        <div class="cupcakes_img">
+            <div class="cupcakes">
+                <label style="margin-left: 5%;
+                       font-size: 25px;
+                       border-style: solid"><strong>Coffee and Walnut Cupcakes</strong></label><br>
+                <img id="cup_img" src="assets/cupcakes/coffeecupcake.jfif" alt="cookies" width="500" height="400"> <br> 
+            </div>
+            <div>
+
                 <ul>
                         <li>unsalted butter</li>
                         <li>eggs</li>
@@ -69,15 +80,12 @@
         </div></div>
         <div class="cupcakes_img">
 
-            <div>
-                <div class="item_name"> 
-                    
-                </div>
+            <div class="cupcakes">
                 <label style="margin-left: 5%;
 
                        font-size: 25px;
                        border-style: solid"><strong>Gluten Free Chocolate Cupcakes</strong></label><br>
-                <img src="assets/cupcakes/glutten_free_chocolate_cupcakes.jpg" alt="cookies" width="500" height="400"> <br> 
+                <img id="cup_img" src="assets/cupcakes/glutten_free_chocolate_cupcakes.jpg" alt="cookies" width="500" height="400"> <br> 
             </div>
             <div>
                 <ul>
@@ -113,15 +121,12 @@
         </div>
         <div class="cupcakes_img">
 
-            <div>
-                <div class="item_name"> 
-                    
-                </div>
+            <div class="cupcakes">
                  <label style="margin-left: 5%;
 
                        font-size: 25px;
                        border-style: solid"><strong>Vegan Vanilla Cupcakes</strong></label><br>
-                <img src="assets/cupcakes/IMG_3165.webp" alt="cookies" width="500" height="400"> <br> 
+                <img id="cup_img" src="assets/cupcakes/IMG_3165.webp" alt="cookies" width="500" height="400"> <br> 
             </div>
             <div>
                 <ul>

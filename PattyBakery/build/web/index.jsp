@@ -64,6 +64,42 @@
                                 <label for="r5" class="bar"></label>
                             </div>
                         </div>
+
+        <div class="slidershow middle">
+            <div class="slides">
+                <input type="radio" name="r" id="r1" checked>
+                <input type="radio" name="r" id="r2" >
+                <input type="radio" name="r" id="r3" >
+                <input type="radio" name="r" id="r4" >
+                <input type="radio" name="r" id="r5" >
+
+                <div class="slide s1">
+                    <a href="cookies_control"><img src="assets/cookies/cokkies_pic2.jpg" alt="Plain Coffee Cookies"></a>
+                </div>
+                <div class="slide ">
+                    <a href="cakes_control"><img src="assets/cakes/rainbow_cake3.jpg" alt="Rainbow Cake"></a>
+                </div>
+                <div class="slide ">
+                    <a href="pies_control"><img src="assets/personal_pies/blueberry pies.jpg" alt="Blueberry Pies"></a>
+                </div>
+                <div class="slide ">
+                    <a href="doughnuts_control"><img src="assets/doughnuts/dougnuts2.jpg" alt="Glazed Simpsons Doughnuts"></a>
+                </div>
+                <div class="slide ">
+                    <a href="cupcakes"><img src="assets/muffins/muffins_and_cupcakes.png" alt="Muffins And  Cupcakes"></a>
+                </div>
+
+
+            </div>
+            <div class="navigation">
+                <label for="r1" class="bar"></label>
+                <label for="r2" class="bar"></label>
+                <label for="r3" class="bar"></label>
+                <label for="r4" class="bar"></label>
+                <label for="r5" class="bar"></label>
+            </div>
+        </div>
+
         <div class="contact-div">
             <h4 align="center">Contact</h4>
             <div><i class="fa fa-phone" aria-hidden="true">+27712345536</i></div>

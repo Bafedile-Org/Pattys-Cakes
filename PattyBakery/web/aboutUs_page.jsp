@@ -46,7 +46,7 @@
                 <p>The smell of freshly baked bread, staff that are truly excited to serve you, and food to die for!</p>
                 <p>We’ve spent lots of time creating an authentic cafe that will comfort the senses, and the appetite.</p><br>
                 <p>Our updated menu features the classics, and a few of our own favorites.</p>
-                <button>Download Menu</button><br>
+                <button id="menu-btn">Download Menu</button><br>
                 <p><strong>Take-aways & Delivery</strong></p>
                 <p>We’re proud to announce the addition of a take away and home delivery service.</p>
                 <p>Now you can get a quick bite to eat, or get your favorites delivered straight to your door.</p>

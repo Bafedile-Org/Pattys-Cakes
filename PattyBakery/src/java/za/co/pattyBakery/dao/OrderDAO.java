@@ -1,8 +1,8 @@
-package za.co.pattybakery.dao;
+package za.co.pattyBakery.dao;
 
 import java.util.List;
-import za.co.pattybakery.Order;
-import za.co.pattybakery.ShoppingCart;
+import za.co.pattyBakery.Order;
+import za.co.pattyBakery.ShoppingCart;
 
 /**
  *

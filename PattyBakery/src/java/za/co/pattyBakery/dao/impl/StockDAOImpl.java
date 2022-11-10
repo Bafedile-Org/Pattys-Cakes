@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao.impl;
+package za.co.pattyBakery.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,11 +6,12 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import za.co.pattybakery.Product;
-import za.co.pattybakery.dao.StockDAO;
-import za.co.pattybakery.exception.OrderException;
-import za.co.pattybakery.exception.ProductException;
-import za.co.pattybakery.model.Stock;
+import za.co.pattyBakery.database.DatabaseConnect;
+import za.co.pattyBakery.Product;
+import za.co.pattyBakery.dao.StockDAO;
+import za.co.pattyBakery.exception.OrderException;
+import za.co.pattyBakery.exception.ProductException;
+import za.co.pattyBakery.model.Stock;
 
 /**
  *
@@ -23,15 +24,35 @@ public class StockDAOImpl implements StockDAO {
     private Connection con = null;
 
     public StockDAOImpl() {
+        con = DatabaseConnect.getInstance().getConnection();
+    }
 
+    public StockDAOImpl(Connection con) {
+        this.con = con;
     }
 
     @Override
     public void addStock(Product product, Integer quantity) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO stock  VALUE(?,?)");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO stock  VALUES(?,?)");
                 preparedStatement.setString(1, product.getProductId());
+                preparedStatement.setInt(2, quantity);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+    }
+
+    @Override
+    public void addStockById(String productId, Integer quantity) {
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO stock  VALUES(?,?)");
+                preparedStatement.setString(1, productId);
                 preparedStatement.setInt(2, quantity);
                 preparedStatement.executeUpdate();
             }
