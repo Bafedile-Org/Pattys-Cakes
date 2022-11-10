@@ -13,6 +13,7 @@ import za.co.pattyBakery.dao.impl.CategoryDAOImpl;
 import za.co.pattyBakery.dao.impl.IngredientsDAOImpl;
 import za.co.pattyBakery.dao.impl.NutrientsDAOImpl;
 import za.co.pattyBakery.dao.impl.ProductDAOImpl;
+import za.co.pattyBakery.dao.impl.ProductNutrientDAOImpl;
 import za.co.pattyBakery.dao.impl.StockDAOImpl;
 import za.co.pattyBakery.exception.ProductException;
 import za.co.pattyBakery.model.ProductImpl;
@@ -265,27 +266,28 @@ public class PopulateValues {
         }
 
     }
-//    public void addCakeRecipiesIngredients() {
-//        Integer caramelCakeIngrId[] = {3, 1, 2, 4, 15, 19, 36, 13};
-//        Integer marigueCakeIngrId[] = {3, 2, 4, 15, 42, 41};
-//        Integer chocolateCakeIngrId[] = {3, 1, 2, 4, 43, 19};
-//        Integer[] grams = {};
-//        try {
-//            for (int i = 0; i < caramelCakeIngrId.length; i++) {
-//                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id,grams) VALUES ('%s','%s',%d)", "4RES", caramelCakeIngrId[i] + "ING")).executeUpdate();
-//            }
-//            for (int i = 0; i < marigueCakeIngrId.length; i++) {
-//                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id,grams) VALUES ('%s','%s',%d)", "5RES", marigueCakeIngrId[i] + "ING")).executeUpdate();
-//            }
-//            for (int i = 0; i < chocolateCakeIngrId.length; i++) {
-//                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id,grams) VALUES ('%s','%s',%d)", "6RES", chocolateCakeIngrId[i] + "ING")).executeUpdate();
-//            }
-//            System.out.println("cake recipe/ingredient created");
-//        } catch (SQLException sql) {
-//            System.out.println(String.format("ERROR: cake recipe/ingredient failed at creation time\t%s", sql.getMessage()));
-//        }
-//
-//    }
+
+    public void addCakeProductNutrient() {
+        String productIds[] = {"1PRO", "2PRO", "3PRO"};
+        Integer[] caramelNutrientIds = {1, 2, 3, 4};
+        Integer[] marigueNutrientIds = {1, 3, 2, 4};
+        Integer[] chocolateNutrientIds = {1, 2, 3, 4};
+        Double[] caramelGrams = {1.0, 2.0, 3.0, 4.0};
+        Double[] marigueGrams = {};
+        Double[] chocolateGrams = {};
+        for (int i = 0; i < caramelNutrientIds.length; i++) {
+            new ProductNutrientDAOImpl(con).addProductNutrient(productIds[0], caramelNutrientIds[i] + "NT", new SecureRandom().nextDouble());
+        }
+        for (int i = 0; i < marigueNutrientIds.length; i++) {
+            new ProductNutrientDAOImpl(con).addProductNutrient(productIds[0], marigueNutrientIds[i] + "NT", new SecureRandom().nextDouble());
+
+        }
+        for (int i = 0; i < chocolateNutrientIds.length; i++) {
+            new ProductNutrientDAOImpl(con).addProductNutrient(productIds[0], chocolateNutrientIds[i] + "NT", new SecureRandom().nextDouble());
+        }
+        System.out.println("cake recipe/ingredient created");
+
+    }
 
     public void addDoughnutsRecipiesIngredients() {
 

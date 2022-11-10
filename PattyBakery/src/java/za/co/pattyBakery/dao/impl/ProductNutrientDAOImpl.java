@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -33,12 +31,13 @@ public class ProductNutrientDAOImpl implements ProductNutrientDAO {
     }
 
     @Override
-    public void addProductNutrient(String productId, String nutrientId) {
+    public void addProductNutrient(String productId, String nutrientId, Double grams) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT IGNORE INTO product_nutrient (prod_id,nutr_id) VALUES(?,?)");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO product_nutrient (prod_id,nutr_id,grams) VALUES(?,?,?)");
                 preparedStatement.setString(1, productId);
                 preparedStatement.setString(2, nutrientId);
+                preparedStatement.setDouble(3, grams);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException sql) {
