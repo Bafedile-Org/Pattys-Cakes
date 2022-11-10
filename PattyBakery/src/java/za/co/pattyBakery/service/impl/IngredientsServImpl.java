@@ -1,7 +1,7 @@
 package za.co.pattyBakery.service.impl;
 
 import java.util.List;
-import za.co.pattybakery.dao.IngredientsDAO;
+import za.co.pattyBakery.dao.IngredientsDAO;
 
 /**
  *

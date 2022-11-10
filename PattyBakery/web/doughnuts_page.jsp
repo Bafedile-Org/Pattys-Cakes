@@ -4,6 +4,7 @@
     Author     : Dimakatso Sebatane
 --%>
 
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -27,13 +28,24 @@
             </nav>
         </header>
 
-        <h1 align='center'>Doughnuts</h1>
+         <h1> 
+            <a align="left" href="home" style="color:black">
+                <i class="fa fa-arrow-left" aria-hidden="true">
+                </i>
+            </a>
+            <pre align="center"><h1>Doughnuts</h1></pre>
+
+        </h1>
 
         <div class="images-container">
             <div class="cookies_img" >
 
                 <div align='center'>
-                    <label id='cookie_label'><strong>Glazed Simpsons Doughnuts</strong></label>
+                    <label id='cookie_label'><strong><%
+                        String name = (String) request.getAttribute("glazedLoveName");
+                        out.println(name);
+                            %></strong>
+                    </label>
                     <br>
                     <img src="assets/doughnuts/dougnuts3.jpg" alt="cookies" >
                 </div>
@@ -42,17 +54,20 @@
                         <ul>
                             <li  id='img_list'><strong>Ingredients</strong>
                                 <ul>
-                                    <li>All-purpose flour</li>
-                                    <li>Chocolate chips</li>
-                                    <li>Dried cranberries</li>
-                                    <li>Butter</li>
-                                    <li>Egg</li>
+                                    <%
+                                        List<String> ingr = (List<String>) request.getAttribute("glazedLove");
+                                        for (String ingredient : ingr) {
+                                            out.println(String.format("<li>%s</li>", ingredient));
+                                        }
+                                    %>
                                 </ul>
                             </li>
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
-                                    <li>Fat 9.8g</li>
-                                    <li>Protein 2.9g</li>
+                                    <%
+                                        String nutrients = (String) request.getAttribute("glazedLoveNu");
+                                        out.println(String.format("<li>%s</li>", nutrients));
+                                    %>
                                 </ul>
                             </li>
                         </ul>
@@ -61,7 +76,11 @@
 
             </div>
             <div id='img_price'>
-                <button id='price_button'>R75.99</button>
+                <button id='price_button'> 
+                    <%Double price = (Double) request.getAttribute("glazedLovePrice");
+                        out.println("R" + price);
+                    %>
+                </button>
                 <button id='cart_button'>add to cart</button>
             </div>
             <div >
@@ -75,7 +94,10 @@
             <div class="cookies_img" >
 
                 <div align='center'>
-                    <label id='cookie_label'><strong>Glazed Simpsons Doughnuts</strong></label>
+                    <label id='cookie_label'><strong><%
+                        name = (String) request.getAttribute("glazedName");
+                        out.println(name);
+                            %></strong></label>
                     <br>
                     <img src="assets/doughnuts/dougnuts2.jpg" alt="cookies" >
                 </div>
@@ -84,16 +106,20 @@
                         <ul>
                             <li  id='img_list'><strong>Ingredients</strong>
                                 <ul>
-                                    <li>All-purpose flour</li>
-                                    <li>Chocolate chips</li>
-                                    <li>Butter</li>
-                                    <li>Egg</li>
+                                    <%
+                                        ingr = (List<String>) request.getAttribute("glazed");
+                                        for (String ingredient : ingr) {
+                                            out.println(String.format("<li>%s</li>", ingredient));
+                                        }
+                                    %>
                                 </ul>
                             </li>
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
-                                    <li>Fat 5.8g</li>
-                                    <li>Protein 1.2g</li>
+                                    <%
+                                        nutrients = (String) request.getAttribute("glazedNu");
+                                        out.println(String.format("<li>%s</li>", nutrients));
+                                    %>
                                 </ul>
                             </li>
                         </ul>
@@ -102,7 +128,11 @@
 
             </div>
             <div id='img_price'>
-                <button id='price_button'>R32.49</button>
+                <button id='price_button'> 
+                    <% price = (Double) request.getAttribute("glazedPrice");
+                        out.println("R" + price);
+                    %>
+                </button>
                 <button id='cart_button'>add to cart</button>
             </div>
             <div >
@@ -114,7 +144,10 @@
             <div class="cookies_img" >
 
                 <div align='center'>
-                    <label id='cookie_label'><strong>Chocolate Cream Doughnuts</strong></label>
+                    <label id='cookie_label'><strong><%
+                        name = (String) request.getAttribute("chocolateName");
+                        out.println(name);
+                            %></strong></label>
                     <br>
                     <img src="assets/doughnuts/dougnuts4.jpg" alt="cookies" >
                 </div>
@@ -123,16 +156,20 @@
                         <ul>
                             <li  id='img_list'><strong>Ingredients</strong>
                                 <ul>
-                                    <li>All-purpose flour</li>
-                                    <li>Chocolate chips</li>
-                                    <li>Butter</li>
-                                    <li>Egg</li>
+                                    <%
+                                        ingr = (List<String>) request.getAttribute("chocolate");
+                                        for (String ingredient : ingr) {
+                                            out.println(String.format("<li>%s</li>", ingredient));
+                                        }
+                                    %>
                                 </ul>
                             </li>
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
-                                    <li>Fat 5.8g</li>
-                                    <li>Protein 1.2g</li>
+                                    <%
+                                        nutrients = (String) request.getAttribute("chocolateNu");
+                                        out.println(String.format("<li>%s</li>", nutrients));
+                                    %>
                                 </ul>
                             </li>
                         </ul>
@@ -141,7 +178,11 @@
 
             </div>
             <div id='img_price'>
-                <button id='price_button'>R32.49</button>
+                <button id='price_button'> 
+                    <% price = (Double) request.getAttribute("chocolatePrice");
+                        out.println("R" + price);
+                    %>
+                </button>
                 <button id='cart_button'>add to cart</button>
             </div>
             <div >

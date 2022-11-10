@@ -1,9 +1,9 @@
 package za.co.pattyBakery.service.impl;
 
 import java.util.List;
-import za.co.pattybakery.Product;
-import za.co.pattybakery.dao.StockDAO;
-import za.co.pattybakery.model.Stock;
+import za.co.pattyBakery.Product;
+import za.co.pattyBakery.dao.StockDAO;
+import za.co.pattyBakery.model.Stock;
 
 /**
  *
@@ -36,6 +36,14 @@ public class StockServImpl implements StockDAO {
     @Override
     public List<Stock> getAllStocks() {
         return stockDAOImpl.getAllStocks();
+    }
+
+    @Override
+    public void addStockById(String productId, Integer quantity) {
+        if (productId == null || quantity <= 0) {
+            return;
+        }
+        stockDAOImpl.addStockById(productId, quantity);
     }
 
 }

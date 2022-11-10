@@ -24,6 +24,9 @@ Remember to work on the ingredients overlap in the cookies
     background-image:url(../assets/patty_pic_chef.jpg);
     background-size: cover;
 }
+.topnav a{
+    margin-left:0%;
+}
 .topnav i{
     float:right;
 }
@@ -75,6 +78,11 @@ body{
 #img_list{
     list-style: none;
 }
+
+#img_list ul{
+    width:100%;
+    margin-left:30%;
+}
 .images-container{
     width:100%;
 }
@@ -88,6 +96,11 @@ body{
 .cookies_img div{
     display:inline-block;
     float:left;
+}
+
+.cookies_img div article{
+        margin-left:25%;
+        margin-top:25%; 
 }
 
 /*.cookies_img div article{
@@ -221,18 +234,31 @@ img {
 .parent {
     display: flex;
 }
+.parent p{
+      margin-top:15%;
+}
 .parent p, .parent ul{
     margin-left: 15%;
 }
 .parent ul li{
     width: 150%;
 }
+.parent article ul{
+    margin-left:30%;
+}
 .price {
     padding:17px 0px;
 }
+.price button{
+    font-size:18px;
+    padding:2px 2px;
+}
 #b, #b1{
     background: #2C88CB;
-    margin-right: 355px;
+    margin-right: 330px;
+}
+#b{    
+    border: none;
 }
 label{
     border-style: solid;
@@ -241,10 +267,12 @@ label{
 }
 #label_div{
     padding: 20px 0px;
+    margin-left:2%;
 }
-#b{
-    border: none;
+#label_div label{
+    margin-left:15%;
 }
+
 body{
     background: #C799BA;
 }

@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao.impl;
+package za.co.pattyBakery.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import za.co.pattyBakery.database.DatabaseConnect;
-import za.co.pattybakery.dao.EmployeeDAO;
-import za.co.pattybakery.model.EmployeeImpl;
+import za.co.pattyBakery.dao.EmployeeDAO;
+import za.co.pattyBakery.model.EmployeeImpl;
 
 /**
  *
@@ -32,7 +32,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     public void addEmployee(EmployeeImpl employee) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO employee (name, surname,identityNum,tel, email, address,title) VALUES(?,?,?,?,?,?,?);");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO employee (name, surname,identityNum,tel, email, address,title) VALUES(?,?,?,?,?,?,?);");
                 preparedStatement.setString(1, employee.getName());
                 preparedStatement.setString(2, employee.getSurname());
                 preparedStatement.setString(3, employee.getIdNumber());

@@ -1,8 +1,8 @@
 package za.co.pattyBakery.service.impl;
 
 import java.util.List;
-import za.co.pattybakery.Product;
-import za.co.pattybakery.dao.ProductDAO;
+import za.co.pattyBakery.Product;
+import za.co.pattyBakery.dao.ProductDAO;
 
 /**
  *
@@ -68,6 +68,19 @@ public class ProductServImpl implements ProductDAO {
     @Override
     public List<Product> getAllProducts() {
         return productDAOImpl.getAllProducts();
+    }
+
+    @Override
+    public void addProductByIds(Product product) {
+        if (product == null) {
+
+        }
+        productDAOImpl.addProductByIds(product);
+    }
+
+    @Override
+    public List<String> getAllProductsIds() {
+        return productDAOImpl.getAllProductsIds();
     }
 
 }

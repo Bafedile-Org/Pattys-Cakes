@@ -1,9 +1,9 @@
 package za.co.pattyBakery.service.impl;
 
 import java.util.List;
-import za.co.pattybakery.Order;
-import za.co.pattybakery.ShoppingCart;
-import za.co.pattybakery.dao.OrderDAO;
+import za.co.pattyBakery.Order;
+import za.co.pattyBakery.ShoppingCart;
+import za.co.pattyBakery.dao.OrderDAO;
 
 /**
  *

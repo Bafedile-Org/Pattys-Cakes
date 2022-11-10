@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao.impl;
+package za.co.pattyBakery.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import za.co.pattyBakery.database.DatabaseConnect;
-import za.co.pattybakery.dao.CategoryDAO;
+import za.co.pattyBakery.dao.CategoryDAO;
 
 /**
  *

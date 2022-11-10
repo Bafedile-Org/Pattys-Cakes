@@ -1,6 +1,6 @@
-package za.co.pattybakery;
+package za.co.pattyBakery;
 
-import za.co.pattybakery.exception.OrderException;
+import za.co.pattyBakery.exception.OrderException;
 
 /**
  *

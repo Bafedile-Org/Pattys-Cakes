@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao;
+package za.co.pattyBakery.dao;
 
 import java.util.List;
 

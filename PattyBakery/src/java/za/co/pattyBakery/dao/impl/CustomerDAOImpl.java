@@ -1,4 +1,4 @@
-package za.co.pattybakery.dao.impl;
+package za.co.pattyBakery.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import za.co.pattyBakery.Person;
 import za.co.pattyBakery.database.DatabaseConnect;
-import za.co.pattybakery.dao.CustomerDAO;
-import za.co.pattybakery.model.PersonImpl;
+import za.co.pattyBakery.dao.CustomerDAO;
+import za.co.pattyBakery.model.PersonImpl;
 
 /**
  *
@@ -33,7 +33,7 @@ public class CustomerDAOImpl implements CustomerDAO {
     public void addCustomer(Person customer) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT INTO customer (name, surname,idNum,tel, email, address) VALUES(?,?,?,?,?,?);");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO customer (name, surname,idNum,tel, email, address) VALUES(?,?,?,?,?,?);");
                 preparedStatement.setString(1, customer.getName());
                 preparedStatement.setString(2, customer.getSurname());
                 preparedStatement.setString(3, customer.getIdNumber());

@@ -1,6 +1,6 @@
-package za.co.pattybakery;
+package za.co.pattyBakery;
 
-import za.co.pattybakery.exception.ProductException;
+import za.co.pattyBakery.exception.ProductException;
 
 /**
  *
@@ -13,6 +13,22 @@ public interface Product {
     String NUTRIENT_INFO_ERROR_MSG = "Nutrient Inforation Can Not Be Null!!!";
     String PRODUCT_PRICE_ERROR_MSG = "Product Price Can Not Be Less Than Zero!!!";
     String PRODUCT_ID_ERROR_MSG = "Product Id  Can Not Be Zero!!!";
+
+    public String getNutrientId();
+
+    public String getProductName();
+
+    public void setProductName(String productName);
+
+    public void setNutrientId(String nutrientId);
+
+    public String getRecipeId();
+
+    public void setRecipeId(String ingredientsId);
+
+    public Integer getCategoryId();
+
+    public void setCategoryId(Integer categoryId);
 
     void setProductId(String productId) throws ProductException;
 

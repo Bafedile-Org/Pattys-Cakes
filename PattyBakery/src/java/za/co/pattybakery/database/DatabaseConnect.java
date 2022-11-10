@@ -53,15 +53,7 @@ public class DatabaseConnect {
 
         //Populate tables 
         PopulateValues p = new PopulateValues(con);
-        p.populateNutr();
-        p.populateIngr();
-        p.populateCategoryTable();
-        p.addCakeRecipies();
-        p.addDoughnutsRecipies();
-        p.addMuffinsRecipies();
-        p.addCookiesRecipies();
-        p.addPersonalRecipies();
-        p.addCupcakesRecipies();
+        p.addAll();
     }
 
     public static DatabaseConnect getInstance() {

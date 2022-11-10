@@ -42,16 +42,16 @@
                 <input type="radio" name="r" id="r5" >
 
                 <div class="slide s1">
-                    <a href="cookies"><img src="assets/cookies/cokkies_pic2.jpg" alt="Plain Coffee Cookies"></a>
+                    <a href="cookies_control"><img src="assets/cookies/cokkies_pic2.jpg" alt="Plain Coffee Cookies"></a>
                 </div>
                 <div class="slide ">
-                    <a href="cakes"><img src="assets/cakes/rainbow_cake3.jpg" alt="Rainbow Cake"></a>
+                    <a href="cakes_control"><img src="assets/cakes/rainbow_cake3.jpg" alt="Rainbow Cake"></a>
                 </div>
                 <div class="slide ">
-                    <a href="pies"><img src="assets/personal_pies/blueberry pies.jpg" alt="Blueberry Pies"></a>
+                    <a href="pies_control"><img src="assets/personal_pies/blueberry pies.jpg" alt="Blueberry Pies"></a>
                 </div>
                 <div class="slide ">
-                    <a href="doughnuts"><img src="assets/doughnuts/dougnuts2.jpg" alt="Glazed Simpsons Doughnuts"></a>
+                    <a href="doughnuts_control"><img src="assets/doughnuts/dougnuts2.jpg" alt="Glazed Simpsons Doughnuts"></a>
                 </div>
                 <div class="slide ">
                     <a href="cupcakes"><img src="assets/muffins/muffins_and_cupcakes.png" alt="Muffins And  Cupcakes"></a>

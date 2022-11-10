@@ -1,8 +1,8 @@
-package za.co.pattybakery.model;
+package za.co.pattyBakery.model;
 
-import za.co.pattybakery.Order;
-import za.co.pattybakery.Product;
-import za.co.pattybakery.exception.OrderException;
+import za.co.pattyBakery.Order;
+import za.co.pattyBakery.Product;
+import za.co.pattyBakery.exception.OrderException;
 
 /**
  *

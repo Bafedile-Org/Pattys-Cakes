@@ -1,6 +1,6 @@
-package za.co.pattybakery.dao;
+package za.co.pattyBakery.dao;
 
-import za.co.pattybakery.ShoppingCart;
+import za.co.pattyBakery.ShoppingCart;
 
 /**
  *

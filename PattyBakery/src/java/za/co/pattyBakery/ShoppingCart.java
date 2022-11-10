@@ -1,4 +1,4 @@
-package za.co.pattybakery;
+package za.co.pattyBakery;
 
 /**
  *
@@ -6,7 +6,7 @@ package za.co.pattybakery;
  */
 import java.time.LocalDate;
 import java.util.List;
-import za.co.pattybakery.exception.ShoppingCartException;
+import za.co.pattyBakery.exception.ShoppingCartException;
 
 public interface ShoppingCart {
 

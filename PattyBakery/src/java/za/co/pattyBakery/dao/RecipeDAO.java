@@ -2,7 +2,7 @@ package za.co.pattyBakery.dao;
 
 import java.util.List;
 import za.co.pattyBakery.model.Recipe;
-import za.co.pattybakery.dao.Close;
+import za.co.pattyBakery.dao.Close;
 
 /**
  *
