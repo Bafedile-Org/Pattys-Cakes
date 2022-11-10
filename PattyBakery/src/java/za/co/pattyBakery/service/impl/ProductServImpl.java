@@ -3,6 +3,7 @@ package za.co.pattyBakery.service.impl;
 import java.util.List;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.dao.ProductDAO;
+import za.co.pattyBakery.dao.impl.ProductDAOImpl;
 
 /**
  *
@@ -12,8 +13,8 @@ public class ProductServImpl implements ProductDAO {
 
     private ProductDAO productDAOImpl;
 
-    public ProductServImpl(ProductDAO productDAOImpl) {
-        this.productDAOImpl = productDAOImpl;
+    public ProductServImpl() {
+        this.productDAOImpl = new ProductDAOImpl();
     }
 
     @Override

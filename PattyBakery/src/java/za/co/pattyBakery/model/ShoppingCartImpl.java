@@ -18,6 +18,13 @@ public class ShoppingCartImpl implements ShoppingCart {
     private LocalDate date;
     private Boolean deliveryStatus;
 
+    public ShoppingCartImpl(List<Order> orders, String orderNumber, LocalDate date) {
+        this.orders = orders;
+        this.orderNumber = orderNumber;
+        this.date = date;
+        this.deliveryStatus = false;
+    }
+
     public ShoppingCartImpl(List<Order> orders, Double totalPrice, String orderNumber, LocalDate date) {
         this.orders = orders;
         this.totalPrice = totalPrice;

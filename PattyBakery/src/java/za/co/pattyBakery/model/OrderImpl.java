@@ -17,6 +17,11 @@ public class OrderImpl implements Order {
     public OrderImpl() {
     }
 
+    public OrderImpl(Product product, Double totalPrice) throws OrderException {
+        this.setProduct(product);
+        this.setQuantity(1);
+    }
+
     public OrderImpl(Product product, Integer quantity) throws OrderException {
         this.setProduct(product);
         this.setQuantity(quantity);

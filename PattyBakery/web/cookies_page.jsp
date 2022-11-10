@@ -14,7 +14,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
-
+        <script src="js/main.js"></script>
     </head>
     <body>
         <header>
@@ -23,7 +23,9 @@
 
                     <h1>
                         <a href="home"> Patty's Bakery   
-                            <i class="fa fa-shopping-cart" style="font-size:24px;">0</i></a>
+                            <i class="fa fa-shopping-cart" style="font-size:24px;"><%
+                                out.println((Integer)request.getAttribute("totalInCart"));
+                                %></i></a>
                     </h1>
 
                 </div>
@@ -31,7 +33,7 @@
         </header>
         <h1> 
             <a align="left" href="home" style="color:black;width:5%;">
-               <i class="fa fa-arrow-left" aria-hidden="true" style="float:left">
+                <i class="fa fa-arrow-left" aria-hidden="true" style="float:left">
                 </i>
             </a>
             <pre align="center"><h1>Cookies</h1></pre>
@@ -54,9 +56,11 @@
                             <li  id='img_list'><strong>Ingredients</strong>
                                 <ul>
                                     <%
-                                        List<String> vanilaIngr = (List<String>) request.getAttribute("vanila");
-                                        for (String ingredient : vanilaIngr) {
-                                            out.println(String.format("<li>%s</li>", ingredient));
+                                        List<String> ingredients = (List<String>) request.getAttribute("vanila");
+                                        if (ingredients != null) {
+                                            for (String ingredient : ingredients) {
+                                                out.println(String.format("<li>%s</li>", ingredient));
+                                            }
                                         }
                                     %>
                                 </ul>
@@ -75,12 +79,14 @@
 
             </div>
             <div id='img_price'>
+                 <form method="GET" action="cookies_control">
                 <button id='price_button'><%
                     Double price = (Double) request.getAttribute("vanilaPrice");
                     out.println("R" + price);
                     %>
                 </button>
-                <button id='cart_button'>add to cart</button>
+                <button id='cart_button' onclick="cookiesControl()" name="add" value="vanila">add to cart</button>
+                 </form>
             </div>
             <div >
                 <i class="fa fa-exclamation-triangle">contains vanilla full cream</i>
@@ -104,9 +110,11 @@
                             <li  id='img_list'><strong>Ingredients</strong>
                                 <ul>
                                     <%
-                                        List<String> plainIngr = (List<String>) request.getAttribute("plain");
-                                        for (String ingredient : plainIngr) {
-                                            out.println(String.format("<li>%s</li>", ingredient));
+                                        ingredients = (List<String>) request.getAttribute("plain");
+                                        if (ingredients != null) {
+                                            for (String ingredient : ingredients) {
+                                                out.println(String.format("<li>%s</li>", ingredient));
+                                            }
                                         }
                                     %>
                                 </ul>
@@ -125,11 +133,13 @@
 
             </div>
             <div id='img_price'>
+                 <form method="GET" action="cookies_control">
                 <button id='price_button'><%
                     price = (Double) request.getAttribute("plainPrice");
                     out.println("R" + price);
                     %></button>
-                <button id='cart_button'>add to cart</button>
+                <button id='cart_button' onclick="cookiesControl()" name="add" value="plain">add to cart</button>
+                 </form>
             </div>
             <div >
                 <i class="fa fa-exclamation-triangle">contains nuts</i>
@@ -153,9 +163,11 @@
                             <li  id='img_list'><strong>Ingredients</strong>
                                 <ul>
                                     <%
-                                        List<String> chocolateIngr = (List<String>) request.getAttribute("chocolate");
-                                        for (String ingredient : chocolateIngr) {
-                                            out.println(String.format("<li>%s</li>", ingredient));
+                                      ingredients = (List<String>) request.getAttribute("chocolate");
+                                         if (ingredients != null) {
+                                            for (String ingredient : ingredients) {
+                                                out.println(String.format("<li>%s</li>", ingredient));
+                                            }
                                         }
                                     %>
                                 </ul>
@@ -174,11 +186,13 @@
 
             </div>
             <div id='img_price'>
+                <form method="GET" action="cookies_control">
                 <button id='price_button'><%
                     price = (Double) request.getAttribute("chocolatePrice");
                     out.println("R" + price);
                     %></button>
-                <button id='cart_button'>add to cart</button>
+                <button id='cart_button' onclick="cookiesControl()" name="add" value="chocolate">add to cart</button>
+                </form>
             </div>
             <div >
                 <i class="fa fa-exclamation-triangle">contains nuts</i>

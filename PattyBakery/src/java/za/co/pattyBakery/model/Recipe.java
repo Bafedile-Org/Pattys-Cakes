@@ -13,21 +13,16 @@ public class Recipe {
     private String recipeId;
     private String recipe;
     private List<String> ingredients;
+    private String description;
 
     public Recipe() {
 
     }
 
-    /**
-     * @return the recipeId
-     */
-    public String getRecipeId() {
-        return recipeId;
-    }
-
-    public Recipe(String recipeId, List<String> ingredients) {
+    public Recipe(String recipeId, List<String> ingredients, String description) {
         this.setRecipeId(recipeId);
         this.addIngredients(ingredients);
+        this.setDescription(description);
     }
 
     public void addIngredients(List<String> ingredients) {
@@ -45,6 +40,13 @@ public class Recipe {
         this.recipeId = recipeId;
     }
 
+    /**
+     * @return the recipeId
+     */
+    public String getRecipeId() {
+        return recipeId;
+    }
+
     public List<String> getIngredients() {
         return ingredients;
     }
@@ -60,5 +62,19 @@ public class Recipe {
     @Override
     public String toString() {
         return getRecipe();
+    }
+
+    /**
+     * @return the description
+     */
+    public String getDescription() {
+        return description;
+    }
+
+    /**
+     * @param description the description to set
+     */
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
