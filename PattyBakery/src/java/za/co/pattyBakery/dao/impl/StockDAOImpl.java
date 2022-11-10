@@ -6,11 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import za.co.pattyBakery.database.DatabaseConnect;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.dao.StockDAO;
+import za.co.pattyBakery.database.DatabaseConnect;
 import za.co.pattyBakery.exception.OrderException;
-import za.co.pattyBakery.exception.ProductException;
 import za.co.pattyBakery.model.Stock;
 
 /**
@@ -41,7 +40,7 @@ public class StockDAOImpl implements StockDAO {
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException sql) {
-            System.out.println("Error: " + sql.getMessage());
+            System.out.println("Error: Stock " + sql.getMessage());
         } finally {
             close(preparedStatement, resultSet);
         }

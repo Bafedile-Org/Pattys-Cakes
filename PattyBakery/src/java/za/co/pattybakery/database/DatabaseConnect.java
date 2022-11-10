@@ -45,13 +45,14 @@ public class DatabaseConnect {
         NutrientsTable();
         CategoryTable();
         RecipeTable();
+        RecipeIngredientTable();
         ProductTable();
         StockTable();
         OrderTable();
         TotalOrderTable();
         createLoginTable();
+        ProductNutrientsTable();
 
-        //Populate tables 
         PopulateValues p = new PopulateValues(con);
         p.addAll();
     }
@@ -134,16 +135,40 @@ public class DatabaseConnect {
         System.out.println("Ingredients table created");
     }
 
+    private static void RecipeIngredientTable() {
+        PreparedStatement stat;
+        try {
+            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS recipe_ingredient (recp_id VARCHAR(10) ,"
+                    + "ingr_id VARCHAR(10),FOREIGN KEY(recp_id) REFERENCES recipe(recp_id),FOREIGN KEY(ingr_id) REFERENCES ingredients(ingr_id))");
+            stat.executeUpdate();
+        } catch (SQLException sql) {
+            System.out.println("Failed to create recipe_ingredients table.." + sql.getMessage());
+        }
+        System.out.println("Recipe_Ingredients table created");
+    }
+
     private static void RecipeTable() {
         PreparedStatement stat;
         try {
-            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS recipe (recp_id VARCHAR(10) ,"
-                    + "ingr_id VARCHAR(10),PRIMARY KEY(recp_id,ingr_id),FOREIGN KEY(ingr_id) REFERENCES ingredients(ingr_id))");
+            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS recipe (recp_id VARCHAR(10) PRIMARY KEY,"
+                    + "description VARCHAR(200))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create recipe table.." + sql.getMessage());
         }
         System.out.println("Recipe table created");
+    }
+
+    private static void ProductNutrientsTable() {
+        PreparedStatement stat;
+        try {
+            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS product_nutrient (prod_id VARCHAR(10) ,"
+                    + "nutr_id VARCHAR(10),grams VARCHAR(105),FOREIGN KEY(prod_id) REFERENCES product(prod_id),FOREIGN KEY(nutr_id) REFERENCES nutrients(nutr_id))");
+            stat.executeUpdate();
+        } catch (SQLException sql) {
+            System.out.println("Failed to create product_nutrient table.." + sql.getMessage());
+        }
+        System.out.println("Product_Nutrients table created");
     }
 
     private static void NutrientsTable() {
