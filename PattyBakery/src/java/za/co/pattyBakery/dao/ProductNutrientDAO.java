@@ -8,7 +8,7 @@ import java.util.List;
  */
 public interface ProductNutrientDAO extends Close {
 
-    public void addProductNutrient(String productId, String nutrientId);
+    public void addProductNutrient(String productId, String nutrientId, Double grams);
 
     public List<String> getNutrientsByProductId(String productId);
 }
