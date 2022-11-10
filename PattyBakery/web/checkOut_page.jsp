@@ -1,3 +1,9 @@
+<%-- 
+    Document   : checkOut_page
+    Created on : 03 Nov 2022, 9:16:31 AM
+    Author     : Hlawulani
+--%>
+
 <html>
   <head class="top-head">
         <meta charset="UTF-8">
