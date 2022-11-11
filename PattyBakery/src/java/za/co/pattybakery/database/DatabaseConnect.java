@@ -151,7 +151,7 @@ public class DatabaseConnect {
         PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS recipe (recp_id VARCHAR(10) PRIMARY KEY,"
-                    + "description VARCHAR(200))");
+                    + "descriptions VARCHAR(200))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create recipe table.." + sql.getMessage());
@@ -163,7 +163,7 @@ public class DatabaseConnect {
         PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS product_nutrient (prod_id VARCHAR(10) ,"
-                    + "nutr_id VARCHAR(10),grams VARCHAR(105),FOREIGN KEY(prod_id) REFERENCES product(prod_id),FOREIGN KEY(nutr_id) REFERENCES nutrients(nutr_id))");
+                    + "nutr_id VARCHAR(10),grams VARCHAR(105),FOREIGN KEY(prod_id) REFERENCES product(prod_id),FOREIGN KEY(nutr_id) REFERENCES nutrients(nutr_id),PRIMARY KEY(nutr_id,prod_id))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create product_nutrient table.." + sql.getMessage());
