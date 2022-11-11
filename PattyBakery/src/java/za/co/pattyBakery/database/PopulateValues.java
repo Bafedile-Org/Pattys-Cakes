@@ -13,6 +13,7 @@ import za.co.pattyBakery.dao.impl.CategoryDAOImpl;
 import za.co.pattyBakery.dao.impl.IngredientsDAOImpl;
 import za.co.pattyBakery.dao.impl.NutrientsDAOImpl;
 import za.co.pattyBakery.dao.impl.ProductDAOImpl;
+import za.co.pattyBakery.dao.impl.ProductNutrientDAOImpl;
 import za.co.pattyBakery.dao.impl.StockDAOImpl;
 import za.co.pattyBakery.exception.ProductException;
 import za.co.pattyBakery.model.ProductImpl;
@@ -160,13 +161,14 @@ public class PopulateValues {
         return recipeIdList;
     }
 
+    //---------------------------------------------------------Recipies
     public void addCakeRecipies() {
 
-        String[] descriptrion = {"Caramel Cake", "Marigue Cake", "Chocolate Cake"};
+        String[] description = {"Caramel Cake", "Marigue Cake", "Chocolate Cake"};
         String[] respId = {"1RES", "2RES", "3RES"};
         try {
-            for (int i = 0; i < descriptrion.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,description) VALUES ('%s','%s')", respId[i], descriptrion[i])).executeUpdate();
+            for (int i = 0; i < description.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,descriptions) VALUES ('%s','%s')", respId[i], description[i])).executeUpdate();
             }
             System.out.println("Cake recipe added to table");
         } catch (SQLException sql) {
@@ -176,11 +178,11 @@ public class PopulateValues {
 
     public void addDoughnutRecipies() {
 
-        String[] descriptrion = {"glazed Simpson Doughnuts", "glazed Simpson Love Doughnuts", "Chocolate Cream Doughnuts"};
+        String[] description = {"glazed Simpson Doughnuts", "glazed Simpson Love Doughnuts", "Chocolate Cream Doughnuts"};
         String[] respId = {"4RES", "5RES", "6RES"};
         try {
-            for (int i = 0; i < descriptrion.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,description) VALUES ('%s','%s')", respId[i], descriptrion[i])).executeUpdate();
+            for (int i = 0; i < description.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,descriptions) VALUES ('%s','%s')", respId[i], description[i])).executeUpdate();
             }
             System.out.println("Doughnuts recipe added to table");
         } catch (SQLException sql) {
@@ -190,11 +192,11 @@ public class PopulateValues {
 
     public void addCookiesRecipies() {
 
-        String[] descriptrion = {"Vanilla Cookies", "Plain Coffee Cookies", "Chocolate Cookies"};
-        String[] respId = {"16RES", "17RES", "18RES"};
+        String[] description = {"Vanilla Cookies", "Chocolate Cookies", "Plain Coffee Cookies"};
+        String[] respId = {"16RES", "18RES", "17RES"};
         try {
-            for (int i = 0; i < descriptrion.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,description) VALUES ('%s','%s')", respId[i], descriptrion[i])).executeUpdate();
+            for (int i = 0; i < description.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,descriptions) VALUES ('%s','%s')", respId[i], description[i])).executeUpdate();
             }
             System.out.println("Cookies recipe added to table");
         } catch (SQLException sql) {
@@ -204,11 +206,11 @@ public class PopulateValues {
 
     public void addCupcakesRecipies() {
 
-        String[] descriptrion = {"Coffee and Walnut Cupcakes", "Gluten Free Chocolate Cupcakes", "Vegan Vanilla Cupcakes"};
+        String[] description = {"Coffee and Walnut Cupcakes", "Gluten Free Chocolate Cupcakes", "Vegan Vanilla Cupcakes"};
         String[] respId = {"7RES", "8RES", "9RES"};
         try {
-            for (int i = 0; i < descriptrion.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,description) VALUES ('%s','%s')", respId[i], descriptrion[i])).executeUpdate();
+            for (int i = 0; i < description.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,descriptions) VALUES ('%s','%s')", respId[i], description[i])).executeUpdate();
             }
             System.out.println("Cupcakes recipe added to table");
         } catch (SQLException sql) {
@@ -218,11 +220,11 @@ public class PopulateValues {
 
     public void addMuffinsRecipies() {
 
-        String[] descriptrion = {"Blue Berries Muffins", "Carot Muffins", "Cranberries Muffins"};
+        String[] description = {"Blue Berries Muffins", "Carot Muffins", "Cranberries Muffins"};
         String[] respId = {"10RES", "11RES", "12RES"};
         try {
-            for (int i = 0; i < descriptrion.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,description) VALUES ('%s','%s')", respId[i], descriptrion[i])).executeUpdate();
+            for (int i = 0; i < description.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,descriptions) VALUES ('%s','%s')", respId[i], description[i])).executeUpdate();
             }
             System.out.println("Muffins recipe added to table");
         } catch (SQLException sql) {
@@ -232,11 +234,11 @@ public class PopulateValues {
 
     public void addPersonalPiesRecipies() {
 
-        String[] descriptrion = {"Blue Berries Pie", "Strawberry Pie", "Apple Pie"};
+        String[] description = {"Blue Berries Pie", "Strawberry Pie", "Apple Pie"};
         String[] respId = {"13RES", "14RES", "15RES"};
         try {
-            for (int i = 0; i < descriptrion.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,description) VALUES ('%s','%s')", respId[i], descriptrion[i])).executeUpdate();
+            for (int i = 0; i < description.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,descriptions) VALUES ('%s','%s')", respId[i], description[i])).executeUpdate();
             }
             System.out.println("Personal pie recipe added to table");
         } catch (SQLException sql) {
@@ -244,163 +246,27 @@ public class PopulateValues {
         }
     }
 
-    public void addCakeRecipiesIngredients() {
-        Integer caramelCakeIngrId[] = {3, 1, 2, 4, 15, 19, 36, 13};
-        Integer marigueCakeIngrId[] = {3, 2, 4, 15, 42, 41};
-        Integer chocolateCakeIngrId[] = {3, 1, 2, 4, 43, 19};
-        Integer[] grams = {};
-        try {
-            for (int i = 0; i < caramelCakeIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "4RES", caramelCakeIngrId[i] + "ING")).executeUpdate();
-            }
-            for (int i = 0; i < marigueCakeIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "5RES", marigueCakeIngrId[i] + "ING")).executeUpdate();
-            }
-            for (int i = 0; i < chocolateCakeIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "6RES", chocolateCakeIngrId[i] + "ING")).executeUpdate();
-            }
-            System.out.println("cake recipe/ingredient created");
-        } catch (SQLException sql) {
-            System.out.println(String.format("ERROR: cake recipe/ingredient failed at creation time\t%s", sql.getMessage()));
+    //---------------------------------------------NUTRIENTS
+    public void addCakeProductNutrient() {
+        String productIds[] = {"1PRO", "2PRO", "3PRO"};
+        Integer[] caramelNutrientIds = {1, 2, 3, 4};
+        Integer[] marigueNutrientIds = {1, 3, 2, 4};
+        Integer[] chocolateNutrientIds = {1, 2, 3, 4};
+        Double[] caramelGrams = {1.0, 2.0, 3.0, 4.0};
+        Double[] marigueGrams = {};
+        Double[] chocolateGrams = {};
+        for (int i = 0; i < caramelNutrientIds.length; i++) {
+            new ProductNutrientDAOImpl(con).addProductNutrient(productIds[0], caramelNutrientIds[i] + "NT", new SecureRandom().nextDouble());
         }
+        for (int i = 0; i < marigueNutrientIds.length; i++) {
+            new ProductNutrientDAOImpl(con).addProductNutrient(productIds[0], marigueNutrientIds[i] + "NT", new SecureRandom().nextDouble());
 
-    }
-//    public void addCakeRecipiesIngredients() {
-//        Integer caramelCakeIngrId[] = {3, 1, 2, 4, 15, 19, 36, 13};
-//        Integer marigueCakeIngrId[] = {3, 2, 4, 15, 42, 41};
-//        Integer chocolateCakeIngrId[] = {3, 1, 2, 4, 43, 19};
-//        Integer[] grams = {};
-//        try {
-//            for (int i = 0; i < caramelCakeIngrId.length; i++) {
-//                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id,grams) VALUES ('%s','%s',%d)", "4RES", caramelCakeIngrId[i] + "ING")).executeUpdate();
-//            }
-//            for (int i = 0; i < marigueCakeIngrId.length; i++) {
-//                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id,grams) VALUES ('%s','%s',%d)", "5RES", marigueCakeIngrId[i] + "ING")).executeUpdate();
-//            }
-//            for (int i = 0; i < chocolateCakeIngrId.length; i++) {
-//                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id,grams) VALUES ('%s','%s',%d)", "6RES", chocolateCakeIngrId[i] + "ING")).executeUpdate();
-//            }
-//            System.out.println("cake recipe/ingredient created");
-//        } catch (SQLException sql) {
-//            System.out.println(String.format("ERROR: cake recipe/ingredient failed at creation time\t%s", sql.getMessage()));
-//        }
-//
-//    }
-
-    public void addDoughnutsRecipiesIngredients() {
-
-        Integer glazedSimpsonsIngrId[] = {45, 4, 28, 11, 1, 2, 46};
-        Integer glazedSimpsonsHeartIngrId[] = {45, 4, 28, 11, 1, 2, 46};
-        Integer chocolateDoughnutsIngrId[] = {45, 4, 28, 11, 1, 2, 46, 32};
-
-        try {
-            for (int i = 0; i < glazedSimpsonsIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id, ingr_id) VALUES ('%s','%s')", "4RES", glazedSimpsonsIngrId[i] + "ING")).executeUpdate();
-            }
-            for (int i = 0; i < glazedSimpsonsHeartIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "5RES", glazedSimpsonsHeartIngrId[i] + "ING")).executeUpdate();
-            }
-            for (int i = 0; i < chocolateDoughnutsIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "6RES", chocolateDoughnutsIngrId[i] + "ING")).executeUpdate();
-            }
-            System.out.println("doughnuts table created");
-        } catch (SQLException sql) {
-            System.out.println(String.format("ERROR: doughnuts table failed at creation time\t%s", sql.getMessage()));
         }
-
-    }
-
-    public void addMuffinsRecipiesIngredients() {
-
-        Integer blueberryIngrId[] = {9, 3, 10, 11, 2, 12, 13, 14};
-        Integer cranberriesIngrId[] = {3, 15, 16, 10, 17, 18, 19, 20, 21, 22, 2, 13, 23, 24};
-        Integer carrotIngrId[] = {4, 15, 17, 10, 18, 16, 19, 2, 3, 25, 13, 26, 27, 24};
-
-        try {
-            for (int i = 0; i < blueberryIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "10RES", blueberryIngrId[i] + "ING")).executeUpdate();
-            }
-            for (int i = 0; i < cranberriesIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "11RES", cranberriesIngrId[i] + "ING")).executeUpdate();
-            }
-            for (int i = 0; i < carrotIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "12RES", carrotIngrId[i] + "ING")).executeUpdate();
-            }
-            System.out.println("Muffins table created");
-        } catch (SQLException sql) {
-            System.out.println(String.format("ERROR: muffins table failed at creation time\t%s", sql.getMessage()));
+        for (int i = 0; i < chocolateNutrientIds.length; i++) {
+            new ProductNutrientDAOImpl(con).addProductNutrient(productIds[0], chocolateNutrientIds[i] + "NT", new SecureRandom().nextDouble());
         }
+        System.out.println("cake recipe/ingredient created");
 
-    }
-
-    public void addPersonalRecipiesIngredients() {
-
-        Integer blueberryIngrId[] = {14, 45, 3, 46};
-        Integer appleIngrId[] = {4, 46, 3, 1, 2, 10};
-        Integer strawberryIngrId[] = {47, 48, 3, 46, 49};
-
-        try {
-            for (int i = 0; i < blueberryIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "13RES", blueberryIngrId[i] + "ING")).executeUpdate();
-            }
-            for (int i = 0; i < appleIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "14RES", appleIngrId[i] + "ING")).executeUpdate();
-            }
-            for (int i = 0; i < strawberryIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "15RES", strawberryIngrId[i] + "ING")).executeUpdate();
-            }
-
-            System.out.println("Personal pies table created");
-        } catch (SQLException sql) {
-            System.out.println(String.format("ERROR: personal pies table failed at creation time\t%s", sql.getMessage()));
-        }
-
-    }
-
-    public void addCookiesRecipiesIngredients() {
-
-        Integer vanilaCookiesIngrId[] = {4, 39, 23, 1, 3, 2, 17, 13, 17};
-        Integer chocolateCookiesIngrId[] = {4, 39, 23, 1, 3, 2, 17, 13, 19};
-        Integer plainCookiesIngrId[] = {4, 39, 23, 1, 3, 2, 17, 19};
-
-        try {
-            for (int i = 0; i < vanilaCookiesIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "16RES", vanilaCookiesIngrId[i] + "ING")).executeUpdate();
-            }
-            for (int i = 0; i < chocolateCookiesIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "17RES", chocolateCookiesIngrId[i] + "ING")).executeUpdate();
-            }
-            for (int i = 0; i < plainCookiesIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "18RES", plainCookiesIngrId[i] + "ING")).executeUpdate();
-            }
-            System.out.println("Cookies table created");
-        } catch (SQLException sql) {
-            System.out.println(String.format("ERROR: cookies table failed at creation time\t%s", sql.getMessage()));
-        }
-
-    }
-
-    public void addCupcakesRecipiesIngredients() {
-
-        Integer coffeeWalnutIngrId[] = {1, 2, 3, 4, 5, 6, 7, 8};
-        Integer glutenFreeChocolateCupcakesId[] = {1, 28, 2, 29, 30, 31, 13, 35, 32, 7};
-        Integer veganVanilaCupcakesIngrId[] = {4, 28, 35, 13, 25, 37, 38, 34, 8};
-
-        try {
-            for (int i = 0; i < coffeeWalnutIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "7RES", coffeeWalnutIngrId[i] + "ING")).executeUpdate();
-            }
-            for (int i = 0; i < glutenFreeChocolateCupcakesId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "8RES", glutenFreeChocolateCupcakesId[i] + "ING")).executeUpdate();
-            }
-            for (int i = 0; i < veganVanilaCupcakesIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "9RES", veganVanilaCupcakesIngrId[i] + "ING")).executeUpdate();
-            }
-
-        } catch (SQLException sql) {
-            System.out.println("Cupcakes recipe failed to added" + sql.getMessage());
-        }
-        System.out.println("Cupcakes recipe added");
     }
 
     public void addVanilaNutrients() {
@@ -422,7 +288,147 @@ public class PopulateValues {
         }
         System.out.println("product added");
     }
+//--------------------------------------------INGREDIENTS
 
+    public void addCakeRecipiesIngredients() {
+        Integer caramelCakeIngrId[] = {2, 0, 1, 3, 14, 18, 10, 12};
+        Integer marigueCakeIngrId[] = {1, 39, 2, 3, 14, 40};
+        Integer chocolateCakeIngrId[] = {2, 0, 1, 41, 18};
+        Integer[] grams = {};
+        try {
+            for (int i = 0; i < caramelCakeIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "4RES", caramelCakeIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < marigueCakeIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "5RES", marigueCakeIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < chocolateCakeIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "6RES", chocolateCakeIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            System.out.println("cake recipe/ingredient created");
+        } catch (SQLException sql) {
+            System.out.println(String.format("ERROR: cake recipe/ingredient failed at creation time\t%s", sql.getMessage()));
+        }
+
+    }
+
+    public void addDoughnutsRecipiesIngredients() {
+
+        Integer glazedSimpsonsIngrId[] = {42, 3, 27, 10, 0, 1};
+        Integer glazedSimpsonsHeartIngrId[] = {42, 3, 27, 10, 0, 1, 43};
+        Integer chocolateDoughnutsIngrId[] = {42, 3, 2, 0, 1};
+
+        try {
+            for (int i = 0; i < glazedSimpsonsIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id, ingr_id) VALUES ('%s','%s')", "4RES", glazedSimpsonsIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < glazedSimpsonsHeartIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "5RES", glazedSimpsonsHeartIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < chocolateDoughnutsIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "6RES", chocolateDoughnutsIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            System.out.println("doughnuts table created");
+        } catch (SQLException sql) {
+            System.out.println(String.format("ERROR: doughnuts table failed at creation time\t%s", sql.getMessage()));
+        }
+
+    }
+
+    public void addMuffinsRecipiesIngredients() {
+
+        Integer blueberryIngrId[] = {8, 2, 9, 10, 1, 11, 12, 13, 22, 23};
+        Integer cranberriesIngrId[] = {2, 9, 1, 12, 16, 16, 19, 20, 22, 23};
+        Integer carrotIngrId[] = {2, 9, 1, 12, 17, 15, 25, 26, 23};
+
+        try {
+            for (int i = 0; i < blueberryIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "10RES", blueberryIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < cranberriesIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "11RES", cranberriesIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < carrotIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "12RES", carrotIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            System.out.println("Muffins table created");
+        } catch (SQLException sql) {
+            System.out.println(String.format("ERROR: muffins table failed at creation time\t%s", sql.getMessage()));
+        }
+
+    }
+
+    public void addPersonalRecipiesIngredients() {
+
+        Integer blueberryIngrId[] = {13, 44, 2, 45};
+        Integer appleIngrId[] = {2, 1, 0, 3, 46, 9};
+        Integer strawberryIngrId[] = {2, 45, 47, 48};
+
+        try {
+            for (int i = 0; i < blueberryIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "13RES", blueberryIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < appleIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "14RES", appleIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < strawberryIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "15RES", strawberryIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+
+            System.out.println("Personal pies table created");
+        } catch (SQLException sql) {
+            System.out.println(String.format("ERROR: personal pies table failed at creation time\t%s", sql.getMessage()));
+        }
+
+    }
+
+    public void addCookiesRecipiesIngredients() {
+
+        Integer vanilaCookiesIngrId[] = {3, 0, 2, 1, 12, 18};
+        Integer chocolateCookiesIngrId[] = {3, 0, 2, 1, 16, 31};
+        Integer plainCookiesIngrId[] = {3, 0, 2, 1, 16};
+
+        try {
+            for (int i = 0; i < vanilaCookiesIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "16RES", vanilaCookiesIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < chocolateCookiesIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "18RES", chocolateCookiesIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < plainCookiesIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "17RES", plainCookiesIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            System.out.println("Cookies table created");
+        } catch (SQLException sql) {
+            System.out.println(String.format("ERROR: cookies table failed at creation time\t%s", sql.getMessage()));
+        }
+
+    }
+
+    public void addCupcakesRecipiesIngredients() {
+
+        Integer coffeeWalnutIngrId[] = {0, 1, 2, 3, 4, 5, 6, 7};
+        Integer glutenFreeChocolateCupcakesId[] = {0, 27, 1, 28, 29, 30, 10, 31, 6};
+        Integer veganVanilaCupcakesIngrId[] = {3, 27, 33, 34, 12, 24, 35, 36, 6, 7};
+
+        try {
+            for (int i = 0; i < coffeeWalnutIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "7RES", coffeeWalnutIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < glutenFreeChocolateCupcakesId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "8RES", glutenFreeChocolateCupcakesId[i] + "ING")).executeUpdate();
+            }
+            for (int i = 0; i < veganVanilaCupcakesIngrId.length; i++) {
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "9RES", veganVanilaCupcakesIngrId[i] + 1 + "ING")).executeUpdate();
+            }
+
+        } catch (SQLException sql) {
+            System.out.println("Cupcakes recipe failed to added" + sql.getMessage());
+        }
+        System.out.println("Cupcakes recipe added");
+    }
+
+//--------------------------------------------------PRODUCTS
     public void addCakesProduct() {
         Integer cat = 2;
         Double[] prices = {256.50, 449.50, 159.50};
@@ -447,7 +453,7 @@ public class PopulateValues {
         Integer cat = 1;
         Double[] prices = {75.99, 32.49, 28.69};
         String[] nutrientsIds = {"1NT"};
-        String[] recipeIds = {"16RES", "17RES", "18RES"};
+        String[] recipeIds = {"16RES", "18RES", "17RES"};
         try {
             Product vanilaCookie = new ProductImpl("4PRO", "Vanila Cookies", prices[0], cat, nutrientsIds[0], recipeIds[0]);
             Product chocolateCookie = new ProductImpl("5PRO", "Chocolate Cookies", prices[1], cat, nutrientsIds[0], recipeIds[1]);

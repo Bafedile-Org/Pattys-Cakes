@@ -35,7 +35,7 @@ public class RecipeDAOImpl implements RecipeDAO {
     public void addRecipe(Recipe recipe) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT IGNORE INTO recipe (recp_id,description) VALUES(?,?)");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO recipe (recp_id,descriptions) VALUES(?,?)");
                 preparedStatement.setString(1, recipe.getRecipeId());
                 preparedStatement.setString(2, recipe.getDescription());
                 preparedStatement.executeUpdate();
@@ -52,12 +52,12 @@ public class RecipeDAOImpl implements RecipeDAO {
         Recipe recipe = null;
         if (con != null) {
             try {
-                preparedStatement = con.prepareStatement("SELECT *  WHERE recp_id =?");
+                preparedStatement = con.prepareStatement("SELECT * FROM recipe  WHERE recp_id =?");
                 preparedStatement.setString(1, recipeId);
                 resultSet = preparedStatement.executeQuery();
 
                 if (resultSet.next()) {
-                    recipe = new Recipe(recipeId, new RecipeIngredientsDAOImpl(con).getIngredientsByRecipeId(recipeId), resultSet.getString("description"));
+                    recipe = new Recipe(recipeId, new RecipeIngredientsDAOImpl(con).getIngredientsByRecipeId(recipeId), resultSet.getString("descriptions"));
                 }
             } catch (SQLException sql) {
                 System.out.println(String.format("ERROR: %s%n", sql.getMessage()));
