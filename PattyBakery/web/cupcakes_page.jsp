@@ -21,7 +21,9 @@
                 <div class="topnav" >
                     <h1 align="center">
                         <a href="home"> Patty's Bakery   
-                            <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
+                            <i class="fa fa-shopping-cart" style="font-size:24px"><%
+                                out.println((Integer)request.getAttribute("totalInCart"));
+                                %></i></a>
                     </h1>
 
                 </div>
@@ -71,11 +73,14 @@
                 </ul>
             </div>  
             <div class="cont">  
+                <form method="GET" action="cupcakes_control">
                 <button id="price-button"><%
                     Double price = (Double) request.getAttribute("walnutPrice");
                     out.println("R" + price);
                     %></button>  
-                <button id="add-to-cart-button"> Add to cart</button>  
+                <button id="add-to-cart-button" onclick="CupcakesControl()" name="add" value="walnut"> Add to cart</button>  
+            
+                </form>
             </div>
         </div>
         <div class="cupcakes_img" style="margin-left:2%;">
@@ -116,7 +121,7 @@
                     price = (Double) request.getAttribute("chocolatePrice");
                     out.println("R" + price);
                     %></button>  
-                <button id="add-to-cart-button"> Add to cart</button>  
+                <button id="add-to-cart-button" onclick="CupcakesControl()" name="add" value="chocolate"> Add to cart</button>  
             </div>
         </div>
        <div class="cupcakes_img" style="margin-left:2%;">
@@ -157,7 +162,7 @@
                     price = (Double) request.getAttribute("vanilaPrice");
                     out.println("R" + price);
                     %></button>  
-                <button id="add-to-cart-button"> Add to cart</button>  
+                <button id="add-to-cart-button"  onclick="CupcakesControl()" name="add" value="vanila"> Add to cart</button>  
             </div>
         </div>
 

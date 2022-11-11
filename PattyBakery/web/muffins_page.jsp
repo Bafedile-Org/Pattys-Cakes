@@ -14,7 +14,7 @@
         <title>Muffins Page</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
-
+            <script src="js/main.js"></script>
     </head>
     <body>
         <header>
@@ -22,7 +22,10 @@
                 <div class="topnav" >
                     <h1 align="center">
                         <a href="home" > Patty's Bakery   
-                            <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
+                            <i class="fa fa-shopping-cart" style="font-size:24px">
+                                <%
+                                out.println((Integer)request.getAttribute("totalInCart"));
+                                %></i></a>
                     </h1>
 
                 </div>
@@ -58,9 +61,11 @@
                      <p><strong>Ingredients</strong></p><ul>
                         <%
                             List<String> ingredients = (List<String>) request.getAttribute("blueberry");
+                        if (ingredients != null) {    
                             for (String ingredient : ingredients) {
                                 out.println(String.format("<li>%s</li>", ingredient));
                             }
+                        }   
                         %>
                     </ul>
                     <p><strong>Nutrients</strong></p><ul>
@@ -73,11 +78,13 @@
                 </ul>
             </div>  
             <div class="cont">  
+                <form method="GET" action="muffins_control">
                 <button id="price-button" ><%
                     Double price = (Double) request.getAttribute("blueberryPrice");
                     out.println("R" + price);
                     %></button>  
-                <button id="add-to-cart-button"> Add to cart</button>  
+                <button id="add-to-cart-button" onclick="muffinsControl()" name="add" value="blueberry"> Add to cart</button>  
+                </form>
             </div>
         </div>
          <div class="cupcakes_img" style="margin-left:2%;">
@@ -102,9 +109,11 @@
                          <ul>
                         <%
                             ingredients = (List<String>) request.getAttribute("cranberry");
+                        if (ingredients != null) {    
                             for (String ingredient : ingredients) {
                                 out.println(String.format("<li>%s</li>", ingredient));
                             }
+                        }  
                         %>
                     </ul>
                      <p><strong>Nutrients</strong></p>
@@ -122,7 +131,7 @@
                     price = (Double) request.getAttribute("cranberryPrice");
                     out.println("R" + price);
                     %></button>  
-                <button id="add-to-cart-button"> Add to cart</button>  
+                <button id="add-to-cart-button" onclick="muffinsControl()" name="add" value="cranberry"> Add to cart</button>  
             </div>
         </div>
          <div class="cupcakes_img" style="margin-left:2%;">
@@ -145,8 +154,10 @@
                    <p><strong>Ingredients</strong></p></li><ul>
                         <%
                             ingredients = (List<String>) request.getAttribute("carrot");
+                            if (ingredients != null) {
                             for (String ingredient : ingredients) {
                                 out.println(String.format("<li>%s</li>", ingredient));
+                            }
                             }
                         %>
                     </ul>
@@ -164,7 +175,7 @@
                     price = (Double) request.getAttribute("carrotPrice");
                     out.println("R" + price);
                     %></button>  
-                <button id="add-to-cart-button"> Add to cart</button>  
+                <button id="add-to-cart-button" onclick="muffinsControl()" name="add" value="carrot"> Add to cart</button>  
             </div>
         </div>
 

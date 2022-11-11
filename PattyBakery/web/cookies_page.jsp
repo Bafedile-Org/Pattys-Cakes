@@ -23,9 +23,11 @@
 
                     <h1>
                         <a href="home"> Patty's Bakery   
-                            <i class="fa fa-shopping-cart" style="font-size:24px;"><%
+                            <i class="fa fa-shopping-cart" style="font-size:24px;">
+                                <%
                                 out.println((Integer)request.getAttribute("totalInCart"));
-                                %></i></a>
+                                %>
+                            </i></a>
                     </h1>
 
                 </div>
@@ -88,10 +90,6 @@
                 <button id='cart_button' onclick="cookiesControl()" name="add" value="vanila">add to cart</button>
                  </form>
             </div>
-            <div >
-                <i class="fa fa-exclamation-triangle">contains vanilla full cream</i>
-            </div>
-
         </div><br><br>
         <div class="images-container">
             <div class="cookies_img" >
@@ -141,10 +139,7 @@
                 <button id='cart_button' onclick="cookiesControl()" name="add" value="plain">add to cart</button>
                  </form>
             </div>
-            <div >
-                <i class="fa fa-exclamation-triangle">contains nuts</i>
-            </div>
-
+           
         </div>
         <div class="images-container">
             <div class="cookies_img" >
@@ -193,9 +188,6 @@
                     %></button>
                 <button id='cart_button' onclick="cookiesControl()" name="add" value="chocolate">add to cart</button>
                 </form>
-            </div>
-            <div >
-                <i class="fa fa-exclamation-triangle">contains nuts</i>
             </div>
         </div>
     </body>
