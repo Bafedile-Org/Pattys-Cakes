@@ -23,9 +23,9 @@
 
                     <h1>
                         <a href="home"> Patty's Bakery   
-                            <i class="fa fa-shopping-cart" style="font-size:24px;"><%
+                            <a href='cookies_control' name="cart"><i class="fa fa-shopping-cart" style="font-size:24px;"><%
                                 out.println((Integer)request.getAttribute("totalInCart"));
-                                %></i></a>
+                                %></i></a></a>
                     </h1>
 
                 </div>
@@ -68,8 +68,10 @@
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
                                     <%
-                                        String vanilaNutrients = (String) request.getAttribute("vanilaNu");
-                                        out.println(String.format("<li>%s</li>", vanilaNutrients));
+                                        List<String> nutrients = (List<String>) request.getAttribute("vanilaNu");
+                                        for(String nutrient: nutrients){
+                                        out.println(String.format("<li>%s</li>", nutrient));
+                                        }
                                     %>
                                 </ul>
                             </li>
@@ -79,7 +81,7 @@
 
             </div>
             <div id='img_price'>
-                 <form method="GET" action="cookies_control">
+                 <form method="POST" action="cookies_control">
                 <button id='price_button'><%
                     Double price = (Double) request.getAttribute("vanilaPrice");
                     out.println("R" + price);
@@ -87,9 +89,6 @@
                 </button>
                 <button id='cart_button' onclick="cookiesControl()" name="add" value="vanila">add to cart</button>
                  </form>
-            </div>
-            <div >
-                <i class="fa fa-exclamation-triangle">contains vanilla full cream</i>
             </div>
 
         </div><br><br>
@@ -121,9 +120,11 @@
                             </li>
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
-                                    <%
-                                        String plainNutrients = (String) request.getAttribute("plainNu");
-                                        out.println(String.format("<li>%s</li>", plainNutrients));
+                                     <%
+                                        nutrients = (List<String>) request.getAttribute("plainNu");
+                                        for(String nutrient: nutrients){
+                                        out.println(String.format("<li>%s</li>", nutrient));
+                                        }
                                     %>
                                 </ul>
                             </li>
@@ -133,7 +134,7 @@
 
             </div>
             <div id='img_price'>
-                 <form method="GET" action="cookies_control">
+                 <form method="POST" action="cookies_control">
                 <button id='price_button'><%
                     price = (Double) request.getAttribute("plainPrice");
                     out.println("R" + price);
@@ -142,9 +143,6 @@
                  </form>
             </div>
             <div >
-                <i class="fa fa-exclamation-triangle">contains nuts</i>
-            </div>
-
         </div>
         <div class="images-container">
             <div class="cookies_img" >
@@ -174,9 +172,11 @@
                             </li>
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
-                                    <%
-                                        String chocolateNutrients = (String) request.getAttribute("chocolateNu");
-                                        out.println(String.format("<li>%s</li>", chocolateNutrients));
+                                     <%
+                                        nutrients = (List<String>) request.getAttribute("chocolateNu");
+                                        for(String nutrient: nutrients){
+                                        out.println(String.format("<li>%s</li>", nutrient));
+                                        }
                                     %>
                                 </ul>
                             </li>
@@ -186,16 +186,13 @@
 
             </div>
             <div id='img_price'>
-                <form method="GET" action="cookies_control">
+                <form method="POST" action="cookies_control">
                 <button id='price_button'><%
                     price = (Double) request.getAttribute("chocolatePrice");
                     out.println("R" + price);
                     %></button>
                 <button id='cart_button' onclick="cookiesControl()" name="add" value="chocolate">add to cart</button>
                 </form>
-            </div>
-            <div >
-                <i class="fa fa-exclamation-triangle">contains nuts</i>
             </div>
         </div>
     </body>

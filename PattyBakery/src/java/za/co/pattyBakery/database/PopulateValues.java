@@ -208,7 +208,8 @@ public class PopulateValues {
 
             for (int i = 0; i < description.length; i++) {
                 con.prepareStatement(String.format("INSERT IGNORE INTO recipe(recp_id,descriptions) VALUES ('%s','%s')", respId[i], description[i])).executeUpdate();
-            System.out.println("Cookies recipe added to table");
+                System.out.println("Cookies recipe added to table");
+            }
         } catch (SQLException sql) {
             System.out.println(String.format("ERROR: cookies recipe failed to create\t%s", sql.getMessage()));
         }
@@ -414,13 +415,13 @@ public class PopulateValues {
         Integer[] grams = {};
         try {
             for (int i = 0; i < caramelCakeIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "4RES", caramelCakeIngrId[i] + 1 + "ING")).executeUpdate();
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "1RES", caramelCakeIngrId[i] + 1 + "ING")).executeUpdate();
             }
             for (int i = 0; i < marigueCakeIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "5RES", marigueCakeIngrId[i] + 1 + "ING")).executeUpdate();
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "2RES", marigueCakeIngrId[i] + 1 + "ING")).executeUpdate();
             }
             for (int i = 0; i < chocolateCakeIngrId.length; i++) {
-                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "6RES", chocolateCakeIngrId[i] + 1 + "ING")).executeUpdate();
+                con.prepareStatement(String.format("INSERT IGNORE INTO recipe_ingredient(recp_id,ingr_id) VALUES ('%s','%s')", "3RES", chocolateCakeIngrId[i] + 1 + "ING")).executeUpdate();
             }
             System.out.println("cake recipe/ingredient created");
         } catch (SQLException sql) {
