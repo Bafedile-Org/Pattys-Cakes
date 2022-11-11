@@ -139,7 +139,7 @@ public class DatabaseConnect {
         PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS recipe_ingredient (recp_id VARCHAR(10) ,"
-                    + "ingr_id VARCHAR(10),FOREIGN KEY(recp_id) REFERENCES recipe(recp_id),FOREIGN KEY(ingr_id) REFERENCES ingredients(ingr_id))");
+                    + "ingr_id VARCHAR(10),FOREIGN KEY(recp_id) REFERENCES recipe(recp_id),FOREIGN KEY(ingr_id) REFERENCES ingredients(ingr_id),PRIMARY KEY(recp_id,ingr_id))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create recipe_ingredients table.." + sql.getMessage());
@@ -151,7 +151,7 @@ public class DatabaseConnect {
         PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS recipe (recp_id VARCHAR(10) PRIMARY KEY,"
-                    + "description VARCHAR(200))");
+                    + "descriptions VARCHAR(200))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create recipe table.." + sql.getMessage());

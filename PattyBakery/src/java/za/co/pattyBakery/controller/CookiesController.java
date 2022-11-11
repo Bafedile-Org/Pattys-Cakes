@@ -25,7 +25,7 @@ import za.co.pattyBakery.service.impl.ProductServImpl;
 public class CookiesController extends BakeryController {
 
     List<Order> orders = new ArrayList<>();
-    String[] recipeIds = {"16RES", "17RES", "18RES"};
+    String[] recipeIds = {"16RES", "18RES", "17RES"};
     String[] productIds = {"4PRO", "5PRO", "6PRO"};
     String[] strings = {"vanila", "chocolate", "plain"};
     String[] productNames = {"vanilaName", "chocolateName", "plainName"};
@@ -36,7 +36,6 @@ public class CookiesController extends BakeryController {
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
         if (request.getParameter("add") != null) {
             if (request.getParameter("add").equalsIgnoreCase("vanila")) {
                 addOrder("4PRO");
@@ -48,9 +47,10 @@ public class CookiesController extends BakeryController {
             totalItemsInCart += 1;
             request.setAttribute("totalInCart", totalItemsInCart);
             RequestDispatcher dispatcher = request.getRequestDispatcher("cookies");
+            dispatcher.forward(request, response);
         } else {
-//             setIngredientAttributes(recipeIds, strings, request);
-//            setProductName(productIds, productNames, productPrices, productNutrients, request);
+            setIngredientAttributes(recipeIds, strings, request);
+            setProductName(productIds, productNames, productPrices, productNutrients, request);
             request.setAttribute("totalInCart", totalItemsInCart);
             RequestDispatcher dispatcher = request.getRequestDispatcher("cookies");
             dispatcher.forward(request, response);
