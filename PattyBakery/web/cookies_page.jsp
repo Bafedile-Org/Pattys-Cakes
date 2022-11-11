@@ -82,9 +82,7 @@
                 </button>
                 <button id='cart_button'>add to cart</button>
             </div>
-            <div >
-                <i class="fa fa-exclamation-triangle">contains vanilla full cream</i>
-            </div>
+            
 
         </div><br><br>
         <div class="images-container">
@@ -131,9 +129,7 @@
                     %></button>
                 <button id='cart_button'>add to cart</button>
             </div>
-            <div >
-                <i class="fa fa-exclamation-triangle">contains nuts</i>
-            </div>
+            
 
         </div>
         <div class="images-container">
@@ -180,9 +176,7 @@
                     %></button>
                 <button id='cart_button'>add to cart</button>
             </div>
-            <div >
-                <i class="fa fa-exclamation-triangle">contains nuts</i>
-            </div>
+            
         </div>
     </body>
 </html>

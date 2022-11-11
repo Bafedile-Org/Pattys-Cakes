@@ -71,9 +71,7 @@
                 </button>
                 <button id="b1">add to cart</button>
             </div>
-            <div class="button">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
-            </div>
+
         </div>
 
         <div id="label_div">
@@ -112,9 +110,7 @@
                 </button>
                 <button id="b1">add to cart</button>
             </div>
-            <div class="button">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
-            </div></div>
+</div>
 
         <div id="label_div">
              <label><strong><%
@@ -152,9 +148,7 @@
                 </button>
                 <button id="b1">add to cart</button>
             </div>
-            <div class="button">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
-            </div></div>
+            </div>
 
     </body>
 </html>

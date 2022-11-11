@@ -15,11 +15,15 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    </head>
-    <body>
-        <header>
+      <style>
+        
+        </style>
+      </head>
+      <body class="home-body1">
+          <header class="home-head">
             <nav>
-                <div class="topnav" >
+                <div class="topnav" align="center">
+          
                     <h1>
                         <a href="home" > Patty's Bakery   
                             <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
@@ -37,8 +41,8 @@
             <pre align="center"><h1>Muffins/<a href="cupcakes_control">Cupcakes</a></h1></pre>
         </h1>
 
-        <div id="label_div">
-                <label id="cookie_label">
+        <div id="label_div" style= "background-color: #C799BA; padding: 5px 5px;">
+                <label id="cookie_label" >
                     <strong>
                         <%
                             String name = (String) request.getAttribute("blueberryName");
@@ -75,11 +79,9 @@
                     %></button>  
                 <button id="b1"> Add to cart</button>  
             </div>
-                  <div class="botom">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
-            </div>
+                
                 </div>
-                 <div id="label_div">
+                 <div id="label_div" style= "background-color: #C799BA; padding: 5px 5px;">
 
                 <label>
                     <strong><%
@@ -118,11 +120,9 @@
                     %></button>  
                 <button id="b1"> Add to cart</button>  
             </div>
-         <div class="botom">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
-            </div>
+         
                  </div>
-            <div id="label_div">
+            <div id="label_div" >
 
                 <label>
                     <strong><%
@@ -157,9 +157,7 @@
                     %></button>  
                 <button id="b1"> Add to cart</button>  
             </div>
-                 <div class="botom">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
-            </div>
+               
         </div>
 
     </body>

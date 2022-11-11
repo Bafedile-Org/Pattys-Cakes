@@ -1,7 +1,7 @@
 <%-- 
     Document   : signup_page
     Created on : 04 Nov 2022, 12:57:23 PM
-    Author     : TRAIN 14
+    Author     : Hlawulani
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -27,25 +27,25 @@
                      <header>Signup</header>
                     <form action="#">
                         <div class="field input-field">
-                            <input type="name" placeholder="Name" class="name">
+                            <input type="name" placeholder="Name" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="surname" placeholder="Surname" class="surname">
+                            <input type="surname" placeholder="Surname" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="iDnumber" placeholder="ID Number" class="iDnumber">
+                            <input type="iDnumber" placeholder="ID Number" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="address" placeholder="Address" class="address">
+                            <input type="address" placeholder="Address" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="tel" placeholder="Telephone/Cellphone" class="tel">
+                            <input type="tel" placeholder="Telephone/Cellphone" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="password" placeholder="Create password" class="password">
+                            <input type="password" placeholder="Create password" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="password" placeholder="Confirm password" class="password">
+                            <input type="password" placeholder="Confirm password" class="inputbox" required>
                             <i class='bx bx-hide eye-icon'></i>
                         </div>
                         <div class="field button-field">

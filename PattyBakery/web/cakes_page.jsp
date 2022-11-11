@@ -15,6 +15,14 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+      <style>
+        html, body {
+          background-color: #f4f4f4;
+        }
+        .sf {
+          min-height: 400px;
+        }
+        </style>
     </head>
     <body>
         <header>
@@ -72,9 +80,7 @@
                 <button id="b1">add to cart</button>
             </div>
             <p> </p>
-            <div class="botom">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
-            </div></div>
+           
         <div id="label_div">
             <label><strong><%
                 name = (String) request.getAttribute("margueName");
@@ -112,10 +118,7 @@
                 <button id="b1">add to cart</button>
             </div>
             <p> </p>
-            <div class="botom">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
-            </div>
-
+         
         </div>
         <div id="label_div">
             <label>
@@ -154,9 +157,7 @@
                 </button>
                 <button id="b1">add to cart</button>
             </div>
-            <div class="botom">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
-            </div>
+            
         </div>
     </body>
 </html>

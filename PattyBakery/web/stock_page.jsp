@@ -29,7 +29,7 @@
             <div class="topnav">
                 <h1 align="center" id="home-header1"> Bakery Stock management site
                     <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                        <div class="dropdown-content">
+                        <div class="dropdown-content" align="left">
                             <a href="management_page.jsp">Back</a>
                         </div>
                     </i>
@@ -39,7 +39,7 @@
         <div>
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
         </div>
-        <div class="form-content">
+        <div class="form-contentt">
              <form action="#">
                 <div class="input-field" style="text-align: center">
                  <input type="productId" placeholder="Product ID" class="productId" size="33">

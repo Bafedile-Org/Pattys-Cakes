@@ -445,6 +445,13 @@ a.facebook .facebook-icon{
     font-size:25px;
 
 }
+.form-content form{
+    margin-top:12%;
+}
+.form-contents form{
+    margin-top:8%;
+}
+
 /*        
 .btn-group button {
     margin: 1px;

@@ -33,7 +33,7 @@
                     Patty's Bakery Management
                   
                 <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                    <div class="dropdown-content">
+                    <div class="dropdown-content" align="left">
                         <a href="home">Logout</a>
                         <a href="stock_page.jsp">Stock</a>
                         <a href="employee_page.jsp">Employee</a>
@@ -52,7 +52,7 @@
                 <div class="w3-container">
                 <div class="w3-content w3-display-container" style="max-width:800px">
                    
-                    <a href="stock_page.jsp"><img class="mySlides" src="assets/management/stock.jpg" style="width:100%"></a>
+                    <a href="stock_page.jsp"><img class="mySlides" src="assets/management/stock.jpg" style="width:100%" ></a>
                     <a href="employee_page.jsp"><img class="mySlides" src="assets/management/employee.jpg" style="width:100%"></a>
                     <a href="order_page.jsp"><img class="mySlides" src="assets/management/orders.jpg" style="width:100%"></a>
                     <a href="ingredient_page.jsp"><img class="mySlides" src="assets/management/ingredient.jsp.jfif" style="width:100%"></a>
@@ -93,7 +93,9 @@
           dots[slideIndex-1].className += " w3-white";
         }
 </script>
+
 </div>
+
 
     </body>
 </html>
