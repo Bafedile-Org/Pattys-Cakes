@@ -31,18 +31,19 @@ public class CookiesController extends BakeryController {
      *
      * Adding to cart does not work fix it
      */
-    List<Order> orders = new ArrayList<>();
+    static List<Order> orders = new ArrayList<>();
     String[] recipeIds = {"16RES", "18RES", "17RES"};
     String[] productIds = {"4PRO", "5PRO", "6PRO"};
-    String[] strings = {"vanila", "chocolate", "plain"};
-    String[] productNames = {"vanilaName", "chocolateName", "plainName"};
-    String[] productPrices = {"vanilaPrice", "chocolatePrice", "plainPrice"};
-    String[] productNutrients = {"vanilaNu", "chocolateNu", "plainNu"};
+    String[] productIds = {"4PRO", "5PRO", "6PRO"};
+    String[] productNames = {"4PROName", "5PROName", "6PROName"};
+    String[] productPrices = {"4PROPrice", "5PROPrice", "6PROPrice"};
+    String[] productNutrients = {"4PRONu", "5PRONu", "6PRONu"};
     Integer totalItemsInCart = 0;
-    ShoppingCart cart;
+    static ShoppingCart cart;
     String productId = null;
     String[] imagesSrc = new String[3];
     Product[] products = new Product[3];
+    static Integer[] orderQuantities = new Integer[3];
 
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -53,49 +54,74 @@ public class CookiesController extends BakeryController {
             orders.clear();
             cart = null;
         }
-        if (request.getParameter("add") != null) {
-            if (request.getParameter("add").equalsIgnoreCase("vanila")) {
-                imagesSrc[0] = "assets/cookies/cookies_p.jpg";
-                productId = productIds[0];
-                products[0] = new ProductServImpl().getProductById(productId);
-                addOrder(productId);
-
-            } else if (request.getParameter("add").equalsIgnoreCase("chocolate")) {
-                imagesSrc[1] = "assets/cookies/cookies_pic1.jpg";
-                productId = productIds[1];
-                products[1] = new ProductServImpl().getProductById(productId);
-                addOrder(productId);
-            } else if (request.getParameter("add").equalsIgnoreCase("plain")) {
-                imagesSrc[2] = "assets/cookies/cokkies_pic2.jpg";
-                productId = productIds[2];
-                products[2] = new ProductServImpl().getProductById(productId);
-                addOrder(productId);
+        for (String productId1 : productIds) {
+            if (request.getParameter("adds") != null) {
+                if (request.getParameter("adds").equalsIgnoreCase(productId1)) {
+                    addOrders(request, response, "adds");
+                    addQuantities();
+                    cart = setTotalPrice();
+                    redirectToCart(request, response);
+                }
             }
-            cart = setTotalPrice(cart);
-            totalItemsInCart = cart.getOrders().size();
-            request.setAttribute("totalInCart", totalItemsInCart);
-            redirectToPage(request, response);
+        }
+
+        if (request.getParameter("add") != null) {
+            addOrders(request, response, "add");
+            redirectToPage(request, response, "cookies");
+
         } else {
             if (request.getParameter("cart") == null) {
-                redirectToPage(request, response);
+                redirectToPage(request, response, "cookies");
             } else {
-                request.setAttribute("cartItems", cart);
-                request.setAttribute("images", imagesSrc);
-                request.setAttribute("descriptions", null);
-                request.setAttribute("products", products);
-                RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
-                dispatcher.forward(request, response);
+                redirectToCart(request, response);
             }
 
         }
+        addQuantities();
+
     }
 
-    private void redirectToPage(HttpServletRequest request, HttpServletResponse response)
+    private void redirectToCart(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        setIngredientAttributes(recipeIds, strings, request);
+        request.setAttribute("cartItems", cart);
+        request.setAttribute("images", imagesSrc);
+        request.setAttribute("quantities", orderQuantities);
+        request.setAttribute("products", products);
+        request.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", cart.getTotalprice())));
+        RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
+        dispatcher.forward(request, response);
+    }
+
+    private void addOrders(HttpServletRequest request, HttpServletResponse response, String param)
+            throws ServletException, IOException {
+        if (request.getParameter(param).equalsIgnoreCase("4PRO")) {
+            imagesSrc[0] = "assets/cookies/cookies_p.jpg";
+            productId = productIds[0];
+            products[0] = new ProductServImpl().getProductById(productId);
+            addOrder(productId);
+
+        } else if (request.getParameter(param).equalsIgnoreCase("5PRO")) {
+            imagesSrc[1] = "assets/cookies/cookies_pic1.jpg";
+            productId = productIds[1];
+            products[1] = new ProductServImpl().getProductById(productId);
+            addOrder(productId);
+        } else if (request.getParameter(param).equalsIgnoreCase("6PRO")) {
+            imagesSrc[2] = "assets/cookies/cokkies_pic2.jpg";
+            productId = productIds[2];
+            products[2] = new ProductServImpl().getProductById(productId);
+            addOrder(productId);
+        }
+        cart = setTotalPrice();
+        totalItemsInCart = cart.getOrders().size();
+        request.setAttribute("totalInCart", totalItemsInCart);
+    }
+
+    private void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage)
+            throws ServletException, IOException {
+        setIngredientAttributes(recipeIds, productIds, request);
         setProductName(productIds, productNames, productPrices, productNutrients, request);
         request.setAttribute("totalInCart", totalItemsInCart);
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cookies");
+        RequestDispatcher dispatcher = request.getRequestDispatcher(redirectPage);
         dispatcher.forward(request, response);
     }
 
@@ -116,15 +142,28 @@ public class CookiesController extends BakeryController {
         }
     }
 
-    private ShoppingCart setTotalPrice(ShoppingCart cart) {
+    private void addQuantities() {
+        Integer i = 0;
+        for (String prodId : productIds) {
+            for (Order order : orders) {
+                if (order.getProduct().getProductId().equals(prodId)) {
+                    orderQuantities[i] = order.getQuantity();
+                }
+            }
+            i++;
+        }
+    }
+
+    private ShoppingCart setTotalPrice() {
         if (cart == null) {
-            cart = new ShoppingCartImpl(null, null, null);
+            cart = new ShoppingCartImpl(orders, null, LocalDate.now());
         }
 
         if (cart.getOrderNumber() == null) {
-            cart = new ShoppingCartImpl(orders, generateOrderNumber(), LocalDate.now());
+            cart.setOrderNumber(generateOrderNumber());
+            cart.setOrders(orders);
         } else {
-            cart = new ShoppingCartImpl(orders, cart.getOrderNumber(), LocalDate.now());
+            cart.setOrders(orders);
         }
 
         return cart;
@@ -136,7 +175,7 @@ public class CookiesController extends BakeryController {
         for (char i = 'A'; i <= 'Z'; i++) {
             alphabets.add(i);
         }
-        orderNumber += alphabets.get(new SecureRandom().nextInt(25));
+        orderNumber += alphabets.get(new SecureRandom().nextInt(25)) + alphabets.get(new SecureRandom().nextInt(25));
         for (int i = 0; i < 5; i++) {
             orderNumber += new SecureRandom().nextInt(10);
         }

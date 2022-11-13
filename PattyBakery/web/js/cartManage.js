@@ -1,4 +1,8 @@
-
+//function controllers() {
+//    if (document.getElementById("conForm").name === "Cookies") {
+//        location.href = 'cookies_control';
+//    }
+//}
 function increment1() {
     document.getElementById('amountInput1').stepUp();
     multiply1();

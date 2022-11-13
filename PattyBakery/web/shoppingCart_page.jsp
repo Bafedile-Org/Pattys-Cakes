@@ -4,6 +4,9 @@
     Author     : Bridget Bapela
 --%>
 
+<%@page import="za.co.pattyBakery.Order"%>
+<%@page import="java.util.List"%>
+<%@page import="za.co.pattyBakery.ShoppingCart"%>
 <%@page import="za.co.pattyBakery.Product"%>
 <%@page contentType='text/html' pageEncoding='UTF-8'%>
 <!DOCTYPE html>
@@ -39,10 +42,14 @@
         <%
             String[] images = (String[]) request.getAttribute("images");
             Product[] products = (Product[]) request.getAttribute("products");
+            String[] productIds = new String[3];
+            //ShoppingCart cart = (ShoppingCart) request.getAttribute("shoppingCart");
+            //List<Order> cartOrders = cart.getOrders();
+            Integer[] quantities = (Integer[]) request.getAttribute("quantities");
             if (images != null) {
                 for (int i = 0; i < images.length; i++) {
                     if (images[i] != null && products[i] != null) {
-                        out.println(String.format("<div class='item' id='div%d'>"
+                        out.println(String.format("<div class='item' id='div'>"
                                 + "<div class='buttons'>"
                                 + "<span class='delete-btn'>"
                                 + "</span><span class='like-btn'></span>"
@@ -53,17 +60,20 @@
                                 + "<div class='description'><span>%s</span>"
                                 + "</div>"
                                 + "<div class='quantity'><script src='js/cartCode.js'></script> "
-                                + "<button class='plus-btn' type='button' name='button' onclick='decrement%d()'><strong>-</strong>"
+                                + "<form onclick='controllers()' method='POST' id='conForm' name='%s'>"
+                                + "<button class='plus-btn' type='submit' name='%s' value='%s' data-value='productId'><strong>-</strong>"
                                 + "</button>"
-                                + "<input id='amountInput%d' type=number min=1 max=50 value='1'>"
-                                + "<button class='minus-btn' type='button' name='button' onclick='increment%d()'><strong>+</strong></button>"
+                                + "<input id='amountInput' type=number min=1 max=50 value='%d'>"
+                                + "<button class='minus-btn' type='submit' name='%s' value='%s'><strong>+</strong></button>"
+                                + "</form>"
                                 + "</div>"
-                                + "R<input type='button' id='price%d' class='total-price' value='%.2f' name='%.2f'>"
-                                + "<div class=”remove” onclick='remove%d()'>"
+                                + "R<input type='button' id='price' class='total-price' value='%.2f' name='%.2f'>"
+                                + "<div class=”remove” onclick='remove()'>"
                                 + "<u style='cursor: pointer'>Remove</u>"
                                 + "</div>"
-                                + "</div><br>", (i + 1),
-                                images[i], products[i].getProductName(), (i + 1), (i + 1), (i + 1), (i + 1), products[i].getPrice(), products[i].getPrice(), (i + 1)));
+                                + "</div><br>",
+                                images[i], products[i].getProductName(), products[i].getCategory(), "sub", products[i].getProductId(), quantities[i], "adds",
+                                products[i].getProductId(), products[i].getPrice(), products[i].getPrice()));
                     }
                 }
             }
@@ -71,9 +81,9 @@
     </div>
 
     <div class='checkout' align='center'>
-        Total Amount :R<input type='button' id='totalAmount' value='0'><br>
+        Total Amount :R<input type='button' id='totalAmount' value='<%=request.getAttribute("totalAmount")%>'<br>
         <label>Delivery : R100</label><br>
-        Total Amount Due :R<input type='button' id='totalAmountDue' value='0'>
+        Total Amount Due :R<input type='button' id='totalAmountDue' value='<%=(Double) request.getAttribute("totalAmount") + 100%>'>
     </div>
     <div align='right'>
         <button style="width:150px;height:50px;border-radius:12px;background-color:#C799BA">Checkout</button>

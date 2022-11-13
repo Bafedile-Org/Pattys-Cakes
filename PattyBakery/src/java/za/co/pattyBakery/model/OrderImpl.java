@@ -12,7 +12,7 @@ public class OrderImpl implements Order {
 
     private Product product;
     private Integer quantity;
-    private Double totalPrice;
+    private Double totalPrice = 0.0;
 
     public OrderImpl() {
     }
@@ -20,6 +20,7 @@ public class OrderImpl implements Order {
     public OrderImpl(Product product, Double totalPrice) throws OrderException {
         this.setProduct(product);
         this.setQuantity(1);
+        this.setTotalPrice(totalPrice);
     }
 
     public OrderImpl(Product product, Integer quantity) throws OrderException {
@@ -64,7 +65,7 @@ public class OrderImpl implements Order {
         if (totalPrice < 0) {
             throw new OrderException(ORDER_TOTAL_PRICE_ERROR_MSG);
         }
-        this.totalPrice *= quantity;
+        this.totalPrice = totalPrice * quantity;
     }
 
     @Override
