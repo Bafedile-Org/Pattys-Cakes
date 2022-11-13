@@ -2,6 +2,7 @@ package za.co.pattyBakery.controller;
 
 import java.io.IOException;
 import java.security.SecureRandom;
+import java.sql.Connection;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +47,12 @@ public class CookiesController extends BakeryController {
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (request.getParameter("index") != null) {
+            totalItemsInCart = 0;
+            productId = null;
+            orders.clear();
+            cart = null;
+        }
         if (request.getParameter("add") != null) {
             if (request.getParameter("add").equalsIgnoreCase("vanila")) {
                 imagesSrc[0] = "assets/cookies/cookies_p.jpg";
@@ -54,12 +61,12 @@ public class CookiesController extends BakeryController {
                 addOrder(productId);
 
             } else if (request.getParameter("add").equalsIgnoreCase("chocolate")) {
-                imagesSrc[1] = "assets/cookies/cokkies_pic2.jpg";
+                imagesSrc[1] = "assets/cookies/cookies_pic1.jpg";
                 productId = productIds[1];
                 products[1] = new ProductServImpl().getProductById(productId);
                 addOrder(productId);
             } else if (request.getParameter("add").equalsIgnoreCase("plain")) {
-                imagesSrc[2] = "assets/cookies/cookies_pic1.jpg";
+                imagesSrc[2] = "assets/cookies/cokkies_pic2.jpg";
                 productId = productIds[2];
                 products[2] = new ProductServImpl().getProductById(productId);
                 addOrder(productId);
@@ -96,11 +103,14 @@ public class CookiesController extends BakeryController {
         try {
             Product product = new ProductServImpl().getProductById(productId);
             Order order = new OrderImpl(product, product.getPrice());
-            if (orders.contains(order)) {
-                order.setQuantity(order.getQuantity() + 1);
-            } else {
-                orders.add(order);
+
+            for (Order or : orders) {
+                if (or.getProduct().getProductId().equalsIgnoreCase(product.getProductId())) {
+                    or.setQuantity(or.getQuantity() + 1);
+                    return;
+                }
             }
+            orders.add(order);
         } catch (OrderException ex) {
 
         }
@@ -126,9 +136,9 @@ public class CookiesController extends BakeryController {
         for (char i = 'A'; i <= 'Z'; i++) {
             alphabets.add(i);
         }
-
-        for (int i = 0; i < 2; i++) {
-            orderNumber += new SecureRandom().nextInt(10) + alphabets.get(new SecureRandom().nextInt(25));
+        orderNumber += alphabets.get(new SecureRandom().nextInt(25));
+        for (int i = 0; i < 5; i++) {
+            orderNumber += new SecureRandom().nextInt(10);
         }
 
         return orderNumber;

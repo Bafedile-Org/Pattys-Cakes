@@ -1,4 +1,4 @@
-<%-- 
+<%--
     Document   : index
     Created on : Oct 31, 2022, 8:42:56 AM
     Author     : Hlawulani Baloyi
@@ -20,7 +20,7 @@
             <nav>
                 <div class="topnav" >
                     <h1 align="center" id='home-header1'>
-                        Patty's Bakery   
+                        Patty's Bakery
                         <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                             <div class="dropdown-content">
                                 <a  href="aboutUs">About Us</a>
@@ -42,19 +42,19 @@
                 <input type="radio" name="r" id="r5" >
 
                 <div class="slide s1">
-                    <a href="cookies_control"><img src="assets/cookies/cokkies_pic2.jpg" alt="Plain Coffee Cookies"></a>
+                    <a href="cookies_control?index=index" name="index"><img src="assets/cookies/cokkies_pic2.jpg" alt="Plain Coffee Cookies"></a>
                 </div>
                 <div class="slide ">
-                    <a href="cakes_control"><img src="assets/cakes/rainbow_cake3.jpg" alt="Rainbow Cake"></a>
+                    <a href="cakes_control" name="index"><img src="assets/cakes/rainbow_cake3.jpg" alt="Rainbow Cake"></a>
                 </div>
                 <div class="slide ">
-                    <a href="pies_control"><img src="assets/personal_pies/blueberry pies.jpg" alt="Blueberry Pies"></a>
+                    <a href="pies_control" name="index"><img src="assets/personal_pies/blueberry pies.jpg" alt="Blueberry Pies"></a>
                 </div>
                 <div class="slide ">
-                    <a href="doughnuts_control"><img src="assets/doughnuts/dougnuts2.jpg" alt="Glazed Simpsons Doughnuts"></a>
+                    <a href="doughnuts_control" name="index"><img src="assets/doughnuts/dougnuts2.jpg" alt="Glazed Simpsons Doughnuts"></a>
                 </div>
                 <div class="slide ">
-                    <a href="cupcakes_control"><img src="assets/muffins/muffins_and_cupcakes.png" alt="Muffins And  Cupcakes"></a>
+                    <a href="cupcakes_control" name="index"><img src="assets/muffins/muffins_and_cupcakes.png" alt="Muffins And  Cupcakes"></a>
                 </div>
 
 
