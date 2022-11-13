@@ -1,13 +1,19 @@
+<%-- 
+    Document   : management_login_page
+    Created on : 08 Nov 2022, 8:52:15 AM
+    Author     : Hlawulani
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html>
+    <head class="topnav">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Management login</title>
         <link rel="stylesheet" href="css/style.css">
-        <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+        <script src="js/main.js"></script>
         <style>
         html, body {
           background-color: #f4f4f4;
@@ -17,24 +23,25 @@
         }
       </style>
     </head>
-    <body>
+    <body class="home-management">
+        <header class="home-head">
         <nav>
-            <header>
-                <div class="topnav" >
-                    <h1 align="center" id='home-header1'>
-                        Welcome To Patty's Bakery   
-                        <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                            <div class="dropdown-content" align="left">
-                                <a href="home">Home</a>
-                                <a  href="aboutUs">About Us</a>
-                                <a  href="stores">Our Stores</a>
-                            </div>
-                        </i>
-                    </h1>
-                </div>
-            </header>
+            <div class="topnav">
+                <h1 align="center" id="home-header1">
+                    Welcome to Patty's Bakery Management
+                    <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
+                        <div class="dropdown-content">
+                            <a  href="home">Home</a>
+                        </div>
+                    </i>
+                </h1>
+            </div>
         </nav>
-        <section class="container forms">
+        </header>
+        <div>
+            Today's date: <%= (new java.util.Date()).toLocaleString()%>
+        </div>
+         <section class="container forms">
             <div class="form login">
                 <div class="form-content">
                     <header>Login</header>
@@ -50,12 +57,9 @@
                             <span>Forgot password?<a href="reset">Forgot passowrd</a></span>
                         </div>
                         <div class="field button-field">
-                            <button>Login</button>
+                            <button><span>Login <a href="management_page.jsp"></a></span></button>
                         </div>
                     </form>
-                    <div class="form-link">
-                        <span>Don't have an account?<a href="signup">Signup</a></span>
-                    </div>
                 </div>
                 <div class="line"></div>
             </div>

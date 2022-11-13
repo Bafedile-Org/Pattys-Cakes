@@ -20,10 +20,10 @@
                     <h1 align="center" id='home-header1'>
                         Patty's Bakery   
                         <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                            <div class="dropdown-content">
+                            <div class="dropdown-content" align="left">
                                 <a href="home">Home</a>
-                                <a  href="aboutUs">About Us</a>
-                                <a  href="stores">Our Stores</a>
+                                <a href="aboutUs">About Us</a>
+                                <a href="stores">Our Stores</a>
                                 <a href="signup">Signup/Signin</a>
                             </div>
                         </i>
