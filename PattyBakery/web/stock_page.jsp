@@ -39,7 +39,7 @@
         <div>
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
         </div>
-        <div class="form-contentt">
+        <div class="form-content">
              <form action="#">
                 <div class="input-field" style="text-align: center">
                  <input type="productId" placeholder="Product ID" class="productId" size="33">

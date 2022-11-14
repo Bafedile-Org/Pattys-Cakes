@@ -31,7 +31,7 @@
                     Welcome to Patty's Bakery Management
                     <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                         <div class="dropdown-content">
-                            <a  href="home">Home</a>
+                            <a  href="management_page.jsp">Home</a>
                         </div>
                     </i>
                 </h1>
@@ -47,7 +47,7 @@
                     <header>Login</header>
                     <form action="#">
                         <div class="field input-field">
-                            <input type="email" placeholder="Email" class="inputbox" required>
+                            <input type="email" placeholder="Email address" class="inputbox" required>
                         </div>
                         <div class="field input-field">
                             <input type="password" placeholder="Password" class="inputbox" required>

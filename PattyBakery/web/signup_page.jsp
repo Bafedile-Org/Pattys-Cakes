@@ -46,7 +46,7 @@
                         </div>
                         <div class="field input-field">
                             <input type="password" placeholder="Confirm password" class="inputbox" required>
-                            <i class='bx bx-hide eye-icon'></i>
+                            
                         </div>
                         <div class="field button-field">
                             <button>Signup</button>

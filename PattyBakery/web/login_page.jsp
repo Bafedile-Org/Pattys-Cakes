@@ -43,8 +43,8 @@
                             <input type="email" placeholder="Email" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="password" placeholder="Password" class="inputbox" required>
-                           <i class='bx bx-hide eye-icon'></i>
+                            <input type="password" class="form-control" id="floatingPassword" required>
+                         
                         </div>
                         <div class="form-link">
                             <span>Forgot password?<a href="reset">Forgot passowrd</a></span>
