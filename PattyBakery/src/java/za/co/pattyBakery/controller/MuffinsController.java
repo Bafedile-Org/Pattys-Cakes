@@ -48,6 +48,8 @@ public class MuffinsController extends BakeryController {
                 addOrder("15PRO");
             }
             totalItemsInCart += 1;
+            setIngredientAttributes(recipeIds, strings, request);
+            setProductName(productIds, productNames, productPrices, productNutrients, request);
             request.setAttribute("totalInCart", totalItemsInCart);
             RequestDispatcher dispatcher = request.getRequestDispatcher("muffins");
             dispatcher.forward(request, response);
