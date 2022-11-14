@@ -28,24 +28,28 @@
             </nav>
         </header>
         <h1> 
-            <a align="left" href="home" style="color:black">
-                <i class="fa fa-arrow-left" aria-hidden="true">
+            <a align="left" href="home" style="color:black; width: 5%;">
+                <i class="fa fa-arrow-left" aria-hidden="true" style="float:left">
                 </i>
             </a>
             <pre align="center"><h1>Personal Pies</h1></pre>
 
         </h1>
-        <div id="label_div">
-             <label><strong><%
+        <div class="images-container">
+            <div class="cookies_img">
+                <div align="center">
+             <label id="cookie_label"><strong><%
                 String name = (String) request.getAttribute("blueberryName");
                 out.println(name);
                     %>
-                </strong>
-            </label><br>
-            <div class="parent">
+                </label></strong>
+            <br>
                 <img src='assets/personal_pies/blueberry pies.jpg'>
+                </div>
+                <div>
                 <article>
-                    <p id="img_list"><strong>Ingredients:</strong>
+                    <ul>
+                    <li id="img_list"><strong>Ingredients:</strong>
                     <ul>
                         <%
                             List<String> blueberryIngr = (List<String>) request.getAttribute("blueberry");
@@ -54,37 +58,45 @@
                             }
                         %>
                     </ul>
-                    <p id="img_list"><strong>Nutrients:</strong>
+                    </li>
+                    <li id="img_list"><strong>Nutrients:</strong>
                     <ul>
                          <%
                             String nutrients = (String) request.getAttribute("blueberryNu");
                             out.println(String.format("<li>%s</li>", nutrients));
                         %>
                     </ul>
+                    </li>
+                    </ul>
                 </article>
             </div>
-            <div class="price">
-                <button id="b"><%
+            </div>
+            <div id="img_price">
+                <button id="price-button"><%
                     Double price = (Double) request.getAttribute("blueberryPrice");
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="b1">add to cart</button>
+                <button id="cart_button_">add to cart</button>
             </div>
 
-        </div>
+        </div><br><br>
 
-        <div id="label_div">
-             <label><strong><%
+        <div class="images-container">
+            <div class="cookies_img">
+                <div align="center">
+             <label id="cookie_label"><strong><%
                 name = (String) request.getAttribute("appleName");
                 out.println(name);
                     %>
                 </strong>
             </label><br>
-            <div class="parent">
                 <img src='assets/personal_pies/apple_pie.jpg'>
+                </div>
+                <div>
                 <article>
-                    <p id="img_list"><strong>Ingredients:</strong>
+                    <ul>
+                    <li id="img_list"><strong>Ingredients:</strong>
                     <ul>
                         <%
                             List<String> appleIngr = (List<String>) request.getAttribute("apple");
@@ -93,36 +105,43 @@
                             }
                         %>
                     </ul>
-                    <p id="img_list"><strong>Nutrients:</strong>
+                    </li>
+                    <li id="img_list"><strong>Nutrients:</strong>
                     <ul>
                         <%
                             nutrients = (String) request.getAttribute("appleNu");
                             out.println(String.format("<li>%s</li>", nutrients));
                         %>
                     </ul>
+                    </li>
+                    </ul>
                 </article>
             </div>
-            <div class="price">
-                <button id="b"><%
+            </div>
+            <div id="img_price">
+                <button id="price_button"><%
                      price = (Double) request.getAttribute("applePrice");
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="b1">add to cart</button>
+                <button id="cart_button">add to cart</button>
             </div>
 </div>
-
-        <div id="label_div">
-             <label><strong><%
+        <div class="images-container">
+        <div class="cookies_img">       
+        <div align="center">
+             <label id="cookie_label"><strong><%
                  name = (String) request.getAttribute("strawberryName");
                 out.println(name);
                     %>
                 </strong>
             </label><br>
-            <div class="parent">
                 <img src='assets/personal_pies/strawberry pie.jpg'>
+        </div>
+                <div>
                 <article>
-                    <p id="img_list"><strong>Ingredients:</strong>
+                    <ul>
+                    <li id="img_list"><strong>Ingredients:</strong>
                     <ul>
                          <%
                             List<String> strawberryIngr = (List<String>) request.getAttribute("strawberry");
@@ -131,22 +150,26 @@
                             }
                         %>
                     </ul>
-                    <p id="img_list"><strong>Nutrients:</strong>
+                    </li>
+                    <li id="img_list"><strong>Nutrients:</strong>
                     <ul>
                         <%
                             nutrients = (String) request.getAttribute("strawberryNu");
                             out.println(String.format("<li>%s</li>", nutrients));
                         %>
                     </ul>
+                    </li>
+                    </ul>
                 </article>
             </div>
-            <div class="price">
-                <button id="b"><%
+        </div>
+            <div id="img_price">
+                <button id="price-button"><%
                      price = (Double) request.getAttribute("strawberryPrice");
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="b1">add to cart</button>
+                <button id=cart_button">add to cart</button>
             </div>
             </div>
 
