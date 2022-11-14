@@ -15,17 +15,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <style>
-        html, body {
-          background-color: #f4f4f4;
-        }
-        .sf {
-          min-height: 400px;
-        }
-        </style>
+      
     </head>
-    <body>
-        <header>
+    <body class="home-body1">
+        <header class="home-head" align="center">
             <nav>
                 <div class="topnav">
                     <h1>
