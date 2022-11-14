@@ -21,4 +21,8 @@ public interface ShoppingCart {
     public LocalDate getDate();
 
     public Boolean getDeliveryStatus();
+
+    public void setOrders(List<Order> orders);
+
+    public void setOrderNumber(String orderNumber);
 }

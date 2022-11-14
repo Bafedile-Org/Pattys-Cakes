@@ -3,9 +3,9 @@
     Author     : Dimakatso Sebatane*/
 
 
-*{
-    
-    .topnav i{
+
+
+.topnav i{
     float:right;
 }
 .topnav h1,h1{
@@ -71,4 +71,4 @@ body{
     color:black;
 
 }
-}
+

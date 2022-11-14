@@ -5,6 +5,7 @@
 /***
 Remember to work on the ingredients overlap in the cookies
 **/
+
 .top-head{
     margin:0px;
     padding:0px;
@@ -76,6 +77,7 @@ Remember to work on the ingredients overlap in the cookies
 body{
 
     background:#C799BA;
+    /*background:linear-gradient(to top left,#C799BA,whitesmoke);*/
 }
 
 #img_list{

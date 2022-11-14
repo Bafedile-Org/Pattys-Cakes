@@ -12,7 +12,6 @@ import java.util.stream.Collectors;
 import za.co.pattyBakery.dao.RecipeDAO;
 import za.co.pattyBakery.database.DatabaseConnect;
 import za.co.pattyBakery.model.Recipe;
-import za.co.pattyBakery.dao.impl.IngredientsDAOImpl;
 
 /**
  *
@@ -36,13 +35,10 @@ public class RecipeDAOImpl implements RecipeDAO {
     public void addRecipe(Recipe recipe) {
         try {
             if (con != null) {
-
-                for (int i = 0; i < recipe.getIngredients().size(); i++) {
-                    preparedStatement = con.prepareStatement("INSERT IGNORE INTO recipe (recp_id,ingr_id) VALUE(?,(SELECT ingr_id FROM ingredients WHERE ingredient=?))");
-                    preparedStatement.setString(1, recipe.getRecipeId());
-                    preparedStatement.setString(2, recipe.getIngredients().get(i));
-                    preparedStatement.executeUpdate();
-                }
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO recipe (recp_id,descriptions) VALUES(?,?)");
+                preparedStatement.setString(1, recipe.getRecipeId());
+                preparedStatement.setString(2, recipe.getDescription());
+                preparedStatement.executeUpdate();
             }
         } catch (SQLException sql) {
             System.out.println("Error: " + sql.getMessage());
@@ -54,22 +50,18 @@ public class RecipeDAOImpl implements RecipeDAO {
     @Override
     public Recipe getRecipeById(String recipeId) {
         Recipe recipe = null;
-        List<String> ingredients = new ArrayList<>();
-        try {
-            if (con != null) {
-                preparedStatement = con.prepareStatement("SELECT ingr_id FROM recipe WHERE recp_id =?");
+        if (con != null) {
+            try {
+                preparedStatement = con.prepareStatement("SELECT * FROM recipe  WHERE recp_id =?");
                 preparedStatement.setString(1, recipeId);
                 resultSet = preparedStatement.executeQuery();
-                while (resultSet.next()) {
-                    String ingredient = new IngredientsDAOImpl().getIngredientById(resultSet.getString("ingr_id"));
-                    ingredients.add(ingredient);
+
+                if (resultSet.next()) {
+                    recipe = new Recipe(recipeId, new RecipeIngredientsDAOImpl(con).getIngredientsByRecipeId(recipeId), resultSet.getString("descriptions"));
                 }
-                recipe = new Recipe(recipeId, ingredients);
+            } catch (SQLException sql) {
+                System.out.println(String.format("ERROR: %s%n", sql.getMessage()));
             }
-        } catch (SQLException sql) {
-            System.out.println("Error: " + sql.getMessage());
-        } finally {
-            close(preparedStatement, resultSet);
         }
         return recipe;
     }
@@ -80,10 +72,8 @@ public class RecipeDAOImpl implements RecipeDAO {
         Set<Recipe> recipies = new HashSet<>();
         try {
             if (con != null) {
-
                 preparedStatement = con.prepareStatement("SELECT * FROM recipe");
                 resultSet = preparedStatement.executeQuery();
-
                 while (resultSet.next()) {
                     recipe = getRecipeById(resultSet.getString("recp_id"));
                     recipies.add(recipe);
@@ -95,23 +85,6 @@ public class RecipeDAOImpl implements RecipeDAO {
             close(preparedStatement, resultSet);
         }
         return recipies.stream().collect(Collectors.toList());
-    }
-
-    @Override
-    public void addIngredientToRecipe(String recipeId, String ingredient) {
-        try {
-            if (con != null) {
-
-                preparedStatement = con.prepareStatement("INSERT IGNORE INTO recipe (ingr_id) VALUE((SELECT ingr_id FROM ingredients WHERE ingredient=?))");
-                preparedStatement.setString(1, recipeId);
-                preparedStatement.setString(2, ingredient);
-                preparedStatement.executeUpdate();
-            }
-        } catch (SQLException sql) {
-            System.out.println("Error: " + sql.getMessage());
-        } finally {
-            close(preparedStatement, resultSet);
-        }
     }
 
 }
