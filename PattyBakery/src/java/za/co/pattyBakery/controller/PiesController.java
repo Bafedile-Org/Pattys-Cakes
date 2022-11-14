@@ -1,4 +1,4 @@
-package za.co.pattyBakery.controller;
+ package za.co.pattyBakery.controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
@@ -55,6 +55,7 @@ public class PiesController extends BakeryController {
             setProductName(productIds, productNames, productPrices, productNutrients, request);
             request.setAttribute("totalInCart", totalItemsInCart);
             RequestDispatcher dispatcher = request.getRequestDispatcher("pies");
+            dispatcher.forward(request, response);
         }
 
     }

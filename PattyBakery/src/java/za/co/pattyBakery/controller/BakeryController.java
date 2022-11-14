@@ -60,7 +60,7 @@ public class BakeryController extends HttpServlet {
             Product product = productServImpl.getProductById(productIds[i]);
             request.setAttribute(productNames[i], product.getProductName());
             request.setAttribute(productPrices[i], product.getPrice());
-            request.setAttribute(productNutrients[i], product.getNutrientsList());
+            request.setAttribute(productNutrients[i], product.getNutrientInfo());
         }
     }
 
