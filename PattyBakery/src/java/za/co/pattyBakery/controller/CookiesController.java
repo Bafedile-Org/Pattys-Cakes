@@ -44,20 +44,17 @@ public class CookiesController extends BakeryController {
     String[] imagesSrc = new String[3];
     Product[] products = new Product[3];
     Integer[] orderQuantities = new Integer[3];
-    Map<String, Integer> orderQuantityMap = new HashMap<>();
+    Map<String, Integer> orderQuantitiesMap = new HashMap<>();
 
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        removeFromCart(request, response);
+        manageCart(request, response);
         if (request.getParameter("index") != null) {
             totalItemsInCart = 0;
             productId = null;
             if (orders != null) {
                 orders.clear();
-            }
-            for (int i = 0; i < orderQuantities.length; i++) {
-                orderQuantities[i] = 0;
             }
             cart = null;
         }
@@ -72,26 +69,28 @@ public class CookiesController extends BakeryController {
             } else {
                 redirectToCart(request, response);
             }
-
         }
+        addQuantities();
 
     }
 
-    private void removeFromCart(HttpServletRequest request, HttpServletResponse response)
+    private void manageCart(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         for (String productId1 : productIds) {
             if (request.getParameter("adds") != null) {
                 if (request.getParameter("adds").equalsIgnoreCase(productId1)) {
                     addOrders(request, "adds");
+                    addQuantities();
                     cart = setTotalPrice();
                     redirectToCart(request, response);
                 }
             }
         }
-        for (String productId1 : productIds) {
+        for (String prodId : productIds) {
             if (request.getParameter("sub") != null) {
-                if (request.getParameter("sub").equalsIgnoreCase(productId1)) {
-                    removeOrder(productId);
+                if (request.getParameter("sub").equalsIgnoreCase(prodId)) {
+                    removeOrder(prodId);
+                    addQuantities();
                     cart = setTotalPrice();
                     redirectToCart(request, response);
                 }
@@ -105,9 +104,9 @@ public class CookiesController extends BakeryController {
         request.setAttribute("cartItems", cart);
         request.setAttribute("images", imagesSrc);
         request.setAttribute("quantities", orderQuantities);
+        request.setAttribute("quantitiesMap", orderQuantitiesMap);
         request.setAttribute("products", products);
         request.setAttribute("deliveryAmount", 100.0);
-        request.setAttribute("quantitiesMap", orderQuantityMap);
         request.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", cart == null ? 0.0 : cart.getTotalprice())));
         RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
         dispatcher.forward(request, response);
@@ -125,13 +124,12 @@ public class CookiesController extends BakeryController {
             imagesSrc[1] = "assets/cookies/cookies_pic1.jpg";
             productId = productIds[1];
             products[1] = new ProductServImpl().getProductById(productId);
-
+            addOrder(productId);
         } else if (request.getParameter(param).equalsIgnoreCase("6PRO")) {
             imagesSrc[2] = "assets/cookies/cokkies_pic2.jpg";
             productId = productIds[2];
             products[2] = new ProductServImpl().getProductById(productId);
             addOrder(productId);
-
         }
         cart = setTotalPrice();
         totalItemsInCart = cart.getOrders().size();
@@ -148,8 +146,6 @@ public class CookiesController extends BakeryController {
     }
 
     private void addOrder(String productId) {
-        Boolean containsBoolean = false;
-        Integer orderIndex = -1;
         try {
             Product product = new ProductServImpl().getProductById(productId);
             Order order = new OrderImpl(product, product.getPrice());
@@ -157,22 +153,14 @@ public class CookiesController extends BakeryController {
             if (orders == null) {
                 orders = new ArrayList<>();
             }
-
-            for (int i = 0; i < orders.size(); i++) {
-                if (orders.get(i).getProduct().getProductId().equalsIgnoreCase(product.getProductId())) {
-                    containsBoolean = true;
-                    orderIndex = i;
-                    break;
+            for (Order or : orders) {
+                if (or.getProduct().getProductId().equalsIgnoreCase(product.getProductId())) {
+                    or.setQuantity(or.getQuantity() + 1);
+                    return;
                 }
             }
-            if (containsBoolean && orderIndex != -1) {
-                order = orders.get(orderIndex);
-                addQuantities(order.getProduct().getProductId(), order.getQuantity());
-            } else {
-                orders.add(order);
-                addQuantities(order.getProduct().getProductId(), order.getQuantity());
-            }
 
+            orders.add(order);
         } catch (OrderException ex) {
             System.out.println(String.format("ERROR: %s%n", ex.getMessage()));
         }
@@ -186,15 +174,14 @@ public class CookiesController extends BakeryController {
             }
             for (Order or : orders) {
                 if (or.getProduct().getProductId().equalsIgnoreCase(product.getProductId())) {
-                    if (or.getQuantity() > 0) {
+                    if (or.getQuantity() > 0 || or.getQuantity() == 0) {
                         if (or.getQuantity() == 1) {
                             or.setQuantity(1);
                         } else {
                             or.setQuantity(or.getQuantity() - 1);
                         }
-                        addQuantities(or.getProduct().getProductId(), or.getQuantity());
                     }
-//                    return;
+                    return;
                 }
             }
 
@@ -203,8 +190,17 @@ public class CookiesController extends BakeryController {
         }
     }
 
-    private void addQuantities(String productId, Integer quantity) {
-        orderQuantityMap.put(productId, quantity);
+    private void addQuantities() {
+        Integer i = 0;
+        for (Order order : orders) {
+            for (String productId : productIds) {
+                if (order.getProduct().getProductId().equals(productId)) {
+                    orderQuantities[i] = order.getQuantity();
+                    orderQuantitiesMap.put(productId, order.getQuantity());
+                }
+            }
+
+        }
     }
 
     private ShoppingCart setTotalPrice() {
@@ -232,7 +228,6 @@ public class CookiesController extends BakeryController {
         for (int i = 0; i < 5; i++) {
             orderNumber += new SecureRandom().nextInt(10);
         }
-
         return orderNumber;
     }
 
