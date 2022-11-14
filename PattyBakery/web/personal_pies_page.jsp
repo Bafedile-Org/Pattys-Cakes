@@ -17,10 +17,10 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <script src="js/main.js"></script>
     </head>
-    <body>
-        <header>
+     <body class="home-body1">
+          <header class="home-head">
             <nav>
-                <div class="topnav">
+                <div class="topnav" align="center">
                     <h1>
                         <a href="home"> Patty's Bakery   
                             <i class="fa fa-shopping-cart" style="font-size:24px"> 

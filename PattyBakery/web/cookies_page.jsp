@@ -16,10 +16,10 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
         <script src="js/main.js"></script>
     </head>
-    <body>
-        <header>
+    <body class="home-body1">
+          <header class="home-head">
             <nav>
-                <div class="topnav" >
+                <div class="topnav" align="center">
 
                     <h1>
                         <a href="home"> Patty's Bakery   
