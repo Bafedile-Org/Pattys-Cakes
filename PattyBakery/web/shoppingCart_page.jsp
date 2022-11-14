@@ -4,6 +4,7 @@
     Author     : Bridget Bapela
 --%>
 
+<%@page import="java.util.Map"%>
 <%@page import="za.co.pattyBakery.Order"%>
 <%@page import="java.util.List"%>
 <%@page import="za.co.pattyBakery.ShoppingCart"%>
@@ -41,10 +42,9 @@
         <%
             String[] images = (String[]) request.getAttribute("images");
             Product[] products = (Product[]) request.getAttribute("products");
-            String[] productIds = new String[3];
-            //ShoppingCart cart = (ShoppingCart) request.getAttribute("shoppingCart");
-            //List<Order> cartOrders = cart.getOrders();
             Integer[] quantities = (Integer[]) request.getAttribute("quantities");
+            Map<String,Integer> quantitiesMap = (Map<String,Integer>)request.getAttribute("quantitiesMap");
+            
             if (images != null) {
                 for (int i = 0; i < images.length; i++) {
                     if (images[i] != null && products[i] != null) {
@@ -62,7 +62,7 @@
                                 + "<form onclick='controllers()' method='POST' id='conForm' name='%s'>"
                                 + "<button class='plus-btn' type='submit' name='%s' value='%s' data-value='productId'><strong>-</strong>"
                                 + "</button>"
-                                + "<input id='amountInput' type=number min=1 max=50 value='%d'>"
+                                + "<input id='amountInput' type=label readonly min=1 max=50 value='%d'>"
                                 + "<button class='minus-btn' type='submit' name='%s' value='%s'><strong>+</strong></button>"
                                 + "</form>"
                                 + "</div>"
@@ -71,7 +71,7 @@
                                 + "<u style='cursor: pointer'>Remove</u>"
                                 + "</div>"
                                 + "</div><br>",
-                                images[i], products[i].getProductName(), products[i].getCategory(), "sub", products[i].getProductId(), quantities[i], "adds",
+                                images[i], products[i].getProductName(), products[i].getCategory(), "sub", products[i].getProductId(), quantitiesMap.get(products[i].getProductId()), "adds",
                                 products[i].getProductId(), products[i].getPrice(), products[i].getPrice()));
                     }
                 }
@@ -85,7 +85,7 @@
         Total Amount Due :R<input type='button' id='totalAmountDue' value='<%=(Double) request.getAttribute("totalAmount")==0?0.0:String.format("%.2f",(Double) request.getAttribute("totalAmount") + 100)%>'>
     </div>
     <div align='right'>
-        <button style="width:150px;height:50px;border-radius:12px;background-color:#C799BA">Checkout</button>
+        <button style="width:150px;height:50px;border-radius:12px;background-color:#C799BA" onclick()='<%=(String)request.getAttribute("control")%>'>Checkout</button>
     </div>
 
 </body>
