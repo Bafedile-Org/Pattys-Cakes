@@ -32,7 +32,7 @@ public class DatabaseConnect {
         String url = "jdbc:mysql://localhost:3306/?useSSL=false";
 
         try {
-            con = DriverManager.getConnection(url, "Bridget", "@Bridget1");
+            con = DriverManager.getConnection(url, "mecer", "mecer");
             createDatabase();
         } catch (SQLException sql) {
             System.out.println("Failed to Connect...." + sql.getMessage());
