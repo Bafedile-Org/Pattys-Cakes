@@ -23,7 +23,6 @@ public class ShoppingCartImpl implements ShoppingCart {
         this.orderNumber = orderNumber;
         this.date = date;
         this.deliveryStatus = false;
-        totalPrice = getTotalprice();
     }
 
     public ShoppingCartImpl(List<Order> orders, Double totalPrice, String orderNumber, LocalDate date) {
@@ -32,7 +31,6 @@ public class ShoppingCartImpl implements ShoppingCart {
         this.orderNumber = orderNumber;
         this.date = date;
         this.deliveryStatus = false;
-        totalPrice = getTotalprice();
     }
 
     public ShoppingCartImpl(List<Order> orders, String orderNumber, LocalDate date, Boolean deliveryStatus) {
@@ -40,17 +38,6 @@ public class ShoppingCartImpl implements ShoppingCart {
         this.orderNumber = orderNumber;
         this.date = date;
         this.deliveryStatus = deliveryStatus;
-        totalPrice = getTotalprice();
-    }
-
-    @Override
-    public void setOrders(List<Order> orders) {
-        this.orders = orders;
-    }
-
-    @Override
-    public void setOrderNumber(String orderNumber) {
-        this.orderNumber = orderNumber;
     }
 
     @Override
@@ -69,12 +56,9 @@ public class ShoppingCartImpl implements ShoppingCart {
 
     @Override
     public Double getTotalprice() {
-        totalPrice = 0.0;
-        if (orders != null) {
-            for (Order order : orders) {
-                totalPrice += order.getTotalPrice();
-            }
-        }
+        orders.forEach(order -> {
+            totalPrice += order.getTotalPrice();
+        });
         return totalPrice;
     }
 

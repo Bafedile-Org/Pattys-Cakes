@@ -7,15 +7,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <style>
-        html, body {
-          background-color: #f4f4f4;
-        }
-        .sf {
-          min-height: 400px;
-        }
-      </style>
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <nav>
@@ -24,7 +16,7 @@
                     <h1 align="center" id='home-header1'>
                         Welcome To Patty's Bakery   
                         <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                            <div class="dropdown-content" align="left">
+                            <div class="dropdown-content">
                                 <a href="home">Home</a>
                                 <a  href="aboutUs">About Us</a>
                                 <a  href="stores">Our Stores</a>
@@ -40,10 +32,10 @@
                     <header>Login</header>
                     <form action="#">
                         <div class="field input-field">
-                            <input type="email" placeholder="Email" class="inputbox" required>
+                            <input type="email" placeholder="Email" class="input">
                         </div>
                         <div class="field input-field">
-                            <input type="password" placeholder="Password" class="inputbox" required>
+                            <input type="password" placeholder="Password" class="password">
                            <i class='bx bx-hide eye-icon'></i>
                         </div>
                         <div class="form-link">

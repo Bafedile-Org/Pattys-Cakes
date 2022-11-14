@@ -164,9 +164,6 @@
                 <button id="b1" onclick="piesControl()" name="add" value="strawberry" >add to cart</button>
                 </form>
             </div>
-            <div class="button">
-                <p><i class="fa-solid fa-triangle-exclamation"></i> Contains a lot of dairy </p>
-            </div></div>
-
+            </div>
     </body>
 </html>

@@ -15,14 +15,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-      <style>
-        html, body {
-          background-color: #f4f4f4;
-        }
-        .sf {
-          min-height: 400px;
-        }
-        </style>
     </head>
     <body>
         <header>
@@ -30,8 +22,14 @@
                 <div class="topnav">
                     <h1>
                         <a href="home"> Patty's Bakery   
-                            <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
+                            <i class="fa fa-shopping-cart" style="font-size:24px">
+                                 <%
+                                out.println((Integer)request.getAttribute("totalInCart"));
+                                %>
+                            </i></a>
                     </h1>
+                </div>
+                <div class="topnav">
                 </div>
             </nav>
         </header>
@@ -53,16 +51,18 @@
             <div class="parent">
                 <img src='assets/cakes/caramel-cake-5.jpg'>
                 <article>
-                    <p id="img_list"><strong> Ingredients: </strong></p>
+                    <p id="img_list"><strong> Ingredients </strong></p>
                     <ul>
                         <%
                             List<String> caramelIngr = (List<String>) request.getAttribute("caramel");
+                            if(caramelIngr!=null){
                             for (String ingredient : caramelIngr) {
                                 out.println(String.format("<li>%s</li>", ingredient));
                             }
+                            }
                         %>
                     </ul>
-                    <p id="img_list"><strong> Nutrients:</strong></p>
+                    <p id="img_list"><strong> Nutrients</strong></p>
                     <ul>
                         <%
                             String caramelNutrients = (String) request.getAttribute("caramelNu");
@@ -72,15 +72,17 @@
                 </article>
             </div>
             <div class="price">
+                <form mehtod="GET" action="cakes_control">
                 <button id="b"><%
                     Double price = (Double) request.getAttribute("caramelPrice");
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="b1">add to cart</button>
+                <button id="b1" onclick="cakesControl()" name="add" value="caramel">add to cart</button>
+                </form>
             </div>
             <p> </p>
-           
+            </div>
         <div id="label_div">
             <label><strong><%
                 name = (String) request.getAttribute("margueName");
@@ -95,8 +97,10 @@
                     <ul>
                         <%
                             List<String> margueIngr = (List<String>) request.getAttribute("margue");
+                            if(margueIngr!=null){
                             for (String ingredient : margueIngr) {
                                 out.println(String.format("<li>%s</li>", ingredient));
+                            }
                             }
                         %>
                     </ul>
@@ -110,15 +114,15 @@
                 </article>
             </div>
             <div class="price">
+                <form method="GET" action="cakes_control">
                 <button id="b"><%
                     price = (Double) request.getAttribute("marguePrice");
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="b1">add to cart</button>
+                <button id="b1" onclick="cakesControl()" name="add" value="margue">add to cart</button>
+                </form>
             </div>
-            <p> </p>
-         
         </div>
         <div id="label_div">
             <label>
@@ -131,16 +135,18 @@
             <div class="parent" >
                 <img src='assets/cakes/cakes_pic.jpg'>
                 <article>
-                    <p id="img_list"><strong> Ingredients: </strong></p>
+                    <p id="img_list"><strong> Ingredients</strong></p>
                     <ul>
                         <%
                             List<String> chocolateIngr = (List<String>) request.getAttribute("chocolate");
+                           if(chocolateIngr!=null){
                             for (String ingredient : chocolateIngr) {
                                 out.println(String.format("<li>%s</li>", ingredient));
                             }
+                            }
                         %>
                     </ul>
-                    <p id="img_list"><strong> Nutrients:</strong></p>
+                    <p id="img_list"><strong> Nutrients</strong></p>
                     <ul>
                         <%
                             String chocolateNutrients = (String) request.getAttribute("chocolateNu");
@@ -150,14 +156,15 @@
                 </article>
             </div>
             <div class="price">
+                <form mehtod="GET" action="cakes_control">
                 <button id="b"><%
                     price = (Double) request.getAttribute("chocolatePrice");
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="b1">add to cart</button>
+                <button id="b1" onclick="cakesControl()" name="add" value="chocolate">add to cart</button>
+                </form>
             </div>
-            
         </div>
     </body>
 </html>
