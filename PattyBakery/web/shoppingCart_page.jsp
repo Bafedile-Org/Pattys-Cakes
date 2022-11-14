@@ -25,12 +25,11 @@
             <a href='home'> Patty's Bakery</a>
         </h1>
         <h3 class=”Heading” align='left'>Shopping Cart</h3>
-
     </div>
 </head>
 <body onload="totalAmount()">
     <header>
-        <a align="left" href="javascript:history.back()" style="color:black;width:5%;float:left">
+        <a align="left" href="<%=(String)request.getAttribute("control")%>" style="color:black;width:5%;float:left">
             <i class="fa fa-arrow-left" aria-hidden="true" style="">
             </i>
         </a>
@@ -81,9 +80,9 @@
     </div>
 
     <div class='checkout' align='center'>
-        Total Amount :R<input type='button' id='totalAmount' value='<%=request.getAttribute("totalAmount")%>'<br>
-        <label>Delivery : R100</label><br>
-        Total Amount Due :R<input type='button' id='totalAmountDue' value='<%=(Double) request.getAttribute("totalAmount") + 100%>'>
+        Total Amount :R<input type='button' id='totalAmount' value='<%=String.format("%.2f",request.getAttribute("totalAmount"))%>'><br>
+        <label>Delivery : R<%=(Double)request.getAttribute("deliveryAmount")%></label><br>
+        Total Amount Due :R<input type='button' id='totalAmountDue' value='<%=(Double) request.getAttribute("totalAmount")==0?0.0:String.format("%.2f",(Double) request.getAttribute("totalAmount") + 100)%>'>
     </div>
     <div align='right'>
         <button style="width:150px;height:50px;border-radius:12px;background-color:#C799BA">Checkout</button>

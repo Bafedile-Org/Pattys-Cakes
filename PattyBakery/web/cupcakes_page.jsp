@@ -60,8 +60,8 @@
                     <p id="img_list"><strong>Nutrients</strong></p>
                     <ul>
                         <%
-                            String nutrients = (String) request.getAttribute("walnutNu");
-                            out.println(String.format("<li>%s</li>", nutrients));
+                            //String nutrients = (String) request.getAttribute("walnutNu");
+                            //.println(String.format("<li>%s</li>", nutrients));
                         %>
                     </ul>
                      </article>
@@ -97,8 +97,8 @@
                     </ul>
                     <p id="img_list"><strong>Nutrients</strong></p><ul>
                         <%
-                            nutrients = (String) request.getAttribute("chocolateNu");
-                            out.println(String.format("<li>%s</li>", nutrients));
+                            //nutrients = (String) request.getAttribute("chocolateNu");
+                            //out.println(String.format("<li>%s</li>", nutrients));
                         %>
                     </ul>
 </article>
@@ -135,8 +135,8 @@
                      <p id="img_list"><strong>Nutrients</strong></p>
                      <ul>
                         <%
-                            nutrients = (String) request.getAttribute("vanilaNu");
-                            out.println(String.format("<li>%s</li>", nutrients));
+                            //nutrients = (String) request.getAttribute("vanilaNu");
+                            //out.println(String.format("<li>%s</li>", nutrients));
                         %>
                     </ul>
              </article>

@@ -31,19 +31,18 @@ public class CookiesController extends BakeryController {
      *
      * Adding to cart does not work fix it
      */
-    static List<Order> orders = new ArrayList<>();
+    List<Order> orders;
     String[] recipeIds = {"16RES", "18RES", "17RES"};
-    String[] productIds = {"4PRO", "5PRO", "6PRO"};
     String[] productIds = {"4PRO", "5PRO", "6PRO"};
     String[] productNames = {"4PROName", "5PROName", "6PROName"};
     String[] productPrices = {"4PROPrice", "5PROPrice", "6PROPrice"};
     String[] productNutrients = {"4PRONu", "5PRONu", "6PRONu"};
-    Integer totalItemsInCart = 0;
-    static ShoppingCart cart;
+    Integer totalItemsInCart;
+    ShoppingCart cart;
     String productId = null;
     String[] imagesSrc = new String[3];
     Product[] products = new Product[3];
-    static Integer[] orderQuantities = new Integer[3];
+    Integer[] orderQuantities = new Integer[3];
 
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -51,7 +50,9 @@ public class CookiesController extends BakeryController {
         if (request.getParameter("index") != null) {
             totalItemsInCart = 0;
             productId = null;
-            orders.clear();
+            if (orders != null) {
+                orders.clear();
+            }
             cart = null;
         }
         for (String productId1 : productIds) {
@@ -83,11 +84,13 @@ public class CookiesController extends BakeryController {
 
     private void redirectToCart(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        request.setAttribute("control", "cookies_control");
         request.setAttribute("cartItems", cart);
         request.setAttribute("images", imagesSrc);
         request.setAttribute("quantities", orderQuantities);
         request.setAttribute("products", products);
-        request.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", cart.getTotalprice())));
+        request.setAttribute("deliveryAmount", 100.0);
+        request.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", cart == null ? 0.0 : cart.getTotalprice())));
         RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
         dispatcher.forward(request, response);
     }
@@ -130,12 +133,16 @@ public class CookiesController extends BakeryController {
             Product product = new ProductServImpl().getProductById(productId);
             Order order = new OrderImpl(product, product.getPrice());
 
+            if (orders == null) {
+                orders = new ArrayList<>();
+            }
             for (Order or : orders) {
                 if (or.getProduct().getProductId().equalsIgnoreCase(product.getProductId())) {
                     or.setQuantity(or.getQuantity() + 1);
                     return;
                 }
             }
+
             orders.add(order);
         } catch (OrderException ex) {
 
