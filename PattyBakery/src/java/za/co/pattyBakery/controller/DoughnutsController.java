@@ -38,13 +38,13 @@ public class DoughnutsController extends BakeryController {
             throws ServletException, IOException {
         if (request.getParameter("add") != null) {
             if (request.getParameter("add").equalsIgnoreCase("glazedLove")) {
-                addOrder("4PRO");
+                addOrder("16PRO");
             }
             if (request.getParameter("add").equalsIgnoreCase("glazed")) {
-                addOrder("5PRO");
+                addOrder("17PRO");
             }
             if (request.getParameter("add").equalsIgnoreCase("chocolate")) {
-                addOrder("6PRO");
+                addOrder("18PRO");
             }
             totalItemsInCart += 1;
             request.setAttribute("totalInCart", totalItemsInCart);

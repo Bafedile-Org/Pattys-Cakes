@@ -55,7 +55,7 @@
                 <div>
                     <article>
                         <ul>
-                            <li  id='img_list'><strong>Ingredients</strong>
+                            <li  id='img_list'><strong>Ingredients:</strong>
                                 <ul>
                                     <%
                                         List<String> ingredients = (List<String>) request.getAttribute("vanila");

@@ -37,11 +37,11 @@ public class PiesController extends BakeryController {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("add") != null) {
-            if (request.getParameter("add").equalsIgnoreCase("vanila")) {
+            if (request.getParameter("add").equalsIgnoreCase("blueberry")) {
                 addOrder("10PRO");
-            } else if (request.getParameter("add").equalsIgnoreCase("chocolate")) {
+            } else if (request.getParameter("add").equalsIgnoreCase("apple")) {
                 addOrder("11PRO");
-            } else if (request.getParameter("add").equalsIgnoreCase("plain")) {
+            } else if (request.getParameter("add").equalsIgnoreCase("strawberryyt")) {
                 addOrder("12PRO");
             }
             totalItemsInCart += 1;
