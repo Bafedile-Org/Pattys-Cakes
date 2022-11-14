@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-    <html lang="en">
+<html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,20 +9,20 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
-        html, body {
-          background-color: #f4f4f4;
-        }
-        .sf {
-          min-height: 400px;
-        }
-      </style>
+            html, body {
+                background-color: #f4f4f4;
+            }
+            .sf {
+                min-height: 400px;
+            }
+        </style>
     </head>
     <body>
         <nav>
             <header>
                 <div class="topnav" >
                     <h1 align="center" id='home-header1'>
-                        Welcome To Patty's Bakery   
+                        Welcome To Patty's Bakery
                         <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                             <div class="dropdown-content" align="left">
                                 <a href="home">Home</a>
@@ -38,19 +38,19 @@
             <div class="form login">
                 <div class="form-content">
                     <header>Login</header>
-                    <form action="#">
+                    <form action="login_control" method="POST">
                         <div class="field input-field">
-                            <input type="email" placeholder="Email" class="inputbox" required>
+                            <input type="email" name='email'placeholder="Email" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="password" class="form-control" id="floatingPassword" required>
-                         
+                            <input type="password" name='password' placeholder="Password" class="inputbox" required>
+                            <i class='bx bx-hide eye-icon'></i>
                         </div>
                         <div class="form-link">
-                            <span>Forgot password?<a href="reset">Forgot passowrd</a></span>
+                            <span>Forgot password?<a href="reset">Forgot password</a></span>
                         </div>
                         <div class="field button-field">
-                            <button>Login</button>
+                            <button name='login'>Login</button>
                         </div>
                     </form>
                     <div class="form-link">
@@ -59,6 +59,6 @@
                 </div>
                 <div class="line"></div>
             </div>
-            </section>
+        </section>
     </body>
 </html>

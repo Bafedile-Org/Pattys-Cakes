@@ -70,4 +70,14 @@ public class CustomerServImpl implements CustomerDAO {
         return customerDAOImpl.getAllCustomers();
     }
 
+    @Override
+    public Person getCustomerByEmail(String email) {
+        return customerDAOImpl.getCustomerByEmail(email);
+    }
+
+    @Override
+    public String getCustomerPassword(String email) {
+        return customerDAOImpl.getCustomerPassword(email);
+    }
+
 }
