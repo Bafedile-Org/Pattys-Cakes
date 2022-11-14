@@ -74,9 +74,7 @@ public class CakesController extends BakeryController {
 
         }
     }
-
     private void setTotalPrice() {
         ShoppingCart cart = new ShoppingCartImpl(orders, "#1212", LocalDate.now());
-
     }
 }
