@@ -1,9 +1,10 @@
 package za.co.pattyBakery.controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,9 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import za.co.pattyBakery.Order;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.ShoppingCart;
-import za.co.pattyBakery.exception.OrderException;
-import za.co.pattyBakery.model.OrderImpl;
-import za.co.pattyBakery.model.ShoppingCartImpl;
 import za.co.pattyBakery.service.impl.ProductServImpl;
 
 /**
@@ -27,60 +25,78 @@ public class MuffinsController extends BakeryController {
     List<Order> orders = new ArrayList<>();
     String[] recipeIds = {"10RES", "11RES", "12RES"};
     String[] productIds = {"13PRO", "14PRO", "15PRO"};
-    String[] strings = {"blueberry", "cranberry", "carrot"};
-    String[] productNames = {"blueberryName", "cranberryName", "carrotName"};
-    String[] productPrices = {"blueberryPrice", "cranberryPrice", "carrotPrice"};
-    String[] productNutrients = {"blueberryNu", "cranberryNu", "carrotNu"};
+    // String[] strings = {"blueberry", "cranberry", "carrot"};
+    String[] productNames = {"13PROName", "14PROName", "15PROName"};
+    String[] productPrices = {"13PROPrice", "14PROPrice", "15PROPrice"};
+    String[] productNutrients = {"13PRONu", "14PRONu", "15PRONu"};
     Integer totalItemsInCart = 0;
+    ShoppingCart cart;
+    String productId = null;
+    String[] imagesSrc = new String[3];
+    Product[] products = new Product[3];
+    Integer[] orderQuantities = new Integer[3];
+    Map<String, Integer> orderQuantitiesMap = new HashMap<>();
 
     @Override
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        manageCart(request, response);
+        if (request.getParameter("index") != null) {
+            totalItemsInCart = 0;
+            productId = null;
+            if (orders != null) {
+                orders.clear();
+            }
+            cart = null;
+        }
         if (request.getParameter("add") != null) {
-            if (request.getParameter("add").equalsIgnoreCase("blueberry")) {
-                addOrder("13PRO");
-            }
-            if (request.getParameter("add").equalsIgnoreCase("cranberry")) {
-                addOrder("14PRO");
-            }
-            if (request.getParameter("add").equalsIgnoreCase("carrot")) {
-                addOrder("15PRO");
-            }
-            totalItemsInCart += 1;
-            setIngredientAttributes(recipeIds, strings, request);
-            setProductName(productIds, productNames, productPrices, productNutrients, request);
-            request.setAttribute("totalInCart", totalItemsInCart);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("muffins");
-            dispatcher.forward(request, response);
+            addOrders(request, "add");
+            redirectToPage(request, response, "cupcakes");
         } else {
-
-            setIngredientAttributes(recipeIds, strings, request);
-            setProductName(productIds, productNames, productPrices, productNutrients, request);
-            request.setAttribute("totalInCart", totalItemsInCart);
-            RequestDispatcher dispatcher = request.getRequestDispatcher("muffins");
-            dispatcher.forward(request, response);
-
-        }
-
-    }
-
-    private void addOrder(String productId) {
-        try {
-            Product product = new ProductServImpl().getProductById(productId);
-            Order order = new OrderImpl(product, product.getPrice());
-            if (orders.contains(order)) {
-                order.setQuantity(order.getQuantity() + 1);
+            if (request.getParameter("cart") == null) {
+                redirectToPage(request, response, "cupcakes");
             } else {
-                orders.add(order);
+                redirectToCart(request, response);
             }
-        } catch (OrderException ex) {
-
         }
+        addQuantities();
     }
 
-    private void setTotalPrice() {
-        ShoppingCart cart = new ShoppingCartImpl(orders, "#1212", LocalDate.now());
+    public void redirectToCart(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        request.setAttribute("control", "muffins_control");
+        request.setAttribute("cartItems", cart);
+        request.setAttribute("images", imagesSrc);
+        request.setAttribute("quantities", orderQuantities);
+        request.setAttribute("quantitiesMap", orderQuantitiesMap);
+        request.setAttribute("products", products);
+        request.setAttribute("deliveryAmount", 100.0);
+        request.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", cart == null ? 0.0 : cart.getTotalprice())));
+        RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
+        dispatcher.forward(request, response);
+    }
 
+    public void addOrders(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+        if (request.getParameter(param).equalsIgnoreCase("13PRO")) {
+            imagesSrc[0] = "assets/muffins/Blueberry-Muffins.jpg";
+            productId = productIds[0];
+            products[0] = new ProductServImpl().getProductById(productId);
+            addOrder(productId);
+
+        } else if (request.getParameter(param).equalsIgnoreCase("14PRO")) {
+            imagesSrc[1] = "assets/muffins/carrot-muffins.jpg";
+            productId = productIds[1];
+            products[1] = new ProductServImpl().getProductById(productId);
+            addOrder(productId);
+        } else if (request.getParameter(param).equalsIgnoreCase("15PRO")) {
+            imagesSrc[2] = "assets/muffins/Cranberry-Muffins.jpg";
+            productId = productIds[2];
+            products[2] = new ProductServImpl().getProductById(productId);
+            addOrder(productId);
+        }
+        cart = setTotalPrice();
+        totalItemsInCart = cart.getOrders().size();
+        request.setAttribute("totalInCart", totalItemsInCart);
     }
 }

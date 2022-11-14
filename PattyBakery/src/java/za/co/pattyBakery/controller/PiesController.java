@@ -1,7 +1,6 @@
- package za.co.pattyBakery.controller;
+package za.co.pattyBakery.controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
@@ -11,10 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import za.co.pattyBakery.Order;
 import za.co.pattyBakery.Product;
-import za.co.pattyBakery.ShoppingCart;
 import za.co.pattyBakery.exception.OrderException;
 import za.co.pattyBakery.model.OrderImpl;
-import za.co.pattyBakery.model.ShoppingCartImpl;
 import za.co.pattyBakery.service.impl.ProductServImpl;
 
 /**
@@ -34,7 +31,7 @@ public class PiesController extends BakeryController {
     Integer totalItemsInCart = 0;
 
     @Override
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("add") != null) {
             if (request.getParameter("add").equalsIgnoreCase("blueberry")) {
@@ -60,7 +57,7 @@ public class PiesController extends BakeryController {
 
     }
 
-    private void addOrder(String productId) {
+    public void addOrder(String productId) {
         try {
             Product product = new ProductServImpl().getProductById(productId);
             Order order = new OrderImpl(product, product.getPrice());
@@ -73,10 +70,4 @@ public class PiesController extends BakeryController {
 
         }
     }
-
-    private void setTotalPrice() {
-        ShoppingCart cart = new ShoppingCartImpl(orders, "#1212", LocalDate.now());
-
-    }
-
 }
