@@ -8,7 +8,7 @@
         <servlet-name>Cookies</servlet-name>
         <url-pattern>/cookies</url-pattern>
     </servlet-mapping>
-    <!-- #######################################################################################-->
+    
     <servlet>
         <servlet-name>Muffins</servlet-name>
         <jsp-file>/muffins_page.jsp</jsp-file>
@@ -17,7 +17,7 @@
         <servlet-name>Muffins</servlet-name>
         <url-pattern>/muffins</url-pattern>
     </servlet-mapping>
-    <!-- #######################################################################################-->
+
     <servlet>
         <servlet-name>CupCakes</servlet-name>
         <jsp-file>/cupcakes_page.jsp</jsp-file>
@@ -26,7 +26,7 @@
         <servlet-name>CupCakes</servlet-name>
         <url-pattern>/cupcakes</url-pattern>
     </servlet-mapping>
-    <!-- #######################################################################################-->
+ 
     <servlet>
         <servlet-name>PersonalPies</servlet-name>
         <jsp-file>/personal_pies_page.jsp</jsp-file>
@@ -35,7 +35,7 @@
         <servlet-name>PersonalPies</servlet-name>
         <url-pattern>/pies</url-pattern>
     </servlet-mapping>
-    <!-- #######################################################################################-->
+
     <servlet>
         <servlet-name>About</servlet-name>
         <jsp-file>/aboutUs_page.jsp</jsp-file>
@@ -44,7 +44,7 @@
         <servlet-name>About</servlet-name>
         <url-pattern>/aboutUs</url-pattern>
     </servlet-mapping>
-    <!-- #######################################################################################-->
+
     <servlet>
         <servlet-name>Doughnuts</servlet-name>
         <jsp-file>/doughnuts_page.jsp</jsp-file>
@@ -53,7 +53,9 @@
         <servlet-name>Doughnuts</servlet-name>
         <url-pattern>/doughnuts</url-pattern>
     </servlet-mapping>
-    <!-- #######################################################################################-->
+
+
+
     <servlet>
         <servlet-name>Home</servlet-name>
         <jsp-file>/index.jsp</jsp-file>
@@ -62,7 +64,7 @@
         <servlet-name>Home</servlet-name>
         <url-pattern>/home</url-pattern>
     </servlet-mapping>
-    <!-- #######################################################################################-->
+  
     <servlet>
         <servlet-name>Login</servlet-name>
         <jsp-file>/login_page.jsp</jsp-file>
@@ -71,7 +73,7 @@
         <servlet-name>Login</servlet-name>
         <url-pattern>/login</url-pattern>
     </servlet-mapping>
-    <!-- #######################################################################################-->
+    
     <servlet>
         <servlet-name>SignUp</servlet-name>
         <jsp-file>/signup_page.jsp</jsp-file>
@@ -80,7 +82,6 @@
         <servlet-name>SignUp</servlet-name>
         <url-pattern>/signup</url-pattern>
     </servlet-mapping>
-    <!-- #######################################################################################-->
     <servlet>
         <servlet-name>ForgotPass</servlet-name>
         <jsp-file>/forgot_password_page.jsp</jsp-file>
@@ -89,7 +90,6 @@
         <servlet-name>ForgotPass</servlet-name>
         <url-pattern>/reset</url-pattern>
     </servlet-mapping>
-    <!-- #######################################################################################-->
     <servlet>
         <servlet-name>Stores</servlet-name>
         <jsp-file>/ourStores_page.jsp</jsp-file>
@@ -98,7 +98,8 @@
         <servlet-name>Stores</servlet-name>
         <url-pattern>/stores</url-pattern>
     </servlet-mapping>
-    <!-- #######################################################################################-->
+  
+
     <servlet>
         <servlet-name>Cakes</servlet-name>
         <jsp-file>/cakes_page.jsp</jsp-file>
@@ -107,25 +108,14 @@
         <servlet-name>Cakes</servlet-name>
         <url-pattern>/cakes</url-pattern>
     </servlet-mapping>
-    <!-- #######################################################################################-->
-    <servlet>
-        <servlet-name>Cart</servlet-name>
-        <jsp-file>/shoppingCart_page.jsp</jsp-file>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Cart</servlet-name>
-        <url-pattern>/cart</url-pattern>
-    </servlet-mapping>
-      <!-- #######################################################################################-->
-<!--    <servlet>
+   <servlet>
         <servlet-name>bc</servlet-name>
         <servlet-class>za.co.pattyBakery.controller.BakeryController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>bc</servlet-name>
         <url-pattern>/bakec</url-pattern>
-    </servlet-mapping>-->
-    <!-- #######################################################################################-->
+    </servlet-mapping>
     <session-config>
         
         
@@ -134,11 +124,18 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
+
+        <!--<welcome-file>cupcakes_page.jsp</welcome-file>-->
+        <!--<welcome-file>cookies_page.jsp</welcome-file>-->
+        <!--<welcome-file>management_login_page.jsp</welcome-file>-->
+        <!--<welcome-file>management_page.jsp</welcome-file>-->
+        <!--<welcome-file>doughnuts_page.jsp</welcome-file>-->
         <welcome-file>index.jsp</welcome-file>
-        <welcome-file>cupcakes_page.jsp</welcome-file>
-        <welcome-file>cookies_page.jsp</welcome-file>
-        <welcome-file>shoppingCart_page.jsp</welcome-file>
-        <welcome-file>doughnuts_page.jsp</welcome-file>
-        <welcome-file>index.jsp</welcome-file>
+        <!-- <welcome-file>stock_page.jsp</welcome-file>-->
+        <!--<welcome-file>ingredient_page.jsp</welcome-file>-->
+        <!--<welcome-file>stock_page.jsp</welcome-file>-->
+        <!-- <welcome-file>order_page.jsp</welcome-file>-->
+        <!-- <welcome-file>checkOut_page.jsp</welcome-file>-->
+        <!--<welcome-file>index.jsp</welcome-file>-->
     </welcome-file-list>
 </web-app>
