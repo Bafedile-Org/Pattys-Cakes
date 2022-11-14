@@ -37,7 +37,7 @@
             </div>
         </nav>
         <div>
-            Today's date: <%= (new java.util.Date()).toLocaleString()%>
+            Today's date: <%= (new java.util.Date())%>
         </div>
         <div class="form-content">
              <form action="#">
