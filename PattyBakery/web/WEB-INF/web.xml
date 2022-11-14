@@ -107,6 +107,33 @@
         <servlet-name>Cakes</servlet-name>
         <url-pattern>/cakes</url-pattern>
     </servlet-mapping>
+    <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>Cart</servlet-name>
+        <jsp-file>/shoppingCart_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Cart</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>CheckOut</servlet-name>
+        <jsp-file>/checkOut_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CheckOut</servlet-name>
+        <url-pattern>/check-out</url-pattern>
+    </servlet-mapping>
+    <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>Confirm</servlet-name>
+        <jsp-file>/confirmation_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Confirm</servlet-name>
+        <url-pattern>/confirm</url-pattern>
+    </servlet-mapping>
       <!-- #######################################################################################-->
 <!--    <servlet>
         <servlet-name>bc</servlet-name>

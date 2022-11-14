@@ -20,7 +20,6 @@ public class ProductServImpl implements ProductDAO {
     @Override
     public void addProduct(Product product) {
         if (product == null) {
-
         }
         productDAOImpl.addProduct(product);
     }

@@ -30,7 +30,7 @@
 </head>
 <body onload="totalAmount()">
     <header>
-        <a align="left" href="<%=(String)request.getAttribute("control")%>" style="color:black;width:5%;float:left">
+        <a align="left" href="<%=(String) request.getAttribute("control")%>" style="color:black;width:5%;float:left">
             <i class="fa fa-arrow-left" aria-hidden="true" style="">
             </i>
         </a>
@@ -38,13 +38,10 @@
         </nav>
     </header>
     <div id='all'>
-        <!-- Product #1 -->
         <%
             String[] images = (String[]) request.getAttribute("images");
             Product[] products = (Product[]) request.getAttribute("products");
-            Integer[] quantities = (Integer[]) request.getAttribute("quantities");
-            Map<String,Integer> quantitiesMap = (Map<String,Integer>)request.getAttribute("quantitiesMap");
-            
+            Map<String, Integer> quantitiesMap = (Map<String, Integer>) request.getAttribute("quantitiesMap");
             if (images != null) {
                 for (int i = 0; i < images.length; i++) {
                     if (images[i] != null && products[i] != null) {
@@ -80,12 +77,14 @@
     </div>
 
     <div class='checkout' align='center'>
-        Total Amount :R<input type='button' id='totalAmount' value='<%=String.format("%.2f",request.getAttribute("totalAmount"))%>'><br>
-        <label>Delivery : R<%=(Double)request.getAttribute("deliveryAmount")%></label><br>
-        Total Amount Due :R<input type='button' id='totalAmountDue' value='<%=(Double) request.getAttribute("totalAmount")==0?0.0:String.format("%.2f",(Double) request.getAttribute("totalAmount") + 100)%>'>
+        Total Amount :R<input type='button' id='totalAmount' value='<%=String.format("%.2f", request.getAttribute("totalAmount"))%>'><br>
+        <label>Delivery : R<%=(Double) request.getAttribute("deliveryAmount")%></label><br>
+        Total Amount Due :R<input type='button' id='totalAmountDue' value='<%=(Double) request.getAttribute("totalAmount") == 0 ? 0.0 : String.format("%.2f", (Double) request.getAttribute("totalAmount") + 100)%>'>
     </div>
     <div align='right'>
-        <button style="width:150px;height:50px;border-radius:12px;background-color:#C799BA" onclick()='<%=(String)request.getAttribute("control")%>'>Checkout</button>
+        <form action='login_control' method='POST'>
+            <button style="width:150px;height:50px;border-radius:12px;background-color:#C799BA" name='login'>Checkout</button>
+        </form>
     </div>
 
 </body>

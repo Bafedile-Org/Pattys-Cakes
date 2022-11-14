@@ -21,5 +21,9 @@ public interface CustomerDAO extends Close {
 
     void updateCustomerAddress(Integer customerId, String address);
 
+    public Person getCustomerByEmail(String email);
+
+    public String getCustomerPassword(String email);
+
     List<Person> getAllCustomers();
 }

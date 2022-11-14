@@ -43,6 +43,10 @@ public class CookiesController extends BakeryController {
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        if (request.getParameter("checkout") != null) {
+            request.setAttribute("shoppingCart", cart);
+            redirectToPage(request, response, "confirm");
+        }
         manageCart(request, response);
         if (request.getParameter("index") != null) {
             totalItemsInCart = 0;
@@ -73,9 +77,9 @@ public class CookiesController extends BakeryController {
         request.setAttribute("control", "cookies_control");
         request.setAttribute("cartItems", cart);
         request.setAttribute("images", imagesSrc);
-        request.setAttribute("quantities", orderQuantities);
         request.setAttribute("quantitiesMap", orderQuantitiesMap);
         request.setAttribute("products", products);
+        request.setAttribute("shoppingCart", cart);
         request.setAttribute("deliveryAmount", 100.0);
         request.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", cart == null ? 0.0 : cart.getTotalprice())));
         RequestDispatcher dispatcher = request.getRequestDispatcher("cart");

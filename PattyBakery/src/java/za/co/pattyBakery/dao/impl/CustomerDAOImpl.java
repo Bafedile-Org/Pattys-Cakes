@@ -61,7 +61,49 @@ public class CustomerDAOImpl implements CustomerDAO {
                 preparedStatement.setInt(1, customerId);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    customer = new PersonImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),
+                    customer = new PersonImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("idNum"),
+                            resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("address"));
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println(String.format("Error: %s%n", sql.getMessage()));
+        } finally {
+            close(preparedStatement, resultSet);
+
+        }
+        return customer;
+    }
+
+    public String getCustomerPassword(String email) {
+        String password = null;
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT * FROM login WHERE email = ?");
+                preparedStatement.setString(1, email);
+                resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    password = resultSet.getString("password");
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println(String.format("Error: %s%n", sql.getMessage()));
+        } finally {
+            close(preparedStatement, resultSet);
+
+        }
+        return password;
+    }
+
+    @Override
+    public Person getCustomerByEmail(String email) {
+        Person customer = null;
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT * FROM customer WHERE email = ?");
+                preparedStatement.setString(1, email);
+                resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    customer = new PersonImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("idNum"),
                             resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("address"));
                 }
             }
@@ -150,7 +192,7 @@ public class CustomerDAOImpl implements CustomerDAO {
                 preparedStatement = con.prepareStatement("SELECT * FROM customer;");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    customer = new PersonImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),
+                    customer = new PersonImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("idNum"),
                             resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("address"));
                     customers.add(customer);
                 }
