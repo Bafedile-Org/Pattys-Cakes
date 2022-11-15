@@ -46,12 +46,6 @@ public class PiesController extends BakeryController {
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        manageCart(request, response);
-
-
-    @Override
-    public void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
         manageCart(request, response, productIds, cart, orders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
 
         if (request.getParameter("index") != null) {
@@ -101,9 +95,7 @@ public class PiesController extends BakeryController {
         }
     }
 
-    @Override
-    public void addOrders(HttpServletRequest request, String param) {
-          if (request.getParameter(param).equalsIgnoreCase("4PRO")) {
+   
     public void addOrders(HttpServletRequest request, String param, List<Order> orders) {
         if (request.getParameter(param).equalsIgnoreCase("4PRO")) {
             imagesSrc[0] = "assets/personal_pies/10PRO pies.jpg";
@@ -127,7 +119,6 @@ public class PiesController extends BakeryController {
         request.setAttribute("totalInCart", totalItemsInCart);
     }
 
-    @Override
     public void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage) throws ServletException, IOException {
         setIngredientAttributes(recipeIds, productIds, request);
         setProductName(productIds, productNames, productPrices, productNutrients, request);
@@ -136,7 +127,6 @@ public class PiesController extends BakeryController {
         dispatcher.forward(request, response);
     }
 
-    @Override
     public void redirectToCart(HttpServletRequest request, HttpServletResponse response) 
            throws ServletException, IOException {
         request.setAttribute("control", "cookies_control");
@@ -151,7 +141,6 @@ public class PiesController extends BakeryController {
         dispatcher.forward(request, response);
     }
 
-    @Override
     public void addQuantities() {
         Integer i = 0;
         for (Order order : orders) {
@@ -236,6 +225,10 @@ public class PiesController extends BakeryController {
             orderNumber += new SecureRandom().nextInt(10);
         }
         return orderNumber;
+    }
+
+    private void addOrders(HttpServletRequest request, String adds) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
 }

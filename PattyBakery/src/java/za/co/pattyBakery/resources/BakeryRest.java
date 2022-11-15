@@ -1,10 +1,13 @@
 package za.co.pattyBakery.resources;
 
+import java.util.List;
+import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 import za.co.pattyBakery.Order;
+import za.co.pattyBakery.ShoppingCart;
 import za.co.pattyBakery.dao.OrderDAO;
 import za.co.pattyBakery.dao.RecipeDAO;
 import za.co.pattyBakery.model.Recipe;
@@ -35,10 +38,13 @@ public class BakeryRest {
     }
     @Path("/order_add")
     @POST
-    public Response addOrder(Order o){
-       
-//        OrderDAO orderServImpl = new OrderServImpl();
-//        String orderIds = {""};
-         return null;
+    public Response addOrder(@FormParam("orderNumber") String orderNumber,@FormParam("productId") String productId,
+            @FormParam("qty") String qty,@FormParam("status") String status){
+        OrderDAO orderServImpl = new OrderServImpl();
+       ShoppingCart cart = orderServImpl.getShoppingCartByOrderId(orderNumber);
+        
+        
+        orderServImpl.addOrder((ShoppingCart) orders);
+        return Response.status(200).entity(orders.getQuantity()).build();
     }
 }

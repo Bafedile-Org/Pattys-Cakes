@@ -51,7 +51,6 @@ public class LoginController extends BakeryController {
         }
     }
 
-    @Override
     public void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher(redirectPage);
