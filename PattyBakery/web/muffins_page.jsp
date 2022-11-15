@@ -26,7 +26,11 @@
           
                     <h1>
                         <a href="home" > Patty's Bakery   
-                            <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
+                            <i class="fa fa-shopping-cart" style="font-size:24px">
+                                <%
+                                out.println((Integer)request.getAttribute("totalInCart"));
+                                %>
+                            </i></a>
                     </h1>
 
                 </div>
@@ -58,8 +62,10 @@
                      <p id="img_list"><strong>Ingredients</strong></p><ul>
                         <%
                             List<String> ingredients = (List<String>) request.getAttribute("blueberry");
+                            if(ingredients!=null){
                             for (String ingredient : ingredients) {
                                 out.println(String.format("<li>%s</li>", ingredient));
+                            }
                             }
                         %>
                     </ul>
@@ -72,12 +78,14 @@
                     </article>
 
             </div>  
-            <div class="price">  
+            <div class="price"> 
+                <form method="GET" action="muffins_control">
                 <button id="b" ><%
                     Double price = (Double) request.getAttribute("blueberryPrice");
                     out.println("R" + price);
                     %></button>  
-                <button id="b1"> Add to cart</button>  
+                    <button id="b1" onclick="muffinsControl()" name="add" value="blueberry"> Add to cart</button> 
+                </form>
             </div>
                 
                 </div>
@@ -98,9 +106,11 @@
                          <ul>
                         <%
                             ingredients = (List<String>) request.getAttribute("cranberry");
+                           if(ingredients!=null){
                             for (String ingredient : ingredients) {
                                 out.println(String.format("<li>%s</li>", ingredient));
                             }
+                           }
                         %>
                     </ul>
                      <p id="img_list"><strong>Nutrients</strong></p>
@@ -113,12 +123,14 @@
 </article>
                 
             </div>  
-            <div class="price">  
+            <div class="price">
+                <form method="GET" action="muffins_control">
                 <button id="b" ><%
                     price = (Double) request.getAttribute("cranberryPrice");
                     out.println("R" + price);
                     %></button>  
-                <button id="b1"> Add to cart</button>  
+                    <button id="b1" onclick="muffinsControl()" name="add" value="cranberry"> Add to cart</button>  
+                </form>
             </div>
          
                  </div>
@@ -137,8 +149,10 @@
                    <ul>
                         <%
                             ingredients = (List<String>) request.getAttribute("carrot");
+                            if(ingredients!=null){
                             for (String ingredient : ingredients) {
                                 out.println(String.format("<li>%s</li>", ingredient));
+                            }
                             }
                         %>
                     </ul>
@@ -151,11 +165,13 @@
 </article>
             </div>  
             <div class="price">  
+                <form method="GET" action="muffins_control">
                 <button id="b" ><%
                     price = (Double) request.getAttribute("carrotPrice");
                     out.println("R" + price);
                     %></button>  
-                <button id="b1"> Add to cart</button>  
+                    <button id="b1" onclick="muffinsControl()" name="add" value="carrot"> Add to cart</button>  
+                </form>
             </div>
                
         </div>

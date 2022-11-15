@@ -2,16 +2,29 @@ package za.co.pattyBakery.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.security.SecureRandom;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import za.co.pattyBakery.Order;
 import za.co.pattyBakery.Product;
+import za.co.pattyBakery.ShoppingCart;
 import za.co.pattyBakery.dao.ProductDAO;
 import za.co.pattyBakery.dao.RecipeDAO;
 import za.co.pattyBakery.dao.impl.ProductDAOImpl;
+import za.co.pattyBakery.exception.OrderException;
+import za.co.pattyBakery.model.OrderImpl;
 import za.co.pattyBakery.model.Recipe;
+import za.co.pattyBakery.model.ShoppingCartImpl;
+import za.co.pattyBakery.service.impl.ProductServImpl;
 import za.co.pattyBakery.service.impl.RecipeServImpl;
 
 /**
@@ -22,14 +35,30 @@ import za.co.pattyBakery.service.impl.RecipeServImpl;
 public class BakeryController extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
      *
      * @param request servlet request
      * @param response servlet response
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    List<Order> orders;
+    String[] recipeIds = {"1RES", "2RES", "3RES"};
+    String[] productIds = {"1PRO", "2PRO", "3PRO"};
+    // String[] strings = {"caramel", "margue", "chocolate"};
+    String[] productNames = {"1PROName", "2PROName", "3PROName"};
+    String[] productPrices = {"1PROPrice", "2PROPrice", "3PROPrice"};
+    String[] productNutrients = {"1PRONu", "2PRONu", "3PRONu"};
+    Integer totalItemsInCart = 0;
+    ShoppingCart cart;
+    String productId = null;
+    String[] imagesSrc = new String[3];
+    Product[] products = new Product[3];
+    Integer[] orderQuantities = new Integer[3];
+    Map<String, Integer> orderQuantitiesMap = new HashMap<>();
+
+    public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
@@ -46,7 +75,7 @@ public class BakeryController extends HttpServlet {
         }
     }
 
-    protected void setIngredientAttributes(String[] recipeIds, String[] strings, HttpServletRequest request) {
+    public void setIngredientAttributes(String[] recipeIds, String[] strings, HttpServletRequest request) {
         RecipeDAO recipeServImpl = new RecipeServImpl();
         for (int i = 0; i < recipeIds.length; i++) {
             Recipe recipe = recipeServImpl.getRecipeById(recipeIds[i]);
@@ -54,17 +83,146 @@ public class BakeryController extends HttpServlet {
         }
     }
 
-    protected void setProductName(String[] productIds, String[] productNames, String[] productPrices, String[] productNutrients, HttpServletRequest request) {
+    public void setProductName(String[] productIds, String[] productNames, String[] productPrices, String[] productNutrients, HttpServletRequest request) {
         ProductDAO productServImpl = new ProductDAOImpl();
         for (int i = 0; i < productIds.length; i++) {
             Product product = productServImpl.getProductById(productIds[i]);
             request.setAttribute(productNames[i], product.getProductName());
             request.setAttribute(productPrices[i], product.getPrice());
-            request.setAttribute(productNutrients[i], product.getNutrientsList());
+            request.setAttribute(productNutrients[i], product.getNutrientInfo());
         }
     }
 
+    public void manageCart(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        for (String productId1 : productIds) {
+            if (request.getParameter("adds") != null) {
+                if (request.getParameter("adds").equalsIgnoreCase(productId1)) {
+                    addOrders(request, "adds");
+                    addQuantities();
+                    cart = setTotalPrice();
+                    redirectToCart(request, response);
+                }
+            }
+        }
+        for (String prodId : productIds) {
+            if (request.getParameter("sub") != null) {
+                if (request.getParameter("sub").equalsIgnoreCase(prodId)) {
+                    removeOrder(prodId);
+                    addQuantities();
+                    cart = setTotalPrice();
+                    redirectToCart(request, response);
+                }
+            }
+        }
+    }
+
+    public void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage)
+            throws ServletException, IOException {
+        setIngredientAttributes(recipeIds, productIds, request);
+        setProductName(productIds, productNames, productPrices, productNutrients, request);
+        request.setAttribute("totalInCart", totalItemsInCart);
+        RequestDispatcher dispatcher = request.getRequestDispatcher(redirectPage);
+        dispatcher.forward(request, response);
+    }
+
+    public void addOrder(String productId) {
+        try {
+            Product product = new ProductServImpl().getProductById(productId);
+            Order order = new OrderImpl(product, product.getPrice());
+
+            if (orders == null) {
+                orders = new ArrayList<>();
+            }
+            for (Order or : orders) {
+                if (or.getProduct().getProductId().equalsIgnoreCase(product.getProductId())) {
+                    or.setQuantity(or.getQuantity() + 1);
+                    return;
+                }
+            }
+
+            orders.add(order);
+        } catch (OrderException ex) {
+            System.out.println(String.format("ERROR: %s%n", ex.getMessage()));
+        }
+    }
+
+    public void removeOrder(String productId) {
+        try {
+            Product product = new ProductServImpl().getProductById(productId);
+            if (orders == null) {
+                orders = new ArrayList<>();
+            }
+            for (Order or : orders) {
+                if (or.getProduct().getProductId().equalsIgnoreCase(product.getProductId())) {
+                    if (or.getQuantity() > 0 || or.getQuantity() == 0) {
+                        if (or.getQuantity() == 1) {
+                            or.setQuantity(1);
+                        } else {
+                            or.setQuantity(or.getQuantity() - 1);
+                        }
+                    }
+                    return;
+                }
+            }
+
+        } catch (OrderException ex) {
+            System.out.println(String.format("ERROR: %s%n", ex.getMessage()));
+        }
+    }
+
+    public void addQuantities() {
+        Integer i = 0;
+        for (Order order : orders) {
+            for (String productId : productIds) {
+                if (order.getProduct().getProductId().equals(productId)) {
+                    orderQuantities[i] = order.getQuantity();
+                    orderQuantitiesMap.put(productId, order.getQuantity());
+                }
+            }
+
+        }
+    }
+
+    public ShoppingCart setTotalPrice() {
+        if (cart == null) {
+            cart = new ShoppingCartImpl(orders, null, LocalDate.now());
+        }
+
+        if (cart.getOrderNumber() == null) {
+            cart.setOrderNumber(generateOrderNumber());
+            cart.setOrders(orders);
+        } else {
+            cart.setOrders(orders);
+        }
+
+        return cart;
+    }
+
+    public String generateOrderNumber() {
+        List<Character> alphabets = new ArrayList<>();
+        String orderNumber = "";
+        for (char i = 'A'; i <= 'Z'; i++) {
+            alphabets.add(i);
+        }
+        orderNumber += alphabets.get(new SecureRandom().nextInt(25)) + alphabets.get(new SecureRandom().nextInt(25));
+        for (int i = 0; i < 5; i++) {
+            orderNumber += new SecureRandom().nextInt(10);
+        }
+        return orderNumber;
+    }
+
+    public void redirectToCart(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+    }
+
+    public void addOrders(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+
+    }
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+
     /**
      * Handles the HTTP <code>GET</code> method.
      *
