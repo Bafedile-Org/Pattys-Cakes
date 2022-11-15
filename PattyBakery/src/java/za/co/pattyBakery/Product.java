@@ -1,6 +1,5 @@
 package za.co.pattyBakery;
 
-import java.util.List;
 import za.co.pattyBakery.exception.ProductException;
 
 /**
@@ -39,11 +38,15 @@ public interface Product {
 
     Double getPrice();
 
+    void setNutrientInfo(String nutrientInfo) throws ProductException;
+
+    String getNutrientInfo();
+
+    void setIngredients(String ingredients) throws ProductException;
+
+    String getIngredients();
+
     void setCategory(String category) throws ProductException;
 
     String getCategory();
-
-    public List<String> getNutrientsList();
-
-    public void setNutrientsList(List<String> nutrientsList);
 }

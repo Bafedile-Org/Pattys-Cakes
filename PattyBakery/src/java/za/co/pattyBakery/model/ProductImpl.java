@@ -1,6 +1,5 @@
 package za.co.pattyBakery.model;
 
-import java.util.List;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.exception.ProductException;
 
@@ -12,34 +11,20 @@ public class ProductImpl implements Product {
 
     private String productId;
     private Double price;
-    private String category, nutrientId, recipeId, productName;
+    private String nutrientInfo, ingredients, category, nutrientId, recipeId, productName;
     private Integer categoryId;
-    private List<String> nutrientsList;
-    private Recipe recipe;
 
     public ProductImpl() {
     }
 
     public ProductImpl(String productId, String productName,
-            Double price, String category, List<String> nutrientsList, Recipe recipe) throws ProductException {
+            Double price, String category, String nutrientInfo, String ingredients) throws ProductException {
+        this.setCategory(category);
+        this.setProductName(productName);
+        this.setIngredients(ingredients);
+        this.setNutrientInfo(nutrientInfo);
         this.setPrice(price);
         this.setProductId(productId);
-        this.setProductName(productName);
-        this.setCategory(category);
-        this.setNutrientsList(nutrientsList);
-        this.setNutrientId(nutrientId);
-        this.recipe = recipe;
-    }
-
-    public ProductImpl(String productId, String productName,
-            Double price, String category, List<String> nutrientsList, String nutrientId, String recipeId) throws ProductException {
-        this.setPrice(price);
-        this.setProductId(productId);
-        this.setProductName(productName);
-        this.setCategory(category);
-        this.setNutrientsList(nutrientsList);
-        this.setNutrientId(nutrientId);
-        this.setRecipeId(recipeId);
     }
 
     public ProductImpl(String productId, String productName,
@@ -111,6 +96,32 @@ public class ProductImpl implements Product {
     }
 
     @Override
+    public void setNutrientInfo(String nutrientInfo) throws ProductException {
+        if (nutrientInfo == null) {
+            throw new ProductException(NUTRIENT_INFO_ERROR_MSG);
+        }
+        this.nutrientInfo = nutrientInfo;
+    }
+
+    @Override
+    public String getNutrientInfo() {
+        return nutrientInfo;
+    }
+
+    @Override
+    public void setIngredients(String ingredients) throws ProductException {
+        if (ingredients == null) {
+            throw new ProductException(INGREDIENTS_ERROR_MSG);
+        }
+        this.ingredients = ingredients;
+    }
+
+    @Override
+    public String getIngredients() {
+        return ingredients;
+    }
+
+    @Override
     public void setCategory(String category) throws ProductException {
         if (category == null) {
             throw new ProductException(CATEGORY_ERROR_MSG);
@@ -142,7 +153,6 @@ public class ProductImpl implements Product {
     /**
      * @return the productName
      */
-    @Override
     public String getProductName() {
         return productName;
     }
@@ -150,25 +160,8 @@ public class ProductImpl implements Product {
     /**
      * @param productName the productName to set
      */
-    @Override
     public void setProductName(String productName) {
         this.productName = productName;
-    }
-
-    /**
-     * @return the nutrientsList
-     */
-    @Override
-    public List<String> getNutrientsList() {
-        return nutrientsList;
-    }
-
-    /**
-     * @param nutrientsList the nutrientsList to set
-     */
-    @Override
-    public void setNutrientsList(List<String> nutrientsList) {
-        this.nutrientsList = nutrientsList;
     }
 
 }
