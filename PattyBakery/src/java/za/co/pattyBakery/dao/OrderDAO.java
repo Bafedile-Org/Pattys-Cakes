@@ -20,4 +20,6 @@ public interface OrderDAO extends Close {
 
     public List<Order> getOrderById(String orderId);
 
+    public ShoppingCart getShoppingCartByOrderId(String orderId);
+
 }
