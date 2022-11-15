@@ -82,8 +82,8 @@
         Total Amount Due :R<input type='button' id='totalAmountDue' value='<%=(Double) request.getAttribute("totalAmount") == 0 ? 0.0 : String.format("%.2f", (Double) request.getAttribute("totalAmount") + 100)%>'>
     </div>
     <div align='right'>
-        <form action='login_control' method='POST'>
-            <button style="width:150px;height:50px;border-radius:12px;background-color:#C799BA" name='login'>Checkout</button>
+        <form action='<%=(String) request.getAttribute("control")%>' method='POST'>
+            <button style="width:150px;height:50px;border-radius:12px;background-color:#C799BA" name='checkout'>Checkout</button>
         </form>
     </div>
 

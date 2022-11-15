@@ -1,7 +1,7 @@
-<%-- 
+<%--
     Document   : signup_page
     Created on : 04 Nov 2022, 12:57:23 PM
-    Author     : TRAIN 14
+    Author     : Hlawulani
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,21 +14,11 @@
         <link rel="stylesheet" href="css/style.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <nav>
-            <div class="topnav" >
-                <h1 align="center" id='home-header1'>
-                    Welcome To Patty's Bakery   
-                    <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                        <div class="dropdown-content">
-                            <a href="home">Home</a>
-                            <a  href="aboutUs">About Us</a>
-                            <a  href="stores">Our Stores</a>
-                        </div>
-                    </i>
-                </h1>
+            <div class="top">
+                <h1> Welcome to Patty's Bakery</h1>
             </div>
         </nav>
         <section class="containers forms">
@@ -37,26 +27,29 @@
                     <header>Signup</header>
                     <form action="#">
                         <div class="field input-field">
-                            <input type="name" placeholder="Name" class="name">
+                            <input type="name" name='name' placeholder="Name" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="surname" placeholder="Surname" class="surname">
+                            <input type="surname" name='surname' placeholder="Surname" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="iDnumber" placeholder="ID Number" class="iDnumber">
+                            <input type="iDnumber" name='idNum' placeholder="ID Number" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="address" placeholder="Address" class="address">
+                            <input type="email" name='email' placeholder="Email" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="tel" placeholder="Telephone/Cellphone" class="tel">
+                            <input type="address" name='address' placeholder="Address" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="password" placeholder="Create password" class="password">
+                            <input type="tel" name='tel' placeholder="Telephone/Cellphone" class="inputbox" required>
                         </div>
                         <div class="field input-field">
-                            <input type="password" placeholder="Confirm password" class="password">
-                            <i class='bx bx-hide eye-icon'></i>
+                            <input type="password" name= 'password' placeholder="Create password" class="inputbox" required>
+                        </div>
+                        <div class="field input-field">
+                            <input type="password" name='conPassword' placeholder="Confirm password" class="inputbox" required>
+
                         </div>
                         <div class="field button-field">
                             <button>Signup</button>

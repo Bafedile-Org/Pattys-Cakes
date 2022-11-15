@@ -17,7 +17,7 @@ import za.co.pattyBakery.service.impl.CustomerServImpl;
 @WebServlet(name = "LoginController", urlPatterns = {"/login_control"})
 public class LoginController extends BakeryController {
 
-    private String email, password;
+    private String email, password, name, surname, tel, conPassword, address, idNum;
     private CustomerDAO customerServImpl = new CustomerServImpl();
 
     private Person person;
@@ -25,7 +25,7 @@ public class LoginController extends BakeryController {
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("login") != null) {
+        if (request.getParameter("login") != null || request.getAttribute("login") != null) {
             logUserIn(request, response);
             if (checkIfUserExists()) {
                 redirectToPage(request, response, "cookies_control");
@@ -33,6 +33,20 @@ public class LoginController extends BakeryController {
                 redirectToPage(request, response, "signup");
             }
         } else if (request.getParameter("signup") != null) {
+            name = request.getParameter("name");
+            surname = request.getParameter("surname");
+            idNum = request.getParameter("idNum");
+            email = request.getParameter("email");
+            address = request.getParameter("addres");
+            tel = request.getParameter("tel");
+            password = request.getParameter("password");
+            conPassword = request.getParameter("conPassword");
+
+            // check if the user already exists
+            if (checkIfUserExists()) {
+                request.setAttribute("login", "login");
+                redirectToPage(request, response, "cookies_control");
+            }
 
         }
     }
