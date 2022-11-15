@@ -30,10 +30,10 @@ public class PiesController extends BakeryController {
     List<Order> orders;
     String[] recipeIds = {"13RES", "14RES", "15RES"};
     String[] productIds = {"10PRO", "11PRO", "12PRO"};
-    String[] strings = {"blueberry", "apple", "strawberry"};
-    String[] productNames = {"blueberryName", "appleName", "strawberryName"};
-    String[] productPrices = {"blueberryPrice", "applePrice", "strawberryPrice"};
-    String[] productNutrients = {"blueberryNu", "appleNu", "strawberryNu"};
+    String[] strings = {"10PRO", "11PRO", "12PRO"};
+    String[] productNames = {"10PROName", "11PROName", "12PROName"};
+    String[] productPrices = {"10PROPrice", "11PROPrice", "12PROPrice"};
+    String[] productNutrients = {"10PRONu", "11PRONu", "12PRONu"};
     Integer totalItemsInCart;
     ShoppingCart cart;
     String productId = null;
@@ -94,18 +94,18 @@ public class PiesController extends BakeryController {
 
     private void addOrders(HttpServletRequest request, String param) {
           if (request.getParameter(param).equalsIgnoreCase("4PRO")) {
-            imagesSrc[0] = "assets/personal_pies/blueberry pies.jpg";
+            imagesSrc[0] = "assets/personal_pies/10PRO pies.jpg";
             productId = productIds[0];
             products[0] = new ProductServImpl().getProductById(productId);
             addOrder(productId);
 
         } else if (request.getParameter(param).equalsIgnoreCase("5PRO")) {
-            imagesSrc[1] = "assets/personal_pies/apple_pie.jpg";
+            imagesSrc[1] = "assets/personal_pies/11PRO_pie.jpg";
             productId = productIds[1];
             products[1] = new ProductServImpl().getProductById(productId);
             addOrder(productId);
         } else if (request.getParameter(param).equalsIgnoreCase("6PRO")) {
-            imagesSrc[2] = "assets/personal_pies/strawberry pie.jpg";
+            imagesSrc[2] = "assets/personal_pies/12PRO pie.jpg";
             productId = productIds[2];
             products[2] = new ProductServImpl().getProductById(productId);
             addOrder(productId);

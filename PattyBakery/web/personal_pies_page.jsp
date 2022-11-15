@@ -39,12 +39,12 @@
             <div class="cookies_img">
                 <div align="center">
              <label id="cookie_label"><strong><%
-                String name = (String) request.getAttribute("blueberryName");
+                String name = (String) request.getAttribute("10PROName");
                 out.println(name);
                     %>
                 </label></strong>
             <br>
-                <img src='assets/personal_pies/blueberry pies.jpg'>
+                <img src='assets/personal_pies/10PRO pies.jpg'>
                 </div>
                 <div>
                 <article>
@@ -52,8 +52,8 @@
                     <li id="img_list"><strong>Ingredients:</strong>
                     <ul>
                         <%
-                            List<String> blueberryIngr = (List<String>) request.getAttribute("blueberry");
-                            for (String ingredient : blueberryIngr) {
+                            List<String> ingredients = (List<String>) request.getAttribute("10PRO");
+                            for (String ingredient : ingredients) {
                                 out.println(String.format("<li>%s</li>", ingredient));
                             }
                         %>
@@ -62,7 +62,7 @@
                     <li id="img_list"><strong>Nutrients:</strong>
                     <ul>
                          <%
-                            String nutrients = (String) request.getAttribute("blueberryNu");
+                            List<String> nutrients = (List<String>) request.getAttribute("10PRONu");
                             out.println(String.format("<li>%s</li>", nutrients));
                         %>
                     </ul>
@@ -73,7 +73,7 @@
             </div>
             <div id="img_price">
                 <button id="price-button"><%
-                    Double price = (Double) request.getAttribute("blueberryPrice");
+                    Double price = (Double) request.getAttribute("10PROPrice");
                     out.println("R" + price);
                     %>
                 </button>
@@ -86,12 +86,12 @@
             <div class="cookies_img">
                 <div align="center">
              <label id="cookie_label"><strong><%
-                name = (String) request.getAttribute("appleName");
+                name = (String) request.getAttribute("11PROName");
                 out.println(name);
                     %>
                 </strong>
             </label><br>
-                <img src='assets/personal_pies/apple_pie.jpg'>
+                <img src='assets/personal_pies/11PRO_pie.jpg'>
                 </div>
                 <div>
                 <article>
@@ -99,8 +99,8 @@
                     <li id="img_list"><strong>Ingredients:</strong>
                     <ul>
                         <%
-                            List<String> appleIngr = (List<String>) request.getAttribute("apple");
-                            for (String ingredient : appleIngr) {
+                            ingredients = (List<String>) request.getAttribute("11PRO");
+                            for (String ingredient : ingredients) {
                                 out.println(String.format("<li>%s</li>", ingredient));
                             }
                         %>
@@ -109,7 +109,7 @@
                     <li id="img_list"><strong>Nutrients:</strong>
                     <ul>
                         <%
-                            nutrients = (String) request.getAttribute("appleNu");
+                            nutrients = (List<String>)  request.getAttribute("11PRONu");
                             out.println(String.format("<li>%s</li>", nutrients));
                         %>
                     </ul>
@@ -120,7 +120,7 @@
             </div>
             <div id="img_price">
                 <button id="price_button"><%
-                     price = (Double) request.getAttribute("applePrice");
+                     price = (Double) request.getAttribute("11PROPrice");
                     out.println("R" + price);
                     %>
                 </button>
@@ -131,12 +131,12 @@
         <div class="cookies_img">       
         <div align="center">
              <label id="cookie_label"><strong><%
-                 name = (String) request.getAttribute("strawberryName");
+                 name = (String) request.getAttribute("12PROName");
                 out.println(name);
                     %>
                 </strong>
             </label><br>
-                <img src='assets/personal_pies/strawberry pie.jpg'>
+                <img src='assets/personal_pies/12PRO pie.jpg'>
         </div>
                 <div>
                 <article>
@@ -144,8 +144,8 @@
                     <li id="img_list"><strong>Ingredients:</strong>
                     <ul>
                          <%
-                            List<String> strawberryIngr = (List<String>) request.getAttribute("strawberry");
-                            for (String ingredient : strawberryIngr) {
+                            ingredients = (List<String>) request.getAttribute("12PRO");
+                            for (String ingredient : ingredients) {
                                 out.println(String.format("<li>%s</li>", ingredient));
                             }
                         %>
@@ -154,7 +154,7 @@
                     <li id="img_list"><strong>Nutrients:</strong>
                     <ul>
                         <%
-                            nutrients = (String) request.getAttribute("strawberryNu");
+                            nutrients = (List<String>) request.getAttribute("12PRONu");
                             out.println(String.format("<li>%s</li>", nutrients));
                         %>
                     </ul>
@@ -165,7 +165,7 @@
         </div>
             <div id="img_price">
                 <button id="price-button"><%
-                     price = (Double) request.getAttribute("strawberryPrice");
+                     price = (Double) request.getAttribute("12PROPrice");
                     out.println("R" + price);
                     %>
                 </button>

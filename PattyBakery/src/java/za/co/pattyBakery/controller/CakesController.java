@@ -17,10 +17,10 @@ public class CakesController extends BakeryController {
 
     String[] recipeIds = {"1RES", "2RES", "3RES"};
     String[] productIds = {"1PRO", "2PRO", "3PRO"};
-    String[] strings = {"caramel", "margue", "chocolate"};
-    String[] productNames = {"caramelName", "margueName", "chocolateName"};
-    String[] productPrices = {"caramelPrice", "marguePrice", "chocolatePrice"};
-    String[] productNutrients = {"caramelNu", "margueNu", "chocolateNu"};
+    String[] strings = {"1PRO", "2PRO", "3PRO"};
+    String[] productNames = {"1PROName", "2PROName", "3PROName"};
+    String[] productPrices = {"1PROPrice", "2PROPrice", "3PROPrice"};
+    String[] productNutrients = {"1PRONu", "2PRONu", "3PRONu"};
 
     @Override
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

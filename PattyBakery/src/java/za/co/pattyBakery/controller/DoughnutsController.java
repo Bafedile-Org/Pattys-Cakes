@@ -26,10 +26,10 @@ public class DoughnutsController extends BakeryController {
     List<Order> orders;
     String[] recipeIds = {"4RES", "5RES", "6RES"};
     String[] productIds = {"16PRO", "17PRO", "18PRO"};
-    String[] strings = {"glazedLove", "glazed", "chocolate"};
-    String[] productNames = {"glazedLoveName", "glazedName", "chocolateName"};
-    String[] productPrices = {"glazedLovePrice", "glazedPrice", "chocolatePrice"};
-    String[] productNutrients = {"glazedLoveNu", "glazedNu", "chocolateNu"};
+    String[] strings = {"16PRO", "17PRO", "18PRO"};
+    String[] productNames = {"16PROName", "17PROName", "18PROName"};
+    String[] productPrices = {"16PROPrice", "17PROPrice", "18PROPrice"};
+    String[] productNutrients = {"16PRONu", "17PRONu", "18PRONu"};
     Integer totalItemsInCart;
     ShoppingCart cart;
     String productId = null;

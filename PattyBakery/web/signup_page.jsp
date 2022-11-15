@@ -17,14 +17,14 @@
     </head>
     <body>
         <nav>
-                <div class="top">
-                    <h1> Welcome to Patty's Bakery</h1>
-                </div>
-            </nav>
+            <div class="top">
+                <h1> Welcome to Patty's Bakery</h1>
+            </div>
+        </nav>
         <section class="containers forms">
             <div class="form login">
                 <div class="form-content">
-                     <header>Signup</header>
+                    <header>Signup</header>
                     <form action="#">
                         <div class="field input-field">
                             <input type="name" placeholder="Name" class="inputbox" required>
@@ -34,6 +34,9 @@
                         </div>
                         <div class="field input-field">
                             <input type="iDnumber" placeholder="ID Number" class="inputbox" required>
+                        </div>
+                        <div class="field input-field">
+                            <input type="email" placeholder="Email" class="inputbox" required>
                         </div>
                         <div class="field input-field">
                             <input type="address" placeholder="Address" class="inputbox" required>

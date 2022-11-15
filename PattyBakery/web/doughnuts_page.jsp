@@ -42,7 +42,7 @@
 
                 <div align='center'>
                     <label id='cookie_label'><strong><%
-                        String name = (String) request.getAttribute("glazedLoveName");
+                        String name = (String) request.getAttribute("16PROName");
                         out.println(name);
                             %></strong>
                     </label>
@@ -55,7 +55,7 @@
                             <li  id='img_list'><strong>Ingredients</strong>
                                 <ul>
                                     <%
-                                        List<String> ingr = (List<String>) request.getAttribute("glazedLove");
+                                        List<String> ingr = (List<String>) request.getAttribute("16PRO");
                                         for (String ingredient : ingr) {
                                             out.println(String.format("<li>%s</li>", ingredient));
                                         }
@@ -65,7 +65,7 @@
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
                                     <%
-                                        String nutrients = (String) request.getAttribute("glazedLoveNu");
+                                        String nutrients = (String) request.getAttribute("16PRONu");
                                         out.println(String.format("<li>%s</li>", nutrients));
                                     %>
                                 </ul>
@@ -77,7 +77,7 @@
             </div>
             <div id='img_price'>
                 <button id='price_button'> 
-                    <%Double price = (Double) request.getAttribute("glazedLovePrice");
+                    <%Double price = (Double) request.getAttribute("16PROPrice");
                         out.println("R" + price);
                     %>
                 </button>
@@ -93,7 +93,7 @@
 
                 <div align='center'>
                     <label id='cookie_label'><strong><%
-                        name = (String) request.getAttribute("glazedName");
+                        name = (String) request.getAttribute("17PROName");
                         out.println(name);
                             %></strong></label>
                     <br>
@@ -105,7 +105,7 @@
                             <li  id='img_list'><strong>Ingredients</strong>
                                 <ul>
                                     <%
-                                        ingr = (List<String>) request.getAttribute("glazed");
+                                        ingr = (List<String>) request.getAttribute("17PRO");
                                         for (String ingredient : ingr) {
                                             out.println(String.format("<li>%s</li>", ingredient));
                                         }
@@ -115,7 +115,7 @@
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
                                     <%
-                                        nutrients = (String) request.getAttribute("glazedNu");
+                                        nutrients = (String) request.getAttribute("17PRONu");
                                         out.println(String.format("<li>%s</li>", nutrients));
                                     %>
                                 </ul>
@@ -127,7 +127,7 @@
             </div>
             <div id='img_price'>
                 <button id='price_button'> 
-                    <% price = (Double) request.getAttribute("glazedPrice");
+                    <% price = (Double) request.getAttribute("17PROPrice");
                         out.println("R" + price);
                     %>
                 </button>
@@ -141,7 +141,7 @@
 
                 <div align='center'>
                     <label id='cookie_label'><strong><%
-                        name = (String) request.getAttribute("chocolateName");
+                        name = (String) request.getAttribute("18PROName");
                         out.println(name);
                             %></strong></label>
                     <br>
@@ -153,7 +153,7 @@
                             <li  id='img_list'><strong>Ingredients</strong>
                                 <ul>
                                     <%
-                                        ingr = (List<String>) request.getAttribute("chocolate");
+                                        ingr = (List<String>) request.getAttribute("18PRO");
                                         for (String ingredient : ingr) {
                                             out.println(String.format("<li>%s</li>", ingredient));
                                         }
@@ -163,7 +163,7 @@
                             <li  id='img_list'><strong>Nutrients</strong>
                                 <ul>
                                     <%
-                                        nutrients = (String) request.getAttribute("chocolateNu");
+                                        nutrients = (String) request.getAttribute("18PRONu");
                                         out.println(String.format("<li>%s</li>", nutrients));
                                     %>
                                 </ul>
@@ -175,7 +175,7 @@
             </div>
             <div id='img_price'>
                 <button id='price_button'> 
-                    <% price = (Double) request.getAttribute("chocolatePrice");
+                    <% price = (Double) request.getAttribute("18PROPrice");
                         out.println("R" + price);
                     %>
                 </button>
