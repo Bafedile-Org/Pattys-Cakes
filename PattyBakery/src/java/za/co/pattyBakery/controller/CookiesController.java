@@ -49,7 +49,12 @@ public class CookiesController extends BakeryController {
             throws ServletException, IOException {
         if (request.getParameter("pay") != null) {
             orderServImpl = new OrderServImpl();
-            orderServImpl.addOrder(cart);
+            if (cart != null) {
+                orderServImpl.addOrder(cart);
+            }
+            cart = null;
+            orders = null;
+            totalItemsInCart = 0;
         }
         if (request.getParameter("confirmOrder") != null) {
             request.setAttribute("control", "cookies_control");
@@ -118,4 +123,5 @@ public class CookiesController extends BakeryController {
         totalItemsInCart = cart.getOrders().size();
         request.setAttribute("totalInCart", totalItemsInCart);
     }
+
 }
