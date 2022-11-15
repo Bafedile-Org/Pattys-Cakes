@@ -42,7 +42,7 @@
            <div class="form-contents">
              <form action="#">
                 <div class="input-field" style="text-align: center">
-                    <input type="orderNumber" placeholder="Order Number" class="orderNumber" size="50">
+                    <input type="orderNumber" placeholder="Order Number" class="orderNumber" size="50" name="orderNumber">
                 </div>
                 <div class="input-field" style="text-align: center">
                     <input type="productID" placeholder="product ID" class="productID" size="50">
