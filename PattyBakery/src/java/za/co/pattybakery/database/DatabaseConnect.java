@@ -196,7 +196,8 @@ public class DatabaseConnect {
     private static void OrderTable() {
         PreparedStatement stat;
         try {
-            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS orders (order_id VARCHAR(10) PRIMARY KEY,prod_id VARCHAR(10) NOT NULL ,quantity INTEGER,delivered BOOLEAN,date DATE,FOREIGN KEY(prod_id) REFERENCES product(prod_id))");
+            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS orders (order_id VARCHAR(10) ,prod_id VARCHAR(10) NOT NULL ,"
+                    + "quantity INTEGER,delivered BOOLEAN,date DATE,FOREIGN KEY(prod_id) REFERENCES product(prod_id),PRIMARY KEY(order_id,prod_id))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create order table.." + sql.getMessage());
