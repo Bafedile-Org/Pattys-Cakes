@@ -13,8 +13,8 @@ public class EmployeeServImpl implements EmployeeDAO {
 
     private EmployeeDAOImpl employeeDAOImpl;
 
-    public EmployeeServImpl(EmployeeDAOImpl employeeDAOImpl) {
-        this.employeeDAOImpl = employeeDAOImpl;
+    public EmployeeServImpl() {
+        this.employeeDAOImpl = new EmployeeDAOImpl();
     }
 
     @Override

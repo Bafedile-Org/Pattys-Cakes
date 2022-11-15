@@ -67,7 +67,7 @@
                     <input type="email" placeholder="Email" class="email" size="50">
                 </div>
                  <div class="input-field" style="text-align: center">
-                    <input type="delivaryStatus" placeholder="Delivary Status" class="delivaryStatus" size="50">
+                    <input type="delivary" placeholder="Delivary" class="delivaryStatus" size="50">
                 </div>
              </form>
             <div class="btn-group" style="text-align: center">
