@@ -23,7 +23,5 @@ public interface CustomerDAO extends Close {
 
     public Person getCustomerByEmail(String email);
 
-    public String getCustomerPassword(String email);
-
     List<Person> getAllCustomers();
 }

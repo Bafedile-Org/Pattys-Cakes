@@ -4,11 +4,11 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import za.co.pattyBakery.Person;
-import za.co.pattyBakery.dao.CustomerDAO;
+import za.co.pattyBakery.dao.impl.CustomerDAOImpl;
+import za.co.pattyBakery.model.PersonImpl;
 import za.co.pattyBakery.service.impl.CustomerServImpl;
 
 /**
@@ -19,8 +19,7 @@ import za.co.pattyBakery.service.impl.CustomerServImpl;
 public class LoginController extends BakeryController {
 
     private String email, password, name, surname, tel, conPassword, address, idNum;
-    private CustomerDAO customerServImpl = new CustomerServImpl();
-
+    private CustomerServImpl customerServImpl = new CustomerServImpl();
     private Person person;
 
     @Override
@@ -47,6 +46,14 @@ public class LoginController extends BakeryController {
             if (checkIfUserExists()) {
                 request.setAttribute("login", "login");
                 redirectToPage(request, response, "cookies_control");
+            } else {
+                if (password.equals(conPassword)) {
+                    customerServImpl.addCustomer(new PersonImpl(name, surname, idNum, address, tel, email));
+                    customerServImpl.addCustomerLogins(customerServImpl.getCustomerByEmail(email).getPersonId(), email, password);
+                } else {
+                    response.sendRedirect("signup");
+                }
+
             }
 
         }
@@ -66,6 +73,6 @@ public class LoginController extends BakeryController {
 
     private Boolean checkIfUserExists() {
         person = customerServImpl.getCustomerByEmail(email);
-        return (person != null && customerServImpl.getCustomerPassword(email) != null);
+        return (person != null && customerServImpl.getCustomerPassword(person.getPersonId(), email) != null);
     }
 }

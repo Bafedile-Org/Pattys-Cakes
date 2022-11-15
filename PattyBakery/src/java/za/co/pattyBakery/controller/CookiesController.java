@@ -44,13 +44,13 @@ public class CookiesController extends BakeryController {
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         setIndexPage(request, totalItemsInCart, productId, orders, cart);
         if (request.getParameter("checkout") != null) {
             request.setAttribute("shoppingCart", cart);
             redirectToPage(request, response, "confirm", recipeIds, productIds, productNames, productPrices, productNutrients, totalItemsInCart);
         }
         manageCart(request, response, productIds, cart, orders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
-
         if (request.getParameter("add") != null) {
             addOrders(request, "add", orders);
             redirectToPage(request, response, "cookies", recipeIds, productIds, productNames, productPrices, productNutrients, totalItemsInCart);
