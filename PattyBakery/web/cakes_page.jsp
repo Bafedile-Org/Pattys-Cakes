@@ -56,6 +56,8 @@
                         <%
                             List<String> ingredients = (List<String>) request.getAttribute("1PRO");
                             for (String ingredient : ingredients) {
+                            List<String> caramelIngr = (List<String>) request.getAttribute("caramel");
+                            for (String ingredient : caramelIngr) {
                                 out.println(String.format("<li>%s</li>", ingredient));
                             }
                         %>
@@ -77,6 +79,7 @@
             <div id='img_price'>
                 <button id='price_button'><%
                     Double price = (Double) request.getAttribute("1PROPrice");
+                    Double price = (Double) request.getAttribute("caramelPrice");
                     out.println("R" + price);
                     %>
                 </button>
@@ -105,6 +108,8 @@
                         <%
                           ingredients = (List<String>) request.getAttribute("2PRO");
                             for (String ingredient : ingredients) {
+                            List<String> margueIngr = (List<String>) request.getAttribute("margue");
+                            for (String ingredient : margueIngr) {
                                 out.println(String.format("<li>%s</li>", ingredient));
                             }
                         %>
@@ -125,6 +130,7 @@
              <div id='img_price'>
                 <button id='price_button'><%
                     price = (Double) request.getAttribute("2PROPrice");
+                    price = (Double) request.getAttribute("marguePrice");
                     out.println("R" + price);
                     %>
                 </button>
@@ -154,6 +160,8 @@
                         <%
                              ingredients = (List<String>) request.getAttribute("3PRO");
                                 for (String ingredient : ingredients) {
+                            List<String> chocolateIngr = (List<String>) request.getAttribute("chocolate");
+                            for (String ingredient : chocolateIngr) {
                                 out.println(String.format("<li>%s</li>", ingredient));
                             }
                         %>
@@ -175,6 +183,7 @@
            <div id='img_price'>
                 <button id='price_button'><%
                     price = (Double) request.getAttribute("3PROPrice");
+                    price = (Double) request.getAttribute("chocolatePrice");
                     out.println("R" + price);
                     %>
                 </button>
