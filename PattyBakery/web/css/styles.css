@@ -3,8 +3,6 @@
     Author     : Dimakatso Sebatane*/
 
 
-
-
 .topnav i{
     float:right;
 }
@@ -69,6 +67,4 @@ body{
 .topnav h1 a{
     text-decoration: none;
     color:black;
-
 }
-

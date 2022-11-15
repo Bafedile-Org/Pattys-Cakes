@@ -62,7 +62,7 @@ public class LoginController extends BakeryController {
         }
     }
 
-    private void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage)
+    public void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher(redirectPage);
         dispatcher.forward(request, response);

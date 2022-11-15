@@ -8,7 +8,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-      <head>
+    <head>
+        <link rel="stylesheet" href="css/style.css">
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Muffins page</title>
         <link rel='stylesheet' href='css/style.css'>

@@ -17,7 +17,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
         html, body {
-          background-color: #f4f4f4;
+          background-color:#C799BA;
         }
         .sf {
           min-height: 400px;
@@ -40,9 +40,9 @@
             Today's date: <%= (new java.util.Date())%>
         </div>
         <div class="form-content">
-             <form action="#">
+             <form action="res/bakery_res/add" method="POST">
                 <div class="input-field" style="text-align: center">
-                 <input type="productId" placeholder="Product ID" class="productId" size="33">
+                    <input type="productId" name="prodId" placeholder="Product ID" class="productId" size="33">
                 <select id = "myList" onchange = "favTutorial()" >
                 <option>Select ID type</option>
                 <option> #124547434 </option>
@@ -52,7 +52,7 @@
                 </div>
                 
                 <div class="input-field" style="text-align: center">
-                    <input type="quantity" placeholder="Quantity" class="quantity" size="50">
+                    <input type="quantity" name="quantity" placeholder="Quantity" class="quantity" size="50">
                 </div>
              </form>
             <div class="btn-group" style="text-align: center">
