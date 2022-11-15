@@ -3,6 +3,7 @@ package za.co.pattyBakery.service.impl;
 import java.util.List;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.dao.StockDAO;
+import za.co.pattyBakery.dao.impl.StockDAOImpl;
 import za.co.pattyBakery.model.Stock;
 
 /**
@@ -13,8 +14,8 @@ public class StockServImpl implements StockDAO {
 
     private StockDAO stockDAOImpl;
 
-    public StockServImpl(StockDAO stockDAOImpl) {
-        this.stockDAOImpl = stockDAOImpl;
+    public StockServImpl() {
+        this.stockDAOImpl = new StockDAOImpl();
     }
 
     @Override

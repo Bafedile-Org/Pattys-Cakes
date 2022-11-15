@@ -41,9 +41,9 @@ public class PiesController extends BakeryController {
     Product[] products = new Product[3];
     Integer[] orderQuantities = new Integer[3];
     Map<String, Integer> orderQuantitiesMap = new HashMap<>();
-    
+
     @Override
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         manageCart(request, response);
         if (request.getParameter("index") != null) {
@@ -69,8 +69,8 @@ public class PiesController extends BakeryController {
         addQuantities();
     }
 
-    private void manageCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-           for (String productId1 : productIds) {
+    public void manageCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        for (String productId1 : productIds) {
             if (request.getParameter("adds") != null) {
                 if (request.getParameter("adds").equalsIgnoreCase(productId1)) {
                     addOrders(request, "adds");
@@ -92,8 +92,8 @@ public class PiesController extends BakeryController {
         }
     }
 
-    private void addOrders(HttpServletRequest request, String param) {
-          if (request.getParameter(param).equalsIgnoreCase("4PRO")) {
+    public void addOrders(HttpServletRequest request, String param) {
+        if (request.getParameter(param).equalsIgnoreCase("4PRO")) {
             imagesSrc[0] = "assets/personal_pies/10PRO pies.jpg";
             productId = productIds[0];
             products[0] = new ProductServImpl().getProductById(productId);
@@ -115,7 +115,7 @@ public class PiesController extends BakeryController {
         request.setAttribute("totalInCart", totalItemsInCart);
     }
 
-    private void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage) throws ServletException, IOException {
+    public void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage) throws ServletException, IOException {
         setIngredientAttributes(recipeIds, productIds, request);
         setProductName(productIds, productNames, productPrices, productNutrients, request);
         request.setAttribute("totalInCart", totalItemsInCart);
@@ -123,8 +123,8 @@ public class PiesController extends BakeryController {
         dispatcher.forward(request, response);
     }
 
-    private void redirectToCart(HttpServletRequest request, HttpServletResponse response) 
-           throws ServletException, IOException {
+    public void redirectToCart(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.setAttribute("control", "cookies_control");
         request.setAttribute("cartItems", cart);
         request.setAttribute("images", imagesSrc);
@@ -137,7 +137,7 @@ public class PiesController extends BakeryController {
         dispatcher.forward(request, response);
     }
 
-    private void addQuantities() {
+    public void addQuantities() {
         Integer i = 0;
         for (Order order : orders) {
             for (String productId : productIds) {
@@ -150,8 +150,8 @@ public class PiesController extends BakeryController {
         }
     }
 
-    private ShoppingCart setTotalPrice() {
-                if (cart == null) {
+    public ShoppingCart setTotalPrice() {
+        if (cart == null) {
             cart = new ShoppingCartImpl(orders, null, LocalDate.now());
         }
 
@@ -165,31 +165,31 @@ public class PiesController extends BakeryController {
         return cart;
     }
 
-    private void removeOrder(String prodId) {
+    public void removeOrder(String prodId) {
         try {
-           Product product = new ProductServImpl().getProductById(productId);
-           if (orders == null) {
-               orders = new ArrayList<>();
-           }
-           for (Order or : orders) {
-               if (or.getProduct().getProductId().equalsIgnoreCase(product.getProductId())) {
-                   if (or.getQuantity() > 0 || or.getQuantity() == 0) {
-                       if (or.getQuantity() == 1) {
-                           or.setQuantity(1);
-                       } else {
-                           or.setQuantity(or.getQuantity() - 1);
-                       }
-                   }
-                   return;
-               }
-           }
+            Product product = new ProductServImpl().getProductById(productId);
+            if (orders == null) {
+                orders = new ArrayList<>();
+            }
+            for (Order or : orders) {
+                if (or.getProduct().getProductId().equalsIgnoreCase(product.getProductId())) {
+                    if (or.getQuantity() > 0 || or.getQuantity() == 0) {
+                        if (or.getQuantity() == 1) {
+                            or.setQuantity(1);
+                        } else {
+                            or.setQuantity(or.getQuantity() - 1);
+                        }
+                    }
+                    return;
+                }
+            }
 
-       } catch (OrderException ex) {
-           System.out.println(String.format("ERROR: %s%n", ex.getMessage()));
+        } catch (OrderException ex) {
+            System.out.println(String.format("ERROR: %s%n", ex.getMessage()));
         }
     }
 
-    private void addOrder(String productId) {
+    public void addOrder(String productId) {
         try {
             Product product = new ProductServImpl().getProductById(productId);
             Order order = new OrderImpl(product, product.getPrice());
@@ -210,8 +210,8 @@ public class PiesController extends BakeryController {
         }
     }
 
-    private String generateOrderNumber() {
-          List<Character> alphabets = new ArrayList<>();
+    public String generateOrderNumber() {
+        List<Character> alphabets = new ArrayList<>();
         String orderNumber = "";
         for (char i = 'A'; i <= 'Z'; i++) {
             alphabets.add(i);
