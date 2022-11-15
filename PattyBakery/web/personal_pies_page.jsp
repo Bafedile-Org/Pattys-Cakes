@@ -82,7 +82,7 @@
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="cart_button_" name="add" value="10PRO">add to cart</button>
+                <button id="cart_button_" type="submit" name="add" value="10PRO">add to cart</button>
                 </form>
             </div>
 
@@ -135,7 +135,7 @@
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="cart_button" name="add" value="11PRO">add to cart</button>
+                <button id="cart_button" type="submit" name="add" value="11PRO">add to cart</button>
                 </form>
             </div>
 </div>
@@ -186,7 +186,7 @@
                     out.println("R" + price);
                     %>
                 </button>
-                <button id=cart_button" name="add" value="12PRO">add to cart</button>
+                <button id=cart_button" type="submit" name="add" value="12PRO">add to cart</button>
                 </form>
             </div>
             </div>
