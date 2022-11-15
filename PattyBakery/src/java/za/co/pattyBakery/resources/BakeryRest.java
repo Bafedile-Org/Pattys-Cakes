@@ -1,11 +1,14 @@
 package za.co.pattyBakery.resources;
 
-import java.util.List;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
+import za.co.pattyBakery.Order;
+import za.co.pattyBakery.dao.OrderDAO;
 import za.co.pattyBakery.dao.RecipeDAO;
 import za.co.pattyBakery.model.Recipe;
+import za.co.pattyBakery.service.impl.OrderServImpl;
 import za.co.pattyBakery.service.impl.RecipeServImpl;
 
 /**
@@ -30,5 +33,12 @@ public class BakeryRest {
 
         return Response.status(200).entity(recipe.getIngredients()).build();
     }
-
+    @Path("/order_add")
+    @POST
+    public Response addOrder(Order o){
+       
+//        OrderDAO orderServImpl = new OrderServImpl();
+//        String orderIds = {""};
+         return null;
+    }
 }

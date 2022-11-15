@@ -4,6 +4,7 @@ import java.util.List;
 import za.co.pattyBakery.Order;
 import za.co.pattyBakery.ShoppingCart;
 import za.co.pattyBakery.dao.OrderDAO;
+import za.co.pattyBakery.dao.impl.OrderDAOImpl;
 
 /**
  *
@@ -15,6 +16,10 @@ public class OrderServImpl implements OrderDAO {
 
     public OrderServImpl(OrderDAO orderDAOImpl) {
         this.orderDAOImpl = orderDAOImpl;
+    }
+
+    public OrderServImpl() {
+        orderDAOImpl = new OrderDAOImpl();
     }
 
     @Override

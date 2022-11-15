@@ -59,7 +59,6 @@
              </form>
             <div class="btn-group" style="text-align: center">
             <button>Add</button>
-           
             <button>Update</button>
           </div></div>
     </body>
