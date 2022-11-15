@@ -4,6 +4,7 @@
     Author     : TRAIN 14
 --%>
 
+<%@page import="za.co.pattyBakery.Person"%>
 <%@page import="za.co.pattyBakery.Order"%>
 <%@page import="za.co.pattyBakery.ShoppingCart"%>
 <%@page import="java.util.List"%>
@@ -43,8 +44,7 @@
             <div class="card">
                 <div class="leftside">
                     <form action="#">
-
-                        <h2>Categories list: </h2>
+                        <h2>Product list: </h2>
                         <%
                             ShoppingCart shoppingCart = (ShoppingCart) request.getAttribute("shoppingCart");
                             if (shoppingCart != null) {
@@ -55,20 +55,52 @@
                             }
                         %>
                     </form>
+
                 </div>
+
                 <div class="rightside">
                     <form action="#">
                         <div class="input-field" style="text-align: center">
                             <h2>Total listing </h2>
-                            <a><button type="submit" class="button">R<%=shoppingCart == null ? 0.0 : shoppingCart.getTotalprice()%></button></a>
+                            <a><button type="submit" class="button">R<%=String.format("%.2f", shoppingCart == null ? 0.0 : shoppingCart.getTotalprice())%></button></a>
                         </div>
                     </form>
 
+                </div><br>
+
+            </div><br>
+            <div class="card">
+                <div class="leftside">
+                    <div class="left_info">
+                        <h2>User Information</h2>
+                        <%
+                            Person person = (Person) request.getAttribute("customer");
+                            out.println(String.format("<label>Name</label>:%s<br>"
+                                    + "<label>Surname</label>:%s<br>"
+                                    + "<label>Telephone Number</label>:%s<br>"
+                                    + "<label>Email Address</label>:%s<br>"
+                                    + "<label>Delivery Address</label>:%s<br>",
+                                    person.getName(), person.getSurname(),
+                                    person.getTelephoneNumber(), person.getEmail(),
+                                    person.getDeliveryAddress()));
+                        %>
+                    </div>
+
                 </div>
+
+                <div class="rightside">
+
+
+                </div><br>
+
             </div>
+
         </div>
+
         <div class="bb">
-            <a href="check-out"><button type="submit" class="button">Confirm order</button></a>
+            <form action="<%=request.getAttribute("control")%>" method="POST">
+                <button type="submit" class="button" name="confirmOrder">Confirm order</button>
+            </form>
         </div>
     </body>
 </html>

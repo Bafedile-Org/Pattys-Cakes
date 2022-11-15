@@ -14,8 +14,8 @@ public class OrderServImpl implements OrderDAO {
 
     private OrderDAO orderDAOImpl;
 
-    public OrderServImpl(OrderDAO orderDAOImpl) {
-        this.orderDAOImpl = orderDAOImpl;
+    public OrderServImpl() {
+        this.orderDAOImpl = new OrderDAOImpl();
     }
 
     public OrderServImpl() {

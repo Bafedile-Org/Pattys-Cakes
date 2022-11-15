@@ -61,8 +61,11 @@ public class CustomerDAOImpl implements CustomerDAO {
                 preparedStatement.setInt(1, customerId);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    customer = new PersonImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("idNum"),
-                            resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("address"));
+                    customer = new PersonImpl(resultSet.getInt("cust_id"),
+                            resultSet.getString("name"), resultSet.getString("surname"),
+                            resultSet.getString("idNum"), resultSet.getString("address"),
+                            resultSet.getString("tel"), resultSet.getString("email")
+                    );
                 }
             }
         } catch (SQLException sql) {
@@ -74,26 +77,6 @@ public class CustomerDAOImpl implements CustomerDAO {
         return customer;
     }
 
-    public String getCustomerPassword(String email) {
-        String password = null;
-        try {
-            if (con != null) {
-                preparedStatement = con.prepareStatement("SELECT * FROM login WHERE email = ?");
-                preparedStatement.setString(1, email);
-                resultSet = preparedStatement.executeQuery();
-                if (resultSet.next()) {
-                    password = resultSet.getString("password");
-                }
-            }
-        } catch (SQLException sql) {
-            System.out.println(String.format("Error: %s%n", sql.getMessage()));
-        } finally {
-            close(preparedStatement, resultSet);
-
-        }
-        return password;
-    }
-
     @Override
     public Person getCustomerByEmail(String email) {
         Person customer = null;
@@ -103,8 +86,11 @@ public class CustomerDAOImpl implements CustomerDAO {
                 preparedStatement.setString(1, email);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    customer = new PersonImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("idNum"),
-                            resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("address"));
+                    customer = new PersonImpl(resultSet.getInt("cust_id"),
+                            resultSet.getString("name"), resultSet.getString("surname"),
+                            resultSet.getString("idNum"), resultSet.getString("address"),
+                            resultSet.getString("tel"), resultSet.getString("email")
+                    );
                 }
             }
         } catch (SQLException sql) {
@@ -192,8 +178,7 @@ public class CustomerDAOImpl implements CustomerDAO {
                 preparedStatement = con.prepareStatement("SELECT * FROM customer;");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    customer = new PersonImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("idNum"),
-                            resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("address"));
+                    customer = getCustomerById(resultSet.getInt("cust_id"));
                     customers.add(customer);
                 }
             }
@@ -204,6 +189,21 @@ public class CustomerDAOImpl implements CustomerDAO {
 
         }
         return customers;
+    }
+
+    @Override
+    public void addCustomerLogins(Integer customerId, String email, String password) {
+        new LoginDAOImpl(con).addCustomerLogins(customerId, email, password);
+    }
+
+    @Override
+    public void removeCustomerLogins(Integer customerId, String email) {
+        new LoginDAOImpl(con).removeCustomerLogins(customerId, email);
+    }
+
+    @Override
+    public String getCustomerPassword(Integer customerId, String email) {
+        return new LoginDAOImpl(con).getCustomerPassword(customerId, email);
     }
 
 }

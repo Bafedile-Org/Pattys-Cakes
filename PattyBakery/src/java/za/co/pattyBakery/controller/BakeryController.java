@@ -216,12 +216,24 @@ public class BakeryController extends HttpServlet {
 
     public void setIndexPage(HttpServletRequest request, Integer totalItemsInCart, String productId, List<Order> orders, ShoppingCart cart) {
         if (request.getParameter("index") != null) {
-            totalItemsInCart = 0;
-            productId = null;
-            if (orders != null) {
-                orders.clear();
-            }
-            cart = null;
+////            totalItemsInCart = 0;
+//            productId = null;
+//            if (orders != null) {
+//                orders.clear();
+//            }
+//            cart = null;
+        }
+    }
+
+    public void manageLogin(HttpServletRequest request, HttpServletResponse response, String[] recipeIds, String[] productIds,
+            String[] productNames, String[] productPrices, String[] productNutrients, Integer totalItemsInCart, ShoppingCart cart) throws ServletException, IOException {
+        request.setAttribute("control", "cookies_control");
+        if (request.getParameter("login") != null) {
+            request.setAttribute("shoppingCart", cart);
+            redirectToPage(request, response, "login_control", recipeIds, productIds, productNames, productPrices, productNutrients, totalItemsInCart);
+        } else if (request.getParameter("signup") != null) {
+            request.setAttribute("shoppingCart", cart);
+            redirectToPage(request, response, "login_control", recipeIds, productIds, productNames, productPrices, productNutrients, totalItemsInCart);
         }
     }
 

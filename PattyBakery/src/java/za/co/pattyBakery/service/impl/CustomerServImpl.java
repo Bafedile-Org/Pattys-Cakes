@@ -3,7 +3,9 @@ package za.co.pattyBakery.service.impl;
 import java.util.List;
 import za.co.pattyBakery.Person;
 import za.co.pattyBakery.dao.CustomerDAO;
+import za.co.pattyBakery.dao.LoginDAO;
 import za.co.pattyBakery.dao.impl.CustomerDAOImpl;
+import za.co.pattyBakery.dao.impl.LoginDAOImpl;
 
 /**
  *
@@ -12,9 +14,11 @@ import za.co.pattyBakery.dao.impl.CustomerDAOImpl;
 public class CustomerServImpl implements CustomerDAO {
 
     private CustomerDAO customerDAOImpl;
+    private LoginDAO loginDAOImpl;
 
     public CustomerServImpl() {
         customerDAOImpl = new CustomerDAOImpl();
+        loginDAOImpl = new LoginDAOImpl();
     }
 
     @Override
@@ -76,8 +80,18 @@ public class CustomerServImpl implements CustomerDAO {
     }
 
     @Override
-    public String getCustomerPassword(String email) {
-        return customerDAOImpl.getCustomerPassword(email);
+    public String getCustomerPassword(Integer customerId, String email) {
+        return loginDAOImpl.getCustomerPassword(customerId, email);
+    }
+
+    @Override
+    public void addCustomerLogins(Integer customerId, String email, String password) {
+        loginDAOImpl.addCustomerLogins(customerId, email, password);
+    }
+
+    @Override
+    public void removeCustomerLogins(Integer customerId, String email) {
+        loginDAOImpl.removeCustomerLogins(customerId, email);
     }
 
 }
