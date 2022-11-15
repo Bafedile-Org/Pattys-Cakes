@@ -30,7 +30,7 @@
                     <input type="email" placeholder="Email address" class="email">
                 </div>
                     <div class="field input-field">
-                        <input type="newpassword" placeholder="New Password" class="newpassword">
+                        <input type="newpassword" placeholder="New Password" class="newpassword" required>
                     </div>
             </form>
         </div>
