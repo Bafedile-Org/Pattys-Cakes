@@ -67,8 +67,7 @@
 }
 
 .leftside {
-
-    background-image: url(../assets/categories.jpg);
+    /*background-image: url(../assets/patty_pic_chef.jpg);*/
     width: 35rem;
     display: inline-flex;
     align-items: center;
@@ -177,4 +176,13 @@ p{
 .text-big,service h1{
     font-size:25px;
 
+}
+
+label{
+    padding:0px 18px;
+    font-weight: bold;
+}
+
+.left_info{
+    padding:18px 18px;
 }

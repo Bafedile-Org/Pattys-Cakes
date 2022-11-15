@@ -11,24 +11,24 @@ import za.co.pattyBakery.dao.impl.LoginDAOImpl;
  *
  * @author Dimakatso Sebatane
  */
-public class CustomerServImpl implements CustomerDAO, LoginDAO {
-    
+public class CustomerServImpl implements CustomerDAO {
+
     private CustomerDAO customerDAOImpl;
     private LoginDAO loginDAOImpl;
-    
+
     public CustomerServImpl() {
         customerDAOImpl = new CustomerDAOImpl();
         loginDAOImpl = new LoginDAOImpl();
     }
-    
+
     @Override
     public void addCustomer(Person customer) {
         if (customer == null) {
-            
+
         }
         customerDAOImpl.addCustomer(customer);
     }
-    
+
     @Override
     public Person getCustomerById(Integer customerId) {
         if (customerId <= 0) {
@@ -36,7 +36,7 @@ public class CustomerServImpl implements CustomerDAO, LoginDAO {
         }
         return customerDAOImpl.getCustomerById(customerId);
     }
-    
+
     @Override
     public void removeCustomer(Integer customerId) {
         if (customerId <= 0) {
@@ -44,7 +44,7 @@ public class CustomerServImpl implements CustomerDAO, LoginDAO {
         }
         customerDAOImpl.removeCustomer(customerId);
     }
-    
+
     @Override
     public void updateCustomerTel(Integer customerId, String tel) {
         if (tel == null || customerId <= 0) {
@@ -52,7 +52,7 @@ public class CustomerServImpl implements CustomerDAO, LoginDAO {
         }
         customerDAOImpl.updateCustomerTel(customerId, tel);
     }
-    
+
     @Override
     public void updateCustomerEmail(Integer customerId, String email) {
         if (email == null || customerId <= 0) {
@@ -60,7 +60,7 @@ public class CustomerServImpl implements CustomerDAO, LoginDAO {
         }
         customerDAOImpl.updateCustomerEmail(customerId, email);
     }
-    
+
     @Override
     public void updateCustomerAddress(Integer customerId, String address) {
         if (address == null && customerId <= 0) {
@@ -68,30 +68,30 @@ public class CustomerServImpl implements CustomerDAO, LoginDAO {
         }
         customerDAOImpl.updateCustomerAddress(customerId, address);
     }
-    
+
     @Override
     public List<Person> getAllCustomers() {
         return customerDAOImpl.getAllCustomers();
     }
-    
+
     @Override
     public Person getCustomerByEmail(String email) {
         return customerDAOImpl.getCustomerByEmail(email);
     }
-    
+
     @Override
     public String getCustomerPassword(Integer customerId, String email) {
         return loginDAOImpl.getCustomerPassword(customerId, email);
     }
-    
+
     @Override
     public void addCustomerLogins(Integer customerId, String email, String password) {
         loginDAOImpl.addCustomerLogins(customerId, email, password);
     }
-    
+
     @Override
     public void removeCustomerLogins(Integer customerId, String email) {
         loginDAOImpl.removeCustomerLogins(customerId, email);
     }
-    
+
 }

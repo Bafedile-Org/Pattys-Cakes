@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import za.co.pattyBakery.Person;
+import za.co.pattyBakery.dao.CustomerDAO;
 import za.co.pattyBakery.dao.impl.CustomerDAOImpl;
 import za.co.pattyBakery.model.PersonImpl;
 import za.co.pattyBakery.service.impl.CustomerServImpl;
@@ -19,7 +20,7 @@ import za.co.pattyBakery.service.impl.CustomerServImpl;
 public class LoginController extends BakeryController {
 
     private String email, password, name, surname, tel, conPassword, address, idNum;
-    private CustomerServImpl customerServImpl = new CustomerServImpl();
+    private CustomerDAO customerServImpl = new CustomerServImpl();
     private Person person;
 
     @Override
@@ -28,7 +29,9 @@ public class LoginController extends BakeryController {
         if (request.getParameter("login") != null || request.getAttribute("login") != null) {
             logUserIn(request, response);
             if (checkIfUserExists()) {
-                redirectToPage(request, response, "cookies_control");
+                request.setAttribute("customer", person);
+//                request.setAttribute("shoppingCart", request.getAttribute("shoppingCart"));
+                redirectToPage(request, response, "confirm");
             } else {
                 redirectToPage(request, response, "signup");
             }
@@ -37,7 +40,7 @@ public class LoginController extends BakeryController {
             surname = request.getParameter("surname");
             idNum = request.getParameter("idNum");
             email = request.getParameter("email");
-            address = request.getParameter("addres");
+            address = request.getParameter("address");
             tel = request.getParameter("tel");
             password = request.getParameter("password");
             conPassword = request.getParameter("conPassword");
@@ -50,8 +53,9 @@ public class LoginController extends BakeryController {
                 if (password.equals(conPassword)) {
                     customerServImpl.addCustomer(new PersonImpl(name, surname, idNum, address, tel, email));
                     customerServImpl.addCustomerLogins(customerServImpl.getCustomerByEmail(email).getPersonId(), email, password);
+                    redirectToPage(request, response, "login");
                 } else {
-                    response.sendRedirect("signup");
+                    redirectToPage(request, response, "signup");
                 }
 
             }

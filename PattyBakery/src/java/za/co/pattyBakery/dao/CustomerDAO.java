@@ -7,7 +7,7 @@ import za.co.pattyBakery.Person;
  *
  * @author Dimakatso Sebatane
  */
-public interface CustomerDAO extends Close {
+public interface CustomerDAO extends LoginDAO {
 
     void addCustomer(Person customer);
 
