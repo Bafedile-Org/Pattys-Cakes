@@ -52,14 +52,11 @@
                     <li id="img_list"><strong>Ingredients:</strong>
                     <ul>
                         <%
-<<<<<<< HEAD
                             List<String> ingredients = (List<String>) request.getAttribute("10PRO");
+                            if (ingredients != null) {
                             for (String ingredient : ingredients) {
-=======
-                            List<String> blueberryIngr = (List<String>) request.getAttribute("blueberry");
-                            for (String ingredient : blueberryIngr) {
->>>>>>> Deekay-dev
                                 out.println(String.format("<li>%s</li>", ingredient));
+                            }
                             }
                         %>
                     </ul>
@@ -68,7 +65,9 @@
                     <ul>
                          <%
                             List<String> nutrients = (List<String>) request.getAttribute("10PRONu");
-                            out.println(String.format("<li>%s</li>", nutrients));
+                                        for (String nutrient : nutrients) {
+                                            out.println(String.format("<li>%s</li>", nutrient));
+                                        }
                         %>
                     </ul>
                     </li>
@@ -77,16 +76,14 @@
             </div>
             </div>
             <div id="img_price">
+                <form method="POST" action="pie_control">
                 <button id="price-button"><%
-<<<<<<< HEAD
                     Double price = (Double) request.getAttribute("10PROPrice");
-=======
-                    Double price = (Double) request.getAttribute("blueberryPrice");
->>>>>>> Deekay-dev
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="cart_button_">add to cart</button>
+                <button id="cart_button_" name="add" value="10PRO">add to cart</button>
+                </form>
             </div>
 
         </div><br><br>
@@ -95,11 +92,7 @@
             <div class="cookies_img">
                 <div align="center">
              <label id="cookie_label"><strong><%
-<<<<<<< HEAD
                 name = (String) request.getAttribute("11PROName");
-=======
-                name = (String) request.getAttribute("appleName");
->>>>>>> Deekay-dev
                 out.println(name);
                     %>
                 </strong>
@@ -112,14 +105,11 @@
                     <li id="img_list"><strong>Ingredients:</strong>
                     <ul>
                         <%
-<<<<<<< HEAD
                             ingredients = (List<String>) request.getAttribute("11PRO");
+                            if (ingredients != null) {
                             for (String ingredient : ingredients) {
-=======
-                            List<String> appleIngr = (List<String>) request.getAttribute("apple");
-                            for (String ingredient : appleIngr) {
->>>>>>> Deekay-dev
                                 out.println(String.format("<li>%s</li>", ingredient));
+                            }
                             }
                         %>
                     </ul>
@@ -127,8 +117,10 @@
                     <li id="img_list"><strong>Nutrients:</strong>
                     <ul>
                         <%
-                            nutrients = (List<String>)  request.getAttribute("11PRONu");
-                            out.println(String.format("<li>%s</li>", nutrients));
+                            nutrients = (List<String>) request.getAttribute("11PRONu");
+                                        for (String nutrient : nutrients) {
+                                            out.println(String.format("<li>%s</li>", nutrient));
+                                        }
                         %>
                     </ul>
                     </li>
@@ -137,27 +129,21 @@
             </div>
             </div>
             <div id="img_price">
+                <form method="POST" action="pies_control">
                 <button id="price_button"><%
-<<<<<<< HEAD
                      price = (Double) request.getAttribute("11PROPrice");
-=======
-                     price = (Double) request.getAttribute("applePrice");
->>>>>>> Deekay-dev
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="cart_button">add to cart</button>
+                <button id="cart_button" name="add" value="11PRO">add to cart</button>
+                </form>
             </div>
 </div>
         <div class="images-container">
         <div class="cookies_img">       
         <div align="center">
              <label id="cookie_label"><strong><%
-<<<<<<< HEAD
                  name = (String) request.getAttribute("12PROName");
-=======
-                 name = (String) request.getAttribute("strawberryName");
->>>>>>> Deekay-dev
                 out.println(name);
                     %>
                 </strong>
@@ -170,23 +156,22 @@
                     <li id="img_list"><strong>Ingredients:</strong>
                     <ul>
                          <%
-<<<<<<< HEAD
                             ingredients = (List<String>) request.getAttribute("12PRO");
+                          if(ingredients!=null){ 
                             for (String ingredient : ingredients) {
-=======
-                            List<String> strawberryIngr = (List<String>) request.getAttribute("strawberry");
-                            for (String ingredient : strawberryIngr) {
->>>>>>> Deekay-dev
                                 out.println(String.format("<li>%s</li>", ingredient));
                             }
+                          }
                         %>
                     </ul>
                     </li>
                     <li id="img_list"><strong>Nutrients:</strong>
                     <ul>
                         <%
-                            nutrients = (List<String>) request.getAttribute("12PRONu");
-                            out.println(String.format("<li>%s</li>", nutrients));
+                           nutrients = (List<String>) request.getAttribute("12PRONu");
+                                        for (String nutrient : nutrients) {
+                                            out.println(String.format("<li>%s</li>", nutrient));
+                                        }
                         %>
                     </ul>
                     </li>
@@ -195,16 +180,14 @@
             </div>
         </div>
             <div id="img_price">
+                <form method="POST" action="pies_control">
                 <button id="price-button"><%
-<<<<<<< HEAD
                      price = (Double) request.getAttribute("12PROPrice");
-=======
-                     price = (Double) request.getAttribute("strawberryPrice");
->>>>>>> Deekay-dev
                     out.println("R" + price);
                     %>
                 </button>
-                <button id=cart_button">add to cart</button>
+                <button id=cart_button" name="add" value="12PRO">add to cart</button>
+                </form>
             </div>
             </div>
 

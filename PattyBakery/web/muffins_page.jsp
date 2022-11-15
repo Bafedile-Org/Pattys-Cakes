@@ -8,12 +8,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-<<<<<<< Updated upstream
-      <head>
-=======
     <head>
         <link rel="stylesheet" href="css/style.css">
->>>>>>> Stashed changes
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Muffins page</title>
         <link rel='stylesheet' href='css/style.css'>
