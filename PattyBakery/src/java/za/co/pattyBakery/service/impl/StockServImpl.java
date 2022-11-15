@@ -13,8 +13,8 @@ public class StockServImpl implements StockDAO {
 
     private StockDAO stockDAOImpl;
 
-    public StockServImpl(StockDAO stockDAOImpl) {
-        this.stockDAOImpl = stockDAOImpl;
+    public StockServImpl() {
+        this.stockDAOImpl = new StockServImpl();
     }
 
     @Override
