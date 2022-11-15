@@ -24,7 +24,7 @@ public class LoginController extends BakeryController {
     private Person person;
 
     @Override
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("login") != null || request.getAttribute("login") != null) {
             logUserIn(request, response);
