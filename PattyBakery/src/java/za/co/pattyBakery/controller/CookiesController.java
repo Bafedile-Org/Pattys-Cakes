@@ -43,13 +43,18 @@ public class CookiesController extends BakeryController {
     Map<String, Integer> orderQuantitiesMap = new HashMap<>();
     Map<String, Boolean> userLoggedIn = new HashMap<>();
     OrderServImpl orderServImpl;
-    
+
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("pay") != null) {
             orderServImpl = new OrderServImpl();
-            orderServImpl.addOrder(cart);
+            if (cart != null) {
+                orderServImpl.addOrder(cart);
+            }
+            cart = null;
+            orders = null;
+            totalItemsInCart = 0;
         }
         if (request.getParameter("confirmOrder") != null) {
             request.setAttribute("control", "cookies_control");
@@ -66,19 +71,19 @@ public class CookiesController extends BakeryController {
         if (request.getParameter("add") != null) {
             addOrders(request, "add", orders);
             redirectToPage(request, response, "cookies", recipeIds, productIds, productNames, productPrices, productNutrients, totalItemsInCart);
-            
+
         } else {
             if (request.getParameter("cart") == null) {
                 redirectToPage(request, response, "cookies", recipeIds, productIds, productNames, productPrices, productNutrients, totalItemsInCart);
-                
+
             } else {
                 redirectToCart(request, response, cart, imagesSrc, orderQuantitiesMap, products);
             }
         }
         addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
-        
+
     }
-    
+
     @Override
     public void redirectToCart(HttpServletRequest request, HttpServletResponse response, ShoppingCart cart, String[] imagesSrc, Map<String, Integer> orderQuantitiesMap, Product[] products)
             throws ServletException, IOException {
@@ -93,7 +98,7 @@ public class CookiesController extends BakeryController {
         RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
         dispatcher.forward(request, response);
     }
-    
+
     @Override
     public void addOrders(HttpServletRequest request, String param, List<Order> orders)
             throws ServletException, IOException {
@@ -102,7 +107,7 @@ public class CookiesController extends BakeryController {
             productId = productIds[0];
             products[0] = new ProductServImpl().getProductById(productId);
             addOrder(productId, orders);
-            
+
         } else if (request.getParameter(param).equalsIgnoreCase("5PRO")) {
             imagesSrc[1] = "assets/cookies/cookies_pic1.jpg";
             productId = productIds[1];
@@ -118,5 +123,5 @@ public class CookiesController extends BakeryController {
         totalItemsInCart = cart.getOrders().size();
         request.setAttribute("totalInCart", totalItemsInCart);
     }
-    
+
 }
