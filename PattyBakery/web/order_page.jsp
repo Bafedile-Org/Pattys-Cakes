@@ -59,7 +59,7 @@
              </form>
             <div class="btn-group" style="text-align: center">
             <button>Add</button>
-            <button>Remove</button>
+           
             <button>Update</button>
           </div></div>
     </body>

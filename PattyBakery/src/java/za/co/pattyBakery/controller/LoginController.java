@@ -4,7 +4,6 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import za.co.pattyBakery.Person;
@@ -18,13 +17,13 @@ import za.co.pattyBakery.service.impl.CustomerServImpl;
 @WebServlet(name = "LoginController", urlPatterns = {"/login_control"})
 public class LoginController extends BakeryController {
 
-    private String email, password, name, surname, tel, conPassword, address, idNum;
-    private CustomerDAO customerServImpl = new CustomerServImpl();
+    public String email, password, name, surname, tel, conPassword, address, idNum;
+    public CustomerDAO customerServImpl = new CustomerServImpl();
 
-    private Person person;
+    public Person person;
 
     @Override
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("login") != null || request.getAttribute("login") != null) {
             logUserIn(request, response);
@@ -52,19 +51,20 @@ public class LoginController extends BakeryController {
         }
     }
 
-    private void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage)
+    @Override
+    public void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher(redirectPage);
         dispatcher.forward(request, response);
     }
 
-    private void logUserIn(HttpServletRequest request, HttpServletResponse response)
+    public void logUserIn(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         email = request.getParameter("email");
         password = request.getParameter("password");
     }
 
-    private Boolean checkIfUserExists() {
+    public Boolean checkIfUserExists() {
         person = customerServImpl.getCustomerByEmail(email);
         return (person != null && customerServImpl.getCustomerPassword(email) != null);
     }
