@@ -4,7 +4,6 @@ import java.io.IOException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import za.co.pattyBakery.Person;
@@ -24,7 +23,7 @@ public class LoginController extends BakeryController {
     private Person person;
 
     @Override
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+    public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("login") != null) {
             logUserIn(request, response);
@@ -38,7 +37,7 @@ public class LoginController extends BakeryController {
         }
     }
 
-    private void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage)
+    public void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage)
             throws ServletException, IOException {
         RequestDispatcher dispatcher = request.getRequestDispatcher(redirectPage);
         dispatcher.forward(request, response);
