@@ -1,6 +1,7 @@
 package za.co.pattyBakery.controller;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import za.co.pattyBakery.Order;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.ShoppingCart;
+import za.co.pattyBakery.model.ShoppingCartImpl;
 import za.co.pattyBakery.service.impl.OrderServImpl;
 import za.co.pattyBakery.service.impl.ProductServImpl;
 
@@ -52,8 +54,8 @@ public class CookiesController extends BakeryController {
             if (cart != null) {
                 orderServImpl.addOrder(cart);
             }
-            cart = null;
-            orders = null;
+            orders = new ArrayList<>();
+            cart = new ShoppingCartImpl(orders, null, LocalDate.now());
             totalItemsInCart = 0;
         }
         if (request.getParameter("confirmOrder") != null) {

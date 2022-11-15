@@ -48,7 +48,7 @@ public class LoginController extends BakeryController {
             // check if the user already exists
             if (checkIfUserExists()) {
                 request.setAttribute("login", "login");
-                redirectToPage(request, response, "cookies_control");
+                redirectToPage(request, response, (String) request.getAttribute("control"));
             } else {
                 if (password.equals(conPassword)) {
                     customerServImpl.addCustomer(new PersonImpl(name, surname, idNum, address, tel, email));
