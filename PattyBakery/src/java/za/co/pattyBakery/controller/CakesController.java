@@ -31,7 +31,6 @@ public class CakesController extends BakeryController {
     List<Order> orders;
     String[] recipeIds = {"1RES", "2RES", "3RES"};
     String[] productIds = {"1PRO", "2PRO", "3PRO"};
-    // String[] strings = {"caramel", "margue", "chocolate"};
     String[] productNames = {"1PROName", "2PROName", "3PROName"};
     String[] productPrices = {"1PROPrice", "2PROPrice", "3PROPrice"};
     String[] productNutrients = {"1PRONu", "2PRONu", "3PRONu"};
@@ -46,7 +45,7 @@ public class CakesController extends BakeryController {
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        manageCart(request, response);
+        manageCart(request, response, productIds, cart, orders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
         if (request.getParameter("index") != null) {
             totalItemsInCart = 0;
             productId = null;
@@ -56,18 +55,19 @@ public class CakesController extends BakeryController {
             cart = null;
         }
         if (request.getParameter("add") != null) {
-            addOrders(request, "add");
-            redirectToPage(request, response, "cakes");
+            addOrders(request, "add", orders);
+            redirectToPage(request, response, "cakes", recipeIds, productIds, productNames, productPrices, productNutrients, totalItemsInCart);
         } else {
             if (request.getParameter("cart") == null) {
-                redirectToPage(request, response, "cakes");
+                redirectToPage(request, response, "cakes", recipeIds, productIds, productNames, productPrices, productNutrients, totalItemsInCart);
             } else {
-                redirectToCart(request, response);
+                redirectToCart(request, response, cart, imagesSrc, orderQuantitiesMap, products);
             }
         }
-        addQuantities();
+        addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
     }
 
+<<<<<<< HEAD
     public void addOrder(String productId) {
         try {
             Product product = new ProductServImpl().getProductById(productId);
@@ -114,25 +114,29 @@ public class CakesController extends BakeryController {
     }
 
     public void addOrders(HttpServletRequest request, String param)
+=======
+    @Override
+    public void addOrders(HttpServletRequest request, String param, List<Order> orders)
+>>>>>>> Deekay-dev
             throws ServletException, IOException {
         if (request.getParameter(param).equalsIgnoreCase("1PRO")) {
             imagesSrc[0] = "assets/cakes/caramel-cake-5.jpg";
             productId = productIds[0];
             products[0] = new ProductServImpl().getProductById(productId);
-            addOrder(productId);
+            addOrder(productId, orders);
 
         } else if (request.getParameter(param).equalsIgnoreCase("2PRO")) {
             imagesSrc[1] = "assets/cakes/Meringue-Cake.jpg";
             productId = productIds[1];
             products[1] = new ProductServImpl().getProductById(productId);
-            addOrder(productId);
+            addOrder(productId, orders);
         } else if (request.getParameter(param).equalsIgnoreCase("3PRO")) {
             imagesSrc[2] = "assets/cakes/cakes_pic.jpg";
             productId = productIds[2];
             products[2] = new ProductServImpl().getProductById(productId);
-            addOrder(productId);
+            addOrder(productId, orders);
         }
-        cart = setTotalPrice();
+        cart = setTotalPrice(cart, orders);
         totalItemsInCart = cart.getOrders().size();
         request.setAttribute("totalInCart", totalItemsInCart);
     }

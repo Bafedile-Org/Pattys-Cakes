@@ -7,7 +7,7 @@ import za.co.pattyBakery.Person;
  *
  * @author Dimakatso Sebatane
  */
-public interface CustomerDAO extends Close {
+public interface CustomerDAO extends LoginDAO {
 
     void addCustomer(Person customer);
 
@@ -22,8 +22,6 @@ public interface CustomerDAO extends Close {
     void updateCustomerAddress(Integer customerId, String address);
 
     public Person getCustomerByEmail(String email);
-
-    public String getCustomerPassword(String email);
 
     List<Person> getAllCustomers();
 }

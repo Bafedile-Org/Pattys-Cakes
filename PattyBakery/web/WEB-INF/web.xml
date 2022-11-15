@@ -134,8 +134,17 @@
         <servlet-name>Confirm</servlet-name>
         <url-pattern>/confirm</url-pattern>
     </servlet-mapping>
-      <!-- #######################################################################################-->
-<!--    <servlet>
+    <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>Stock</servlet-name>
+        <jsp-file>/stock_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Stock</servlet-name>
+        <url-pattern>/stock</url-pattern>
+    </servlet-mapping>
+    <!-- #######################################################################################-->
+    <!--    <servlet>
         <servlet-name>bc</servlet-name>
         <servlet-class>za.co.pattyBakery.controller.BakeryController</servlet-class>
     </servlet>
@@ -145,8 +154,8 @@
     </servlet-mapping>-->
     <!-- #######################################################################################-->
     <session-config>
-        
-        
+
+
         <session-timeout>
             30
         </session-timeout>

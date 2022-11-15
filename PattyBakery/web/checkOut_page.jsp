@@ -28,7 +28,7 @@
                 <h1 align="center" id="home-header1"> Check out
                     <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                         <div class="dropdown-content">
-                            <a href="confirmation_page.jsp">Back</a>
+                            <a href="<%=request.getAttribute("control")%>">Back</a>
                         </div>
                     </i>
                 </h1>
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="rightside">
-                    <form action="#">
+                    <form action="<%=request.getAttribute("control")%>" method="POST">
                         <div class="input-field" style="text-align: center">
                             <h2>Payment Information</h2>
 
@@ -67,7 +67,7 @@
                             </div>
 
 
-                            <button type="submit" class="button">CheckOut</button>
+                            <button type="submit" class="button" name="pay">CheckOut</button>
                         </div>
                     </form>
                 </div>

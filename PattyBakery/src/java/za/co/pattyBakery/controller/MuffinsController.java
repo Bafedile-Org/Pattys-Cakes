@@ -40,7 +40,7 @@ public class MuffinsController extends BakeryController {
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        manageCart(request, response);
+        manageCart(request, response, productIds, cart, orders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
         if (request.getParameter("index") != null) {
             totalItemsInCart = 0;
             productId = null;
@@ -50,52 +50,39 @@ public class MuffinsController extends BakeryController {
             cart = null;
         }
         if (request.getParameter("add") != null) {
-            addOrders(request, "add");
-            redirectToPage(request, response, "cupcakes");
+            addOrders(request, "add", orders);
+            redirectToPage(request, response, "muffins", recipeIds, productIds, productNames, productPrices, productNutrients, totalItemsInCart);
         } else {
             if (request.getParameter("cart") == null) {
-                redirectToPage(request, response, "cupcakes");
+                redirectToPage(request, response, "muffins", recipeIds, productIds, productNames, productPrices, productNutrients, totalItemsInCart);
             } else {
-                redirectToCart(request, response);
+                redirectToCart(request, response, cart, imagesSrc, orderQuantitiesMap, products);
             }
         }
-        addQuantities();
+        addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
     }
 
-    public void redirectToCart(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setAttribute("control", "muffins_control");
-        request.setAttribute("cartItems", cart);
-        request.setAttribute("images", imagesSrc);
-        request.setAttribute("quantities", orderQuantities);
-        request.setAttribute("quantitiesMap", orderQuantitiesMap);
-        request.setAttribute("products", products);
-        request.setAttribute("deliveryAmount", 100.0);
-        request.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", cart == null ? 0.0 : cart.getTotalprice())));
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
-        dispatcher.forward(request, response);
-    }
-
-    public void addOrders(HttpServletRequest request, String param)
+    @Override
+    public void addOrders(HttpServletRequest request, String param, List<Order> orders)
             throws ServletException, IOException {
         if (request.getParameter(param).equalsIgnoreCase("13PRO")) {
             imagesSrc[0] = "assets/muffins/Blueberry-Muffins.jpg";
             productId = productIds[0];
             products[0] = new ProductServImpl().getProductById(productId);
-            addOrder(productId);
+            addOrder(productId, orders);
 
         } else if (request.getParameter(param).equalsIgnoreCase("14PRO")) {
             imagesSrc[1] = "assets/muffins/carrot-muffins.jpg";
             productId = productIds[1];
             products[1] = new ProductServImpl().getProductById(productId);
-            addOrder(productId);
+            addOrder(productId, orders);
         } else if (request.getParameter(param).equalsIgnoreCase("15PRO")) {
             imagesSrc[2] = "assets/muffins/Cranberry-Muffins.jpg";
             productId = productIds[2];
             products[2] = new ProductServImpl().getProductById(productId);
-            addOrder(productId);
+            addOrder(productId, orders);
         }
-        cart = setTotalPrice();
+        cart = setTotalPrice(cart, orders);
         totalItemsInCart = cart.getOrders().size();
         request.setAttribute("totalInCart", totalItemsInCart);
     }
