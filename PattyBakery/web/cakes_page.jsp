@@ -134,7 +134,7 @@
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="b1">add to cart</button>
+                <button id="cart_button">add to cart</button>
             </div>
           
          

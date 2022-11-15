@@ -8,7 +8,6 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
-import za.co.pattyBakery.Employee;
 import za.co.pattyBakery.Order;
 import za.co.pattyBakery.ShoppingCart;
 import za.co.pattyBakery.dao.EmployeeDAO;
