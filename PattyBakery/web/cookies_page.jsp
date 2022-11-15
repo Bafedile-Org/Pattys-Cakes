@@ -90,11 +90,9 @@
                         out.println("R" + price);
                         %>
                     </button>
-<<<<<<< HEAD
-                    <button id='cart_button' onclick="cookiesControl()" name="add" value="4PRO">add to cart</button>
-=======
+
                     <button id='cart_button'  name="add" value="4PRO">add to cart</button>
->>>>>>> Deekay-dev
+
                 </form>
             </div>
 
@@ -146,11 +144,9 @@
                         price = (Double) request.getAttribute("6PROPrice");
                         out.println("R" + price);
                         %></button>
-<<<<<<< HEAD
-                    <button id='cart_button' onclick="cookiesControl()" name="add" value="6PRO">add to cart</button>
-=======
+
                     <button id='cart_button'  name="add" value="6PRO">add to cart</button>
->>>>>>> Deekay-dev
+
                 </form>
             </div>
         </div><br>

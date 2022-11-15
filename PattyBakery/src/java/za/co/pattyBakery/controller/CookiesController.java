@@ -1,11 +1,6 @@
 package za.co.pattyBakery.controller;
 
 import java.io.IOException;
-<<<<<<< HEAD
-import java.security.SecureRandom;
-import java.time.LocalDate;
-=======
->>>>>>> Deekay-dev
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -18,13 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import za.co.pattyBakery.Order;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.ShoppingCart;
-<<<<<<< HEAD
-import za.co.pattyBakery.exception.OrderException;
-import za.co.pattyBakery.model.OrderImpl;
-import za.co.pattyBakery.model.ShoppingCartImpl;
-=======
 import za.co.pattyBakery.service.impl.OrderServImpl;
->>>>>>> Deekay-dev
 import za.co.pattyBakery.service.impl.ProductServImpl;
 
 /**
@@ -54,7 +43,7 @@ public class CookiesController extends BakeryController {
     Map<String, Integer> orderQuantitiesMap = new HashMap<>();
     Map<String, Boolean> userLoggedIn = new HashMap<>();
     OrderServImpl orderServImpl;
-    
+
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -77,48 +66,21 @@ public class CookiesController extends BakeryController {
         if (request.getParameter("add") != null) {
             addOrders(request, "add", orders);
             redirectToPage(request, response, "cookies", recipeIds, productIds, productNames, productPrices, productNutrients, totalItemsInCart);
-            
+
         } else {
             if (request.getParameter("cart") == null) {
                 redirectToPage(request, response, "cookies", recipeIds, productIds, productNames, productPrices, productNutrients, totalItemsInCart);
-                
+
             } else {
                 redirectToCart(request, response, cart, imagesSrc, orderQuantitiesMap, products);
             }
         }
         addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
-        
-    }
-<<<<<<< HEAD
 
-    public void addOrder(String productId) {
-        try {
-            Product product = new ProductServImpl().getProductById(productId);
-            Order order = new OrderImpl(product, product.getPrice());
-
-            if (orders == null) {
-                orders = new ArrayList<>();
-            }
-            for (Order or : orders) {
-                if (or.getProduct().getProductId().equalsIgnoreCase(product.getProductId())) {
-                    or.setQuantity(or.getQuantity() + 1);
-                    return;
-                }
-            }
-
-            orders.add(order);
-        } catch (OrderException ex) {
-            System.out.println(String.format("ERROR: %s%n", ex.getMessage()));
-        }
     }
 
-    @Override
-    public void redirectToCart(HttpServletRequest request, HttpServletResponse response)
-=======
-    
     @Override
     public void redirectToCart(HttpServletRequest request, HttpServletResponse response, ShoppingCart cart, String[] imagesSrc, Map<String, Integer> orderQuantitiesMap, Product[] products)
->>>>>>> Deekay-dev
             throws ServletException, IOException {
         request.setAttribute("control", "cookies_control");
         request.setAttribute("cartItems", cart);
@@ -131,32 +93,16 @@ public class CookiesController extends BakeryController {
         RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
         dispatcher.forward(request, response);
     }
-<<<<<<< HEAD
 
-    @Override
-    public void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage)
-            throws ServletException, IOException {
-        setIngredientAttributes(recipeIds, productIds, request);
-        setProductName(productIds, productNames, productPrices, productNutrients, request);
-        request.setAttribute("totalInCart", totalItemsInCart);
-        RequestDispatcher dispatcher = request.getRequestDispatcher(redirectPage);
-        dispatcher.forward(request, response);
-    }
-
-    @Override
-    public void addOrders(HttpServletRequest request, String param)
-=======
-    
     @Override
     public void addOrders(HttpServletRequest request, String param, List<Order> orders)
->>>>>>> Deekay-dev
             throws ServletException, IOException {
         if (request.getParameter(param).equalsIgnoreCase("4PRO")) {
             imagesSrc[0] = "assets/cookies/cookies_p.jpg";
             productId = productIds[0];
             products[0] = new ProductServImpl().getProductById(productId);
             addOrder(productId, orders);
-            
+
         } else if (request.getParameter(param).equalsIgnoreCase("5PRO")) {
             imagesSrc[1] = "assets/cookies/cookies_pic1.jpg";
             productId = productIds[1];
@@ -172,98 +118,4 @@ public class CookiesController extends BakeryController {
         totalItemsInCart = cart.getOrders().size();
         request.setAttribute("totalInCart", totalItemsInCart);
     }
-<<<<<<< HEAD
-
-    public void manageCart(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        for (String productId1 : productIds) {
-            if (request.getParameter("adds") != null) {
-                if (request.getParameter("adds").equalsIgnoreCase(productId1)) {
-                    addOrders(request, "adds");
-                    addQuantities();
-                    cart = setTotalPrice();
-                    redirectToCart(request, response);
-                }
-            }
-        }
-        for (String prodId : productIds) {
-            if (request.getParameter("sub") != null) {
-                if (request.getParameter("sub").equalsIgnoreCase(prodId)) {
-                    removeOrder(prodId);
-                    addQuantities();
-                    cart = setTotalPrice();
-                    redirectToCart(request, response);
-                }
-            }
-        }
-    }
-
-    public void addQuantities() {
-        Integer i = 0;
-        for (Order order : orders) {
-            for (String productId : productIds) {
-                if (order.getProduct().getProductId().equals(productId)) {
-                    orderQuantities[i] = order.getQuantity();
-                    orderQuantitiesMap.put(productId, order.getQuantity());
-                }
-            }
-
-        }
-    }
-
-    public ShoppingCart setTotalPrice() {
-        if (cart == null) {
-            cart = new ShoppingCartImpl(orders, null, LocalDate.now());
-        }
-
-        if (cart.getOrderNumber() == null) {
-            cart.setOrderNumber(generateOrderNumber());
-            cart.setOrders(orders);
-        } else {
-            cart.setOrders(orders);
-        }
-
-        return cart;
-    }
-
-    public String generateOrderNumber() {
-        List<Character> alphabets = new ArrayList<>();
-        String orderNumber = "";
-        for (char i = 'A'; i <= 'Z'; i++) {
-            alphabets.add(i);
-        }
-        orderNumber += alphabets.get(new SecureRandom().nextInt(25)) + alphabets.get(new SecureRandom().nextInt(25));
-        for (int i = 0; i < 5; i++) {
-            orderNumber += new SecureRandom().nextInt(10);
-        }
-        return orderNumber;
-    }
-
-    public void removeOrder(String productId) {
-        try {
-            Product product = new ProductServImpl().getProductById(productId);
-            if (orders == null) {
-                orders = new ArrayList<>();
-            }
-            for (Order or : orders) {
-                if (or.getProduct().getProductId().equalsIgnoreCase(product.getProductId())) {
-                    if (or.getQuantity() > 0 || or.getQuantity() == 0) {
-                        if (or.getQuantity() == 1) {
-                            or.setQuantity(1);
-                        } else {
-                            or.setQuantity(or.getQuantity() - 1);
-                        }
-                    }
-                    return;
-                }
-            }
-
-        } catch (OrderException ex) {
-            System.out.println(String.format("ERROR: %s%n", ex.getMessage()));
-        }
-    }
-
-=======
-    
->>>>>>> Deekay-dev
 }
