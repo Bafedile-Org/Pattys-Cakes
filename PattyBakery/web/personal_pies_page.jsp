@@ -15,7 +15,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <script src="js/main.js"></script>
     </head>
      <body class="home-body1">
           <header class="home-head">
@@ -23,147 +22,156 @@
                 <div class="topnav" align="center">
                     <h1>
                         <a href="home"> Patty's Bakery   
-                            <i class="fa fa-shopping-cart" style="font-size:24px"> 
-                                <%
-                                out.println((Integer)request.getAttribute("totalInCart"));
-                                %>
-                            </i></a>
+                            <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
                     </h1>
                 </div>
             </nav>
         </header>
         <h1> 
-            <a align="left" href="home" style="color:black;width:5%;">
+            <a align="left" href="home" style="color:black; width: 5%;">
                 <i class="fa fa-arrow-left" aria-hidden="true" style="float:left">
                 </i>
             </a>
             <pre align="center"><h1>Personal Pies</h1></pre>
 
         </h1>
-        <div id="label_div">
-             <label><strong><%
-                String name = (String) request.getAttribute("blueberryName");
+        <div class="images-container">
+            <div class="cookies_img">
+                <div align="center">
+             <label id="cookie_label"><strong><%
+                String name = (String) request.getAttribute("10PROName");
+                out.println(name);
+                    %>
+                </label></strong>
+            <br>
+                <img src='assets/personal_pies/10PRO pies.jpg'>
+                </div>
+                <div>
+                <article>
+                    <ul>
+                    <li id="img_list"><strong>Ingredients:</strong>
+                    <ul>
+                        <%
+                            List<String> ingredients = (List<String>) request.getAttribute("10PRO");
+                            for (String ingredient : ingredients) {
+                                out.println(String.format("<li>%s</li>", ingredient));
+                            }
+                        %>
+                    </ul>
+                    </li>
+                    <li id="img_list"><strong>Nutrients:</strong>
+                    <ul>
+                         <%
+                            List<String> nutrients = (List<String>) request.getAttribute("10PRONu");
+                            out.println(String.format("<li>%s</li>", nutrients));
+                        %>
+                    </ul>
+                    </li>
+                    </ul>
+                </article>
+            </div>
+            </div>
+            <div id="img_price">
+                <button id="price-button"><%
+                    Double price = (Double) request.getAttribute("10PROPrice");
+                    out.println("R" + price);
+                    %>
+                </button>
+                <button id="cart_button_">add to cart</button>
+            </div>
+
+        </div><br><br>
+
+        <div class="images-container">
+            <div class="cookies_img">
+                <div align="center">
+             <label id="cookie_label"><strong><%
+                name = (String) request.getAttribute("11PROName");
                 out.println(name);
                     %>
                 </strong>
             </label><br>
-            <div class="parent">
-                <img src='assets/personal_pies/blueberry pies.jpg' alt="cookies">
+                <img src='assets/personal_pies/11PRO_pie.jpg'>
+                </div>
+                <div>
                 <article>
-                    <p id="img_list"><strong>Ingredients</strong>
+                    <ul>
+                    <li id="img_list"><strong>Ingredients:</strong>
                     <ul>
                         <%
-                            List<String> blueberryIngr = (List<String>) request.getAttribute("blueberry");
-                            if (blueberryIngr != null) {
-                            for (String ingredient : blueberryIngr) {
+                            ingredients = (List<String>) request.getAttribute("11PRO");
+                            for (String ingredient : ingredients) {
                                 out.println(String.format("<li>%s</li>", ingredient));
-                            }
                             }
                         %>
                     </ul>
-                    <p id="img_list"><strong>Nutrients</strong>
+                    </li>
+                    <li id="img_list"><strong>Nutrients:</strong>
                     <ul>
-                         <%
-                            String nutrients = (String) request.getAttribute("blueberryNu");
+                        <%
+                            nutrients = (List<String>)  request.getAttribute("11PRONu");
                             out.println(String.format("<li>%s</li>", nutrients));
                         %>
                     </ul>
+                    </li>
+                    </ul>
                 </article>
             </div>
-            <div class="price">
-                <form method="GET" action="pies_control">
-                <button id="b"><%
-                    Double price = (Double) request.getAttribute("blueberryPrice");
+            </div>
+            <div id="img_price">
+                <button id="price_button"><%
+                     price = (Double) request.getAttribute("11PROPrice");
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="cart_button" onclick="piesControl()" name="add" value="blueberry">add to cart</button>
-                </form>
+                <button id="cart_button">add to cart</button>
+            </div>
+</div>
+        <div class="images-container">
+        <div class="cookies_img">       
+        <div align="center">
+             <label id="cookie_label"><strong><%
+                 name = (String) request.getAttribute("12PROName");
+                out.println(name);
+                    %>
+                </strong>
+            </label><br>
+                <img src='assets/personal_pies/12PRO pie.jpg'>
+        </div>
+                <div>
+                <article>
+                    <ul>
+                    <li id="img_list"><strong>Ingredients:</strong>
+                    <ul>
+                         <%
+                            ingredients = (List<String>) request.getAttribute("12PRO");
+                            for (String ingredient : ingredients) {
+                                out.println(String.format("<li>%s</li>", ingredient));
+                            }
+                        %>
+                    </ul>
+                    </li>
+                    <li id="img_list"><strong>Nutrients:</strong>
+                    <ul>
+                        <%
+                            nutrients = (List<String>) request.getAttribute("12PRONu");
+                            out.println(String.format("<li>%s</li>", nutrients));
+                        %>
+                    </ul>
+                    </li>
+                    </ul>
+                </article>
             </div>
         </div>
-
-                <div id="label_div"><br><br>
-             <label><strong><%
-                name = (String) request.getAttribute("appleName");
-                out.println(name);
-                    %>
-                </strong>
-            </label><br>
-            <div class="parent">
-                <img src='assets/personal_pies/apple_pie.jpg'>
-                <article>
-                    <p id="img_list"><strong>Ingredients:</strong>
-                    <ul>
-                        <%
-                            List<String> appleIngr = (List<String>) request.getAttribute("apple");
-                        if(appleIngr!=null){    
-                            for (String ingredient : appleIngr) {
-                                out.println(String.format("<li>%s</li>", ingredient));
-                            }
-                            }    
-                        %>
-                    </ul>
-                    <p id="img_list"><strong>Nutrients:</strong>
-                    <ul>
-                        <%
-                            nutrients = (String) request.getAttribute("appleNu");
-                            out.println(String.format("<li>%s</li>", nutrients));
-                        %>
-                    </ul>
-                </article>
-            </div>
-            <div class="price">
-                <form method="GET" action="pies_control">
-                <button id="b"><%
-                     price = (Double) request.getAttribute("applePrice");
+            <div id="img_price">
+                <button id="price-button"><%
+                     price = (Double) request.getAttribute("12PROPrice");
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="b1" onclick="piesControl" name="add" value="apple">add to cart</button>
-                </form>
+                <button id=cart_button">add to cart</button>
             </div>
             </div>
 
-        <div id="label_div">
-             <label><strong><%
-                 name = (String) request.getAttribute("strawberryName");
-                out.println(name);
-                    %>
-                </strong>
-            </label><br>
-            <div class="parent">
-                <img src='assets/personal_pies/strawberry pie.jpg'>
-                <article>
-                    <p id="img_list"><strong>Ingredients</strong>
-                    <ul>
-                         <%
-                            List<String> strawberryIngr = (List<String>) request.getAttribute("strawberry");
-                         if(strawberryIngr!=null){   
-                            for (String ingredient : strawberryIngr) {
-                                out.println(String.format("<li>%s</li>", ingredient));
-                            }
-                             }
-                        %>
-                    </ul>
-                    <p id="img_list"><strong>Nutrients:</strong>
-                    <ul>
-                        <%
-                            nutrients = (String) request.getAttribute("strawberryNu");
-                            out.println(String.format("<li>%s</li>", nutrients));
-                        %>
-                    </ul>
-                </article>
-            </div>
-            <div class="price">
-                <form method="GET" action="pies_control">
-                <button id="b"><%
-                     price = (Double) request.getAttribute("strawberryPrice");
-                    out.println("R" + price);
-                    %>
-                </button>
-                <button id="b1" onclick="piesControl()" name="add" value="strawberry" >add to cart</button>
-                </form>
-            </div>
-            </div>
     </body>
 </html>
