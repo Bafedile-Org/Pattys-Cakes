@@ -5,6 +5,7 @@ import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -118,6 +119,7 @@ public class OrderDAOImpl implements OrderDAO {
         return orders.stream().collect(Collectors.toList());
     }
 
+    @Override
     public List<Order> getOrderById(String orderId) {
         Order order = null;
         List<Order> orders = new ArrayList<>();
@@ -141,6 +143,11 @@ public class OrderDAOImpl implements OrderDAO {
         }
 
         return orders;
+    }
+
+    @Override
+    public ShoppingCart getShoppingCartByOrderId(String orderId) {
+        return new ShoppingCartImpl(getOrderById(orderId), orderId, LocalDate.now());
     }
 
 }
