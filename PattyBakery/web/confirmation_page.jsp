@@ -34,7 +34,7 @@
                 <h1 align="center" id="home-header1"> Confirmation order
                     <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                         <div class="dropdown-content">
-                            <a href="cookies_control">Back</a>
+                            <a href="<%=request.getAttribute("control")%>">Back</a>
                         </div>
                     </i>
                 </h1>
