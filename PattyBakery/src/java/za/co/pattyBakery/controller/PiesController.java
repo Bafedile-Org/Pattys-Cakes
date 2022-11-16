@@ -1,9 +1,6 @@
 package za.co.pattyBakery.controller;
 
 import java.io.IOException;
-import java.security.SecureRandom;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,9 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import za.co.pattyBakery.Order;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.ShoppingCart;
-import za.co.pattyBakery.exception.OrderException;
-import za.co.pattyBakery.model.OrderImpl;
-import za.co.pattyBakery.model.ShoppingCartImpl;
 import za.co.pattyBakery.service.impl.ProductServImpl;
 
 /**
@@ -45,7 +39,9 @@ public class PiesController extends BakeryController {
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+
         manageCart(request, response, productIds, cart, orders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
+
         if (request.getParameter("index") != null) {
             totalItemsInCart = 0;
             productId = null;
@@ -71,6 +67,7 @@ public class PiesController extends BakeryController {
 
     @Override
     public void addOrders(HttpServletRequest request, String param, List<Order> orders) {
+
         if (request.getParameter(param).equalsIgnoreCase("4PRO")) {
             imagesSrc[0] = "assets/personal_pies/10PRO pies.jpg";
             productId = productIds[0];
@@ -91,6 +88,19 @@ public class PiesController extends BakeryController {
         cart = setTotalPrice(cart, orders);
         totalItemsInCart = cart.getOrders().size();
         request.setAttribute("totalInCart", totalItemsInCart);
+    }
+
+    public void redirectToCart(HttpServletRequest request, HttpServletResponse response, ShoppingCart cart, String[] imagesSrc, Map<String, Integer> orderQuantitiesMap, Product[] products)
+            throws ServletException, IOException {
+        request.setAttribute("control", "cookies_control");
+        request.setAttribute("cartItems", cart);
+        request.setAttribute("images", imagesSrc);
+        request.setAttribute("quantitiesMap", orderQuantitiesMap);
+        request.setAttribute("products", products);
+        request.setAttribute("deliveryAmount", 100.0);
+        request.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", cart == null ? 0.0 : cart.getTotalprice())));
+        RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
+        dispatcher.forward(request, response);
     }
 
 }

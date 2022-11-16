@@ -90,7 +90,9 @@
                         out.println("R" + price);
                         %>
                     </button>
+
                     <button id='cart_button'  name="add" value="4PRO">add to cart</button>
+
                 </form>
             </div>
 
@@ -142,7 +144,9 @@
                         price = (Double) request.getAttribute("6PROPrice");
                         out.println("R" + price);
                         %></button>
+
                     <button id='cart_button'  name="add" value="6PRO">add to cart</button>
+
                 </form>
             </div>
         </div><br>
