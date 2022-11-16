@@ -80,7 +80,7 @@
             
             <div class="btn-group" style="text-align: center">
             <button type="submit" name="addEm">Add</button>
-            <button type="submit">Remove</button>
+            <button type="submit" name='remove'>Remove</button>
             <button type="submit" name="addEm">Update</button>
           </div> </form>
         </div>

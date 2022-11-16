@@ -1,11 +1,13 @@
 package za.co.pattyBakery.resources;
 
 import java.net.URISyntaxException;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import za.co.pattyBakery.Employee;
@@ -69,7 +71,7 @@ public class BakeryRest {
         catch(OrderException ex){
             System.out.println("Error: " + ex.getMessage());
         }
-            return Response.temporaryRedirect(location).build();
+        return Response.temporaryRedirect(location).build();
     }
     
     @POST
@@ -89,6 +91,21 @@ public class BakeryRest {
         employeeSevImpl.addEmployee(employee);
         return Response.temporaryRedirect(location).build();
     }
+    @DELETE
+//    @Path("/addEmployee")
+    public Response removeEmployee(@PathParam("employeeId") Integer employeeId, @PathParam("remove") Integer remove){
+        EmployeeDAO employeeSevImpl = new EmployeeServImpl();
+                java.net.URI location = null;
+        try {
+            location = new java.net.URI("http://localhost:8080/bakery/employee_page.jsp");
+        } 
+        catch (URISyntaxException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }    
+        employeeSevImpl.removeEmployee(employeeId);
+            return Response.temporaryRedirect(location).build();
+    }
+    
     @POST
     @Path("/addStock")
     public Response addStock(@FormParam("prodId") String prodId, @FormParam("quantity") Integer quantity,
@@ -127,5 +144,4 @@ public class BakeryRest {
         String responseMsg = "The quantity you want to add to product " + quantity + " is " + quantity + ".";
         return Response.status(200).entity(responseMsg).build();
     }
-
 }
