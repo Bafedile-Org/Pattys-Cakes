@@ -25,6 +25,13 @@
                 min-height: 400px;
             }
         </style>
+        <script type = "text/javascript">
+        function write_below(form){
+            var input = document.forms.write.input_to_write.value;
+            document.getElementById('write_here').innerHTML="Your input was:"+input;
+            return false;
+          }
+        </script>
         <script >
             function getDropValue() {
                 var element = document.getElementById("myList");
@@ -50,7 +57,7 @@
         </div>
 
         <div class="form-content">
-            <form action="res/bakery_res/addIngredient" method="POST">
+            <form action="res/bakery_res/addIngredient" method="POST" onsubmit='return write_below(this);'>
                 <div class="input-field" style="text-align: center">
                     <input id="inputValue" type="ingredientId" name="ingrId" placeholder="Ingredients ID" class="ingredientId" size="33" value="">
                     <select id = "myList" onchange = "getDropValue()" >
@@ -78,6 +85,6 @@
             <button type='submit' name="which" value="update">Update</button>
         </div>
     </form>       </div> 
-</form>
+  <div id='write_here'></div>
 </body>
 </html>
