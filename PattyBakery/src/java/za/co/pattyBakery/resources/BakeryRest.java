@@ -43,11 +43,17 @@ public class BakeryRest {
         return Response.status(200).entity("hello bree").build();
     }
 
-    @Path("/order_add")
+    @Path("/addOrder")
     @POST
     public Response addOrder(@FormParam("orderNumber") String orderNumber,@FormParam("productId") String productId,
-            @FormParam("qty") Integer qty,@FormParam("status") String status){
+        @FormParam("qty") Integer qty,@FormParam("status") String status, @FormParam("adding") String adding){
         OrderDAO orderServImpl = new OrderServImpl();
+        java.net.URI location = null;
+        try {
+            location = new java.net.URI("http://localhost:8080/bakery/order");
+        } catch (URISyntaxException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
         try{
         ShoppingCart cart = orderServImpl.getShoppingCartByOrderId(orderNumber);
         for(Order order: cart.getOrders()){
