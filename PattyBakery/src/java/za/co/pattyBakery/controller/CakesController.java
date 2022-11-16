@@ -97,20 +97,6 @@ public class CakesController extends BakeryController {
     }
 
     @Override
-    public void redirectToCart(HttpServletRequest request, HttpServletResponse response, ShoppingCart cart, String[] imagesSrc, Map<String, Integer> orderQuantitiesMap, Product[] products)
-            throws ServletException, IOException {
-        request.setAttribute("control", "cakes_control");
-        request.setAttribute("cartItems", cart);
-        request.setAttribute("images", imagesSrc);
-        request.setAttribute("quantitiesMap", orderQuantitiesMap);
-        request.setAttribute("products", products);
-        request.setAttribute("deliveryAmount", 100.0);
-        request.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", cart == null ? 0.0 : cart.getTotalprice())));
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
-        dispatcher.forward(request, response);
-    }
-
-    @Override
     public void addOrders(HttpServletRequest request, String param, List<Order> orders)
             throws ServletException, IOException {
         if (request.getParameter(param).equalsIgnoreCase("1PRO")) {
