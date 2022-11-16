@@ -23,12 +23,12 @@ public class BakeryRest {
     @Path("/get_ingr")
     @GET
     public Response getIngredients() {
-        RecipeDAO recipeServImpl = new RecipeServImpl();
-        String[] recipeIds = {"16RES", "17RES", "18RES"};
-//        String[] strings = {"vanila", "chocolate", "plain"};
-        Recipe recipe = recipeServImpl.getRecipeById(recipeIds[0]);
+//        RecipeDAO recipeServImpl = new RecipeServImpl();
+//        String[] recipeIds = {"16RES", "17RES", "18RES"};
+////        String[] strings = {"vanila", "chocolate", "plain"};
+//        Recipe recipe = recipeServImpl.getRecipeById(recipeIds[0]);
 
-        return Response.status(200).entity(recipe.getIngredients()).build();
+        return Response.status(200).entity("hello bree").build();
     }
 
 }
