@@ -39,7 +39,7 @@
         <div>
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
         </div>
-           <div class="form-content">
+           <div action="res/bakery_res/add" method="POST">
              <form action="#">
                 <div class="input-field" style="text-align: center">
                     <input type="name" placeholder="Name" class="name" size="50">
@@ -69,12 +69,12 @@
                  <div class="input-field" style="text-align: center">
                     <input type="delivary" placeholder="Delivary" class="delivaryStatus" size="50">
                 </div>
-             </form>
+            
             <div class="btn-group" style="text-align: center">
-            <button>Add</button>
-            <button>Remove</button>
-            <button>Update</button>
-          </div>
+            <button type="submit">Add</button>
+            <button type="submit">Remove</button>
+            <button type="submit">Update</button>
+          </div> </form>
         </div>
     </body>
 </html>

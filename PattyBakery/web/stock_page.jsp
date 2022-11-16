@@ -54,12 +54,13 @@
                 <div class="input-field" style="text-align: center">
                     <input type="quantity" name="quantity" placeholder="Quantity" class="quantity" size="50">
                 </div>
-             </form>
+             
             <div class="btn-group" style="text-align: center">
-            <button>Add</button>
-            <button>Remove</button>
-            <button>Update</button>
+            <button type="submit">Add</button>
+            <button  type="submit">Remove</button>
+            <button  type="submit">Update</button>
           </div>
+        </form>
         
         </div>
     </body>
