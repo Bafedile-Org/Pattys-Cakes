@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import za.co.pattyBakery.database.DatabaseConnect;
 import za.co.pattyBakery.dao.IngredientsDAO;
+import za.co.pattyBakery.database.DatabaseConnect;
 
 /**
  *
@@ -45,11 +45,11 @@ public class IngredientsDAOImpl implements IngredientsDAO {
     }
 
     @Override
-    public void updateIngredient(String ingredientId, String ingredient) {
+    public void updateIngredient(String ingredientId, Integer quantity) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("UPDATE ingredients SET ingredient = ? WHERE ingr_id = ?");
-                preparedStatement.setString(1, ingredient);
+                preparedStatement = con.prepareStatement("UPDATE ingredients SET quantity = quantity + ? WHERE ingr_id = ?");
+                preparedStatement.setInt(1, quantity);
                 preparedStatement.setString(2, ingredientId);
                 preparedStatement.executeUpdate();
             }

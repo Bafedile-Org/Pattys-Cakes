@@ -14,7 +14,7 @@ import za.co.pattyBakery.model.Stock;
 
 /**
  *
- * @author Hlawulani
+ * @author Bridget Bapela
  */
 public class StockDAOImpl implements StockDAO {
 
@@ -66,7 +66,7 @@ public class StockDAOImpl implements StockDAO {
     public void updateStockQuantity(String productId, Integer quantity) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("UPDATE stock SET quantity = ? WHERE prod_id = ?");
+                preparedStatement = con.prepareStatement("UPDATE stock SET quantity = quantity + ? WHERE prod_id = ?");
                 preparedStatement.setInt(1, quantity);
                 preparedStatement.setString(2, productId);
                 preparedStatement.executeUpdate();

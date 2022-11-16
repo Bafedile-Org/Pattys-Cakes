@@ -8,9 +8,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
-import za.co.pattyBakery.dao.RecipeDAO;
-import za.co.pattyBakery.model.Recipe;
-import za.co.pattyBakery.service.impl.RecipeServImpl;
+import za.co.pattyBakery.service.impl.IngredientsServImpl;
 import za.co.pattyBakery.service.impl.StockServImpl;
 
 /**
@@ -20,7 +18,7 @@ import za.co.pattyBakery.service.impl.StockServImpl;
 @Path("/bakery_res")
 public class BakeryRest {
 
-    @GET
+    @POST
     public Response getString() {
         return Response.status(200).entity("Hello World").build();
     }
@@ -71,6 +69,33 @@ public class BakeryRest {
                 stockServImpl.updateStockQuantity(prodId, quantity);
             }
             System.out.println("Successfully added to product " + prodId + " " + quantity + " items");
+            return Response.temporaryRedirect(location).build();
+        }
+    }
+
+    @POST
+    @Path("/addIngredient")
+    public Response addIngredient(@FormParam("ingrId") String ingrId, @FormParam("ingredient") String ingredient, @FormParam("quantity") Integer quantity,
+            @FormParam("which") String which) {
+        IngredientsServImpl ingredientsServImpl = new IngredientsServImpl();
+        java.net.URI location = null;
+        try {
+            location = new java.net.URI("http://localhost:8080/bakery/ingredient_page.jsp");
+        } catch (URISyntaxException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        if (ingrId == null) {
+            System.out.println("Please enter ingredient Id");
+            return Response.temporaryRedirect(location).build();
+        } else {
+            if (which.equals("add")) {
+                ingredientsServImpl.addIngridient(ingrId, ingredient, quantity);
+            } else if (which.equals("update")) {
+                ingredientsServImpl.updateIngredient(ingrId, quantity);
+            } else {
+                ingredientsServImpl.removeIngredient(ingrId);
+            }
+            System.out.println("Successfully added to ingredient " + ingrId + " " + quantity + " items");
             return Response.temporaryRedirect(location).build();
         }
     }

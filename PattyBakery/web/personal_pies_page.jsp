@@ -22,7 +22,9 @@
                 <div class="topnav" align="center">
                     <h1>
                         <a href="home"> Patty's Bakery   
-                            <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
+                            <i class="fa fa-shopping-cart" style="font-size:24px"> <%
+                                    out.println((Integer) request.getAttribute("totalInCart"));
+                                %></i></a>
                     </h1>
                 </div>
             </nav>

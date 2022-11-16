@@ -1,9 +1,13 @@
 <%--
     Document   : stock_page
     Created on : 08 Nov 2022, 10:42:18 AM
-    Author     : Hlawulani
+    Author     : Bridget Bapela
 --%>
 
+<%@page import="za.co.pattyBakery.service.impl.ProductServImpl"%>
+<%@page import="za.co.pattyBakery.Product"%>
+<%@page import="za.co.pattyBakery.dao.impl.ProductDAOImpl"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -23,6 +27,13 @@
                 min-height: 400px;
             }
         </style>
+        <script >
+            function getDropValue(){
+                var element = document.getElementById("myList");
+                var text = document.getElementById("inputValue");
+                text.value=element.options[element.selectedIndex].text;
+            }
+        </script>
     </head>
     <body>
         <nav class="home-head">
@@ -42,15 +53,17 @@
         <div class="form-content">
             <form action="res/bakery_res/addStock" method="POST">
                 <div class="input-field" style="text-align: center">
-                    <input type="productId" name="prodId" placeholder="Product ID" class="productId" size="33">
-                    <select id = "myList" onchange = "favTutorial()" >
+                    <input  id="inputValue" type="productId" name="prodId" placeholder="Product ID" class="productId" size="33" value="">
+                    <select id = "myList" onchange = "getDropValue()"  >
                         <option>Select ID type</option>
-                        <option> #124547434 </option>
-                        <option> #5442677 </option>
-
+                        <%     
+                              List<String> products = new ProductServImpl().getAllProductsIds();
+                                        for (String product : products) {
+                                            out.println(String.format("<option value='%s'>%s</option>", product,product));
+                                        }
+                            %> 
                     </select>
                 </div>
-
                 <div class="input-field" style="text-align: center">
                     <input type="quantity" name="quantity" placeholder="Quantity" class="quantity" size="50">
                 </div>

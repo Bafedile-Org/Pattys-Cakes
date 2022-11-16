@@ -220,7 +220,7 @@ public class DatabaseConnect {
     private static void StockTable() {
         PreparedStatement stat;
         try {
-            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS stock (prod_id VARCHAR(10) NOT NULL,"
+            stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS stock (prod_id VARCHAR(10) NOT NULL PRIMARY KEY,"
                     + "quantity INTEGER(255),FOREIGN KEY(prod_id) REFERENCES product(prod_id))");
             stat.executeUpdate();
         } catch (SQLException sql) {
