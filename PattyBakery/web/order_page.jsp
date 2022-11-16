@@ -40,6 +40,7 @@
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
         </div>
            <div class="form-contents">
+             
              <form action="res/bakery_res/addOrder" method="POST">
                 <div class="input-field" style="text-align: center">
                     <input type="orderNumber" placeholder="Order Number" class="orderNumber" size="50" name="orderNumber">
