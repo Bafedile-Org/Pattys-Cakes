@@ -18,7 +18,8 @@
         <script src="js/main.js"></script>
         <style>
         html, body {
-          background-color: #f4f4f4;
+          
+          background-image: url("assets/2019_04_10-Visit_Pbo_Sluys-00020.jpg");
         }
         .sf {
           min-height: 400px;
@@ -30,11 +31,11 @@
            <nav>
            <div class="topnav">
                 <h1 align="center" id='home-header1'>
-                    Patty's Bakery Management
+                   Patty's Bakery Management
                   
                 <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                     <div class="dropdown-content" align="left">
-                        <a href="home">Logout</a>
+                        <a href="management_login_page.jsp">Logout</a>
                         <a href="stock_page.jsp">Stock</a>
                         <a href="employee_page.jsp">Employee</a>
                         <a href="order_page.jsp">Orders</a>
@@ -42,12 +43,13 @@
                     </div>
                 </i>
             </h1>
+               
                  
            </div>
            </nav>
         </header>
         <div>
-            Today's date: <%= (new java.util.Date()).toLocaleString()%>
+            <marquee behavior="alternate">Today's date: <%= (new java.util.Date()).toLocaleString()%></marquee>
         </div>
             <div class="w3-container">
             <div class="w3-content w3-display-container" style="max-width:800px">

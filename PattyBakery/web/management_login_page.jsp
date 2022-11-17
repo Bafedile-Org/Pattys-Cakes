@@ -29,17 +29,13 @@
             <div class="topnav">
                 <h1 align="center" id="home-header1">
                     Welcome to Patty's Bakery Management
-                    <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                        <div class="dropdown-content">
-                            <a  href="management_page.jsp">Home</a>
-                        </div>
-                    </i>
+                   
                 </h1>
             </div>
         </nav>
         </header>
         <div>
-            Today's date: <%= (new java.util.Date()).toLocaleString()%>
+            <marquee behavior="alternate">Today's date: <%= (new java.util.Date()).toLocaleString()%></marquee>
         </div>
          <section class="container forms">
             <div class="form login">

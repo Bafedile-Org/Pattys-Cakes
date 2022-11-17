@@ -1,13 +1,11 @@
 package za.co.pattyBakery.resources;
 
 import java.net.URISyntaxException;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import za.co.pattyBakery.Employee;
@@ -15,13 +13,10 @@ import za.co.pattyBakery.Order;
 import za.co.pattyBakery.ShoppingCart;
 import za.co.pattyBakery.dao.EmployeeDAO;
 import za.co.pattyBakery.dao.OrderDAO;
-import za.co.pattyBakery.dao.RecipeDAO;
 import za.co.pattyBakery.exception.OrderException;
 import za.co.pattyBakery.model.EmployeeImpl;
-import za.co.pattyBakery.model.Recipe;
 import za.co.pattyBakery.service.impl.EmployeeServImpl;
 import za.co.pattyBakery.service.impl.OrderServImpl;
-import za.co.pattyBakery.service.impl.RecipeServImpl;
 import za.co.pattyBakery.service.impl.StockServImpl;
 
 /**
@@ -41,7 +36,7 @@ public class BakeryRest {
     public Response getIngredients() {
 //        RecipeDAO recipeServImpl = new RecipeServImpl();
 //        String[] recipeIds = {"16RES", "17RES", "18RES"};
-////        String[] strings = {"vanila", "chocolate", "plain"};
+//        String[] strings = {"vanila", "chocolate", "plain"};
 //        Recipe recipe = recipeServImpl.getRecipeById(recipeIds[0]);
 
         return Response.status(200).entity("hello bree").build();

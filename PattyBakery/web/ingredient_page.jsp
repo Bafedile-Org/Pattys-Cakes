@@ -17,7 +17,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
-                background-color: #f4f4f4;
+                background-image: #f4f4f4;
+
             }
             .sf {
                 min-height: 400px;
@@ -39,33 +40,28 @@
         <div>
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
         </div>
-      
-        <div action="res/bakery_res/add" method="POST">
-            <form action="#">
-                <div class="input-field" style="text-align: center">
-                 <input type="ingredientId" placeholder="Ingredients ID" class="ingredientId" size="33">
+        <div class="form-content">
+        <form action="res/bakery_res/add" method="POST">
+            <div class="input-field" style="text-align: center">
+                <input type="ingredientId" placeholder="Ingredients ID" class="ingredientId" size="33">
                 <select id = "myList" onchange = "favTutorial()" >
-                <option>Select ID type</option>
-                <option> #124547434 </option>
-                <option> #5442677 </option>
-                
+                    <option>Select ID type</option>
+                        <option> #124547434 </option>
+                    <option> #5442677 </option>
                 </select>
-                </div>
+            </div>
                 <div class="input-field" style="text-align: center">
                     <input type="ingredient" placeholder="Ingredient" class="ingredient" size="50">
                 </div>
                 <div class="input-field" style="text-align: center">
                     <input type="quantity" placeholder="Quantity" class="quantity" size="50">
                 </div>
-         
-           
-
-       
-         <div class="btn-group" style="text-align: center">
+            <div class="btn-group" style="text-align: center">
                 <button type="submit">Add</button>
-                <button type="submit">Remove</button>
+                    <button type="submit">Remove</button>
                 <button type="submit">Update</button>
-            </div>   </form> </div>
-    </form>
+            </div>   
+        </form> 
+        </div>
 </body>
 </html>
