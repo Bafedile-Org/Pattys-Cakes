@@ -79,9 +79,9 @@
                 </div>
             
             <div class="btn-group" style="text-align: center">
-            <button type="submit" name="addEm">Add</button>
-            <button type="submit" name='remove'>Remove</button>
-            <button type="submit" name="addEm">Update</button>
+            <button type="submit" name="todo" value='add'>Add</button>
+            <button type="submit" name='todo' value='remove'>Remove</button>
+            <button type="submit" name="todo" value='update'>Update</button>
           </div> </form>
         </div>
     </body>

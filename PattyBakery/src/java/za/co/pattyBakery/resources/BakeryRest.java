@@ -46,11 +46,11 @@ public class BakeryRest {
 
         return Response.status(200).entity("hello bree").build();
     }
-    
+
     @POST
     @Path("/addOrder")
-    public Response addOrder(@FormParam("orderNumber") String orderNumber,@FormParam("productId") String productId,
-        @FormParam("qty") Integer qty,@FormParam("status") String status, @FormParam("adding") String adding){
+    public Response addOrder(@FormParam("orderNumber") String orderNumber, @FormParam("productId") String productId,
+            @FormParam("qty") Integer qty, @FormParam("status") String status, @FormParam("adding") String adding) {
         OrderDAO orderServImpl = new OrderServImpl();
         java.net.URI location = null;
         try {
@@ -58,54 +58,47 @@ public class BakeryRest {
         } catch (URISyntaxException ex) {
             System.out.println("Error: " + ex.getMessage());
         }
-        try{
-        ShoppingCart cart = orderServImpl.getShoppingCartByOrderId(orderNumber);
-        for(Order order: cart.getOrders()){
-           if(order.getProduct().getProductId().equals(productId)){
-               order.setQuantity(qty);
-           }
-        }
-        cart.setStatus(true);
-        orderServImpl.addOrder(cart);
-        }
-        catch(OrderException ex){
+        try {
+            ShoppingCart cart = orderServImpl.getShoppingCartByOrderId(orderNumber);
+            for (Order order : cart.getOrders()) {
+                if (order.getProduct().getProductId().equals(productId)) {
+                    order.setQuantity(qty);
+                }
+            }
+            cart.setStatus(true);
+            orderServImpl.addOrder(cart);
+        } catch (OrderException ex) {
             System.out.println("Error: " + ex.getMessage());
         }
         return Response.temporaryRedirect(location).build();
     }
-    
+
     @POST
     @Path("/addEmployee")
     public Response addEmployee(@FormParam("name") String name, @FormParam("surname") String surname,
-       @FormParam("title") String title, @FormParam("id") String id, @FormParam("tel") String tel,
-       @FormParam("email") String email, @FormParam("address") String address, @FormParam("addEm") String addEm){
+            @FormParam("title") String title, @FormParam("id") String id, @FormParam("tel") String tel,
+            @FormParam("email") String email, @FormParam("address") String address, @FormParam("todo") String todo) {
         EmployeeDAO employeeSevImpl = new EmployeeServImpl();
         java.net.URI location = null;
         try {
             location = new java.net.URI("http://localhost:8080/bakery/employee_page.jsp");
-        } 
-        catch (URISyntaxException ex) {
+        } catch (URISyntaxException ex) {
             System.out.println("Error: " + ex.getMessage());
         }
-        Employee employee = new EmployeeImpl(name, surname, id, address, tel, email, title);
-        employeeSevImpl.addEmployee(employee);
+        if (todo.equalsIgnoreCase("remove")) {
+            removeEmployee(todo, id);
+        } else if (todo.equalsIgnoreCase("add")) {
+            Employee employee = new EmployeeImpl(name, surname, id, address, tel, email, title);
+            employeeSevImpl.addEmployee(employee);
+        }
         return Response.temporaryRedirect(location).build();
     }
-    @DELETE
-//    @Path("/addEmployee")
-    public Response removeEmployee(@PathParam("employeeId") Integer employeeId, @PathParam("remove") Integer remove){
+
+    public void removeEmployee(String todo, String employeeId) {
         EmployeeDAO employeeSevImpl = new EmployeeServImpl();
-                java.net.URI location = null;
-        try {
-            location = new java.net.URI("http://localhost:8080/bakery/employee_page.jsp");
-        } 
-        catch (URISyntaxException ex) {
-            System.out.println("Error: " + ex.getMessage());
-        }    
         employeeSevImpl.removeEmployee(employeeId);
-            return Response.temporaryRedirect(location).build();
     }
-    
+
     @POST
     @Path("/addStock")
     public Response addStock(@FormParam("prodId") String prodId, @FormParam("quantity") Integer quantity,
@@ -130,7 +123,7 @@ public class BakeryRest {
             return Response.temporaryRedirect(location).build();
         }
     }
-     
+
     @GET
     @Path("/prodId")
     public Response getProdId(@QueryParam("prodId") String prodId) {

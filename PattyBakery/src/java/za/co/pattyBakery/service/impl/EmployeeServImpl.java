@@ -35,8 +35,8 @@ public class EmployeeServImpl implements EmployeeDAO {
     }
 
     @Override
-    public void removeEmployee(Integer employeeId) {
-        if (employeeId <= 0) {
+   public void removeEmployee(String employeeId)  {
+        if (employeeId==null) {
             return;
         }
         employeeDAOImpl.removeEmployee(employeeId);

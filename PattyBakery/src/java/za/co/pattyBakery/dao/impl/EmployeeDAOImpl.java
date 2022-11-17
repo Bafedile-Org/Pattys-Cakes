@@ -76,11 +76,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public void removeEmployee(Integer employeeId) {
+    public void removeEmployee(String employeeId) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("DELETE  FROM employee WHERE emp_id = ?");
-                preparedStatement.setInt(1, employeeId);
+                preparedStatement = con.prepareStatement("DELETE  FROM employee WHERE idNum = ?");
+                preparedStatement.setString(1, employeeId);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException sql) {

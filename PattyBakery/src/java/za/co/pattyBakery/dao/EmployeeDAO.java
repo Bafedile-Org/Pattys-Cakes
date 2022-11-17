@@ -13,7 +13,7 @@ public interface EmployeeDAO extends Close {
 
     Employee getEmployeeById(Integer employeeId);
 
-    void removeEmployee(Integer employeeId);
+    public void removeEmployee(String employeeId) ;
 
     void updateEmployeeTel(Integer employeeId, String tel);
 
