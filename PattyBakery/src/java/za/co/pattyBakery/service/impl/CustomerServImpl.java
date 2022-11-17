@@ -38,8 +38,8 @@ public class CustomerServImpl implements CustomerDAO {
     }
 
     @Override
-    public void removeCustomer(Integer customerId) {
-        if (customerId <= 0) {
+    public void removeCustomer(String customerId) {
+        if (customerId == null) {
             return;
         }
         customerDAOImpl.removeCustomer(customerId);

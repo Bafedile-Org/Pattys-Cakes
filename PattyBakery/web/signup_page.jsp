@@ -25,7 +25,7 @@
             <div class="form login">
                 <div class="form-content">
                     <header>Signup</header>
-                    <form action="login_control"method="POST">
+                    <form action="res/bakery_res/addCust" method="POST">
                         <div class="field input-field">
                             <input type="name" name='name' placeholder="Name" class="inputbox" required>
                         </div>
@@ -52,7 +52,7 @@
 
                         </div>
                         <div class="field button-field">
-                            <button type="submit" name="signup">Signup</button>
+                            <button type="submit" name="todo" value="add">Signup</button>
                         </div>
                     </form>
                     <div class="form-link">

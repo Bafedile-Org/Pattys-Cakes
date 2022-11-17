@@ -13,7 +13,7 @@ public interface CustomerDAO extends LoginDAO {
 
     Person getCustomerById(Integer customerId);
 
-    void removeCustomer(Integer customerId);
+    public void removeCustomer(String customerId);
 
     void updateCustomerTel(Integer customerId, String tel);
 

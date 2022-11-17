@@ -10,11 +10,15 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 import za.co.pattyBakery.Employee;
 import za.co.pattyBakery.Order;
+import za.co.pattyBakery.Person;
 import za.co.pattyBakery.ShoppingCart;
+import za.co.pattyBakery.dao.CustomerDAO;
 import za.co.pattyBakery.dao.EmployeeDAO;
 import za.co.pattyBakery.dao.OrderDAO;
 import za.co.pattyBakery.exception.OrderException;
+import za.co.pattyBakery.model.CustomerImpl;
 import za.co.pattyBakery.model.EmployeeImpl;
+import za.co.pattyBakery.service.impl.CustomerServImpl;
 import za.co.pattyBakery.service.impl.EmployeeServImpl;
 import za.co.pattyBakery.service.impl.OrderServImpl;
 import za.co.pattyBakery.service.impl.IngredientsServImpl;
@@ -159,5 +163,30 @@ public class BakeryRest {
             return Response.temporaryRedirect(location).build();
         }
     }
-
+    @POST
+    @Path("/addCust")
+    public Response addCustomer(@FormParam("name") String name, @FormParam("surname") String surname,
+            @FormParam("id") String id, @FormParam("tel") String tel,
+            @FormParam("email") String email, @FormParam("address") String address, @FormParam("todo") String todo){
+        CustomerDAO customerServImpl = new CustomerServImpl();
+        java.net.URI location = null;
+        try {
+            location = new java.net.URI("http://localhost:8080/bakery/login_page.jsp");
+        } catch (URISyntaxException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        if(todo.equalsIgnoreCase("remove")){
+            removeCustomer(todo, id);
+        }
+        else if(todo.equalsIgnoreCase("add")){
+                Person customer = new CustomerImpl(name, surname, id, tel, email, address);
+                customerServImpl.addCustomer(customer);
+            }
+        return Response.temporaryRedirect(location).build();
+    }
+     public void removeCustomer(String todo, String customerId) {
+        CustomerDAO customerServImpl = new CustomerServImpl();
+        customerServImpl.removeCustomer(customerId);
+    }
 }
+ 

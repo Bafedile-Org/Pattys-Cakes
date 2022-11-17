@@ -103,11 +103,11 @@ public class CustomerDAOImpl implements CustomerDAO {
     }
 
     @Override
-    public void removeCustomer(Integer customerId) {
+    public void removeCustomer(String customerId) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("DELETE  FROM customer WHERE cust_id = ?");
-                preparedStatement.setInt(1, customerId);
+                preparedStatement = con.prepareStatement("DELETE  FROM customer WHERE idNum = ?");
+                preparedStatement.setString(1, customerId);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException sql) {
