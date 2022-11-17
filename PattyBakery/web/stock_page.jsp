@@ -50,7 +50,8 @@
             </div>
         </nav>
         <div>
-            Today's date: <%= (new java.util.Date())%>
+            <marquee behavior="alternate">Today's date: <%= (new java.util.Date())%></marquee>
+
         </div>
         <div class="form-content">
             <form action="res/bakery_res/addStock" method="POST">

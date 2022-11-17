@@ -45,7 +45,8 @@
             </div>
         </nav>
         <div>
-            Today's date: <%= (new java.util.Date()).toLocaleString()%>
+            <marquee behavior="alternate">Today's date: <%= (new java.util.Date())%></marquee>
+
         </div>
            <div class="form-contents">
              <form action="res/bakery_res/addEmployee" method="POST">
