@@ -1,7 +1,7 @@
 <%-- 
     Document   : stock_page
     Created on : 08 Nov 2022, 10:42:18 AM
-    Author     : Hlawulani
+    Author     : Hlawulani/Bridget
 --%>
 
 <%@page import="za.co.pattyBakery.service.impl.IngredientsServImpl"%>
@@ -25,13 +25,6 @@
                 min-height: 400px;
             }
         </style>
-        <script type = "text/javascript">
-        function write_below(form){
-            var input = document.forms.write.input_to_write.value;
-            document.getElementById('write_here').innerHTML="Your input was:"+input;
-            return false;
-          }
-        </script>
         <script >
             function getDropValue() {
                 var element = document.getElementById("myList");
@@ -57,7 +50,7 @@
         </div>
 
         <div class="form-content">
-            <form action="res/bakery_res/addIngredient" method="POST" onsubmit='return write_below(this);'>
+            <form action="res/bakery_res/addIngredient" method="POST">
                 <div class="input-field" style="text-align: center">
                     <input id="inputValue" type="ingredientId" name="ingrId" placeholder="Ingredients ID" class="ingredientId" size="33" value="">
                     <select id = "myList" onchange = "getDropValue()" >
@@ -84,7 +77,7 @@
             <button ype='submit' name="which" value="remove">Remove</button>
             <button type='submit' name="which" value="update">Update</button>
         </div>
-    </form>       </div> 
-  <div id='write_here'></div>
+    </form> 
+        </div> 
 </body>
 </html>
