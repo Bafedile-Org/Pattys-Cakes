@@ -1,9 +1,11 @@
 <%-- 
     Document   : stock_page
     Created on : 08 Nov 2022, 10:42:18 AM
-    Author     : Hlawulani
+    Author     : Hlawulani/Bridget
 --%>
 
+<%@page import="za.co.pattyBakery.service.impl.IngredientsServImpl"%>
+<%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -19,11 +21,20 @@
             html, body {
                 background-image: #f4f4f4;
 
+               background-image:url("assets/management/ingredient.jfif");
+            background-size: cover;
             }
             .sf {
                 min-height: 400px;
             }
         </style>
+        <script >
+            function getDropValue() {
+                var element = document.getElementById("myList");
+                var text = document.getElementById("inputValue");
+                text.value = element.options[element.selectedIndex].text;
+            }
+        </script>
     </head>
     <body>
         <nav class="home-head">
@@ -40,28 +51,37 @@
         <div>
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
         </div>
+   
+
         <div class="form-content">
-        <form action="res/bakery_res/add" method="POST">
-            <div class="input-field" style="text-align: center">
-                <input type="ingredientId" placeholder="Ingredients ID" class="ingredientId" size="33">
-                <select id = "myList" onchange = "favTutorial()" >
-                    <option>Select ID type</option>
-                        <option> #124547434 </option>
-                    <option> #5442677 </option>
-                </select>
-            </div>
+            <form action="res/bakery_res/addIngredient" method="POST">
                 <div class="input-field" style="text-align: center">
-                    <input type="ingredient" placeholder="Ingredient" class="ingredient" size="50">
+                    <input id="inputValue" type="ingredientId" name="ingrId" placeholder="Ingredients ID" class="ingredientId" size="33" value="">
+                    <select id = "myList" onchange = "getDropValue()" >
+                        <option>Select ID type</option>
+                        <%
+                            List<String> ingredients = new IngredientsServImpl().getAllIngredientsId();
+                            if (ingredients != null) {
+                                for (String ingredient : ingredients) {
+                                    out.println(String.format("<option value='%s'>%s</option>", ingredient, ingredient));
+                                }
+                            }
+                        %> 
+                    </select>
                 </div>
                 <div class="input-field" style="text-align: center">
-                    <input type="quantity" placeholder="Quantity" class="quantity" size="50">
+                    <input name="ingredient" type="ingredient" placeholder="Ingredient" class="ingredient" size="50">
                 </div>
-            <div class="btn-group" style="text-align: center">
-                <button type="submit">Add</button>
-                    <button type="submit">Remove</button>
-                <button type="submit">Update</button>
-            </div>   
-        </form> 
+                <div class="input-field" style="text-align: center">
+                    <input name="quantity" type="quantity" placeholder="Quantity" class="quantity" size="50">
+                </div>
+       
+        <div class="btn-group" style="text-align: center">
+            <button type='submit' name="which" value="add">Add</button>
+            <button ype='submit' name="which" value="remove">Remove</button>
+            <button type='submit' name="which" value="update">Update</button>
         </div>
+    </form> 
+        </div> 
 </body>
 </html>

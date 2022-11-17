@@ -83,7 +83,7 @@
                     Double price = (Double) request.getAttribute("7PROPrice");
                     out.println("R" + price);
                     %></button>  
-                    <button id="b1" onclick="cupcakesControl()" name="add" value="7PRO"> Add to cart</button>
+                    <button id="b1" type="submit" name="add" value="7PRO"> Add to cart</button>
                </form>
             </div>
                
@@ -126,7 +126,7 @@
                     price = (Double) request.getAttribute("8PROPrice");
                     out.println("R" + price);
                     %></button>  
-                    <button id="b1" onclick="cupcakesControl()" name="add" value="8PRO"> Add to cart</button>
+                    <button id="b1" type="submit" name="add" value="8PRO"> Add to cart</button>
                 </form>
             </div>
    </div></div>
@@ -170,7 +170,7 @@
                     price = (Double) request.getAttribute("9PROPrice");
                     out.println("R" + price);
                     %></button>  
-                    <button id="b1" onclick="cupcakesControl()" name="add" value="9PR"> Add to cart</button>  
+                    <button id="b1" type="submit" name="add" value="9PR"> Add to cart</button>  
                 </form>
             </div>
                

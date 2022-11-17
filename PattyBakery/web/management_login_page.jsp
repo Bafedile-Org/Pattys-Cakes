@@ -13,10 +13,12 @@
         <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="js/main.js"></script>
         <style>
         html, body {
-          background-color: #f4f4f4;
+            background-image: url("assets/mana.jpg");
         }
         .sf {
           min-height: 400px;
@@ -29,7 +31,6 @@
             <div class="topnav">
                 <h1 align="center" id="home-header1">
                     Welcome to Patty's Bakery Management
-                   
                 </h1>
             </div>
         </nav>

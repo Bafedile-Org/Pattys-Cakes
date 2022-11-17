@@ -56,7 +56,7 @@
                 <a href="stock_page.jsp"><img class="mySlides" src="assets/management/stock.jpg" style="width:100%" ></a>
                 <a href="employee_page.jsp"><img class="mySlides" src="assets/management/employee.jpg" style="width:100%"></a>
                 <a href="order_page.jsp"><img class="mySlides" src="assets/management/orders.jpg" style="width:100%"></a>
-                <a href="ingredient_page.jsp"><img class="mySlides" src="assets/management/ingredient.jsp.jfif" style="width:100%"></a>
+                <a href="ingredient_page.jsp"><img class="mySlides" src="assets/management/ingredient.jfif" style="width:100%"></a>
                    
                 <div class="w3-center w3-container w3-section w3-large w3-text-white w3-display-bottommiddle" style="width:100%">
                 <div class="w3-left w3-hover-text-khaki" onclick="plusDivs(-1)">&#10094;</div>

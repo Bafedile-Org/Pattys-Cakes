@@ -17,6 +17,7 @@ import za.co.pattyBakery.exception.OrderException;
 import za.co.pattyBakery.model.EmployeeImpl;
 import za.co.pattyBakery.service.impl.EmployeeServImpl;
 import za.co.pattyBakery.service.impl.OrderServImpl;
+import za.co.pattyBakery.service.impl.IngredientsServImpl;
 import za.co.pattyBakery.service.impl.StockServImpl;
 
 /**
@@ -26,7 +27,7 @@ import za.co.pattyBakery.service.impl.StockServImpl;
 @Path("/bakery_res")
 public class BakeryRest {
 
-    @GET
+    @POST
     public Response getString() {
         return Response.status(200).entity("Hello World").build();
     }
@@ -132,4 +133,31 @@ public class BakeryRest {
         String responseMsg = "The quantity you want to add to product " + quantity + " is " + quantity + ".";
         return Response.status(200).entity(responseMsg).build();
     }
+    @POST
+    @Path("/addIngredient")
+    public Response addIngredient(@FormParam("ingrId") String ingrId, @FormParam("ingredient") String ingredient, @FormParam("quantity") Integer quantity,
+            @FormParam("which") String which) {
+        IngredientsServImpl ingredientsServImpl = new IngredientsServImpl();
+        java.net.URI location = null;
+        try {
+            location = new java.net.URI("http://localhost:8080/bakery/ingredient_page.jsp");
+        } catch (URISyntaxException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        if (ingrId == null) {
+            System.out.println("Please enter ingredient Id");
+            return Response.temporaryRedirect(location).build();
+        } else {
+            if (which.equals("add")) {
+                ingredientsServImpl.addIngridient(ingrId, ingredient, quantity);
+            } else if (which.equals("update")) {
+                ingredientsServImpl.updateIngredient(ingrId, quantity);
+            } else {
+                ingredientsServImpl.removeIngredient(ingrId);
+            }
+            System.out.println("Successfully added to ingredient " + ingrId + " " + quantity + " items");
+            return Response.temporaryRedirect(location).build();
+        }
+    }
+
 }

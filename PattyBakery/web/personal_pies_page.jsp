@@ -22,7 +22,9 @@
                 <div class="topnav" align="center">
                     <h1>
                         <a href="home"> Patty's Bakery   
-                            <i class="fa fa-shopping-cart" style="font-size:24px">0</i></a>
+                            <i class="fa fa-shopping-cart" style="font-size:24px"> <%
+                                    out.println((Integer) request.getAttribute("totalInCart"));
+                                %></i></a>
                     </h1>
                 </div>
             </nav>
@@ -91,7 +93,7 @@
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="cart_button_" name="add" value="10PRO">add to cart</button>
+                <button id="cart_button_" type="submit" name="add" value="10PRO">add to cart</button>
                 </form>
             </div>
 
@@ -150,7 +152,7 @@
                     out.println("R" + price);
                     %>
                 </button>
-                <button id="cart_button" name="add" value="11PRO">add to cart</button>
+                <button id="cart_button" type="submit" name="add" value="11PRO">add to cart</button>
                 </form>
             </div>
 </div>
@@ -205,7 +207,7 @@
                     out.println("R" + price);
                     %>
                 </button>
-                <button id=cart_button" name="add" value="12PRO">add to cart</button>
+                <button id=cart_button" type="submit" name="add" value="12PRO">add to cart</button>
                 </form>
             </div>
             </div>
