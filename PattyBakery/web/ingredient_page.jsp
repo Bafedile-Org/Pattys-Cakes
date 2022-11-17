@@ -19,10 +19,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
-                background-image: #f4f4f4;
-
-               background-image:url("assets/management/ingredient.jfif");
-            background-size: cover;
+                background-image:url("assets/management/ingredient.jfif");
+                background-size: cover;
             }
             .sf {
                 min-height: 400px;
@@ -49,7 +47,7 @@
             </div>
         </nav>
         <div>
-            Today's date: <%= (new java.util.Date()).toLocaleString()%>
+            Today's date: <%= (new java.util.Date())%>
         </div>
    
 
@@ -82,6 +80,6 @@
             <button type='submit' name="which" value="update">Update</button>
         </div>
     </form> 
-        </div> 
+    </div> 
 </body>
 </html>

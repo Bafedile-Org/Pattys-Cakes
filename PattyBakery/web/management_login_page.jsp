@@ -18,7 +18,7 @@
         <script src="js/main.js"></script>
         <style>
         html, body {
-            background-image: url("assets/mana.jpg");
+            background-image: #f4f4f4;
         }
         .sf {
           min-height: 400px;

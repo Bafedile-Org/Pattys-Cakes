@@ -18,8 +18,8 @@
         <script src="js/main.js"></script>
         <style>
         html, body {
-          
-          background-image: url("assets/2019_04_10-Visit_Pbo_Sluys-00020.jpg");
+            background-image: url("assets/2019_04_10-Visit_Pbo_Sluys-00020.jpg");
+            background-size: cover;
         }
         .sf {
           min-height: 400px;
@@ -49,7 +49,7 @@
            </nav>
         </header>
         <div>
-            <marquee behavior="alternate">Today's date: <%= (new java.util.Date()).toLocaleString()%></marquee>
+            <marquee behavior="alternate">Today's date: <%= (new java.util.Date())%></marquee>
         </div>
             <div class="w3-container">
             <div class="w3-content w3-display-container" style="max-width:800px">
