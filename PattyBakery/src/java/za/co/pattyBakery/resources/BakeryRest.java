@@ -1,31 +1,23 @@
 package za.co.pattyBakery.resources;
 
 import java.net.URISyntaxException;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
-<<<<<<< HEAD
-import za.co.pattyBakery.service.impl.IngredientsServImpl;
-=======
 import za.co.pattyBakery.Employee;
 import za.co.pattyBakery.Order;
 import za.co.pattyBakery.ShoppingCart;
 import za.co.pattyBakery.dao.EmployeeDAO;
 import za.co.pattyBakery.dao.OrderDAO;
-import za.co.pattyBakery.dao.RecipeDAO;
 import za.co.pattyBakery.exception.OrderException;
 import za.co.pattyBakery.model.EmployeeImpl;
-import za.co.pattyBakery.model.Recipe;
 import za.co.pattyBakery.service.impl.EmployeeServImpl;
+import za.co.pattyBakery.service.impl.IngredientsServImpl;
 import za.co.pattyBakery.service.impl.OrderServImpl;
-import za.co.pattyBakery.service.impl.RecipeServImpl;
->>>>>>> origin/Gain-dev
 import za.co.pattyBakery.service.impl.StockServImpl;
 
 /**
@@ -128,7 +120,6 @@ public class BakeryRest {
         }
     }
 
-<<<<<<< HEAD
     @POST
     @Path("/addIngredient")
     public Response addIngredient(@FormParam("ingrId") String ingrId, @FormParam("ingredient") String ingredient, @FormParam("quantity") Integer quantity,
@@ -156,7 +147,6 @@ public class BakeryRest {
         }
     }
 
-=======
     @GET
     @Path("/prodId")
     public Response getProdId(@QueryParam("prodId") String prodId) {
@@ -170,5 +160,5 @@ public class BakeryRest {
         String responseMsg = "The quantity you want to add to product " + quantity + " is " + quantity + ".";
         return Response.status(200).entity(responseMsg).build();
     }
->>>>>>> origin/Gain-dev
+
 }
