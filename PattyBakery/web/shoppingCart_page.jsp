@@ -4,6 +4,7 @@
     Author     : Bridget Bapela
 --%>
 
+<%@page import="java.io.PrintWriter"%>
 <%@page import="java.util.Map"%>
 <%@page import="za.co.pattyBakery.Order"%>
 <%@page import="java.util.List"%>
@@ -30,59 +31,29 @@
 </head>
 <body onload="totalAmount()">
     <header>
-        <a align="left" href="<%=(String) request.getAttribute("control")%>" style="color:black;width:5%;float:left">
+        <a align="left" href="<%=(String) session.getAttribute("control")%>" style="color:black;width:5%;float:left">
             <i class="fa fa-arrow-left" aria-hidden="true" style="">
             </i>
         </a>
         <nav>
         </nav>
     </header>
+
+
     <div id='all'>
         <%
-            String[] images = (String[]) request.getAttribute("images");
-            Product[] products = (Product[]) request.getAttribute("products");
-            Map<String, Integer> quantitiesMap = (Map<String, Integer>) request.getAttribute("quantitiesMap");
-            if (images != null) {
-                for (int i = 0; i < images.length; i++) {
-                    if (images[i] != null && products[i] != null) {
-                        out.println(String.format("<div class='item' id='div'>"
-                                + "<div class='buttons'>"
-                                + "<span class='delete-btn'>"
-                                + "</span><span class='like-btn'></span>"
-                                + "</div>"
-                                + "<div class='image'>"
-                                + "<img src='%s' alt='cookies' width='250' height='150' />"
-                                + "</div>"
-                                + "<div class='description'><span>%s</span>"
-                                + "</div>"
-                                + "<div class='quantity'><script src='js/cartCode.js'></script> "
-                                + "<form onclick='controllers()' method='POST' id='conForm' name='%s'>"
-                                + "<button class='plus-btn' type='submit' name='%s' value='%s' data-value='productId'><strong>-</strong>"
-                                + "</button>"
-                                + "<input id='amountInput' type=label readonly min=1 max=50 value='%d'>"
-                                + "<button class='minus-btn' type='submit' name='%s' value='%s'><strong>+</strong></button>"
-                                + "</form>"
-                                + "</div>"
-                                + "R<input type='button' id='price' class='total-price' value='%.2f' name='%.2f'>"
-                                + "<div class=”remove” onclick='remove()'>"
-                                + "<u style='cursor: pointer'>Remove</u>"
-                                + "</div>"
-                                + "</div><br>",
-                                images[i], products[i].getProductName(), products[i].getCategory(), "sub", products[i].getProductId(), quantitiesMap.get(products[i].getProductId()), "adds",
-                                products[i].getProductId(), products[i].getPrice(), products[i].getPrice()));
-                    }
-                }
-            }
+            String displayMessage = (String) session.getAttribute("displayMessage");
+            out.println(displayMessage);
         %>
     </div>
 
     <div class='checkout' align='center'>
-        Total Amount :R<input type='button' id='totalAmount' value='<%=String.format("%.2f", request.getAttribute("totalAmount"))%>'><br>
-        <label>Delivery : R<%=(Double) request.getAttribute("deliveryAmount")%></label><br>
-        Total Amount Due :R<input type='button' id='totalAmountDue' value='<%=(Double) request.getAttribute("totalAmount") == 0 ? 0.0 : String.format("%.2f", (Double) request.getAttribute("totalAmount") + 100)%>'>
+        Total Amount :R<input type='button' id='totalAmount' value='<%=String.format("%.2f", session.getAttribute("totalAmount"))%>'><br>
+        <label>Delivery : R<%=(Double) session.getAttribute("deliveryAmount")%></label><br>
+        Total Amount Due :R<input type='button' id='totalAmountDue' value='<%=(Double) session.getAttribute("totalAmount") == 0 ? 0.0 : String.format("%.2f", (Double) session.getAttribute("totalAmount") + 100)%>'>
     </div>
     <div align='right'>
-        <form action='<%=(String) request.getAttribute("control")%>' method='POST'>
+        <form action='<%=(String) session.getAttribute("control")%>' method='POST'>
             <button style="width:150px;height:50px;border-radius:12px;background-color:#C799BA" name='checkout'>Checkout</button>
         </form>
     </div>
