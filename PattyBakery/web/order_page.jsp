@@ -1,5 +1,5 @@
 <%-- 
-    Document   : stock_page
+    Document   : order_page
     Created on : 08 Nov 2022, 10:42:18 AM
     Author     : Hlawulani
 --%>
@@ -40,9 +40,10 @@
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
         </div>
            <div class="form-contents">
-             <form action="#">
+             
+             <form action="res/bakery_res/addOrder" method="POST">
                 <div class="input-field" style="text-align: center">
-                    <input type="orderNumber" placeholder="Order Number" class="orderNumber" size="50">
+                    <input type="orderNumber" placeholder="Order Number" class="orderNumber" size="50" name="orderNumber">
                 </div>
                 <div class="input-field" style="text-align: center">
                     <input type="productID" placeholder="product ID" class="productID" size="50">
@@ -56,11 +57,10 @@
                  <div class="input-field" style="text-align: center">
                     <input type="date" placeholder="Date" class="date" size="150">
                 </div>
-             </form>
+          
             <div class="btn-group" style="text-align: center">
-            <button>Add</button>
-            <button>Remove</button>
-            <button>Update</button>
-          </div></div>
+            <button type="submit" name="adding">Add</button>
+            <button type="submit" name="adding">Update</button>
+          </div> </form></div>  
     </body>
 </html>

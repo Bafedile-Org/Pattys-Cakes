@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import za.co.pattyBakery.Employee;
 import za.co.pattyBakery.database.DatabaseConnect;
 import za.co.pattyBakery.dao.EmployeeDAO;
 import za.co.pattyBakery.model.EmployeeImpl;
@@ -29,10 +30,10 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public void addEmployee(EmployeeImpl employee) {
+    public void addEmployee(Employee employee) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT IGNORE INTO employee (name, surname,identityNum,tel, email, address,title) VALUES(?,?,?,?,?,?,?);");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO employee (name, surname,idNum,tel, email, address,title) VALUES(?,?,?,?,?,?,?);");
                 preparedStatement.setString(1, employee.getName());
                 preparedStatement.setString(2, employee.getSurname());
                 preparedStatement.setString(3, employee.getIdNumber());
@@ -53,16 +54,16 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public EmployeeImpl getEmployeeById(Integer employeeId) {
-        EmployeeImpl employee = null;
+    public Employee getEmployeeById(Integer employeeId) {
+        Employee employee = null;
         try {
             if (con != null) {
                 preparedStatement = con.prepareStatement("SELECT * FROM employee WHERE emp_id = ?");
                 preparedStatement.setInt(1, employeeId);
                 resultSet = preparedStatement.executeQuery();
                 if (resultSet.next()) {
-                    employee = new EmployeeImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),
-                            resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("address"), resultSet.getString("title"));
+                    employee = new EmployeeImpl(resultSet.getInt("emp_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("idNum")
+                           , resultSet.getString("address"), resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("title"));
                 }
             }
         } catch (SQLException sql) {
@@ -75,11 +76,11 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public void removeEmployee(Integer employeeId) {
+    public void removeEmployee(String employeeId) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("DELETE  FROM employee WHERE emp_id = ?");
-                preparedStatement.setInt(1, employeeId);
+                preparedStatement = con.prepareStatement("DELETE  FROM employee WHERE idNum = ?");
+                preparedStatement.setString(1, employeeId);
                 preparedStatement.executeUpdate();
             }
         } catch (SQLException sql) {
@@ -142,16 +143,15 @@ public class EmployeeDAOImpl implements EmployeeDAO {
     }
 
     @Override
-    public List<EmployeeImpl> getAllEmployees() {
-        List<EmployeeImpl> employees = new ArrayList<>();
-        EmployeeImpl employee = null;
+    public List<Employee> getAllEmployees() {
+        List<Employee> employees = new ArrayList<>();
+        Employee employee = null;
         try {
             if (con != null) {
                 preparedStatement = con.prepareStatement("SELECT * FROM customer;");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    employee = new EmployeeImpl(resultSet.getInt("cust_id"), resultSet.getString("name"), resultSet.getString("surname"), resultSet.getString("identityNum"),
-                            resultSet.getString("tel"), resultSet.getString("email"), resultSet.getString("address"), resultSet.getString("title"));
+                    employee =getEmployeeById(resultSet.getInt("emp_id"));
                     employees.add(employee);
                 }
             }

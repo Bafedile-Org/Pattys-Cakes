@@ -23,6 +23,13 @@
           min-height: 400px;
         }
       </style>
+      <script>
+          function getValue(){
+              var element = document.getElementById("myList");
+              var text = document.getElementById("inputValue");
+              text.value=element.options[element.selectedIndex].text;
+          }
+          </script>
     </head>
     <body>
         <nav class="home-head">
@@ -39,42 +46,43 @@
         <div>
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
         </div>
-           <div class="form-content">
-             <form action="#">
+           <div class="form-contents">
+             <form action="res/bakery_res/addEmployee" method="POST">
                 <div class="input-field" style="text-align: center">
-                    <input type="name" placeholder="Name" class="name" size="50">
+                    <input name='name' type="name" placeholder="Name" class="name" size="50">
                 </div>
                 <div class="input-field" style="text-align: center">
-                    <input type="surname" placeholder="Surname" class="surname" size="50">
+                    <input name='surname' type="surname" placeholder="Surname" class="surname" size="50">
                 </div>
                 <div class="input-field" style="text-align: center">
-                 <input type="tittle" placeholder="Tittle" class="tittle" size="34">
-                <select id = "myList" onchange = "favTutorial()" >
-                <option>Choose Tittle</option>
-                <option> Mr </option>
-                <option> Ms </option>
-                <option> Dr </option>
-                <option> Mr </option>
+                 <input name='title' id='inputValue' type="title" placeholder="Position" class="tittle" size="31">
+                 <select id = "myList" onchange = "getValue()" >
+                <option>Choose Position</option>
+                <option value="Cashier"> Cashier </option>
+                <option value="Supervisor"> Supervisor </option>
+                <option value="Chef"> Chef </option>
+                <option value="Director"> Director </option>
+                <option value="Admnistrator"> Administrator </option>
                 </select>
                 </div>
                 <div class="input-field" style="text-align: center">
-                    <input type="idNumber" placeholder="ID Number" class="idNumber" size="50">
+                    <input name='id' type="idNumber" placeholder="ID Number" class="idNumber" minlength="13" maxlength='13' size="50">
                 </div>
                  <div class="input-field" style="text-align: center">
-                    <input type="tel" placeholder="Telephone" class="tel" size="50">
+                    <input  name='tel' type="tel" placeholder="Telephone" class="tel" size="50">
                 </div>
                  <div class="input-field" style="text-align: center">
-                    <input type="email" placeholder="Email" class="email" size="50">
+                    <input name='email' type="email" placeholder="Email" class="email" size="50">
                 </div>
                  <div class="input-field" style="text-align: center">
-                    <input type="delivaryStatus" placeholder="Delivary Status" class="delivaryStatus" size="50">
+                    <input name='address' type="address" placeholder="Address" class="delivaryStatus" size="50">
                 </div>
-             </form>
+            
             <div class="btn-group" style="text-align: center">
-            <button>Add</button>
-            <button>Remove</button>
-            <button>Update</button>
-          </div>
+            <button type="submit" name="todo" value='add'>Add</button>
+            <button type="submit" name='todo' value='remove'>Remove</button>
+            <button type="submit" name="todo" value='update'>Update</button>
+          </div> </form>
         </div>
     </body>
 </html>

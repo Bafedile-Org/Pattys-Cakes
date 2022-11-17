@@ -20,7 +20,7 @@ public class PersonImpl implements Person {
         this.email = email;
     }
 
-    public PersonImpl(Integer personId, String name, String surname, String idNumber, String address, String tel, String email) {
+    public PersonImpl(Integer personId,String name,String surname, String idNumber, String address, String tel, String email) {
         this.name = name;
         this.surname = surname;
         this.idNumber = idNumber;

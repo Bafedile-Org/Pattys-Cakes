@@ -25,4 +25,5 @@ public interface ShoppingCart {
     public void setOrders(List<Order> orders);
 
     public void setOrderNumber(String orderNumber);
+    public void setStatus(Boolean deliveryStatus);
 }

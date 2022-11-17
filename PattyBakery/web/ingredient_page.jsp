@@ -49,6 +49,7 @@
         <div>
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
         </div>
+<<<<<<< HEAD
 
         <div class="form-content">
             <form action="res/bakery_res/addIngredient" method="POST">
@@ -80,5 +81,35 @@
         </div>
     </form> 
         </div> 
+=======
+      
+        <div action="res/bakery_res/add" method="POST">
+            <form action="#">
+                <div class="input-field" style="text-align: center">
+                 <input type="ingredientId" placeholder="Ingredients ID" class="ingredientId" size="33">
+                <select id = "myList" onchange = "favTutorial()" >
+                <option>Select ID type</option>
+                <option> #124547434 </option>
+                <option> #5442677 </option>
+                
+                </select>
+                </div>
+                <div class="input-field" style="text-align: center">
+                    <input type="ingredient" placeholder="Ingredient" class="ingredient" size="50">
+                </div>
+                <div class="input-field" style="text-align: center">
+                    <input type="quantity" placeholder="Quantity" class="quantity" size="50">
+                </div>
+         
+           
+
+       
+         <div class="btn-group" style="text-align: center">
+                <button type="submit">Add</button>
+                <button type="submit">Remove</button>
+                <button type="submit">Update</button>
+            </div>   </form> </div>
+    </form>
+>>>>>>> origin/Gain-dev
 </body>
 </html>

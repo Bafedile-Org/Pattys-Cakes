@@ -1,6 +1,7 @@
 package za.co.pattyBakery.service.impl;
 
 import java.util.List;
+import za.co.pattyBakery.Employee;
 import za.co.pattyBakery.dao.EmployeeDAO;
 import za.co.pattyBakery.dao.impl.EmployeeDAOImpl;
 import za.co.pattyBakery.model.EmployeeImpl;
@@ -13,12 +14,12 @@ public class EmployeeServImpl implements EmployeeDAO {
 
     private EmployeeDAOImpl employeeDAOImpl;
 
-    public EmployeeServImpl(EmployeeDAOImpl employeeDAOImpl) {
-        this.employeeDAOImpl = employeeDAOImpl;
+    public EmployeeServImpl() {
+        this.employeeDAOImpl = new EmployeeDAOImpl();
     }
 
     @Override
-    public void addEmployee(EmployeeImpl employee) {
+    public void addEmployee(Employee employee) {
         if (employee == null) {
 
         }
@@ -26,7 +27,7 @@ public class EmployeeServImpl implements EmployeeDAO {
     }
 
     @Override
-    public EmployeeImpl getEmployeeById(Integer employeeId) {
+    public Employee getEmployeeById(Integer employeeId) {
         if (employeeId <= 0) {
             return null;
         }
@@ -34,8 +35,8 @@ public class EmployeeServImpl implements EmployeeDAO {
     }
 
     @Override
-    public void removeEmployee(Integer employeeId) {
-        if (employeeId <= 0) {
+   public void removeEmployee(String employeeId)  {
+        if (employeeId==null) {
             return;
         }
         employeeDAOImpl.removeEmployee(employeeId);
@@ -66,7 +67,7 @@ public class EmployeeServImpl implements EmployeeDAO {
     }
 
     @Override
-    public List<EmployeeImpl> getAllEmployees() {
+    public List<Employee> getAllEmployees() {
         return employeeDAOImpl.getAllEmployees();
     }
 

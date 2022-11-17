@@ -95,4 +95,7 @@ public class ShoppingCartImpl implements ShoppingCart {
     public Boolean getDeliveryStatus() {
         return deliveryStatus;
     }
+    public void setStatus(Boolean deliveryStatus){
+        this.deliveryStatus = deliveryStatus;
+    }
 }
