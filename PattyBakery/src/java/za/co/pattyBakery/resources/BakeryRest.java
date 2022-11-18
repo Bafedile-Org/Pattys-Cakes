@@ -39,7 +39,6 @@ public class BakeryRest {
 //        String[] recipeIds = {"16RES", "17RES", "18RES"};
 ////        String[] strings = {"vanila", "chocolate", "plain"};
 //        Recipe recipe = recipeServImpl.getRecipeById(recipeIds[0]);
-
         return Response.status(200).entity("hello bree").build();
     }
 
