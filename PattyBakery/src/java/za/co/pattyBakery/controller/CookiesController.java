@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -83,7 +82,7 @@ public class CookiesController extends BakeryController {
             products[2] = new ProductServImpl().getProductById(bakeryProductId);
             addOrder(bakeryProductId, orders);
         }
-        bakeryCart = setTotalPrice(bakeryCart, orders);
+        bakeryCart = setTotalPrice(bakeryCart, orders);///dk dont forget to change orders,it is changed in all the other pages exept cookies and cakes
         totalItemsInCart = bakeryCart.getOrders().size();
         session.setAttribute("totalInCart", totalItemsInCart);
     }
