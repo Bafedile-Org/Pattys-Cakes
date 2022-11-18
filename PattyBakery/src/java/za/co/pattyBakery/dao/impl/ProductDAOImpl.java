@@ -34,12 +34,13 @@ public class ProductDAOImpl implements ProductDAO {
     public void addProduct(Product product) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT IGNORE INTO product VALUES(?,?,?,?,?,?);");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO product VALUES(?,?,?,?,?,?,?);");
                 preparedStatement.setString(2, product.getProductName());
                 preparedStatement.setDouble(3, product.getPrice());
                 preparedStatement.setString(4, product.getNutrientId());
                 preparedStatement.setString(5, product.getRecipeId());
                 preparedStatement.setInt(6, product.getCategoryId());
+                preparedStatement.setString(7, product.getImageName());
                 preparedStatement.executeUpdate();
             }
 
@@ -56,13 +57,14 @@ public class ProductDAOImpl implements ProductDAO {
     public void addProductByIds(Product product) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("INSERT IGNORE INTO product VALUES(?,?,?,?,?,?);");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO product VALUES(?,?,?,?,?,?,?);");
                 preparedStatement.setString(1, product.getProductId());
                 preparedStatement.setString(2, product.getProductName());
                 preparedStatement.setDouble(3, product.getPrice());
                 preparedStatement.setString(4, product.getNutrientId());
                 preparedStatement.setString(5, product.getRecipeId());
                 preparedStatement.setInt(6, product.getCategoryId());
+                preparedStatement.setString(7, product.getImageName());
                 preparedStatement.executeUpdate();
             }
 
@@ -87,14 +89,13 @@ public class ProductDAOImpl implements ProductDAO {
                     product = new ProductImpl(resultSet.getString("prod_id"), resultSet.getString("prod_name"), resultSet.getDouble("price"),
                             new CategoryDAOImpl(con).getCategoryById(resultSet.getInt("cat_id")),
                             new ProductNutrientDAOImpl(con).getNutrientsByProductId(productId),
-                            new RecipeDAOImpl(con).getRecipeById(resultSet.getString("recp_id")));
+                            new RecipeDAOImpl(con).getRecipeById(resultSet.getString("recp_id")), resultSet.getString("image_name"));
                 }
             }
         } catch (SQLException | ProductException sql) {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
             close(preparedStatement, resultSet);
-
         }
         return product;
     }
@@ -218,7 +219,7 @@ public class ProductDAOImpl implements ProductDAO {
                 preparedStatement = con.prepareStatement("SELECT prod_id FROM product;");
                 resultSet = preparedStatement.executeQuery();
                 while (resultSet.next()) {
-                    productIds.add(resultSet.getString("prod_Id"));
+                    productIds.add(resultSet.getString("prod_id"));
                 }
             }
         } catch (SQLException sql) {
@@ -228,5 +229,27 @@ public class ProductDAOImpl implements ProductDAO {
 
         }
         return productIds;
+    }
+
+    @Override
+    public List<Product> getAllProductsByCategoryId(Integer categoryId) {
+        List<Product> products = new ArrayList<>();
+        ResultSet resultSet = null;
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT prod_id FROM product WHERE cat_id = ?; ");
+                preparedStatement.setInt(1, categoryId);
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    products.add(getProductById(resultSet.getString("prod_id")));
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println(String.format("Error: %s%n", sql.getMessage()));
+        } finally {
+            close(preparedStatement, resultSet);
+
+        }
+        return products;
     }
 }

@@ -27,61 +27,74 @@ public class CookiesController extends BakeryController {
      * Adding to cart does not work fix it
      */
     protected String servletPath;
+    private List<Product> cookies;
     protected static List<Order> bakeryOrders = new ArrayList<>();
-    protected static String[] bakeryRecipeIds = {"16RES", "18RES", "17RES"};
-    protected static String[] bakeryProductIds = {"4PRO", "5PRO", "6PRO"};
-    protected static String[] bakeryProductNames = {"4PROName", "5PROName", "6PROName"};
-    protected static String[] bakeryProductPrices = {"4PROPrice", "5PROPrice", "6PROPrice"};
-    protected static String[] bakeryProductNutrients = {"4PRONu", "5PRONu", "6PRONu"};
+    protected static String[] bakeryRecipeIds;
+    protected String[] bakeryProductIds;
     protected static ShoppingCart bakeryCart;
     protected static String bakeryProductId;
     protected static String bakery_control;
+
+    public void getProductInfo() {
+        bakeryProductIds = new String[cookies.size()];
+        bakeryRecipeIds = new String[cookies.size()];
+        for (int i = 0; i < bakeryProductIds.length; i++) {
+            bakeryProductIds[i] = cookies.get(i).getProductId();
+            bakeryRecipeIds[i] = cookies.get(i).getRecipeId();
+        }
+    }
 
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         bakery_control = request.getServletPath().replace("/", "");
-        getAllFromSession(request, response, bakeryCart, orderQuantitiesMap, products, imagesSrc, bakery_control);
-        manageOrderAddition(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, "cookies");
-        manageCart(request, response, bakeryProductIds, bakeryCart, bakeryOrders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
-        manageOrderConfirmation(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
-        managePayment(request, response, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakeryOrders);
-        manageCheckout(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
-        manageLogin(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
-        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, orderQuantities);
-        saveToSession(request, response, bakeryCart, imagesSrc, orderQuantitiesMap, products, bakery_control);
+        cookies = new ProductServImpl().getAllProductsByCategoryId(1);
+        getProductInfo();
+        request.setAttribute("products", cookies);
+        request.setAttribute("totalInCart", 0);
+        request.setAttribute("control", bakery_control);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("cookies");
+//        dispatcher.forward(request, response);
+//        getAllFromSession(request, response, bakeryCart, orderQuantitiesMap, products, imagesSrc, bakery_control);
+        manageOrderAddition(request, response, "cookies");
+//        manageCart(request, response, bakeryProductIds, bakeryCart, bakeryOrders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
+//        manageOrderConfirmation(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
+//        managePayment(request, response, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakeryOrders);
+//        manageCheckout(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
+//        manageLogin(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
+//        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, orderQuantities);
+//        saveToSession(request, response, bakeryCart, imagesSrc, orderQuantitiesMap, products, bakery_control);
 
     }
 
     @Override
-    public void redirectToCart(HttpServletRequest request, HttpServletResponse response, ShoppingCart bakeryCart, String[] imagesSrc, Map<String, Integer> orderQuantitiesMap, Product[] products)
+    public void redirectToCart(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         saveToSession(request, response, bakeryCart, imagesSrc, orderQuantitiesMap, products, bakery_control);
         session.setAttribute("deliveryAmount", 100.0);
         session.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", bakeryCart == null ? 0.0 : bakeryCart.getTotalprice())));
-        String controlName = "cart_control";
-        response.sendRedirect(controlName);
+        response.sendRedirect("cart_control");
     }
 
     @Override
-    public void addOrders(HttpServletRequest request, String param, List<Order> orders)
+    public void addOrders(HttpServletRequest request, String param)
             throws ServletException, IOException {
         if (request.getParameter(param).equalsIgnoreCase("4PRO")) {
             imagesSrc[0] = "assets/cookies/cookies_p.jpg";
             bakeryProductId = bakeryProductIds[0];
             products[0] = new ProductServImpl().getProductById(bakeryProductId);
-            addOrder(bakeryProductId, orders);
+            addOrder(bakeryProductId);
 
         } else if (request.getParameter(param).equalsIgnoreCase("5PRO")) {
             imagesSrc[1] = "assets/cookies/cookies_pic1.jpg";
             bakeryProductId = bakeryProductIds[1];
             products[1] = new ProductServImpl().getProductById(bakeryProductId);
-            addOrder(bakeryProductId, orders);
+            addOrder(bakeryProductId);
         } else if (request.getParameter(param).equalsIgnoreCase("6PRO")) {
             imagesSrc[2] = "assets/cookies/cokkies_pic2.jpg";
             bakeryProductId = bakeryProductIds[2];
             products[2] = new ProductServImpl().getProductById(bakeryProductId);
-            addOrder(bakeryProductId, orders);
+            addOrder(bakeryProductId);
         }
         bakeryCart = setTotalPrice(bakeryCart, orders);
         totalItemsInCart = bakeryCart.getOrders().size();

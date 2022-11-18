@@ -35,15 +35,6 @@ public class CartController extends BakeryController {
 
         displayMsg = display(cookies_images, cookies_products, orderQuantitiesMap);
         displayMsg += display(cakes_images, cakes_products, orderQuantitiesMap);
-
-//        getImages();
-//        getProducts();
-//        Map<String, Integer> quantitiesMap = (Map<String, Integer>) session.getAttribute("quantitiesMap");
-//        for (int imageCount = 0, productCount = 0; imageCount < images.size() && productCount < images.size(); imageCount++, productCount++) {
-//            String[] imagesSrc = images.get(imageCount);
-//            Product[] productSrc = products.get(productCount);
-//            displayMsg = display(imagesSrc, productSrc, quantitiesMap);
-//        }
         session.setAttribute("displayMessage", displayMsg);
         displayMsg = "";
         response.sendRedirect("cart");
