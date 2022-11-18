@@ -28,7 +28,7 @@
                 <h1 align="center" id="home-header1"> Check out
                     <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                         <div class="dropdown-content">
-                            <a href="<%=request.getAttribute("control")%>">Back</a>
+                            <a href="<%=session.getAttribute("control")%>">Back</a>
                         </div>
                     </i>
                 </h1>
@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="rightside">
-                    <form action="<%=request.getAttribute("control")%>" method="POST">
+                    <form action="<%=session.getAttribute("control")%>" method="POST">
                         <div class="input-field" style="text-align: center">
                             <h2>Payment Information</h2>
 

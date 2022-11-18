@@ -1,6 +1,7 @@
 package za.co.pattyBakery.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -21,20 +22,13 @@ import za.co.pattyBakery.service.impl.ProductServImpl;
 @WebServlet(name = "CupcakesController", urlPatterns = {"/cupcakes_control"})
 public class CupcakesController extends BakeryController {
 
-    List<Order> orders;
+    List<Order> orders = new ArrayList<>();
     String[] recipeIds = {"7RES", "8RES", "9RES"};
     String[] productIds = {"7PRO", "8PRO", "9PRO"};
-    //String[] strings = {"walnut", "chocolate", "vanila"};
     String[] productNames = {"7PROName", "8PROName", "9PROName"};
     String[] productPrices = {"7PROPrice", "8PROPrice", "9PROPrice"};
     String[] productNutrients = {"7PRONu", "8PRONu", "9PRONu"};
-    Integer totalItemsInCart = 0;
-    ShoppingCart cart;
-    String productId = null;
-    String[] imagesSrc = new String[3];
-    Product[] products = new Product[3];
-    Integer[] orderQuantities = new Integer[3];
-    Map<String, Integer> orderQuantitiesMap = new HashMap<>();
+    protected String control = "cakes_control";
 
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -58,7 +52,15 @@ public class CupcakesController extends BakeryController {
                 redirectToCart(request, response, cart, imagesSrc, orderQuantitiesMap, products);
             }
         }
-        addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
+    }
+
+    @Override
+    public void redirectToCart(HttpServletRequest request, HttpServletResponse response, ShoppingCart cart, String[] imagesSrc, Map<String, Integer> orderQuantitiesMap, Product[] products)
+            throws ServletException, IOException {
+        session.setAttribute("deliveryAmount", 100.0);
+        session.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", cart == null ? 0.0 : cart.getTotalprice())));
+        RequestDispatcher dispatcher = request.getRequestDispatcher("cart_control");
+        dispatcher.forward(request, response);
     }
 
     @Override

@@ -25,11 +25,11 @@ public class LoginController extends BakeryController {
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if (request.getParameter("login") != null || request.getAttribute("login") != null) {
+        if (request.getParameter("login") != null || session.getAttribute("login") != null) {
             logUserIn(request, response);
             if (checkIfUserExists()) {
-                request.setAttribute("customer", person);
-//                request.setAttribute("shoppingCart", request.getAttribute("shoppingCart"));
+                session.setAttribute("customer", person);
+//                session.setAttribute("shoppingCart", session.getAttribute("shoppingCart"));
                 redirectToPage(request, response, "confirm");
             } else {
                 redirectToPage(request, response, "signup");
@@ -46,8 +46,8 @@ public class LoginController extends BakeryController {
 
             // check if the user already exists
             if (checkIfUserExists()) {
-                request.setAttribute("login", "login");
-                redirectToPage(request, response, (String) request.getAttribute("control"));
+                session.setAttribute("login", "login");
+                redirectToPage(request, response, (String) session.getAttribute("control"));
             } else {
                 if (password.equals(conPassword)) {
                     customerServImpl.addCustomer(new PersonImpl(name, surname, idNum, address, tel, email));

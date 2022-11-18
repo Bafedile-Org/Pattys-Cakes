@@ -34,7 +34,7 @@
                 <h1 align="center" id="home-header1"> Confirmation order
                     <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                         <div class="dropdown-content">
-                            <a href="<%=request.getAttribute("control")%>">Back</a>
+                            <a href="<%=session.getAttribute("control")%>">Back</a>
                         </div>
                     </i>
                 </h1>
@@ -46,7 +46,7 @@
                     <form action="#">
                         <h2>Product list: </h2>
                         <%
-                            ShoppingCart shoppingCart = (ShoppingCart) request.getAttribute("shoppingCart");
+                            ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
                             if (shoppingCart != null) {
                                 for (Order order : shoppingCart.getOrders()) {
                                     out.println(String.format("<p>%s  %.2f x %d</p>",
@@ -74,7 +74,7 @@
                     <div class="left_info">
                         <h2>User Information</h2>
                         <%
-                            Person person = (Person) request.getAttribute("customer");
+                            Person person = (Person) session.getAttribute("customer");
                             out.println(String.format("<label>Name</label>:%s<br>"
                                     + "<label>Surname</label>:%s<br>"
                                     + "<label>Telephone Number</label>:%s<br>"
@@ -98,7 +98,7 @@
         </div>
 
         <div class="bb">
-            <form action="<%=request.getAttribute("control")%>" method="POST">
+            <form action="<%=session.getAttribute("control")%>" method="POST">
                 <button type="submit" class="button" name="confirmOrder">Confirm order</button>
             </form>
         </div>

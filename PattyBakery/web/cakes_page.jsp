@@ -23,10 +23,11 @@
                 <div class="topnav">
                     <h1>
                         <a href="home"> Patty's Bakery</a>
-                        <a href='?cart=cart' name="cart">
+                        <a href=<%=(String) session.getAttribute("control") + "?cart=cart"%> name="cart">
                             <i class="fa fa-shopping-cart" style="font-size:24px"><%
-                                out.println((Integer) request.getAttribute("totalInCart"));
-                                %></i></a>
+                                out.println((Integer) session.getAttribute("totalInCart"));
+                                %>
+                            </i></a>
                     </h1>
                 </div>
             </nav>
@@ -44,7 +45,7 @@
 
                 <div align='center'>
                     <label id='cookie_label'><strong><%
-                        String name = (String) request.getAttribute("1PROName");
+                        String name = (String) session.getAttribute("1PROName");
                         out.println(name);
                             %>
                         </strong>
@@ -57,7 +58,7 @@
                             <li id="img_list"><strong> Ingredients: </strong>
                                 <ul>
                                     <%
-                                        List<String> ingredients = (List<String>) request.getAttribute("1PRO");
+                                        List<String> ingredients = (List<String>) session.getAttribute("1PRO");
                                         for (String ingredient : ingredients) {
                                             out.println(String.format("<li>%s</li>", ingredient));
                                         }
@@ -67,7 +68,7 @@
                             <li id="img_list"><strong> Nutrients:</strong>
                                 <ul>
                                     <%
-                                        List<String> nutrients = (List<String>) request.getAttribute("1PRONu");
+                                        List<String> nutrients = (List<String>) session.getAttribute("1PRONu");
                                         for (String nutrient : nutrients) {
                                             out.println(String.format("<li>%s</li>", nutrient));
                                         }
@@ -82,7 +83,7 @@
             <div id='img_price'>
                 <form method="POST" action="cakes_control">
                     <button id='price_button'><%
-                        Double price = (Double) request.getAttribute("1PROPrice");
+                        Double price = (Double) session.getAttribute("1PROPrice");
                         out.println("R" + price);
                         %>
                     </button>
@@ -96,7 +97,7 @@
 
                 <div align='center'>
                     <label id='cookie_label'><strong><%
-                        name = (String) request.getAttribute("2PROName");
+                        name = (String) session.getAttribute("2PROName");
                         out.println(name);
                             %>
                         </strong>
@@ -110,7 +111,7 @@
                             <li id="img_list"><strong> Ingredients: </strong>
                                 <ul>
                                     <%
-                                        ingredients = (List<String>) request.getAttribute("2PRO");
+                                        ingredients = (List<String>) session.getAttribute("2PRO");
                                         for (String ingredient : ingredients) {
                                             out.println(String.format("<li>%s</li>", ingredient));
                                         }
@@ -120,7 +121,7 @@
                             <li id="img_list"><strong> Nutrients:</strong>
                                 <ul>
                                     <%
-                                        nutrients = (List<String>) request.getAttribute("2PRONu");
+                                        nutrients = (List<String>) session.getAttribute("2PRONu");
                                         if (nutrients != null) {
                                             for (String nutrient : nutrients) {
                                                 out.println(String.format("<li>%s</li>", nutrient));
@@ -137,7 +138,7 @@
                 <form method="POST" action="cakes_control">
                     <button id='price_button'>
                         <%
-                            price = (Double) request.getAttribute("2PROPrice");
+                            price = (Double) session.getAttribute("2PROPrice");
                             out.println("R" + price);
                         %>
                     </button>
@@ -153,7 +154,7 @@
                 <div align='center'>
                     <label id='cookie_label'>
                         <strong><%
-                            name = (String) request.getAttribute("3PROName");
+                            name = (String) session.getAttribute("3PROName");
                             out.println(name);
                             %>
                         </strong>
@@ -166,7 +167,7 @@
                             <li id="img_list"><strong> Ingredients: </strong>
                                 <ul>
                                     <%
-                                        ingredients = (List<String>) request.getAttribute("3PRO");
+                                        ingredients = (List<String>) session.getAttribute("3PRO");
                                         for (String ingredient : ingredients) {
                                             out.println(String.format("<li>%s</li>", ingredient));
                                         }
@@ -176,7 +177,7 @@
                             <li id="img_list"><strong> Nutrients:</strong>
                                 <ul>
                                     <%
-                                        nutrients = (List<String>) request.getAttribute("3PRONu");
+                                        nutrients = (List<String>) session.getAttribute("3PRONu");
                                         if (nutrients != null) {
                                             for (String nutrient : nutrients) {
                                                 out.println(String.format("<li>%s</li>", nutrient));
@@ -191,7 +192,7 @@
             <div id='img_price'>
                 <form method="POST" action="cakes_control">
                     <button id='price_button'><%
-                        price = (Double) request.getAttribute("3PROPrice");
+                        price = (Double) session.getAttribute("3PROPrice");
                         out.println("R" + price);
                         %>
                     </button>

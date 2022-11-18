@@ -42,7 +42,7 @@
                 <input type="radio" name="r" id="r5" >
 
                 <div class="slide s1">
-                    <a href="cookies_control?index=index" name="index"><img src="assets/cookies/cokkies_pic2.jpg" alt="Plain Coffee Cookies"></a>
+                    <a href="cookies_control" name="index"><img src="assets/cookies/cokkies_pic2.jpg" alt="Plain Coffee Cookies"></a>
                 </div>
                 <div class="slide ">
                     <a href="cakes_control" name="index"><img src="assets/cakes/rainbow_cake3.jpg" alt="Rainbow Cake"></a>
