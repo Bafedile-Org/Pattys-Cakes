@@ -26,6 +26,7 @@ public class CookiesController extends BakeryController {
      *
      * Adding to cart does not work fix it
      */
+    protected String servletPath;
     protected static List<Order> bakeryOrders = new ArrayList<>();
     protected static String[] bakeryRecipeIds = {"16RES", "18RES", "17RES"};
     protected static String[] bakeryProductIds = {"4PRO", "5PRO", "6PRO"};
@@ -34,12 +35,13 @@ public class CookiesController extends BakeryController {
     protected static String[] bakeryProductNutrients = {"4PRONu", "5PRONu", "6PRONu"};
     protected static ShoppingCart bakeryCart;
     protected static String bakeryProductId;
-    protected static String bakery_control = "cookies_control";
+    protected static String bakery_control;
 
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getAllFromSession(request, response, bakeryCart, orderQuantitiesMap, products, bakery_control);
+        bakery_control = request.getServletPath().replace("/", "");
+        getAllFromSession(request, response, bakeryCart, orderQuantitiesMap, products, imagesSrc, bakery_control);
         manageOrderAddition(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, "cookies");
         manageCart(request, response, bakeryProductIds, bakeryCart, bakeryOrders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
         manageOrderConfirmation(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
@@ -57,8 +59,8 @@ public class CookiesController extends BakeryController {
         saveToSession(request, response, bakeryCart, imagesSrc, orderQuantitiesMap, products, bakery_control);
         session.setAttribute("deliveryAmount", 100.0);
         session.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", bakeryCart == null ? 0.0 : bakeryCart.getTotalprice())));
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cart_control");
-        dispatcher.forward(request, response);
+        String controlName = "cart_control";
+        response.sendRedirect(controlName);
     }
 
     @Override

@@ -34,7 +34,7 @@ public class CartController extends BakeryController {
         Product[] cakes_products = (Product[]) session.getAttribute("cakes_control_products");
 
         displayMsg = display(cookies_images, cookies_products, orderQuantitiesMap);
-        displayMsg = display(cakes_images, cakes_products, orderQuantitiesMap);
+        displayMsg += display(cakes_images, cakes_products, orderQuantitiesMap);
 
 //        getImages();
 //        getProducts();
@@ -46,8 +46,7 @@ public class CartController extends BakeryController {
 //        }
         session.setAttribute("displayMessage", displayMsg);
         displayMsg = "";
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cart");
-        dispatcher.forward(request, response);
+        response.sendRedirect("cart");
     }
 
     void getImages() {
@@ -75,10 +74,11 @@ public class CartController extends BakeryController {
     }
 
     String display(String[] images, Product[] products, Map<String, Integer> quantitiesMap) {
+        String msg = "";
         if (images != null && quantitiesMap != null) {
             for (int i = 0; i < images.length; i++) {
                 if (images[i] != null && products[i] != null) {
-                    displayMsg = displayMsg.concat(String.format("<div class='item' id='div'>"
+                    msg = msg.concat(String.format("<div class='item' id='div'>"
                             + "<div class='buttons'>"
                             + "<span class='delete-btn'>"
                             + "</span><span class='like-btn'></span>"
@@ -106,7 +106,7 @@ public class CartController extends BakeryController {
                 }
             }
         }
-        return displayMsg;
+        return msg;
     }
 
     @Override

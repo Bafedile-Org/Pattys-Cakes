@@ -1,11 +1,9 @@
 package za.co.pattyBakery.controller;
 
 import java.io.IOException;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -16,12 +14,7 @@ import za.co.pattyBakery.ShoppingCart;
 import static za.co.pattyBakery.controller.BakeryController.orderQuantities;
 import static za.co.pattyBakery.controller.BakeryController.orderQuantitiesMap;
 import static za.co.pattyBakery.controller.BakeryController.products;
-import static za.co.pattyBakery.controller.CookiesController.bakeryCart;
-import static za.co.pattyBakery.controller.CookiesController.bakeryOrders;
-import static za.co.pattyBakery.controller.CookiesController.bakeryProductIds;
 import static za.co.pattyBakery.controller.CookiesController.bakery_control;
-import za.co.pattyBakery.model.ShoppingCartImpl;
-import za.co.pattyBakery.service.impl.OrderServImpl;
 import za.co.pattyBakery.service.impl.ProductServImpl;
 
 /**
@@ -32,6 +25,7 @@ import za.co.pattyBakery.service.impl.ProductServImpl;
 
 public class CakesController extends BakeryController {
 
+    protected String servletPath;
     protected static List<Order> bakeryOrders = new ArrayList<>();
     protected static String[] bakeryRecipeIds = {"1RES", "2RES", "3RES"};
     protected static String[] bakeryProductIds = {"1PRO", "2PRO", "3PRO"};
@@ -40,12 +34,13 @@ public class CakesController extends BakeryController {
     protected static String[] bakeryProductNutrients = {"1PRONu", "2PRONu", "3PRONu"};
     protected static ShoppingCart bakeryCart;
     protected static String bakeryProductId;
-    protected static String bakery_control = "cakes_control";
+    protected static String bakery_control;
 
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        getAllFromSession(request, response, bakeryCart, orderQuantitiesMap, products, bakery_control);
+        bakery_control = request.getServletPath().replace("/", "");
+        getAllFromSession(request, response, bakeryCart, orderQuantitiesMap, products, imagesSrc, bakery_control);
         manageOrderAddition(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, "cakes");
         manageCart(request, response, bakeryProductIds, bakeryCart, bakeryOrders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
         manageOrderConfirmation(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
@@ -63,8 +58,7 @@ public class CakesController extends BakeryController {
         saveToSession(request, response, bakeryCart, imagesSrc, orderQuantitiesMap, products, bakery_control);
         session.setAttribute("deliveryAmount", 100.0);
         session.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", bakeryCart == null ? 0.0 : bakeryCart.getTotalprice())));
-        RequestDispatcher dispatcher = request.getRequestDispatcher("cart_control");
-        dispatcher.forward(request, response);
+        response.sendRedirect("cart_control");
     }
 
     @Override

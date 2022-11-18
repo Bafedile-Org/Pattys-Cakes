@@ -23,7 +23,7 @@
                 <div class="topnav">
                     <h1>
                         <a href="home"> Patty's Bakery</a>
-                        <a href='?cart=cart' name="cart">
+                        <a href=<%=(String) session.getAttribute("control") + "?cart=cart"%> name="cart">
                             <i class="fa fa-shopping-cart" style="font-size:24px"><%
                                 out.println((Integer) session.getAttribute("totalInCart"));
                                 %>

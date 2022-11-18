@@ -53,7 +53,7 @@ public class BakeryController extends HttpServlet {
     protected static Integer totalItemsInCart = 0;
     protected static ShoppingCart cart;
     protected static String productId = null;
-    protected static String[] imagesSrc = new String[3];
+    protected final static String[] imagesSrc = new String[3];
     protected static Product[] products = new Product[3];
     protected static Integer[] orderQuantities = new Integer[3];
     protected static Map<String, Integer> orderQuantitiesMap = new HashMap<>();
@@ -80,10 +80,11 @@ public class BakeryController extends HttpServlet {
 
     public void getAllFromSession(HttpServletRequest request,
             HttpServletResponse response, ShoppingCart cart, Map<String, Integer> orderQuantitiesMap,
-            Product[] products, String control) {
+            Product[] products, String[] images, String control) {
         cart = (ShoppingCart) session.getAttribute("shoppingCart");
         orderQuantitiesMap = (Map<String, Integer>) session.getAttribute("quantitiesMap");
         products = (Product[]) session.getAttribute(control + "_products");
+        images = (String[]) session.getAttribute(control + "_images");
         if (cart == null) {
             cart = new ShoppingCartImpl(null, null, null);
         }
@@ -172,8 +173,8 @@ public class BakeryController extends HttpServlet {
         setIngredientAttributes(recipeIds, productIds, request);
         setProductName(productIds, productNames, productPrices, productNutrients, request);
         session.setAttribute("totalInCart", session.getAttribute("totalInCart") == null ? 0 : session.getAttribute("totalInCart"));
-        RequestDispatcher dispatcher = request.getRequestDispatcher(redirectPage);
-        dispatcher.forward(request, response);
+        response.sendRedirect(redirectPage);
+
     }
 
     public void addOrder(String productId, List<Order> orders) {
