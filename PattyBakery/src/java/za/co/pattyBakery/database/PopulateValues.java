@@ -593,7 +593,7 @@ public class PopulateValues {
         Double[] prices = {45.99, 48.99, 40.99};
         String[] nutrientsIds = {"1NT"};
         String[] recipeIds = {"7RES", "8RES", "9RES"};
-        String[] images = {"", "", ""};
+        String[] images = {"assets/cupcakes/coffeecupcake.jfif", "assets/cupcakes/glutten_free_chocolate_cupcakes.jpg", "assets/cupcakes/IMG_3165.webp"};
         try {
             Product walnutCupcakes = new ProductImpl("7PRO", "Walnut Cupcakes", prices[0], cat, nutrientsIds[0], recipeIds[0], images[0]);
             Product chocolateCupcakes = new ProductImpl("8PRO", "Gluten Free Chocolate Cupcakes", prices[1], cat, nutrientsIds[0], recipeIds[1], images[1]);
@@ -614,7 +614,7 @@ public class PopulateValues {
         Double[] prices = {59.99, 54.49, 54.49};
         String[] nutrientsIds = {"1NT"};
         String[] recipeIds = {"13RES", "14RES", "15RES"};
-        String[] images = {"", "", ""};
+        String[] images = {"assets/personal_pies/blueberry pies.jpg", "assets/personal_pies/apple_pie.jpg", "assets/personal_pies/strawberry pie.jpg"};
         try {
             Product blueberryPies = new ProductImpl("10PRO", "Blueberry Pies", prices[0], cat, nutrientsIds[0], recipeIds[0], images[0]);
             Product applePies = new ProductImpl("11PRO", "Apple Pies", prices[1], cat, nutrientsIds[0], recipeIds[1], images[1]);
@@ -635,7 +635,7 @@ public class PopulateValues {
         Double[] prices = {38.99, 45.99, 50.00};
         String[] nutrientsIds = {"1NT"};
         String[] recipeIds = {"10RES", "11RES", "12RES"};
-        String[] images = {"", "", ""};
+        String[] images = {"assets/muffins/Blueberry-Muffins.jpg", "assets/muffins/Cranberry-Muffins.jpg", "assets/muffins/carrot-muffins.jpg"};
         try {
             Product blueberryMuffins = new ProductImpl("13PRO", "Blueberry Muffins", prices[0], cat, nutrientsIds[0], recipeIds[0], images[0]);
             Product cranberryMuffins = new ProductImpl("14PRO", "Cranbery Muffins", prices[1], cat, nutrientsIds[0], recipeIds[1], images[1]);
@@ -656,7 +656,7 @@ public class PopulateValues {
         Double[] prices = {90.99, 85.99, 59.99};
         String[] nutrientsIds = {"1NT"};
         String[] recipeIds = {"4RES", "5RES", "6RES"};
-        String[] images = {"", "", ""};
+        String[] images = {"assets/doughnuts/dougnuts3.jpg", "assets/doughnuts/dougnuts2.jpg", "assets/doughnuts/dougnuts4.jpg"};
         try {
             Product glazedDoughnutsLove = new ProductImpl("16PRO", "Glazed Simpsons Love Doughnuts", prices[0], cat, nutrientsIds[0], recipeIds[0], images[0]);
             Product glazedDoughnuts = new ProductImpl("17PRO", "Glazed Simpsons  Doughnuts", prices[1], cat, nutrientsIds[0], recipeIds[1], images[1]);
