@@ -18,16 +18,12 @@ import javax.servlet.http.HttpSession;
 import za.co.pattyBakery.Order;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.ShoppingCart;
-import za.co.pattyBakery.dao.ProductDAO;
-import za.co.pattyBakery.dao.RecipeDAO;
-import za.co.pattyBakery.dao.impl.ProductDAOImpl;
 import za.co.pattyBakery.exception.OrderException;
+import za.co.pattyBakery.exception.ShoppingCartException;
 import za.co.pattyBakery.model.OrderImpl;
-import za.co.pattyBakery.model.Recipe;
 import za.co.pattyBakery.model.ShoppingCartImpl;
 import za.co.pattyBakery.service.impl.OrderServImpl;
 import za.co.pattyBakery.service.impl.ProductServImpl;
-import za.co.pattyBakery.service.impl.RecipeServImpl;
 
 /**
  *
@@ -60,7 +56,7 @@ public class BakeryController extends HttpServlet {
     protected static HttpSession session;
     protected static OrderServImpl orderServImpl;
     String control;
-    
+
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -77,43 +73,7 @@ public class BakeryController extends HttpServlet {
             out.println("</html>");
         }
     }
-    
-    public void getAllFromSession(HttpServletRequest request,
-            HttpServletResponse response, ShoppingCart cart, Map<String, Integer> orderQuantitiesMap,
-            Product[] products, String[] images, String control) {
-        cart = (ShoppingCart) session.getAttribute("shoppingCart");
-        orderQuantitiesMap = (Map<String, Integer>) session.getAttribute("quantitiesMap");
-        products = (Product[]) session.getAttribute(control + "_products");
-        images = (String[]) session.getAttribute(control + "_images");
-        
-        if (cart == null) {
-            cart = new ShoppingCartImpl(null, null, null);
-        }
-        
-        if (orderQuantitiesMap == null) {
-            orderQuantitiesMap = new HashMap<>();
-        }
-        if (products == null) {
-            products = new Product[3];
-        }
-        this.cart = cart;
-        this.orderQuantitiesMap = orderQuantitiesMap;
-        this.products = products;
-    }
-    
-    public void saveToSession(HttpServletRequest request,
-            HttpServletResponse response, ShoppingCart cart,
-            String[] imagesSrc, Map<String, Integer> orderQuantitiesMap,
-            Product[] products, String control) {
-        session.setAttribute("control", control);
-        session.setAttribute("cartItems", cart);
-        session.setAttribute("quantitiesMap", orderQuantitiesMap);
-        session.setAttribute(control + "_products", products);
-        session.setAttribute("shoppingCart", cart);
-        session.setAttribute(control + "_images", imagesSrc);
-        
-    }
-    
+
     public HttpSession setSession(HttpServletRequest request, HttpSession session) {
         if (session == null) {
             session = request.getSession(true);
@@ -124,25 +84,7 @@ public class BakeryController extends HttpServlet {
         }
         return session;
     }
-    
-    public void setIngredientAttributes(String[] recipeIds, String[] strings, HttpServletRequest request) {
-        RecipeDAO recipeServImpl = new RecipeServImpl();
-        for (int i = 0; i < recipeIds.length; i++) {
-            Recipe recipe = recipeServImpl.getRecipeById(recipeIds[i]);
-            session.setAttribute(strings[i], recipe.getIngredients());
-        }
-    }
-    
-    public void setProductName(String[] productIds, String[] productNames, String[] productPrices, String[] productNutrients, HttpServletRequest request) {
-        ProductDAO productServImpl = new ProductDAOImpl();
-        for (int i = 0; i < productIds.length; i++) {
-            Product product = productServImpl.getProductById(productIds[i]);
-            session.setAttribute(productNames[i], product.getProductName());
-            session.setAttribute(productPrices[i], product.getPrice());
-            session.setAttribute(productNutrients[i], product.getNutrientsList());
-        }
-    }
-    
+
     public void manageCart(HttpServletRequest request, HttpServletResponse response, String[] productIds, ShoppingCart cart, List<Order> orders,
             Map<String, Integer> orderQuantitiesMap, Integer[] orderQuantities, String[] imagesSrc, Product[] products)
             throws ServletException, IOException {
@@ -151,8 +93,8 @@ public class BakeryController extends HttpServlet {
                 if (request.getParameter("adds").equalsIgnoreCase(productId1)) {
                     addOrders(request, "adds");
                     addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
-                    cart = setTotalPrice(cart, orders);
-                    redirectToCart(request, response);
+                    setTotalPrice(orders);
+                    response.sendRedirect("cart_control");
                 }
             }
         }
@@ -161,28 +103,26 @@ public class BakeryController extends HttpServlet {
                 if (request.getParameter("sub").equalsIgnoreCase(prodId)) {
                     removeOrder(prodId, orders);
                     addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
-                    cart = setTotalPrice(cart, orders);
-                    redirectToCart(request, response);
+                    setTotalPrice(orders);
+                    response.sendRedirect("cart_control");
                 }
             }
         }
     }
-    
+
     public void redirectToPage(HttpServletRequest request, HttpServletResponse response, String redirectPage)
             throws ServletException, IOException {
-//        setIngredientAttributes(recipeIds, productIds, request);
-//        setProductName(productIds, productNames, productPrices, productNutrients, request);
         request.setAttribute("totalInCart", totalItemsInCart);
         RequestDispatcher dispatcher = request.getRequestDispatcher(redirectPage);
         dispatcher.forward(request, response);
-        
+
     }
-    
-    public void addOrder(String productId) {
+
+    public void addOrder(List<Order> orders, String productId) {
         try {
             Product product = new ProductServImpl().getProductById(productId);
             Order order = new OrderImpl(product, product.getPrice());
-            
+
             if (orders == null) {
                 orders = new ArrayList<>();
             }
@@ -193,11 +133,26 @@ public class BakeryController extends HttpServlet {
                 }
             }
             orders.add(order);
-        } catch (OrderException ex) {
+            cart = getShoppingCartFromSession(orders);
+            cart.addOrder(order, orders);
+            session.setAttribute("cart", cart);
+
+        } catch (OrderException | ShoppingCartException ex) {
             System.out.println(String.format("ERROR: %s%n", ex.getMessage()));
         }
     }
-    
+
+    public ShoppingCart getShoppingCartFromSession(List<Order> orders) {
+        cart = (ShoppingCart) session.getAttribute("cart");
+        if (cart == null) {
+            cart = new ShoppingCartImpl(orders, null, LocalDate.now());
+        }
+        if (cart.getOrderNumber() == null) {
+            cart.setOrderNumber(generateOrderNumber());
+        }
+        return cart;
+    }
+
     public void removeOrder(String productId, List<Order> orders) {
         try {
             Product product = new ProductServImpl().getProductById(productId);
@@ -216,12 +171,12 @@ public class BakeryController extends HttpServlet {
                     return;
                 }
             }
-            
+
         } catch (OrderException ex) {
             System.out.println(String.format("ERROR: %s%n", ex.getMessage()));
         }
     }
-    
+
     public void addQuantities(List<Order> orders, String[] productIds, Map<String, Integer> orderQuantitiesMap, Integer[] orderQuantities) {
         Integer i = 0;
         if (orders != null && productIds != null) {
@@ -235,21 +190,22 @@ public class BakeryController extends HttpServlet {
             }
         }
     }
-    
-    public ShoppingCart setTotalPrice(ShoppingCart cart, List<Order> orders) {
+
+    public void setTotalPrice(List<Order> orders) {
+        cart = (ShoppingCart) session.getAttribute("cart");
         if (cart == null) {
             cart = new ShoppingCartImpl(orders, null, LocalDate.now());
         }
-        
+
         if (cart.getOrderNumber() == null) {
             cart.setOrderNumber(generateOrderNumber());
             cart.setOrders(orders);
         } else {
             cart.setOrders(orders);
         }
-        return cart;
+        session.setAttribute("cart", cart);
     }
-    
+
     public String generateOrderNumber() {
         List<Character> alphabets = new ArrayList<>();
         String orderNumber = "";
@@ -262,7 +218,7 @@ public class BakeryController extends HttpServlet {
         }
         return orderNumber;
     }
-    
+
     public void manageLogin(HttpServletRequest request, HttpServletResponse response, List<Order> orders, String[] recipeIds, String[] productIds,
             String[] productNames, String[] productPrices, String[] productNutrients, Integer totalItemsInCart, ShoppingCart cart, String control) throws ServletException, IOException {
         session.setAttribute("control", control);
@@ -274,11 +230,10 @@ public class BakeryController extends HttpServlet {
             redirectToPage(request, response, "login_control");
         }
     }
-    
-    public void managePayment(HttpServletRequest request, HttpServletResponse response, String[] recipeIds, String[] productIds,
-            String[] productNames, String[] productPrices, String[] productNutrients, Integer totalItemsInCart, ShoppingCart cart, List<Order> orders)
+
+    public void managePayment(HttpServletRequest request, HttpServletResponse response, List<Order> orders)
             throws ServletException, IOException {
-        
+
         if (request.getParameter("pay") != null) {
             orderServImpl = new OrderServImpl();
             if (cart != null) {
@@ -289,16 +244,15 @@ public class BakeryController extends HttpServlet {
             totalItemsInCart = 0;
         }
     }
-    
-    public void manageOrderConfirmation(HttpServletRequest request, HttpServletResponse response, List<Order> orders, String[] recipeIds, String[] productIds,
-            String[] productNames, String[] productPrices, String[] productNutrients, Integer totalItemsInCart, ShoppingCart cart, String control)
+
+    public void manageOrderConfirmation(HttpServletRequest request, HttpServletResponse response, String control)
             throws ServletException, IOException {
         if (request.getParameter("confirmOrder") != null) {
             session.setAttribute("control", control);
             redirectToPage(request, response, "check-out");
         }
     }
-    
+
     public void manageCheckout(HttpServletRequest request, HttpServletResponse response, List<Order> orders, String[] recipeIds, String[] productIds,
             String[] productNames, String[] productPrices, String[] productNutrients, Integer totalItemsInCart, ShoppingCart cart, String control)
             throws ServletException, IOException {
@@ -308,31 +262,26 @@ public class BakeryController extends HttpServlet {
             redirectToPage(request, response, "login");
         }
     }
-    
+
     public void manageOrderAddition(HttpServletRequest request, HttpServletResponse response, String page)
             throws ServletException, IOException {
         if (request.getParameter("add") != null) {
             addOrders(request, "add");
             redirectToPage(request, response, page);
-            
+
         } else {
             if (request.getParameter("cart") == null) {
                 redirectToPage(request, response, page);
-                
+
             } else {
-                redirectToCart(request, response);
+                redirectToPage(request, response, "cart_control");
             }
         }
     }
-    
-    public void redirectToCart(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        
-    }
-    
+
     public void addOrders(HttpServletRequest request, String param)
             throws ServletException, IOException {
-        
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -350,8 +299,8 @@ public class BakeryController extends HttpServlet {
         session = setSession(request, session);
         //getAllFromSession(request, response, cart, orderQuantitiesMap, products, control);
         processRequest(request, response);
-        addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
-        
+//        addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
+
     }
 
     /**
@@ -367,9 +316,9 @@ public class BakeryController extends HttpServlet {
             throws ServletException, IOException {
         session = setSession(request, session);
         //getAllFromSession(request, response, cart, orderQuantitiesMap, products, control);
-        addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
+//        addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
         processRequest(request, response);
-        addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
+//        addQuantities(orders, productIds, orderQuantitiesMap, orderQuantities);
     }
 
     /**

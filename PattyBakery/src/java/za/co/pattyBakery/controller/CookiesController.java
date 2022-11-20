@@ -68,37 +68,31 @@ public class CookiesController extends BakeryController {
     }
 
     @Override
-    public void redirectToCart(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        saveToSession(request, response, bakeryCart, imagesSrc, orderQuantitiesMap, products, bakery_control);
-        session.setAttribute("deliveryAmount", 100.0);
-        session.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", bakeryCart == null ? 0.0 : bakeryCart.getTotalprice())));
-        response.sendRedirect("cart_control");
-    }
-
-    @Override
     public void addOrders(HttpServletRequest request, String param)
             throws ServletException, IOException {
         if (request.getParameter(param).equalsIgnoreCase("4PRO")) {
             imagesSrc[0] = "assets/cookies/cookies_p.jpg";
             bakeryProductId = bakeryProductIds[0];
             products[0] = new ProductServImpl().getProductById(bakeryProductId);
-            addOrder(bakeryProductId);
+            addOrder(bakeryOrders, bakeryProductId);
 
         } else if (request.getParameter(param).equalsIgnoreCase("5PRO")) {
             imagesSrc[1] = "assets/cookies/cookies_pic1.jpg";
             bakeryProductId = bakeryProductIds[1];
             products[1] = new ProductServImpl().getProductById(bakeryProductId);
-            addOrder(bakeryProductId);
+            addOrder(bakeryOrders, bakeryProductId);
         } else if (request.getParameter(param).equalsIgnoreCase("6PRO")) {
             imagesSrc[2] = "assets/cookies/cokkies_pic2.jpg";
             bakeryProductId = bakeryProductIds[2];
             products[2] = new ProductServImpl().getProductById(bakeryProductId);
-            addOrder(bakeryProductId);
+            addOrder(bakeryOrders, bakeryProductId);
         }
-        bakeryCart = setTotalPrice(bakeryCart, orders);
+//        setTotalPrice(bakeryOrders);
+        bakeryCart = (ShoppingCart) session.getAttribute("cart");
         totalItemsInCart = bakeryCart.getOrders().size();
-        session.setAttribute("totalInCart", totalItemsInCart);
+        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, orderQuantities);
+        request.setAttribute("totalInCart", totalItemsInCart);
+
     }
 
 }
