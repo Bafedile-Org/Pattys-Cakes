@@ -70,26 +70,13 @@ public class CookiesController extends BakeryController {
     @Override
     public void addOrders(HttpServletRequest request, String param)
             throws ServletException, IOException {
-        if (request.getParameter(param).equalsIgnoreCase("4PRO")) {
-            imagesSrc[0] = "assets/cookies/cookies_p.jpg";
-            bakeryProductId = bakeryProductIds[0];
-            products[0] = new ProductServImpl().getProductById(bakeryProductId);
-            addOrder(bakeryOrders, bakeryProductId);
-
-        } else if (request.getParameter(param).equalsIgnoreCase("5PRO")) {
-            imagesSrc[1] = "assets/cookies/cookies_pic1.jpg";
-            bakeryProductId = bakeryProductIds[1];
-            products[1] = new ProductServImpl().getProductById(bakeryProductId);
-            addOrder(bakeryOrders, bakeryProductId);
-        } else if (request.getParameter(param).equalsIgnoreCase("6PRO")) {
-            imagesSrc[2] = "assets/cookies/cokkies_pic2.jpg";
-            bakeryProductId = bakeryProductIds[2];
-            products[2] = new ProductServImpl().getProductById(bakeryProductId);
-            addOrder(bakeryOrders, bakeryProductId);
+        for (String prodId : bakeryProductIds) {
+            if (request.getParameter(param).equalsIgnoreCase(prodId)) {
+                addOrder(bakeryOrders, prodId);
+            }
         }
-//        setTotalPrice(bakeryOrders);
         bakeryCart = (ShoppingCart) session.getAttribute("cart");
-        totalItemsInCart = bakeryCart.getOrders().size();
+        totalItemsInCart = bakeryCart.getAllOrders().size();
         addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, orderQuantities);
         request.setAttribute("totalInCart", totalItemsInCart);
 

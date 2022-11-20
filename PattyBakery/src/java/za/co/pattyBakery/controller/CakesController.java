@@ -1,45 +1,62 @@
-//package za.co.pattyBakery.controller;
-//
-//import java.io.IOException;
-//import java.util.ArrayList;
-//import java.util.List;
-//import java.util.Map;
-//import javax.servlet.ServletException;
-//import javax.servlet.annotation.WebServlet;
-//import javax.servlet.http.HttpServletRequest;
-//import javax.servlet.http.HttpServletResponse;
-//import za.co.pattyBakery.Order;
-//import za.co.pattyBakery.Product;
-//import za.co.pattyBakery.ShoppingCart;
-//import static za.co.pattyBakery.controller.BakeryController.orderQuantities;
-//import static za.co.pattyBakery.controller.BakeryController.orderQuantitiesMap;
-//import static za.co.pattyBakery.controller.BakeryController.products;
-//import static za.co.pattyBakery.controller.CookiesController.bakery_control;
-//import za.co.pattyBakery.service.impl.ProductServImpl;
-//
-///**
-// *
-// * @author Dimakatso Sebatane
-// */
-//@WebServlet(name = "CakesController", urlPatterns = {"/cakes_control"})
-//
-//public class CakesController extends BakeryController {
-//
-//    protected String servletPath;
-//    protected static List<Order> bakeryOrders = new ArrayList<>();
-//    protected static String[] bakeryRecipeIds = {"1RES", "2RES", "3RES"};
-//    protected static String[] bakeryProductIds = {"1PRO", "2PRO", "3PRO"};
-//    protected static String[] bakeryProductNames = {"1PROName", "2PROName", "3PROName"};
-//    protected static String[] bakeryProductPrices = {"1PROPrice", "2PROPrice", "3PROPrice"};
-//    protected static String[] bakeryProductNutrients = {"1PRONu", "2PRONu", "3PRONu"};
-//    protected static ShoppingCart bakeryCart;
-//    protected static String bakeryProductId;
-//    protected static String bakery_control;
-//
-//    @Override
-//    public void processRequest(HttpServletRequest request, HttpServletResponse response)
-//            throws ServletException, IOException {
-//        bakery_control = request.getServletPath().replace("/", "");
+package za.co.pattyBakery.controller;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import za.co.pattyBakery.Order;
+import za.co.pattyBakery.Product;
+import za.co.pattyBakery.ShoppingCart;
+import static za.co.pattyBakery.controller.BakeryController.orderQuantities;
+import static za.co.pattyBakery.controller.BakeryController.orderQuantitiesMap;
+import static za.co.pattyBakery.controller.BakeryController.products;
+import static za.co.pattyBakery.controller.CookiesController.bakeryOrders;
+import static za.co.pattyBakery.controller.CookiesController.bakeryRecipeIds;
+import static za.co.pattyBakery.controller.CookiesController.bakery_control;
+import za.co.pattyBakery.service.impl.ProductServImpl;
+
+/**
+ *
+ * @author Dimakatso Sebatane
+ */
+@WebServlet(name = "CakesController", urlPatterns = {"/cakes_control"})
+
+public class CakesController extends BakeryController {
+
+    protected String servletPath;
+    private List<Product> cakes;
+    protected static List<Order> bakeryOrders = new ArrayList<>();
+    protected static String[] bakeryRecipeIds;
+    protected String[] bakeryProductIds;
+    protected static ShoppingCart bakeryCart;
+    protected static String bakeryProductId;
+    protected static String bakery_control;
+
+    public void getProductInfo() {
+        bakeryProductIds = new String[cakes.size()];
+        bakeryRecipeIds = new String[cakes.size()];
+        for (int i = 0; i < bakeryProductIds.length; i++) {
+            bakeryProductIds[i] = cakes.get(i).getProductId();
+            bakeryRecipeIds[i] = cakes.get(i).getRecipeId();
+        }
+    }
+
+    @Override
+    public void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        bakery_control = request.getServletPath().replace("/", "");
+        cakes = new ProductServImpl().getAllProductsByCategoryId(2);
+        getProductInfo();
+        request.setAttribute("products", cakes);
+        request.setAttribute("totalInCart", 0);
+        request.setAttribute("control", bakery_control);
+        manageOrderAddition(request, response, "cakes");
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("cakes");
+//        dispatcher.forward(request, response);
 //        getAllFromSession(request, response, bakeryCart, orderQuantitiesMap, products, imagesSrc, bakery_control);
 //        manageOrderAddition(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, "cakes");
 //        manageCart(request, response, bakeryProductIds, bakeryCart, bakeryOrders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
@@ -48,44 +65,20 @@
 //        manageCheckout(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
 //        manageLogin(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
 //        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, orderQuantities);
-//        saveToSession(request, response, bakeryCart, imagesSrc, orderQuantitiesMap, products, bakery_control);
-//
-//    }
-//
-//    @Override
-//    public void redirectToCart(HttpServletRequest request, HttpServletResponse response, ShoppingCart bakeryCart, String[] imagesSrc, Map<String, Integer> orderQuantitiesMap, Product[] products)
-//            throws ServletException, IOException {
-//        saveToSession(request, response, bakeryCart, imagesSrc, orderQuantitiesMap, products, bakery_control);
-//        session.setAttribute("deliveryAmount", 100.0);
-//        session.setAttribute("totalAmount", Double.valueOf(String.format("%.2f", bakeryCart == null ? 0.0 : bakeryCart.getTotalprice())));
-//        response.sendRedirect("cart_control");
-//    }
-//
-//    @Override
-//    public void addOrders(HttpServletRequest request, String param, List<Order> orders)
-//            throws ServletException, IOException {
-//
-//        // use a switch statement 
-//        if (request.getParameter(param).equalsIgnoreCase("1PRO")) {
-//            imagesSrc[0] = "assets/cakes/caramel-cake-5.jpg";
-//            bakeryProductId = bakeryProductIds[0];
-//            products[0] = new ProductServImpl().getProductById(bakeryProductId);
-//            addOrder(bakeryProductId, orders);
-//
-//        } else if (request.getParameter(param).equalsIgnoreCase("2PRO")) {
-//            imagesSrc[1] = "assets/cakes/Meringue-Cake.jpg";
-//            bakeryProductId = bakeryProductIds[1];
-//            products[1] = new ProductServImpl().getProductById(bakeryProductId);
-//            addOrder(bakeryProductId, orders);
-//        } else if (request.getParameter(param).equalsIgnoreCase("3PRO")) {
-//            imagesSrc[2] = "assets/cakes/cakes_pic.jpg";
-//            bakeryProductId = bakeryProductIds[2];
-//            products[2] = new ProductServImpl().getProductById(bakeryProductId);
-//            addOrder(bakeryProductId, orders);
-//        }
-//        bakeryCart = setTotalPrice(bakeryCart, orders);
-//        totalItemsInCart = bakeryCart.getOrders().size();
-//        session.setAttribute("totalInCart", totalItemsInCart);
-//    }
-//
-//}
+
+    }
+
+    @Override
+    public void addOrders(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+        for (String prodId : bakeryProductIds) {
+            if (request.getParameter(param).equalsIgnoreCase(prodId)) {
+                addOrder(bakeryOrders, prodId);
+            }
+        }
+        bakeryCart = (ShoppingCart) session.getAttribute("cart");
+        totalItemsInCart = bakeryCart.getAllOrders().size();
+        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, orderQuantities);
+        request.setAttribute("totalInCart", totalItemsInCart);
+    }
+}
