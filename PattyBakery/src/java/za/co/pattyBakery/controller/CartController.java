@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -58,7 +57,7 @@ public class CartController extends BakeryController {
                             + "</span><span class='like-btn'></span>"
                             + "</div>"
                             + "<div class='image'>"
-                            + "<img src='%s' alt='cookies' width='250' height='150' />"
+                            + "<img src='%s' alt='%s' width='250' height='150' />"
                             + "</div>"
                             + "<div class='description'><span>%s</span>"
                             + "</div>"
@@ -71,11 +70,12 @@ public class CartController extends BakeryController {
                             + "</form>"
                             + "</div>"
                             + "R<input type='button' id='price' class='total-price' value='%.2f' name='%.2f'>"
-                            + "<div class=”remove” onclick='remove()'>"
+                            + "<div class=”remove” >"
                             + "<u style='cursor: pointer'>Remove</u>"
                             + "</div>"
                             + "</div><br>",
-                            products[i].getImageName(), products[i].getProductName(), products[i].getCategory(), controlsMap.get(products[i].getProductId()), "sub", products[i].getProductId(), quantitiesMap.get(products[i].getProductId()), "adds",
+                            products[i].getImageName(), products[i].getCategory(), products[i].getProductName(), products[i].getCategory(),
+                            controlsMap.get(products[i].getProductId()), "sub", products[i].getProductId(), quantitiesMap.get(products[i].getProductId()), "adds",
                             products[i].getProductId(), products[i].getPrice(), products[i].getPrice()));
                 }
             }

@@ -4,14 +4,12 @@ import java.io.IOException;
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import za.co.pattyBakery.Person;
 import za.co.pattyBakery.dao.CustomerDAO;
-import za.co.pattyBakery.dao.impl.CustomerDAOImpl;
 import za.co.pattyBakery.model.PersonImpl;
 import za.co.pattyBakery.service.impl.CustomerServImpl;
 
