@@ -31,7 +31,7 @@
 </head>
 <body onload="totalAmount()">
     <header>
-        <a align="left" href="<%=(String) session.getAttribute("control")%>" style="color:black;width:5%;float:left">
+        <a align="left" href="home" style="color:black;width:5%;float:left">
             <i class="fa fa-arrow-left" aria-hidden="true" style="">
             </i>
         </a>
@@ -42,18 +42,19 @@
 
     <div id='all'>
         <%
-            String displayMessage = (String) session.getAttribute("displayMessage");
+            ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
+            String displayMessage = (String) request.getAttribute("displayMessage");
             out.println(displayMessage);
         %>
     </div>
 
     <div class='checkout' align='center'>
-        Total Amount :R<input type='button' id='totalAmount' value='<%=String.format("%.2f", session.getAttribute("totalAmount"))%>'><br>
-        <label>Delivery : R<%=(Double) session.getAttribute("deliveryAmount")%></label><br>
-        Total Amount Due :R<input type='button' id='totalAmountDue' value='<%=(Double) session.getAttribute("totalAmount") == 0 ? 0.0 : String.format("%.2f", (Double) session.getAttribute("totalAmount") + 100)%>'>
+        Total Amount :R<input type='button' id='totalAmount' value='<%=String.format("%.2f", cart.getTotalprice())%>'><br>
+        <label>Delivery : R<%=(Double) request.getAttribute("deliveryAmount")%></label><br>
+        Total Amount Due :R<input type='button' id='totalAmountDue' value='<%=String.format("%.2f", cart.getTotalprice() + 100)%>'>
     </div>
     <div align='right'>
-        <form action='<%=(String) session.getAttribute("control")%>' method='POST'>
+        <form action='<%=(String) request.getAttribute("control")%>' method='POST'>
             <button style="width:150px;height:50px;border-radius:12px;background-color:#C799BA" name='checkout'>Checkout</button>
         </form>
     </div>

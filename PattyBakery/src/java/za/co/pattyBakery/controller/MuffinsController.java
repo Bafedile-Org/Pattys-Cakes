@@ -26,6 +26,7 @@ import za.co.pattyBakery.service.impl.ProductServImpl;
 public class MuffinsController extends BakeryController {
 
     protected String servletPath;
+<<<<<<< HEAD
     protected static List<Order> bakeryOrders = new ArrayList<>();
     protected static String[] bakeryRecipeIds = {"10RES", "11RES", "12RES"};
     protected static String[] bakeryProductIds = {"13PRO", "14PRO", "15PRO"};
@@ -35,11 +36,30 @@ public class MuffinsController extends BakeryController {
     protected static ShoppingCart bakeryCart;
     protected static String bakeryProductId;
     protected static String bakery_control;
+=======
+    private List<Product> cookies;
+    protected static List<Order> bakeryOrders = new ArrayList<>();
+    protected static String[] bakeryRecipeIds;
+    protected String[] bakeryProductIds;
+    protected static ShoppingCart bakeryCart;
+    protected static String bakeryProductId;
+    protected static String bakery_control;
+
+    public void getProductInfo() {
+        bakeryProductIds = new String[cookies.size()];
+        bakeryRecipeIds = new String[cookies.size()];
+        for (int i = 0; i < bakeryProductIds.length; i++) {
+            bakeryProductIds[i] = cookies.get(i).getProductId();
+            bakeryRecipeIds[i] = cookies.get(i).getRecipeId();
+        }
+    }
+>>>>>>> Deekay-dev
 
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         bakery_control = request.getServletPath().replace("/", "");
+<<<<<<< HEAD
         getAllFromSession(request, response, bakeryCart, orderQuantitiesMap, products, imagesSrc, bakery_control);
         manageOrderAddition(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, "muffins");
         manageCart(request, response, bakeryProductIds, bakeryCart, bakeryOrders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
@@ -84,5 +104,40 @@ public class MuffinsController extends BakeryController {
         bakeryCart = setTotalPrice(bakeryCart, bakeryOrders);
         totalItemsInCart = bakeryCart.getOrders().size();
         session.setAttribute("totalInCart", totalItemsInCart);
+=======
+        cookies = new ProductServImpl().getAllProductsByCategoryId(5);
+        getProductInfo();
+        request.setAttribute("products", cookies);
+        request.setAttribute("totalInCart", 0);
+        request.setAttribute("control", bakery_control);
+//        RequestDispatcher dispatcher = request.getRequestDispatcher("cookies");
+//        dispatcher.forward(request, response);
+//        getAllFromSession(request, response, bakeryCart, orderQuantitiesMap, products, imagesSrc, bakery_control);
+        manageOrderAddition(request, response, "muffins");
+//        manageCart(request, response, bakeryProductIds, bakeryCart, bakeryOrders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
+//        manageOrderConfirmation(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
+//        managePayment(request, response, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakeryOrders);
+//        manageCheckout(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
+//        manageLogin(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
+//        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, orderQuantities);
+//        saveToSession(request, response, bakeryCart, imagesSrc, orderQuantitiesMap, products, bakery_control);
+
     }
+
+    @Override
+    public void addOrders(HttpServletRequest request, String param)
+            throws ServletException, IOException {
+        for (String prodId : bakeryProductIds) {
+            if (request.getParameter(param).equalsIgnoreCase(prodId)) {
+                addOrder(bakeryOrders, prodId);
+            }
+        }
+        bakeryCart = (ShoppingCart) session.getAttribute("cart");
+        totalItemsInCart = bakeryCart.getAllOrders().size();
+        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, orderQuantities);
+        request.setAttribute("totalInCart", totalItemsInCart);
+
+>>>>>>> Deekay-dev
+    }
+
 }

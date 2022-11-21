@@ -2,6 +2,7 @@ package za.co.pattyBakery;
 
 import java.util.List;
 import za.co.pattyBakery.exception.ProductException;
+import za.co.pattyBakery.model.Recipe;
 
 /**
  *
@@ -42,6 +43,12 @@ public interface Product {
     void setCategory(String category) throws ProductException;
 
     String getCategory();
+
+    public String getImageName();
+
+    public Recipe getRecipe();
+
+    public void setImageName(String imageName);
 
     public List<String> getNutrientsList();
 

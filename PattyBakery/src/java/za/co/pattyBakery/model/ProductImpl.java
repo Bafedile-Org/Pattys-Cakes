@@ -16,12 +16,13 @@ public class ProductImpl implements Product {
     private Integer categoryId;
     private List<String> nutrientsList;
     private Recipe recipe;
+    private String imageName;
 
     public ProductImpl() {
     }
 
     public ProductImpl(String productId, String productName,
-            Double price, String category, List<String> nutrientsList, Recipe recipe) throws ProductException {
+            Double price, String category, List<String> nutrientsList, Recipe recipe, String imageName) throws ProductException {
         this.setPrice(price);
         this.setProductId(productId);
         this.setProductName(productName);
@@ -29,6 +30,7 @@ public class ProductImpl implements Product {
         this.setNutrientsList(nutrientsList);
         this.setNutrientId(nutrientId);
         this.recipe = recipe;
+        this.setImageName(imageName);
     }
 
     public ProductImpl(String productId, String productName,
@@ -43,13 +45,26 @@ public class ProductImpl implements Product {
     }
 
     public ProductImpl(String productId, String productName,
-            Double price, Integer categoryId, String nutrientId, String recipeId) throws ProductException {
+            Double price, String category, List<String> nutrientsList, String nutrientId, String recipeId, String imageName) throws ProductException {
+        this.setPrice(price);
+        this.setProductId(productId);
+        this.setProductName(productName);
+        this.setCategory(category);
+        this.setNutrientsList(nutrientsList);
+        this.setNutrientId(nutrientId);
+        this.setRecipeId(recipeId);
+        this.setImageName(imageName);
+    }
+
+    public ProductImpl(String productId, String productName,
+            Double price, Integer categoryId, String nutrientId, String recipeId, String imageName) throws ProductException {
         this.setCategoryId(categoryId);
         this.setProductName(productName);
         this.setRecipeId(recipeId);
         this.setNutrientId(nutrientId);
         this.setPrice(price);
         this.setProductId(productId);
+        this.setImageName(imageName);
     }
 
     /**
@@ -169,6 +184,24 @@ public class ProductImpl implements Product {
     @Override
     public void setNutrientsList(List<String> nutrientsList) {
         this.nutrientsList = nutrientsList;
+    }
+
+    /**
+     * @return the imageName
+     */
+    public String getImageName() {
+        return imageName;
+    }
+
+    /**
+     * @param imageName the imageName to set
+     */
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
+    public Recipe getRecipe() {
+        return recipe;
     }
 
 }

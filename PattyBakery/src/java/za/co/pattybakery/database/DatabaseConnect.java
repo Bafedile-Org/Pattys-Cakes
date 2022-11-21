@@ -114,7 +114,7 @@ public class DatabaseConnect {
         PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS product (prod_id VARCHAR(10) PRIMARY KEY,prod_name VARCHAR(200),price Double, nutr_id VARCHAR(10) NOT NULL ,"
-                    + "recp_id VARCHAR(10) NOT NULL ,cat_id INTEGER NOT NULL,"
+                    + "recp_id VARCHAR(10) NOT NULL ,cat_id INTEGER NOT NULL,image_name VARCHAR(255),"
                     + "FOREIGN KEY(nutr_id) REFERENCES nutrients(nutr_id),FOREIGN Key(recp_id) REFERENCES recipe(recp_id),FOREIGN KEY(cat_id)  REFERENCES category(cat_id))");
             stat.executeUpdate();
         } catch (SQLException sql) {

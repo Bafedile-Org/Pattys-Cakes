@@ -25,5 +25,7 @@ public interface ProductDAO extends Close {
 
     List<Product> getAllProducts();
 
+    public List<Product> getAllProductsByCategoryId(Integer categoryId);
+
     public List<String> getAllProductsIds();
 }

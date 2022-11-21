@@ -387,27 +387,26 @@ public class PopulateValues {
         System.out.println("doughnuts product/ingredients created");
     }
 
-    public void addVanilaNutrients() {
-        Integer cat = 2;
-        Double[] prices = {256.50, 449.50, 159.50};
-        String[] nutrientsIds = {"1NT"};
-        String[] recipeIds = {"1RES", "2RES", "3RES"};
-        try {
-            Product caramelCake = new ProductImpl("1PRO", "Caramel Cake", prices[0], cat, nutrientsIds[0], recipeIds[0]);
-            Product MargueCake = new ProductImpl("2PRO", "Margue Cake", prices[1], cat, nutrientsIds[0], recipeIds[1]);
-            Product chocolateCake = new ProductImpl("3PRO", "Chocolate Cake", prices[2], cat, nutrientsIds[0], recipeIds[2]);
-
-            ProductDAO productDao = new ProductDAOImpl(con);
-            productDao.addProductByIds(MargueCake);
-            productDao.addProductByIds(caramelCake);
-            productDao.addProductByIds(chocolateCake);
-        } catch (ProductException sql) {
-            System.out.println("product insert failed" + sql.getMessage());
-        }
-        System.out.println("product added");
-    }
+//    public void addVanilaNutrients() {
+//        Integer cat = 2;
+//        Double[] prices = {256.50, 449.50, 159.50};
+//        String[] nutrientsIds = {"1NT"};
+//        String[] recipeIds = {"1RES", "2RES", "3RES"};
+//        try {
+//            Product caramelCake = new ProductImpl("1PRO", "Caramel Cake", prices[0], cat, nutrientsIds[0], recipeIds[0]);
+//            Product MargueCake = new ProductImpl("2PRO", "Margue Cake", prices[1], cat, nutrientsIds[0], recipeIds[1]);
+//            Product chocolateCake = new ProductImpl("3PRO", "Chocolate Cake", prices[2], cat, nutrientsIds[0], recipeIds[2]);
+//
+//            ProductDAO productDao = new ProductDAOImpl(con);
+//            productDao.addProductByIds(MargueCake);
+//            productDao.addProductByIds(caramelCake);
+//            productDao.addProductByIds(chocolateCake);
+//        } catch (ProductException sql) {
+//            System.out.println("product insert failed" + sql.getMessage());
+//        }
+//        System.out.println("product added");
+//    }
 //--------------------------------------------INGREDIENTS
-
     public void addCakeRecipiesIngredients() {
         Integer caramelCakeIngrId[] = {2, 0, 1, 3, 14, 18, 10, 12};
         Integer marigueCakeIngrId[] = {1, 39, 2, 3, 14, 40};
@@ -552,10 +551,11 @@ public class PopulateValues {
         Double[] prices = {256.50, 449.50, 159.50};
         String[] nutrientsIds = {"1NT"};
         String[] recipeIds = {"1RES", "2RES", "3RES"};
+        String[] images = {"assets/cakes/caramel-cake-5.jpg", "assets/cakes/Meringue-Cake.jpg", "assets/cakes/cakes_pic.jpg"};
         try {
-            Product caramelCake = new ProductImpl("1PRO", "Caramel Cake", prices[0], cat, nutrientsIds[0], recipeIds[0]);
-            Product MargueCake = new ProductImpl("2PRO", "Margue Cake", prices[1], cat, nutrientsIds[0], recipeIds[1]);
-            Product chocolateCake = new ProductImpl("3PRO", "Chocolate Cake", prices[2], cat, nutrientsIds[0], recipeIds[2]);
+            Product caramelCake = new ProductImpl("1PRO", "Caramel Cake", prices[0], cat, nutrientsIds[0], recipeIds[0], images[0]);
+            Product MargueCake = new ProductImpl("2PRO", "Meringue Cake", prices[1], cat, nutrientsIds[0], recipeIds[1], images[1]);
+            Product chocolateCake = new ProductImpl("3PRO", "Chocolate Cake", prices[2], cat, nutrientsIds[0], recipeIds[2], images[2]);
 
             ProductDAO productDao = new ProductDAOImpl(con);
             productDao.addProductByIds(MargueCake);
@@ -572,10 +572,11 @@ public class PopulateValues {
         Double[] prices = {75.99, 32.49, 28.69};
         String[] nutrientsIds = {"1NT"};
         String[] recipeIds = {"16RES", "18RES", "17RES"};
+        String[] images = {"assets/cookies/cookies_p.jpg", "assets/cookies/cookies_pic1.jpg", "assets/cookies/cokkies_pic2.jpg"};
         try {
-            Product vanilaCookie = new ProductImpl("4PRO", "Vanila Cookies", prices[0], cat, nutrientsIds[0], recipeIds[0]);
-            Product chocolateCookie = new ProductImpl("5PRO", "Chocolate Cookies", prices[1], cat, nutrientsIds[0], recipeIds[1]);
-            Product plainCookie = new ProductImpl("6PRO", "Plain Coffee Cookies", prices[2], cat, nutrientsIds[0], recipeIds[2]);
+            Product vanilaCookie = new ProductImpl("4PRO", "Vanila Cookies", prices[0], cat, nutrientsIds[0], recipeIds[0], images[0]);
+            Product chocolateCookie = new ProductImpl("5PRO", "Chocolate Cookies", prices[1], cat, nutrientsIds[0], recipeIds[1], images[1]);
+            Product plainCookie = new ProductImpl("6PRO", "Plain Coffee Cookies", prices[2], cat, nutrientsIds[0], recipeIds[2], images[2]);
 
             ProductDAO productDao = new ProductDAOImpl(con);
             productDao.addProductByIds(vanilaCookie);
@@ -592,10 +593,11 @@ public class PopulateValues {
         Double[] prices = {45.99, 48.99, 40.99};
         String[] nutrientsIds = {"1NT"};
         String[] recipeIds = {"7RES", "8RES", "9RES"};
+        String[] images = {"assets/cupcakes/coffeecupcake.jfif", "assets/cupcakes/glutten_free_chocolate_cupcakes.jpg", "assets/cupcakes/IMG_3165.webp"};
         try {
-            Product walnutCupcakes = new ProductImpl("7PRO", "Walnut Cupcakes", prices[0], cat, nutrientsIds[0], recipeIds[0]);
-            Product chocolateCupcakes = new ProductImpl("8PRO", "Gluten Free Chocolate Cupcakes", prices[1], cat, nutrientsIds[0], recipeIds[1]);
-            Product vanillaCupcakes = new ProductImpl("9PRO", "Vegan Vanilla Cupcakes", prices[2], cat, nutrientsIds[0], recipeIds[2]);
+            Product walnutCupcakes = new ProductImpl("7PRO", "Walnut Cupcakes", prices[0], cat, nutrientsIds[0], recipeIds[0], images[0]);
+            Product chocolateCupcakes = new ProductImpl("8PRO", "Gluten Free Chocolate Cupcakes", prices[1], cat, nutrientsIds[0], recipeIds[1], images[1]);
+            Product vanillaCupcakes = new ProductImpl("9PRO", "Vegan Vanilla Cupcakes", prices[2], cat, nutrientsIds[0], recipeIds[2], images[2]);
 
             ProductDAO productDao = new ProductDAOImpl(con);
             productDao.addProductByIds(walnutCupcakes);
@@ -612,10 +614,11 @@ public class PopulateValues {
         Double[] prices = {59.99, 54.49, 54.49};
         String[] nutrientsIds = {"1NT"};
         String[] recipeIds = {"13RES", "14RES", "15RES"};
+        String[] images = {"assets/personal_pies/blueberry pies.jpg", "assets/personal_pies/apple_pie.jpg", "assets/personal_pies/strawberry pie.jpg"};
         try {
-            Product blueberryPies = new ProductImpl("10PRO", "Blueberry Pies", prices[0], cat, nutrientsIds[0], recipeIds[0]);
-            Product applePies = new ProductImpl("11PRO", "Apple Pies", prices[1], cat, nutrientsIds[0], recipeIds[1]);
-            Product strawberryPies = new ProductImpl("12PRO", "Strawberry Pies", prices[2], cat, nutrientsIds[0], recipeIds[2]);
+            Product blueberryPies = new ProductImpl("10PRO", "Blueberry Pies", prices[0], cat, nutrientsIds[0], recipeIds[0], images[0]);
+            Product applePies = new ProductImpl("11PRO", "Apple Pies", prices[1], cat, nutrientsIds[0], recipeIds[1], images[1]);
+            Product strawberryPies = new ProductImpl("12PRO", "Strawberry Pies", prices[2], cat, nutrientsIds[0], recipeIds[2], images[2]);
 
             ProductDAO productDao = new ProductDAOImpl(con);
             productDao.addProductByIds(blueberryPies);
@@ -632,10 +635,11 @@ public class PopulateValues {
         Double[] prices = {38.99, 45.99, 50.00};
         String[] nutrientsIds = {"1NT"};
         String[] recipeIds = {"10RES", "11RES", "12RES"};
+        String[] images = {"assets/muffins/Blueberry-Muffins.jpg", "assets/muffins/Cranberry-Muffins.jpg", "assets/muffins/carrot-muffins.jpg"};
         try {
-            Product blueberryMuffins = new ProductImpl("13PRO", "Blueberry Muffins", prices[0], cat, nutrientsIds[0], recipeIds[0]);
-            Product cranberryMuffins = new ProductImpl("14PRO", "Cranbery Muffins", prices[1], cat, nutrientsIds[0], recipeIds[1]);
-            Product carrotMuffins = new ProductImpl("15PRO", "Carrot Muffins", prices[2], cat, nutrientsIds[0], recipeIds[2]);
+            Product blueberryMuffins = new ProductImpl("13PRO", "Blueberry Muffins", prices[0], cat, nutrientsIds[0], recipeIds[0], images[0]);
+            Product cranberryMuffins = new ProductImpl("14PRO", "Cranbery Muffins", prices[1], cat, nutrientsIds[0], recipeIds[1], images[1]);
+            Product carrotMuffins = new ProductImpl("15PRO", "Carrot Muffins", prices[2], cat, nutrientsIds[0], recipeIds[2], images[2]);
 
             ProductDAO productDao = new ProductDAOImpl(con);
             productDao.addProductByIds(blueberryMuffins);
@@ -652,10 +656,11 @@ public class PopulateValues {
         Double[] prices = {90.99, 85.99, 59.99};
         String[] nutrientsIds = {"1NT"};
         String[] recipeIds = {"4RES", "5RES", "6RES"};
+        String[] images = {"assets/doughnuts/dougnuts3.jpg", "assets/doughnuts/dougnuts2.jpg", "assets/doughnuts/dougnuts4.jpg"};
         try {
-            Product glazedDoughnutsLove = new ProductImpl("16PRO", "Glazed Simpsons Love Doughnuts", prices[0], cat, nutrientsIds[0], recipeIds[0]);
-            Product glazedDoughnuts = new ProductImpl("17PRO", "Glazed Simpsons  Doughnuts", prices[1], cat, nutrientsIds[0], recipeIds[1]);
-            Product chocolateDoughnuts = new ProductImpl("18PRO", "Chocolate Doughnuts", prices[2], cat, nutrientsIds[0], recipeIds[2]);
+            Product glazedDoughnutsLove = new ProductImpl("16PRO", "Glazed Simpsons Love Doughnuts", prices[0], cat, nutrientsIds[0], recipeIds[0], images[0]);
+            Product glazedDoughnuts = new ProductImpl("17PRO", "Glazed Simpsons  Doughnuts", prices[1], cat, nutrientsIds[0], recipeIds[1], images[1]);
+            Product chocolateDoughnuts = new ProductImpl("18PRO", "Chocolate Doughnuts", prices[2], cat, nutrientsIds[0], recipeIds[2], images[2]);
 
             ProductDAO productDao = new ProductDAOImpl(con);
             productDao.addProductByIds(glazedDoughnutsLove);

@@ -5,6 +5,7 @@ package za.co.pattyBakery.model;
  * @author Hlawulani
  */
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import za.co.pattyBakery.Order;
 import za.co.pattyBakery.ShoppingCart;
@@ -12,40 +13,51 @@ import za.co.pattyBakery.exception.ShoppingCartException;
 
 public class ShoppingCartImpl implements ShoppingCart {
 
-    private List<Order> orders;
+    private List<Order> cartOrders;
+    private List<List<Order>> myOrders;
     private Double totalPrice = 0.0;
     private String orderNumber;
     private LocalDate date;
     private Boolean deliveryStatus;
 
     public ShoppingCartImpl(List<Order> orders, String orderNumber, LocalDate date) {
-        this.orders = orders;
+        cartOrders = orders;
+        myOrders = new ArrayList<>();
+        setOrders(cartOrders);
         this.orderNumber = orderNumber;
         this.date = date;
         this.deliveryStatus = false;
         totalPrice = getTotalprice();
+
     }
 
     public ShoppingCartImpl(List<Order> orders, Double totalPrice, String orderNumber, LocalDate date) {
-        this.orders = orders;
+        cartOrders = orders;
+        myOrders = new ArrayList<>();
+        setOrders(cartOrders);
         this.totalPrice = totalPrice;
         this.orderNumber = orderNumber;
         this.date = date;
         this.deliveryStatus = false;
         totalPrice = getTotalprice();
+
     }
 
     public ShoppingCartImpl(List<Order> orders, String orderNumber, LocalDate date, Boolean deliveryStatus) {
-        this.orders = orders;
+        cartOrders = orders;
+        myOrders = new ArrayList<>();
+        setOrders(cartOrders);
         this.orderNumber = orderNumber;
         this.date = date;
         this.deliveryStatus = deliveryStatus;
         totalPrice = getTotalprice();
+
     }
 
     @Override
     public void setOrders(List<Order> orders) {
-        this.orders = orders;
+        cartOrders = orders;
+        myOrders.add(cartOrders);
     }
 
     @Override
@@ -55,23 +67,23 @@ public class ShoppingCartImpl implements ShoppingCart {
 
     @Override
     public void addOrder(Order order, List<Order> orders) throws ShoppingCartException {
-        if (order == null && orders == null) {
+        if (order == null || orders == null) {
             throw new ShoppingCartException("");
         }
-        orders.add(order);
+        setOrders(orders);
     }
 
     @Override
     public List<Order> getOrders() {
 
-        return orders;
+        return cartOrders;
     }
 
     @Override
     public Double getTotalprice() {
         totalPrice = 0.0;
-        if (orders != null) {
-            for (Order order : orders) {
+        if (getAllOrders() != null) {
+            for (Order order : getAllOrders()) {
                 totalPrice += order.getTotalPrice();
             }
         }
@@ -95,7 +107,33 @@ public class ShoppingCartImpl implements ShoppingCart {
     public Boolean getDeliveryStatus() {
         return deliveryStatus;
     }
+<<<<<<< HEAD
     public void setStatus(Boolean deliveryStatus){
         this.deliveryStatus = deliveryStatus;
+=======
+
+    @Override
+    public List<Order> getAllOrders() {
+        List<Order> allOrders = new ArrayList<>();
+        if (myOrders != null) {
+            for (List<Order> orders : myOrders) {
+                for (Order order : orders) {
+                    if (!checkOrderExists(allOrders, order)) {
+                        allOrders.add(order);
+                    }
+                }
+            }
+        }
+        return allOrders;
+    }
+
+    private Boolean checkOrderExists(List<Order> myOrders, Order order) {
+        for (Order or : myOrders) {
+            if (or.getProduct().getProductId().equals(order.getProduct().getProductId())) {
+                return true;
+            }
+        }
+        return false;
+>>>>>>> Deekay-dev
     }
 }
