@@ -81,17 +81,22 @@ public class CustomerServImpl implements CustomerDAO {
 
     @Override
     public String getCustomerPassword(Integer customerId, String email) {
-        return loginDAOImpl.getCustomerPassword(customerId, email);
+        return customerDAOImpl.getCustomerPassword(customerId, email);
     }
 
     @Override
     public void addCustomerLogins(Integer customerId, String email, String password) {
-        loginDAOImpl.addCustomerLogins(customerId, email, password);
+        customerDAOImpl.addCustomerLogins(customerId, email, password);
     }
 
     @Override
     public void removeCustomerLogins(Integer customerId, String email) {
-        loginDAOImpl.removeCustomerLogins(customerId, email);
+        customerDAOImpl.removeCustomerLogins(customerId, email);
+    }
+
+    @Override
+    public void updateCustomerPassword(String email, String password) {
+        customerDAOImpl.updateCustomerPassword(email, password);
     }
 
 }

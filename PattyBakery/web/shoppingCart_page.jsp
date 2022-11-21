@@ -29,14 +29,12 @@
         <h3 class=”Heading” align='left'>Shopping Cart</h3>
     </div>
 </head>
-<body onload="totalAmount()">
+<body>
     <header>
         <a align="left" href="home" style="color:black;width:5%;float:left">
             <i class="fa fa-arrow-left" aria-hidden="true" style="">
             </i>
         </a>
-        <nav>
-        </nav>
     </header>
 
 
@@ -50,11 +48,11 @@
 
     <div class='checkout' align='center'>
         Total Amount :R<input type='button' id='totalAmount' value='<%=String.format("%.2f", cart.getTotalprice())%>'><br>
-        <label>Delivery : R<%=(Double) request.getAttribute("deliveryAmount")%></label><br>
+        <label>Delivery : R100</label><br>
         Total Amount Due :R<input type='button' id='totalAmountDue' value='<%=String.format("%.2f", cart.getTotalprice() + 100)%>'>
     </div>
     <div align='right'>
-        <form action='<%=(String) request.getAttribute("control")%>' method='POST'>
+        <form action='checkout_control' method='POST'>
             <button style="width:150px;height:50px;border-radius:12px;background-color:#C799BA" name='checkout'>Checkout</button>
         </form>
     </div>

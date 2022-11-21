@@ -62,6 +62,7 @@ public class LoginDAOImpl implements LoginDAO {
 
     }
 
+    @Override
     public String getCustomerPassword(Integer customerId, String email) {
         String password = null;
         try {
@@ -81,5 +82,22 @@ public class LoginDAOImpl implements LoginDAO {
 
         }
         return password;
+    }
+
+    @Override
+    public void updateCustomerPassword(String email, String password) {
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("UPDATE login SET password = ? WHERE email = ?");
+                preparedStatement.setString(1, password);
+                preparedStatement.setString(2, email);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException sql) {
+            System.out.println(String.format("Error: %s%n", sql.getMessage()));
+        } finally {
+            close(preparedStatement, resultSet);
+
+        }
     }
 }

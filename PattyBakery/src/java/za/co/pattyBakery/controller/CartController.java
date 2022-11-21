@@ -32,7 +32,7 @@ public class CartController extends BakeryController {
         cart = (ShoppingCart) session.getAttribute("cart");
         orders = cart.getAllOrders();
         getProducts();
-        displayMsg = display(products, orderQuantitiesMap);
+        displayMsg = display(products, orderQuantitiesMap, controlsMap);
         request.setAttribute("displayMessage", displayMsg);
         displayMsg = "";
         redirectToPage(request, response, "cart");
@@ -47,7 +47,7 @@ public class CartController extends BakeryController {
         }
     }
 
-    String display(Product[] products, Map<String, Integer> quantitiesMap) {
+    String display(Product[] products, Map<String, Integer> quantitiesMap, Map<String, String> controlsMap) {
         String msg = "";
         if (quantitiesMap != null) {
             for (int i = 0; i < products.length; i++) {
@@ -63,7 +63,7 @@ public class CartController extends BakeryController {
                             + "<div class='description'><span>%s</span>"
                             + "</div>"
                             + "<div class='quantity'><script src='js/cartCode.js'></script> "
-                            + "<form onclick='controllers()' method='POST' id='conForm' name='%s'>"
+                            + "<form  method='POST' id='conForm' name='%s' action='%s'>"
                             + "<button class='plus-btn' type='submit' name='%s' value='%s' data-value='productId'><strong>-</strong>"
                             + "</button>"
                             + "<input id='amountInput' type=label readonly min=1 max=50 value='%d'>"
@@ -75,7 +75,7 @@ public class CartController extends BakeryController {
                             + "<u style='cursor: pointer'>Remove</u>"
                             + "</div>"
                             + "</div><br>",
-                            products[i].getImageName(), products[i].getProductName(), products[i].getCategory(), "sub", products[i].getProductId(), quantitiesMap.get(products[i].getProductId()), "adds",
+                            products[i].getImageName(), products[i].getProductName(), products[i].getCategory(), controlsMap.get(products[i].getProductId()), "sub", products[i].getProductId(), quantitiesMap.get(products[i].getProductId()), "adds",
                             products[i].getProductId(), products[i].getPrice(), products[i].getPrice()));
                 }
             }
