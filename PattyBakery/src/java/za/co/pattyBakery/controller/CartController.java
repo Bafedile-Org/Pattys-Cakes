@@ -71,12 +71,13 @@ public class CartController extends BakeryController {
                             + "</div>"
                             + "R<input type='button' id='price' class='total-price' value='%.2f' name='%.2f'>"
                             + "<div class=”remove” >"
-                            + "<u style='cursor: pointer'>Remove</u>"
+                            + "<u style='cursor: pointer' name='remove' value='%s'><a href='%s?remove=%s'>Remove</a></u>"
                             + "</div>"
                             + "</div><br>",
                             products[i].getImageName(), products[i].getCategory(), products[i].getProductName(), products[i].getCategory(),
                             controlsMap.get(products[i].getProductId()), "sub", products[i].getProductId(), quantitiesMap.get(products[i].getProductId()), "adds",
-                            products[i].getProductId(), products[i].getPrice(), products[i].getPrice()));
+                            products[i].getProductId(), products[i].getPrice(), products[i].getPrice(), products[i].getProductId(),
+                            controlsMap.get(products[i].getProductId()), products[i].getProductId()));
                 }
             }
         }

@@ -12,7 +12,9 @@ Remember to work on the ingredients overlap in the cookies
 /***
 Remember to work on the ingredients overlap in the cookies
 **/
-
+.body{
+    background: #EAD2E9;
+}
 .top-head{
     margin:0px;
     padding:0px;
@@ -42,7 +44,7 @@ Remember to work on the ingredients overlap in the cookies
 }
 .topnav h1,h1{
     font-size:40px;
-    font-family:"Pacifico";
+    font-family:"Prata";
 }
 .topnav h1 a{
     text-decoration:none;
@@ -57,6 +59,8 @@ Remember to work on the ingredients overlap in the cookies
     float:left;
     min-width: 160px;
     z-index: 1;
+    font-size:20px;
+    font-family:"Prata"; 
 }
 
 .dropdown-content a{
@@ -64,27 +68,33 @@ Remember to work on the ingredients overlap in the cookies
     display:block;
     padding: 12px 16px;
     color:black;
+    font-size:20px;
+    font-family:"Prata"; 
 }
 
 .dropdown-content a:hover{
     background:gray;
-
+    font-size:20px;
+    font-family:"Prata"; 
 }
 
 .dropdown{
     position:relative;
     display:inline-block;
     right:130px;
+    font-size:20px;
+    font-family:"Prata"; 
 
 }
 .dropdown:hover .dropdown-content{
     display:block;
-
+    font-size:20px;
+    font-family:"Prata"; 
 }
 
 body{
 
-    background:#C799BA;
+    background:#EAD2E9;
     /*background:linear-gradient(to top left,#C799BA,whitesmoke);*/
 }
 
@@ -239,7 +249,7 @@ input[name='r']{
 }
 .topnav h1, h1{
     font-size: 40px;
-    font-family: "Pacifico"
+    font-family: "Prata"
 }
 img {
     padding:12px 0px;
@@ -287,13 +297,11 @@ label{
     margin-left:15%;
 }
 
-body{
-    background: #C799BA;
-}
+
 .top h1{
     background: #D9D9D9;
     font-size: 40px;
-    font-family: "Pacifico";
+    font-family: "Prata";
     text-align: center;
 }
 *{
@@ -308,7 +316,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #C799BA;
+    background-color: #EAD2E9;
     column-gap: 30px;
 }
 .containers{
@@ -318,7 +326,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #C799BA;
+    background-color: #EAD2E9;
     column-gap: 30px;
 }
 .form{

@@ -46,6 +46,22 @@ public class CookiesController extends BakeryController {
      *
      * Work on the increasing the quantity of the items selected
      */
+    public void removeFromCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        if (request.getParameter("remove") != null) {
+            List<Order> ordersToRemove = new ArrayList<>();
+            for (Order order : bakeryOrders) {
+                if (order.getProduct().getProductId().equals(request.getParameter("remove"))) {
+                    ordersToRemove.add(order);
+                }
+            }
+            bakeryOrders.removeAll(ordersToRemove);
+            cart.setOrders(bakeryOrders);
+            session.setAttribute("cart", cart);
+            redirectToPage(request, response, "cart_control");
+        }
+
+    }
+
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -57,6 +73,7 @@ public class CookiesController extends BakeryController {
         request.setAttribute("products", cookies);
         request.setAttribute("totalInCart", 0);
         request.setAttribute("control", bakery_control);
+        removeFromCart(request, response);
         manageOrderAddition(request, response, "cookies");
         manageCart(request, response, bakeryProductIds, bakeryOrders, bakery_control);
         addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, controlsMap, bakery_control);

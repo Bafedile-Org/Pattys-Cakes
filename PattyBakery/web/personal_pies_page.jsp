@@ -14,10 +14,11 @@
         <title>Cookies Page</title>
         <link rel='stylesheet' href='css/style.css'>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Pacifico'>
         <script src='js/main.js'></script>
     </head>
-    <body>
+    <body style="background: #EAD2E9;">
 
         <%
             List<Product> products = (List<Product>) request.getAttribute("products");
