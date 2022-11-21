@@ -1,5 +1,5 @@
 <%-- 
-    Document   : order_page
+    Document   : stock_page
     Created on : 08 Nov 2022, 10:42:18 AM
     Author     : Hlawulani
 --%>
@@ -14,6 +14,7 @@
         <link rel="stylesheet" href="css/style.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
         html, body {
@@ -40,10 +41,9 @@
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
         </div>
            <div class="form-contents">
-             
-             <form action="res/bakery_res/addOrder" method="POST">
+             <form action="#">
                 <div class="input-field" style="text-align: center">
-                    <input type="orderNumber" placeholder="Order Number" class="orderNumber" size="50" name="orderNumber">
+                    <input type="orderNumber" placeholder="Order Number" class="orderNumber" size="50">
                 </div>
                 <div class="input-field" style="text-align: center">
                     <input type="productID" placeholder="product ID" class="productID" size="50">
@@ -57,10 +57,11 @@
                  <div class="input-field" style="text-align: center">
                     <input type="date" placeholder="Date" class="date" size="150">
                 </div>
-          
+             </form>
             <div class="btn-group" style="text-align: center">
-            <button type="submit" name="adding">Add</button>
-            <button type="submit" name="adding">Update</button>
-          </div> </form></div>  
+            <button>Add</button>
+            <button>Remove</button>
+            <button>Update</button>
+          </div></div>
     </body>
 </html>

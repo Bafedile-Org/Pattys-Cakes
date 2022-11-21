@@ -15,9 +15,10 @@
         <link rel='stylesheet' href='css/style.css'>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Pacifico'>
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
         <script src='js/main.js'></script>
     </head>
-    <body>
+    <body style="background: #D4E6EA;">
 
         <%
             List<Product> products = (List<Product>) request.getAttribute("products");
@@ -29,13 +30,13 @@
             String ingredientsValues = "";
             String nutrientsValues = "";
 
-            out.println(String.format("<header><nav><div class='topnav' ><h1><a href='home'> Patty's Bakery </a>"
+            out.println(String.format("<header class='home-head'><nav><div class='topnav' ><h1 align='center' id='home-header1' style='font-family:'Prata''><a href='home'> Patty's Bakery </a>"
                     + "<a href='%s' name='cart'><i class='fa fa-shopping-cart' "
                     + "style='font-size:24px'"
                     + ">%d"
                     + " </i></a></h1></div></nav></header><h1 align='center'>"
                     + "<a align='left' href='home' "
-                    + "style='float:left;color:black;width:110px'>"
+                    + "style='float:left;color:black;width:110px;font-family:Prata'>"
                     + "<i class='fa fa-arrow-left' aria-hidden='true'>"
                     + "</i></a><pre align='center'><h1>Cookies</h1>"
                     + "</pre></h1>", control + "?cart=cart", totalInCart));
@@ -55,7 +56,7 @@
                 }
 
                 out.println(String.format(""
-                        + "<div class='images-container'><div class='cookies_img' ><div align='center'>"
+                        + "<div class='images-container' ><div class='cookies_img' ><div align='center'>"
                         + "<label id='cookie_label'><strong>%s</strong></label>"
                         + "<br><img src='%s' alt='cookies' >"
                         + "</div><div>"
@@ -81,132 +82,5 @@
             }
         %>
 
-<<<<<<< HEAD
-            </div>
-            <div id='img_price'>
-                <form method="POST" action="cookies_control">
-                    <button id='price_button'><%
-                        Double price = (Double) session.getAttribute("4PROPrice");
-                        out.println("R" + price);
-                        %>
-                    </button>
-
-                    <button id='cart_button' type="submit" name="add" value="4PRO">add to cart</button>
-
-                </form>
-            </div>
-
-        </div><br><br>
-        <div class="images-container">
-            <div class="cookies_img" >
-
-                <div align='center'>
-                    <label id='cookie_label'><strong><%
-                        name = (String) session.getAttribute("6PROName");
-                        out.println(name);
-                            %></strong></label>
-                    <br>
-                    <img src="assets/cookies/cokkies_pic2.jpg" alt="cookies" >
-                </div>
-                <div>
-                    <article>
-                        <ul>
-                            <li  id='img_list'><strong>Ingredients</strong>
-                                <ul>
-                                    <%
-                                        ingredients = (List<String>) session.getAttribute("6PRO");
-                                        if (ingredients != null) {
-                                            for (String ingredient : ingredients) {
-                                                out.println(String.format("<li>%s</li>", ingredient));
-                                            }
-                                        }
-                                    %>
-                                </ul>
-                            </li>
-                            <li  id='img_list'><strong>Nutrients</strong>
-                                <ul>
-                                    <%
-                                        nutrients = (List<String>) session.getAttribute("6PRONu");
-                                        if (nutrients != null) {
-                                            for (String nutrient : nutrients) {
-                                                out.println(String.format("<li>%s</li>", nutrient));
-                                            }
-                                        }
-                                    %>
-                                </ul>
-                            </li>
-                        </ul>
-                    </article>
-                </div>
-
-            </div>
-            <div id='img_price'>
-                <form method="POST" action="cookies_control">
-                    <button id='price_button'><%
-                        price = (Double) session.getAttribute("6PROPrice");
-                        out.println("R" + price);
-                        %></button>
-
-                    <button id='cart_button' type="submit" name="add" value="6PRO">add to cart</button>
-
-                </form>
-            </div>
-        </div><br>
-        <div class="images-container">
-            <div class="cookies_img" >
-
-                <div align='center'>
-                    <label id='cookie_label'><strong><%
-                        name = (String) session.getAttribute("5PROName");
-                        out.println(name);
-                            %></strong></label>
-
-                    <br>
-                    <img src="assets/cookies/cookies_pic1.jpg" alt="cookies" >
-                </div>
-                <div>
-                    <article>
-                        <ul>
-                            <li  id='img_list'><strong>Ingredients</strong>
-                                <ul>
-                                    <%
-                                        ingredients = (List<String>) session.getAttribute("5PRO");
-                                        if (ingredients != null) {
-                                            for (String ingredient : ingredients) {
-                                                out.println(String.format("<li>%s</li>", ingredient));
-                                            }
-                                        }
-                                    %>
-                                </ul>
-                            </li>
-                            <li  id='img_list'><strong>Nutrients</strong>
-                                <ul>
-                                    <%
-                                        nutrients = (List<String>) session.getAttribute("5PRONu");
-                                        if (nutrients != null) {
-                                            for (String nutrient : nutrients) {
-                                                out.println(String.format("<li>%s</li>", nutrient));
-                                            }
-                                        }
-                                    %>
-                                </ul>
-                            </li>
-                        </ul>
-                    </article>
-                </div>
-
-            </div>
-            <div id='img_price'>
-                <form method="POST" action="cookies_control">
-                    <button id='price_button'><%
-                        price = (Double) session.getAttribute("5PROPrice");
-                        out.println("R" + price);
-                        %></button>
-                    <button id='cart_button' type="submit" name="add" value="5PRO">add to cart</button>
-                </form>
-            </div>
-        </div>
-=======
->>>>>>> Deekay-dev
     </body>
 </html>

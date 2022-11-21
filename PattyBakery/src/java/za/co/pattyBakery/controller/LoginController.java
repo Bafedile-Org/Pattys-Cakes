@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import za.co.pattyBakery.Person;
 import za.co.pattyBakery.dao.CustomerDAO;
+import za.co.pattyBakery.dao.impl.CustomerDAOImpl;
 import za.co.pattyBakery.model.PersonImpl;
 import za.co.pattyBakery.service.impl.CustomerServImpl;
 

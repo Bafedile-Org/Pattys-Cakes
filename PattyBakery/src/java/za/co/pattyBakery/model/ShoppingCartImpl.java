@@ -107,10 +107,6 @@ public class ShoppingCartImpl implements ShoppingCart {
     public Boolean getDeliveryStatus() {
         return deliveryStatus;
     }
-<<<<<<< HEAD
-    public void setStatus(Boolean deliveryStatus){
-        this.deliveryStatus = deliveryStatus;
-=======
 
     @Override
     public List<Order> getAllOrders() {
@@ -134,6 +130,5 @@ public class ShoppingCartImpl implements ShoppingCart {
             }
         }
         return false;
->>>>>>> Deekay-dev
     }
 }

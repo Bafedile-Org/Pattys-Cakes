@@ -4,7 +4,7 @@ package za.co.pattyBakery;
  *
  * @author Bridget Bapela
  */
-public interface Employee extends Person{
+public interface Employee {
 
     public void setTitle(String title);
 

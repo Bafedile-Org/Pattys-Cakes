@@ -16,6 +16,7 @@
     <head>
         <link rel='stylesheet' href='css/styles1.css'>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Pacifico'>
         <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
         <title>Shopping Cart Page</title>

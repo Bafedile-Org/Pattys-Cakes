@@ -2,7 +2,6 @@ package za.co.pattyBakery.service.impl;
 
 import java.util.List;
 import za.co.pattyBakery.dao.IngredientsDAO;
-import za.co.pattyBakery.dao.impl.IngredientsDAOImpl;
 
 /**
  *
@@ -12,16 +11,12 @@ public class IngredientsServImpl implements IngredientsDAO {
 
     private IngredientsDAO ingredientDAOImpl;
 
-    public IngredientsServImpl() {
-        ingredientDAOImpl = new IngredientsDAOImpl();
-    }
-
     @Override
-    public void updateIngredient(String ingredientId, Integer quantity) {
-        if (quantity == null || ingredientId == null) {
+    public void updateIngredient(String ingredientId, String ingredient) {
+        if (ingredient == null || ingredientId == null) {
             return;
         }
-        ingredientDAOImpl.updateIngredient(ingredientId, quantity);
+        ingredientDAOImpl.updateIngredient(ingredientId, ingredient);
     }
 
     @Override

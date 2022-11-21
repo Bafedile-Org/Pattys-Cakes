@@ -1,7 +1,7 @@
 package za.co.pattyBakery.dao;
 
 import java.util.List;
-import za.co.pattyBakery.Employee;
+import za.co.pattyBakery.model.EmployeeImpl;
 
 /**
  *
@@ -9,11 +9,11 @@ import za.co.pattyBakery.Employee;
  */
 public interface EmployeeDAO extends Close {
 
-    void addEmployee(Employee employee);
+    void addEmployee(EmployeeImpl employee);
 
-    Employee getEmployeeById(Integer employeeId);
+    EmployeeImpl getEmployeeById(Integer employeeId);
 
-    public void removeEmployee(String employeeId) ;
+    void removeEmployee(Integer employeeId);
 
     void updateEmployeeTel(Integer employeeId, String tel);
 
@@ -21,5 +21,5 @@ public interface EmployeeDAO extends Close {
 
     void updateEmployeeAddress(Integer employeeId, String address);
 
-    List<Employee> getAllEmployees();
+    List<EmployeeImpl> getAllEmployees();
 }
