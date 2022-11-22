@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
-                background-color:#C799BA;
+                background-color:#E6E6FA;
             }
             .sf {
                 min-height: 400px;

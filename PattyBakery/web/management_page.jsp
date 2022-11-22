@@ -19,7 +19,7 @@
         <script src="js/main.js"></script>
         <style>
         html, body {
-          background-color: #f4f4f4;
+          background-color: #E6E6FA;
         }
         .sf {
           min-height: 400px;

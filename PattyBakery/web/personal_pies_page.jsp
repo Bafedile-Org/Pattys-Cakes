@@ -18,7 +18,7 @@
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Pacifico'>
         <script src='js/main.js'></script>
     </head>
-    <body style="background: #EAD2E9;">
+    <body style="background: #E6E6FA;">
 
         <%
             List<Product> products = (List<Product>) request.getAttribute("products");

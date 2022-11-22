@@ -18,7 +18,7 @@
          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
         <script src='js/main.js'></script>
     </head>
-    <body style="background: #D4E6EA;">
+    <body style="background: #E6E6FA;font-family:'Prata'">
 
         <%
             List<Product> products = (List<Product>) request.getAttribute("products");
@@ -58,7 +58,7 @@
                 out.println(String.format(""
                         + "<div class='images-container' ><div class='cookies_img' ><div align='center'>"
                         + "<label id='cookie_label'><strong>%s</strong></label>"
-                        + "<br><img src='%s' alt='cookies' >"
+                        + "<br><img src='%s' alt='cookies' class='center' >"
                         + "</div><div>"
                         + "<article>"
                         + "<ul>"
