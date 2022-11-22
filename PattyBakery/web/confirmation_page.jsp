@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/confirm.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
-         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
@@ -45,9 +45,11 @@
             <div class="card">
                 <div class="leftside">
                     <form action="#">
+                        <%ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");%>
+                        <h3>Order Reference Number: <%=shoppingCart.getOrderNumber()%></h3>
                         <h2>Product list: </h2>
                         <%
-                            ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
+
                             if (shoppingCart != null) {
                                 for (Order order : shoppingCart.getAllOrders()) {
                                     out.println(String.format("<button class='button'>%s  %.2f x %d</button>",
