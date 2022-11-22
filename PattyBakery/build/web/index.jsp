@@ -18,23 +18,19 @@
                 font-size: 50;
             }
 
-            /* Styling the area of the slides */
-
             #slideshow {
+                
                 overflow:hidden;
                 height: 310px;
                 width: 428px;
 
-                margin-top: 50px;
+                margin-top: -100px;
                 margin-left: -200px;
 
                 position:absolute;
                 top: 50%;
                 left: 50%;
             }
-
-            /* Style each of the sides
-            with a fixed width and height */
 
             .slide {
                 float: left;
@@ -46,34 +42,25 @@
                 font-size:20px;
                 font-family:"Prata";
             }
-            /* Add animation to the slides */
-
+           
             .slide-wrapper {
 
-                /* Calculate the total width on the
-              basis of number of slides */
                 width: calc(428px * 5);
-
-                /* Specify the animation with the
-              duration and speed */
                 animation: slide 15s ease infinite;
             }
 
-            /* Set the background color
-            of each of the slides */
-
             .slide:nth-child(1) {
-                background-image:url("assets/cookies/cokkies_pic2.jpg");
+                background-image:url("assets/pexels-marta-dzedyshko-2067424.jpg");
                 background-size: cover;
             }
 
             .slide:nth-child(2) {
-                background-image:url("assets/cakes/rainbow_cake3.jpg");
+                background-image:url("assets/pexels-quang-nguyen-vinh-2144200.jpg");
                 background-size: cover;
             }
 
             .slide:nth-child(3) {
-                background-image:url("assets/doughnuts/dougnuts2.jpg");
+                background-image:url("assets/pexels-alisha-mishra-1346263.jpg");
                 background-size: cover;
             }
 
@@ -82,17 +69,12 @@
                 background-size: cover;
             }
             .slide:nth-child(5) {
-                background-image:url("assets/muffins/muffins_and_cupcakes.png");
+                background-image:url("assets/pexels-son-tung-tran-7454368.jpg");
                 background-size: cover;
             }
 
-            /* Define the animation
-            for the slideshow */
-
             @keyframes slide {
 
-                /* Calculate the margin-left for
-              each of the slides */
                 20% {
                     margin-left: 0px;
                 }
@@ -124,9 +106,16 @@
                         Patty's Bakery
                         <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                             <div class="dropdown-content">
+                                <a href = 'cakes_control'>Cakes</a>
+                                <a href = 'cupcakes_control'>Cupcakes</a>
+                                <a href = 'muffins_control'>Muffins</a>
+                                <a href = 'doughnuts_control'>Doughnuts</a>
+                                <a href = 'pies_control'>Pies</a>
+                                <a href = 'cookies_control'>Cookies</a>
                                 <a  href="aboutUs">About Us</a>
                                 <a  href="stores">Our Stores</a>
                                 <a href="signup">Signup/Signin</a>
+                                
                             </div>
                         </i>
                     </h1>

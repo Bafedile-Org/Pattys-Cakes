@@ -18,7 +18,7 @@
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Pacifico'>
         <script src='js/main.js'></script>
     </head>
-    <body style="background: #EAD2E9;">
+    <body style="background: #E6E6FA;">
 
         <%
             List<Product> products = (List<Product>) request.getAttribute("products");
@@ -30,13 +30,13 @@
             String ingredientsValues = "";
             String nutrientsValues = "";
 
-            out.println(String.format("<header><nav><div class='topnav' ><h1><a href='home'> Patty's Bakery </a>"
+            out.println(String.format("<header class='home-head'><nav><div class='topnav' ><h1 align='center' id='home-header1' style='font-family:'Prata';'><a href='home'><u> Patty's Bakery</u> </a>"
                     + "<a href='%s' name='cart'><i class='fa fa-shopping-cart' "
                     + "style='font-size:24px'"
                     + ">%d"
                     + " </i></a></h1></div></nav></header><h1 align='center'>"
                     + "<a align='left' href='home' "
-                    + "style='float:left;color:black;width:110px'>"
+                    + "style='float:left;color:black;width:110px;style='font-family:'Prata''>"
                     + "<i class='fa fa-arrow-left' aria-hidden='true'>"
                     + "</i></a><pre align='center'><h1>%s/<a href='cupcakes_control'>Cupcakes</a></h1>"
                     + "</pre></h1>", control + "?cart=cart", totalInCart, products.get(0).getCategory()));
