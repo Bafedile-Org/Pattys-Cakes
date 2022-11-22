@@ -13,7 +13,6 @@ import za.co.pattyBakery.ShoppingCart;
 import static za.co.pattyBakery.controller.BakeryController.orderQuantitiesMap;
 import static za.co.pattyBakery.controller.BakeryController.session;
 import static za.co.pattyBakery.controller.BakeryController.totalItemsInCart;
-import static za.co.pattyBakery.controller.CookiesController.bakeryOrders;
 import za.co.pattyBakery.service.impl.ProductServImpl;
 
 /**
@@ -50,6 +49,7 @@ public class PiesController extends BakeryController {
         request.setAttribute("products", pies);
         request.setAttribute("totalInCart", 0);
         request.setAttribute("control", bakery_control);
+        removeFromCart(request, response);
         manageOrderAddition(request, response, "pies");
         manageCart(request, response, bakeryProductIds, bakeryOrders, bakery_control);
         addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, controlsMap, bakery_control);

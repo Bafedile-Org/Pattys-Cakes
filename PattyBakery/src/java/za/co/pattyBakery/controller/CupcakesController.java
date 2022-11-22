@@ -47,6 +47,7 @@ public class CupcakesController extends BakeryController {
         request.setAttribute("products", cupcakes);
         request.setAttribute("totalInCart", 0);
         request.setAttribute("control", bakery_control);
+        removeFromCart(request, response);
         manageOrderAddition(request, response, "cupcakes");
         manageCart(request, response, bakeryProductIds, bakeryOrders, bakery_control);
         addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, controlsMap, bakery_control);

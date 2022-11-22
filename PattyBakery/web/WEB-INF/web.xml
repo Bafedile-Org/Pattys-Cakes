@@ -141,7 +141,52 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Stock</servlet-name>
-        <url-pattern>/stock</url-pattern>
+        <url-pattern>/admin/stock</url-pattern>
+    </servlet-mapping>
+    <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>Employee</servlet-name>
+        <jsp-file>/employee_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Employee</servlet-name>
+        <url-pattern>/admin/employee</url-pattern>
+    </servlet-mapping>
+    <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>ManLogin</servlet-name>
+        <jsp-file>/management_login_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManLogin</servlet-name>
+        <url-pattern>/admin/login</url-pattern>
+    </servlet-mapping>
+    <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>IngredientPage</servlet-name>
+        <jsp-file>/ingredient_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IngredientPage</servlet-name>
+        <url-pattern>/admin/ingredients</url-pattern>
+    </servlet-mapping>
+    <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>Orders</servlet-name>
+        <jsp-file>/order_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Orders</servlet-name>
+        <url-pattern>/admin/orders</url-pattern>
+    </servlet-mapping>
+    <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>Admin</servlet-name>
+        <jsp-file>/management_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Admin</servlet-name>
+        <url-pattern>/admin</url-pattern>
     </servlet-mapping>
     <!-- #######################################################################################-->
     <!--    <servlet>

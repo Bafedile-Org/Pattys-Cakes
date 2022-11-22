@@ -78,6 +78,22 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
+    public void updateOrderDeliveryDate(String orderId, LocalDate date) {
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("UPDATE orders  SET  date =?  WHERE order_id = ?");
+                preparedStatement.setDate(1, Date.valueOf(date));
+                preparedStatement.setString(2, orderId);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException sql) {
+            System.out.println(String.format("Error: %s%n", sql.getMessage()));
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+    }
+
+    @Override
     public void removeOrder(String orderId) {
         try {
             if (con != null) {
@@ -143,6 +159,28 @@ public class OrderDAOImpl implements OrderDAO {
         }
 
         return orders;
+    }
+
+    @Override
+    public List<String> getOrderAllIds() {
+        List<String> ordersIds = new ArrayList<>();
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT order_id FROM total_orders");
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    ordersIds.add(resultSet.getString("order_id"));
+                }
+            }
+
+        } catch (SQLException sql) {
+            System.out.println(String.format("Error: %s%n", sql.getMessage()));
+        } finally {
+            close(preparedStatement, resultSet);
+
+        }
+
+        return ordersIds;
     }
 
     @Override

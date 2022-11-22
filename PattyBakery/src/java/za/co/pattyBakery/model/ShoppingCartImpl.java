@@ -87,7 +87,7 @@ public class ShoppingCartImpl implements ShoppingCart {
                 totalPrice += order.getTotalPrice();
             }
         }
-        return totalPrice;
+        return Double.valueOf(String.format("%.2f", totalPrice));
     }
 
     @Override
@@ -130,5 +130,30 @@ public class ShoppingCartImpl implements ShoppingCart {
             }
         }
         return false;
+    }
+
+    @Override
+    public void removeAllFromCart(String productId) {
+        List<Order> ordersToRemove = new ArrayList<>();
+        if (!productId.equalsIgnoreCase("removeAll")) {
+            for (List<Order> orders : myOrders) {
+                for (Order order : orders) {
+                    if (order.getProduct().getProductId().equals(productId)) {
+                        ordersToRemove.add(order);
+                    }
+                }
+                orders.removeAll(ordersToRemove);
+                ordersToRemove.clear();
+            }
+        } else {
+            for (List<Order> orders : myOrders) {
+                for (Order order : orders) {
+                    ordersToRemove.add(order);
+                }
+                orders.removeAll(ordersToRemove);
+                ordersToRemove.clear();
+            }
+        }
+
     }
 }

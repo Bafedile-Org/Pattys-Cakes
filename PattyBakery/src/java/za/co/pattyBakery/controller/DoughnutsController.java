@@ -2,10 +2,7 @@ package za.co.pattyBakery.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -14,7 +11,6 @@ import za.co.pattyBakery.Order;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.ShoppingCart;
 import static za.co.pattyBakery.controller.BakeryController.orderQuantitiesMap;
-import static za.co.pattyBakery.controller.CookiesController.bakeryOrders;
 import za.co.pattyBakery.service.impl.ProductServImpl;
 
 /**
@@ -51,6 +47,7 @@ public class DoughnutsController extends BakeryController {
         request.setAttribute("products", doughnuts);
         request.setAttribute("totalInCart", 0);
         request.setAttribute("control", bakery_control);
+        removeFromCart(request, response);
         manageOrderAddition(request, response, "doughnuts");
         manageCart(request, response, bakeryProductIds, bakeryOrders, bakery_control);
         addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, controlsMap, bakery_control);
