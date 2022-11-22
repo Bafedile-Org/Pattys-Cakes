@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -32,7 +31,7 @@ public class CartController extends BakeryController {
         cart = (ShoppingCart) session.getAttribute("cart");
         orders = cart.getAllOrders();
         getProducts();
-        displayMsg = display(products, orderQuantitiesMap);
+        displayMsg = display(products, orderQuantitiesMap, controlsMap);
         request.setAttribute("displayMessage", displayMsg);
         displayMsg = "";
         redirectToPage(request, response, "cart");
@@ -47,7 +46,7 @@ public class CartController extends BakeryController {
         }
     }
 
-    String display(Product[] products, Map<String, Integer> quantitiesMap) {
+    String display(Product[] products, Map<String, Integer> quantitiesMap, Map<String, String> controlsMap) {
         String msg = "";
         if (quantitiesMap != null) {
             for (int i = 0; i < products.length; i++) {
@@ -58,12 +57,12 @@ public class CartController extends BakeryController {
                             + "</span><span class='like-btn'></span>"
                             + "</div>"
                             + "<div class='image'>"
-                            + "<img src='%s' alt='cookies' width='250' height='150' />"
+                            + "<img src='%s' alt='%s' width='250' height='150' />"
                             + "</div>"
                             + "<div class='description'><span>%s</span>"
                             + "</div>"
                             + "<div class='quantity'><script src='js/cartCode.js'></script> "
-                            + "<form onclick='controllers()' method='POST' id='conForm' name='%s'>"
+                            + "<form  method='POST' id='conForm' name='%s' action='%s'>"
                             + "<button class='plus-btn' type='submit' name='%s' value='%s' data-value='productId'><strong>-</strong>"
                             + "</button>"
                             + "<input id='amountInput' type=label readonly min=1 max=50 value='%d'>"
@@ -71,12 +70,14 @@ public class CartController extends BakeryController {
                             + "</form>"
                             + "</div>"
                             + "R<input type='button' id='price' class='total-price' value='%.2f' name='%.2f'>"
-                            + "<div class=”remove” onclick='remove()'>"
-                            + "<u style='cursor: pointer'>Remove</u>"
+                            + "<div class=”remove” >"
+                            + "<u style='cursor: pointer' name='remove' value='%s'><a href='%s?remove=%s'>Remove</a></u>"
                             + "</div>"
                             + "</div><br>",
-                            products[i].getImageName(), products[i].getProductName(), products[i].getCategory(), "sub", products[i].getProductId(), quantitiesMap.get(products[i].getProductId()), "adds",
-                            products[i].getProductId(), products[i].getPrice(), products[i].getPrice()));
+                            products[i].getImageName(), products[i].getCategory(), products[i].getProductName(), products[i].getCategory(),
+                            controlsMap.get(products[i].getProductId()), "sub", products[i].getProductId(), quantitiesMap.get(products[i].getProductId()), "adds",
+                            products[i].getProductId(), products[i].getPrice(), products[i].getPrice(), products[i].getProductId(),
+                            controlsMap.get(products[i].getProductId()), products[i].getProductId()));
                 }
             }
         }

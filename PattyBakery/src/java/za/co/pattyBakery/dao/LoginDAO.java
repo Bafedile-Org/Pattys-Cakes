@@ -12,4 +12,6 @@ public interface LoginDAO extends Close {
 
     public String getCustomerPassword(Integer customerId, String email);
 
+    public void updateCustomerPassword(String email, String password);
+
 }

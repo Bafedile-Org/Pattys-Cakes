@@ -48,6 +48,8 @@ public class CakesController extends BakeryController {
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        cart = getShoppingCartFromSession(bakeryOrders);
+        bakeryOrders = cart.getAllOrders();
         bakery_control = request.getServletPath().replace("/", "");
         cakes = new ProductServImpl().getAllProductsByCategoryId(2);
         getProductInfo();
@@ -55,17 +57,8 @@ public class CakesController extends BakeryController {
         request.setAttribute("totalInCart", 0);
         request.setAttribute("control", bakery_control);
         manageOrderAddition(request, response, "cakes");
-//        RequestDispatcher dispatcher = request.getRequestDispatcher("cakes");
-//        dispatcher.forward(request, response);
-//        getAllFromSession(request, response, bakeryCart, orderQuantitiesMap, products, imagesSrc, bakery_control);
-//        manageOrderAddition(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, "cakes");
-//        manageCart(request, response, bakeryProductIds, bakeryCart, bakeryOrders, orderQuantitiesMap, orderQuantities, imagesSrc, products);
-//        manageOrderConfirmation(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
-//        managePayment(request, response, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakeryOrders);
-//        manageCheckout(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
-//        manageLogin(request, response, bakeryOrders, bakeryRecipeIds, bakeryProductIds, bakeryProductNames, bakeryProductPrices, bakeryProductNutrients, totalItemsInCart, bakeryCart, bakery_control);
-//        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, orderQuantities);
-
+        manageCart(request, response, bakeryProductIds, bakeryOrders, bakery_control);
+        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, controlsMap, bakery_control);
     }
 
     @Override
@@ -78,7 +71,7 @@ public class CakesController extends BakeryController {
         }
         bakeryCart = (ShoppingCart) session.getAttribute("cart");
         totalItemsInCart = bakeryCart.getAllOrders().size();
-        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, orderQuantities);
+        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, controlsMap, bakery_control);
         request.setAttribute("totalInCart", totalItemsInCart);
     }
 }

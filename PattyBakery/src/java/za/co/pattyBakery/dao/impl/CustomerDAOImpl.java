@@ -206,4 +206,9 @@ public class CustomerDAOImpl implements CustomerDAO {
         return new LoginDAOImpl(con).getCustomerPassword(customerId, email);
     }
 
+    @Override
+    public void updateCustomerPassword(String email, String password) {
+        new LoginDAOImpl(con).updateCustomerPassword(email, password);
+    }
+
 }

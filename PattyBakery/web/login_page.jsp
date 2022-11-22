@@ -39,7 +39,7 @@
             <div class="form login">
                 <div class="form-content">
                     <header>Login</header>
-                    <form action="cookies_control" method="POST">
+                    <form action="login_control" method="POST">
                         <div class="field input-field">
                             <input type="email" name='email'placeholder="Email" class="inputbox" required>
                         </div>

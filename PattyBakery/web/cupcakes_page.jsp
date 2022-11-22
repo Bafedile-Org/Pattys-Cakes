@@ -38,8 +38,8 @@
                     + "<a align='left' href='home' "
                     + "style='float:left;color:black;width:110px'>"
                     + "<i class='fa fa-arrow-left' aria-hidden='true'>"
-                    + "</i></a><pre align='center'><h1>Cookies</h1>"
-                    + "</pre></h1>", control + "?cart=cart", totalInCart));
+                    + "</i></a><pre align='center'><h1>%s/<a href='muffins_control'>Muffins</a></h1>"
+                    + "</pre></h1>", control + "?cart=cart", totalInCart, products.get(0).getCategory()));
             for (int i = 0; i < products.size(); i++) {
                 product = products.get(i);
                 ingredients = product.getRecipe().getIngredients();

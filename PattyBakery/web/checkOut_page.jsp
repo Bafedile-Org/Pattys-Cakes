@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="rightside">
-                    <form action="<%=session.getAttribute("control")%>" method="POST">
+                    <form action="checkout_control" method="POST">
                         <div class="input-field" style="text-align: center">
                             <h2>Payment Information</h2>
 
@@ -61,7 +61,7 @@
                             <div class="expcvv">
 
                                 <p class="expcvv_text">Expiry</p>
-                                <input type="date" class="inputbox" name="exp_date" id="exp_date" required />
+                                <input type="month" class="inputbox" name="exp_date" id="exp_date" required />
 
                                 <p class="expcvv_text2">CVV</p>
                                 <input type="password" class="inputbox" minlength='3' maxlength='3' name="cvv" id="cvv" required />

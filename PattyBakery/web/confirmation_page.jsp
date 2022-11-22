@@ -33,10 +33,10 @@
         <nav class="home-head">
             <div class="topnav">
                 <h1 align="center" id="home-header1"> Confirmation order
-                    <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                        <div class="dropdown-content">
-                            <a href="<%=session.getAttribute("control")%>">Back</a>
-                        </div>
+                    <!--<i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">-->
+                    <div style='float:left' class="dropdown-content">
+                        <a href="home">Back</a>
+                    </div>
                     </i>
                 </h1>
             </div>
@@ -47,10 +47,10 @@
                     <form action="#">
                         <h2>Product list: </h2>
                         <%
-                            ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("shoppingCart");
+                            ShoppingCart shoppingCart = (ShoppingCart) session.getAttribute("cart");
                             if (shoppingCart != null) {
-                                for (Order order : shoppingCart.getOrders()) {
-                                    out.println(String.format("<p>%s  %.2f x %d</p>",
+                                for (Order order : shoppingCart.getAllOrders()) {
+                                    out.println(String.format("<button class='button'>%s  %.2f x %d</button>",
                                             order.getProduct().getProductName(), order.getProduct().getPrice(), order.getQuantity()));
                                 }
                             }
@@ -63,7 +63,7 @@
                     <form action="#">
                         <div class="input-field" style="text-align: center">
                             <h2>Total listing </h2>
-                            <a><button type="submit" class="button">R<%=String.format("%.2f", shoppingCart == null ? 0.0 : shoppingCart.getTotalprice())%></button></a>
+                            <a><button type="submit" class="button">R<%=String.format("%.2f", shoppingCart.getTotalprice())%></button></a>
                         </div>
                     </form>
 
@@ -99,7 +99,7 @@
         </div>
 
         <div class="bb">
-            <form action="<%=session.getAttribute("control")%>" method="POST">
+            <form action="checkout_control" method="POST">
                 <button type="submit" class="button" name="confirmOrder">Confirm order</button>
             </form>
         </div>
