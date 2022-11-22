@@ -116,7 +116,7 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
         <script src="js/main.js"></script>
     </head>
-    <body class="home-body">
+    <body class="home-body" style='background-size:cover'>
         <header class="home-head">
             <nav>
                 <div class="topnav" >
