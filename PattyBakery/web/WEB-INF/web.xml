@@ -159,7 +159,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ManLogin</servlet-name>
-        <url-pattern>/admin/login</url-pattern>
+        <url-pattern>/admin</url-pattern>
     </servlet-mapping>
     <!-- #######################################################################################-->
     <servlet>
@@ -186,7 +186,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Admin</servlet-name>
-        <url-pattern>/admin</url-pattern>
+        <url-pattern>/admin/home</url-pattern>
     </servlet-mapping>
     <!-- #######################################################################################-->
     <!--    <servlet>

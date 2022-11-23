@@ -19,7 +19,7 @@
             }
 
             #slideshow {
-                
+
                 overflow:hidden;
                 height: 310px;
                 width: 428px;
@@ -42,7 +42,7 @@
                 font-size:20px;
                 font-family:"Prata";
             }
-           
+
             .slide-wrapper {
 
                 width: calc(428px * 5);
@@ -105,7 +105,7 @@
                     <h1 align="center" id='home-header1'>
                         Patty's Bakery
                         <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                            <div class="dropdown-content">
+                            <div class="dropdown-content" style="background-color:lightgray">
                                 <a href = 'cakes_control'>Cakes</a>
                                 <a href = 'cupcakes_control'>Cupcakes</a>
                                 <a href = 'muffins_control'>Muffins</a>
@@ -115,7 +115,7 @@
                                 <a  href="aboutUs">About Us</a>
                                 <a  href="stores">Our Stores</a>
                                 <a href="signup">Signup/Signin</a>
-                                
+
                             </div>
                         </i>
                     </h1>

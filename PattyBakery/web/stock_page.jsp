@@ -50,7 +50,7 @@
         <nav class="home-head">
             <div class="topnav">
                 <h1 align="center" id="home-header1"> <div  style='float:left'class="dropdown-content" align="left">
-                        <a href="/bakery/admin">Back</a>
+                        <a href="/bakery/login_control">Back</a>
                     </div>Bakery Stock management site
                 </h1>
             </div>
@@ -62,7 +62,7 @@
             <h2 align='center'>Add, Update Or Remove Product</h2>
             <form action="/bakery/res/bakery_res/addStock" method="POST">
                 <div class="input-field" style="text-align: center">
-                    <input  id="inputValue" type="productId" name="prodId" placeholder="Product ID" class="productId" size="33" value="">
+                    <input  id="inputValue" type="productId" name="prodId" placeholder="Product ID" class="productId" size="33" value="" required>
                     <select id = "myList" onchange = "getDropValue('myList', 'inputValue')"  >
                         <option>Select ID type</option>
                         <%
@@ -76,7 +76,7 @@
                     </select>
                 </div>
                 <div class="input-field" style="text-align: center">
-                    <input  id="inputValue2" type="text" name="cat" placeholder="Product Category" class="productId" size="31" value="" readonly>
+                    <input  id="inputValue2" type="text" name="cat" placeholder="Product Category" class="productId" size="31" value="" readonly required>
                     <select id = "myList2" onchange = "getDropValue('myList2', 'inputValue2')"  >
                         <option>Select Category</option>
                         <%                            List<String> productCategory = new CategoryServImpl().getAllCategory();
@@ -104,7 +104,7 @@
                     <input type="text" name="prodName" placeholder="Product Name" class="quantity" size="50">
                 </div>
                 <div class="input-field" style="text-align: center">
-                    <input type="text" name="price" placeholder="Product Price" class="quantity" size="50" required>
+                    <input type="text" name="price" placeholder="Product Price" class="quantity" size="50">
                 </div>
 
                 <div class="input-field" style="text-align: center">
@@ -112,7 +112,7 @@
                 </div>
                 <div class="input-field" style="text-align: center">
                     <div>Choose a product image</div><br>
-                    <input type="file" name="image" placeholder="Product Image" class="quantity" size="50" required>
+                    <input type="file" name="image" placeholder="Product Image" class="quantity" size="50">
                 </div>
                 <div class="btn-group" style="text-align: center">
                     <button type='submit' name="which" value="add">Add</button>

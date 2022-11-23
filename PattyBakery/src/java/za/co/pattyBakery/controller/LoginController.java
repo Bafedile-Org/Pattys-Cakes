@@ -19,7 +19,7 @@ import za.co.pattyBakery.service.impl.EmployeeServImpl;
  *
  * @author Dimakatso Sebatane
  */
-@WebServlet(name = "LoginController", urlPatterns = {"/login_control"})
+@WebServlet(name = "LoginController", urlPatterns = {"/login_control",})
 public class LoginController extends BakeryController {
 
     private String email, password, name, surname, tel, conPassword, address, idNum;
@@ -29,6 +29,34 @@ public class LoginController extends BakeryController {
 
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        loginUserIn(request, response);
+        logAdminIn(request, response);
+        signUserIn(request, response);
+        ResetAdminPassword(request, response);
+        ResetUserPassword(request, response);
+
+    }
+
+    private void logUserIn(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        email = request.getParameter("email");
+        password = request.getParameter("password");
+        person = customerServImpl.getCustomerByEmail(email);
+
+    }
+
+    private Boolean checkIfUserExists() {
+        person = customerServImpl.getCustomerByEmail(email);
+        return (person != null && customerServImpl.getCustomerPassword(person.getPersonId(), email) != null);
+    }
+
+    private Boolean checkIfAdminExists() {
+        person = employeeServImpl.getEmployeeByEmail(email);
+        return (person != null && employeeServImpl.getCustomerPassword(person.getPersonId(), email) != null);
+    }
+
+    private void loginUserIn(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("login") != null) {
             logUserIn(request, response);
@@ -44,7 +72,12 @@ public class LoginController extends BakeryController {
             } else {
                 redirectToPage(request, response, "signup");
             }
-        } else if (request.getParameter("signup") != null) {
+        }
+    }
+
+    private void signUserIn(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        if (request.getParameter("signup") != null) {
             name = request.getParameter("name");
             surname = request.getParameter("surname");
             idNum = request.getParameter("idNum");
@@ -69,38 +102,56 @@ public class LoginController extends BakeryController {
                     redirectToPage(request, response, "signup");
                 }
             }
+        }
+    }
 
-        } else if (request.getParameter("reset") != null) {
+    private void ResetUserPassword(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        if (request.getParameter("reset") != null) {
             email = request.getParameter("email");
             password = request.getParameter("password");
             customerServImpl.updateCustomerPassword(email, hashPassword(password));
             redirectToPage(request, response, "login");
-        } else if (request.getParameter("admin_login") != null) {
-            person = employeeServImpl.getEmployeeByEmail(email);
-            if (checkIfUserExists()) {
-                String hashedPassword = hashPassword(password);
-                String userPassword = employeeServImpl.getCustomerPassword(person.getPersonId(), email);
-                if (hashedPassword.contains(userPassword)) {
-                    session.setAttribute("customer", person);
-                    redirectToPage(request, response, "admin");
-                }
-            } else {
-                redirectToPage(request, response, "admin/login");
-            }
+        } else {
+            redirectToPage(request, response, "admin/home");
         }
     }
 
-    private void logUserIn(HttpServletRequest request, HttpServletResponse response)
+    private void ResetAdminPassword(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        email = request.getParameter("email");
-        password = request.getParameter("password");
-        person = customerServImpl.getCustomerByEmail(email);
-
+        if (request.getParameter("resetAdmin") != null) {
+            email = request.getParameter("email");
+            password = request.getParameter("password");
+            employeeServImpl.updateCustomerPassword(email, hashPassword(password));
+            redirectToPage(request, response, "login");
+        }
     }
 
-    private Boolean checkIfUserExists() {
-        person = customerServImpl.getCustomerByEmail(email);
-        return (person != null && customerServImpl.getCustomerPassword(person.getPersonId(), email) != null);
+    private void logAdminIn(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        session = request.getSession(true);
+        if (request.getParameter("admin_login") != null) {
+            if (session != null) {
+                if ((Boolean) session.getAttribute("loggedIn") != null) {
+                    redirectToPage(request, response, "admin/home");
+                } else {
+                    email = request.getParameter("email");
+                    password = request.getParameter("password");
+                    person = employeeServImpl.getEmployeeByEmail(email);
+                    if (checkIfAdminExists()) {
+                        String hashedPassword = hashPassword(password);
+                        String userPassword = employeeServImpl.getCustomerPassword(person.getPersonId(), email);
+                        if (hashedPassword.contains(userPassword)) {
+
+                            session.setAttribute("loggedIn", Boolean.TRUE);
+                            redirectToPage(request, response, "admin/home");
+                        }
+                    } else {
+                        redirectToPage(request, response, "admin");
+                    }
+                }
+            }
+        }
     }
 
     private String hashPassword(String input) {

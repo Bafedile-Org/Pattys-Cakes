@@ -45,7 +45,7 @@
         <nav class="home-head">
             <div class="topnav">
                 <h1 align="center" id="home-header1"> <div style='float:left'class="dropdown-content">
-                        <a href="/bakery/admin">Back</a>
+                        <a href="/bakery/login_control">Back</a>
                     </div>Bakery Ingredients management site
 
                 </h1>
