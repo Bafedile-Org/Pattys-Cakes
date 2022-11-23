@@ -4,6 +4,9 @@
     Author     : Bridget Bapela
 --%>
 
+<%@page import="za.co.pattyBakery.service.impl.RecipeServImpl"%>
+<%@page import="java.util.Collections"%>
+<%@page import="za.co.pattyBakery.service.impl.CategoryServImpl"%>
 <%@page import="za.co.pattyBakery.service.impl.ProductServImpl"%>
 <%@page import="za.co.pattyBakery.Product"%>
 <%@page import="za.co.pattyBakery.dao.impl.ProductDAOImpl"%>
@@ -36,9 +39,9 @@
             }
         </style>
         <script >
-            function getDropValue() {
-                var element = document.getElementById("myList");
-                var text = document.getElementById("inputValue");
+            function getDropValue(myList, inputValue) {
+                var element = document.getElementById(myList);
+                var text = document.getElementById(inputValue);
                 text.value = element.options[element.selectedIndex].text;
             }
         </script>
@@ -60,20 +63,57 @@
             <form action="/bakery/res/bakery_res/addStock" method="POST">
                 <div class="input-field" style="text-align: center">
                     <input  id="inputValue" type="productId" name="prodId" placeholder="Product ID" class="productId" size="33" value="">
-                    <select id = "myList" onchange = "getDropValue()"  >
+                    <select id = "myList" onchange = "getDropValue('myList', 'inputValue')"  >
                         <option>Select ID type</option>
                         <%
                             List<String> products = new ProductServImpl().getAllProductsIds();
+                            Collections.sort(products);
                             for (String product : products) {
                                 out.println(String.format("<option value='%s'>%s</option>", product, product));
                             }
+
                         %>
                     </select>
                 </div>
                 <div class="input-field" style="text-align: center">
-                    <input type="quantity" name="quantity" placeholder="Quantity" class="quantity" size="50">
+                    <input  id="inputValue2" type="text" name="cat" placeholder="Product Category" class="productId" size="31" value="" readonly>
+                    <select id = "myList2" onchange = "getDropValue('myList2', 'inputValue2')"  >
+                        <option>Select Category</option>
+                        <%                            List<String> productCategory = new CategoryServImpl().getAllCategory();
+                            for (String category : productCategory) {
+                                out.println(String.format("<option value='%s'>%s</option>", category, category));
+                            }
+
+
+                        %>
+                    </select>
+                </div>
+                <div class="input-field" style="text-align: center">
+                    <input  id="inputValue3" type="text" name="recipeId" placeholder="Product Category" class="productId" size="31" value="" readonly>
+                    <select id = "myList3" onchange = "getDropValue('myList3', 'inputValue3')"  >
+                        <option>Select Recipe Id</option>
+                        <%                            List<String> recipeIds = new RecipeServImpl().getAllRecipieIds();
+                            for (String recipeId : recipeIds) {
+                                out.println(String.format("<option value='%s'>%s</option>", recipeId, recipeId));
+                            }
+
+                        %>
+                    </select>
+                </div>
+                <div class="input-field" style="text-align: center">
+                    <input type="text" name="prodName" placeholder="Product Name" class="quantity" size="50">
+                </div>
+                <div class="input-field" style="text-align: center">
+                    <input type="text" name="price" placeholder="Product Price" class="quantity" size="50" required>
                 </div>
 
+                <div class="input-field" style="text-align: center">
+                    <input type="quantity" name="quantity" placeholder="Quantity" class="quantity" size="50">
+                </div>
+                <div class="input-field" style="text-align: center">
+                    <div>Choose a product image</div><br>
+                    <input type="file" name="image" placeholder="Product Image" class="quantity" size="50" required>
+                </div>
                 <div class="btn-group" style="text-align: center">
                     <button type='submit' name="which" value="add">Add</button>
                     <button type='submit' name='which' value='remove'>Remove</button>

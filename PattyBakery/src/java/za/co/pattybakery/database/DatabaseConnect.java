@@ -80,7 +80,7 @@ public class DatabaseConnect {
 
     private static void createLoginTable() {
         try {
-            con.prepareStatement("CREATE TABLE IF NOT EXISTS login (id INTEGER NOT NULL PRIMARY KEY,email VARCHAR(255) NOT NULL, password VARCHAR(40) NOT NULL,"
+            con.prepareStatement("CREATE TABLE IF NOT EXISTS login (id INTEGER NOT NULL PRIMARY KEY,email VARCHAR(255) NOT NULL UNIQUE KEY, password VARCHAR(40) NOT NULL,"
                     + " FOREIGN KEY(id) REFERENCES customer(cust_id))").executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create login table.." + sql.getMessage());
@@ -89,7 +89,7 @@ public class DatabaseConnect {
 
     private static void createEmployeeLoginTable() {
         try {
-            con.prepareStatement("CREATE TABLE IF NOT EXISTS employee_login (id INTEGER NOT NULL PRIMARY KEY,email VARCHAR(255) NOT NULL, password VARCHAR(40) NOT NULL,"
+            con.prepareStatement("CREATE TABLE IF NOT EXISTS employee_login (id INTEGER NOT NULL PRIMARY KEY,email VARCHAR(255) NOT NULL UNIQUE KEY, password VARCHAR(40) NOT NULL,"
                     + " FOREIGN KEY(id) REFERENCES employee(emp_id))").executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create login table.." + sql.getMessage());
@@ -100,7 +100,7 @@ public class DatabaseConnect {
         PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS customer (cust_id INTEGER AUTO_INCREMENT PRIMARY KEY,name VARCHAR(20),"
-                    + "surname VARCHAR(20),idNum VARCHAR(13),tel VARCHAR(20),email VARCHAR(255),address VARCHAR(20))");
+                    + "surname VARCHAR(20),idNum VARCHAR(13) UNIQUE KEY,tel VARCHAR(20),email VARCHAR(255),address VARCHAR(20))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create customer table.." + sql.getMessage());
@@ -112,7 +112,7 @@ public class DatabaseConnect {
         PreparedStatement stat;
         try {
             stat = con.prepareStatement("CREATE TABLE IF NOT EXISTS employee (emp_id INTEGER AUTO_INCREMENT PRIMARY KEY,name VARCHAR(20),"
-                    + "surname VARCHAR(20),idNum VARCHAR(13),tel VARCHAR(20),email VARCHAR(255),address VARCHAR(20),title VARCHAR(20))");
+                    + "surname VARCHAR(20),idNum VARCHAR(13) UNIQUE KEY,tel VARCHAR(20),email VARCHAR(255),address VARCHAR(20),title VARCHAR(20))");
             stat.executeUpdate();
         } catch (SQLException sql) {
             System.out.println("Failed to create employee table.." + sql.getMessage());

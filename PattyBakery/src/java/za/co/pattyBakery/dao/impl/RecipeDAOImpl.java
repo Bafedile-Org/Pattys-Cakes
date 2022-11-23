@@ -87,4 +87,23 @@ public class RecipeDAOImpl implements RecipeDAO {
         return recipies.stream().collect(Collectors.toList());
     }
 
+    @Override
+    public List<String> getAllRecipieIds() {
+        List<String> recipeIds = new ArrayList<>();
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT recp_id FROM recipe");
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    recipeIds.add(resultSet.getString("recp_id"));
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+        return recipeIds;
+    }
+
 }

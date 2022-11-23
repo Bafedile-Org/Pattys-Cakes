@@ -32,4 +32,9 @@ public class RecipeServImpl implements RecipeDAO {
         return recipeDaoImpl.getRecipies();
     }
 
+    @Override
+    public List<String> getAllRecipieIds() {
+        return recipeDaoImpl.getAllRecipieIds();
+    }
+
 }

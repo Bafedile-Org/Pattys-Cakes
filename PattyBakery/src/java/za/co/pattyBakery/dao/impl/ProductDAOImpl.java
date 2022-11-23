@@ -35,6 +35,7 @@ public class ProductDAOImpl implements ProductDAO {
         try {
             if (con != null) {
                 preparedStatement = con.prepareStatement("INSERT IGNORE INTO product VALUES(?,?,?,?,?,?,?);");
+                preparedStatement.setString(1, product.getProductId());
                 preparedStatement.setString(2, product.getProductName());
                 preparedStatement.setDouble(3, product.getPrice());
                 preparedStatement.setString(4, product.getNutrientId());

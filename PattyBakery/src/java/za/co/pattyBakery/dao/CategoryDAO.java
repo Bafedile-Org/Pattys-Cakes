@@ -18,4 +18,6 @@ public interface CategoryDAO extends Close {
 
     public List<String> getAllCategory();
 
+    public Integer getCategoryIdByName(String category);
+
 }

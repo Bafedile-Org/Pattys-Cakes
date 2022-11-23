@@ -41,16 +41,14 @@
     <body>
         <nav class="home-head">
             <div class="topnav">
-                <h1 align="center" id="home-header1"> Bakery Employee management site
-                    <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                        <div class="dropdown-content">
-                            <a href="/bakery/admin">Back</a>
-                        </div>
-                    </i>
+                <h1 align="center" id="home-header1"> <div style='float:left'class="dropdown-content">
+                        <a href="/bakery/admin">Back</a>
+                    </div>Bakery Employee management site
+
                 </h1>
             </div>
         </nav>
-        <div>
+        <div align='right'>
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
         </div>
         <div class="form-contents">

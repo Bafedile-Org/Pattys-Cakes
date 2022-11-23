@@ -93,6 +93,26 @@ public class CategoryDAOImpl implements CategoryDAO {
     }
 
     @Override
+    public Integer getCategoryIdByName(String category) {
+        Integer catId = null;
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT cat_id FROM category WHERE category =?");
+                preparedStatement.setString(1, category);
+                resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    catId = resultSet.getInt("cat_id");
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+        return catId;
+    }
+
+    @Override
     public List<String> getAllCategory() {
         List<String> categories = new ArrayList<>();
 
@@ -111,4 +131,5 @@ public class CategoryDAOImpl implements CategoryDAO {
         }
         return categories;
     }
+
 }

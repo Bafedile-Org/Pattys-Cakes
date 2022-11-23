@@ -16,4 +16,6 @@ public interface RecipeDAO extends Close {
 
     public List<Recipe> getRecipies();
 
+    public List<String> getAllRecipieIds();
+
 }
