@@ -79,6 +79,21 @@ public class StockDAOImpl implements StockDAO {
     }
 
     @Override
+    public void removeProductFromStock(String productId) {
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("DELETE FROM  stock  WHERE prod_id = ?");
+                preparedStatement.setString(1, productId);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+    }
+
+    @Override
     public List<Stock> getAllStocks() {
         List<Stock> stocks = new ArrayList<>();
         Product product = null;

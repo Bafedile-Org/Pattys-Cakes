@@ -16,5 +16,7 @@ public interface StockDAO extends Close {
 
     public void addStockById(String productId, Integer quantity);
 
+    public void removeProductFromStock(String productId);
+
     public List<Stock> getAllStocks();
 }

@@ -47,7 +47,7 @@ public class BakeryRest {
             @FormParam("which") String which, @FormParam("prodName") String prodName,
             @FormParam("image") String image,
             @FormParam("price") Double price,
-            @FormParam("cat") String cat, @FormParam("recipeId") String recipeId, @FormParam("image") File file) throws IOException {
+            @FormParam("cat") String cat, @FormParam("recipeId") String recipeId) {
         StockDAO stockServImpl = new StockServImpl();
         ProductDAO productServImpl = new ProductServImpl();
         java.net.URI location = null;
@@ -57,16 +57,26 @@ public class BakeryRest {
                 System.out.println("Please enter product Id");
                 return Response.temporaryRedirect(location).build();
             } else {
-                if (which.equals("add")) {
-                    Product product = new ProductImpl(prodId, prodName, price, new CategoryServImpl().getCategoryIdByName(cat), "1NT", recipeId, String.format("assets/%s/%s", cat.toLowerCase(), image));
-                    productServImpl.addProduct(product);
-                    stockServImpl.addStockById(prodId, quantity);
-                    Files.copy(Paths.get(image), Paths.get(String.format("assets/%s/%s", cat.toLowerCase(), image)));
-                } else {
-                    stockServImpl.updateStockQuantity(prodId, quantity);
+                switch (which) {
+                    case "add":
+                        Product product = new ProductImpl(prodId, prodName, price, new CategoryServImpl().getCategoryIdByName(cat), "1NT", recipeId, String.format("assets/%s/%s", cat.toLowerCase(), image));
+                        productServImpl.addProduct(product);
+                        stockServImpl.addStockById(prodId, quantity);
+                        break;
+                    case "update":
+                        if (quantity != null) {
+                            stockServImpl.updateStockQuantity(prodId, quantity);
+                        }
+                        if (prodId != null && price != null) {
+                            productServImpl.updateProductPrice(prodId, price);
+                        }
+
+                        break;
+                    case "remove":
+                        stockServImpl.removeProductFromStock(prodId);
+                        productServImpl.removeProduct(prodId);
                 }
                 System.out.println("Successfully added to product " + prodId + " " + quantity + " items");
-
             }
         } catch (URISyntaxException | ProductException ex) {
             System.out.println("Error: " + ex.getMessage());

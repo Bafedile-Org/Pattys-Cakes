@@ -20,9 +20,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
-               background-image:url("../assets/pexels-mariana-kurnyk-1756062.jpg");;
-               background-size:cover;
-               font-family:'Prata';
+                background-color: #f4f4f4;
             }
             .sf {
                 min-height: 400px;
@@ -44,33 +42,21 @@
         </script>
     </head>
     <body>
-        <header class="home-head">
-            <nav>
-                <div class="topnav" >
-                    <h1 align="center" id='home-header1'>
-                        Patty's Bakery
-                        <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                            <div class="dropdown-content">
-                                 <a href="admin/login">Logout</a>
-                                <a href="admin/stock">Stock</a>
-                                <a href="admin/employee">Employee</a>
-                                <a href="admin/orders">Orders</a>
-                                <a href="admin/ingredients">Ingredients</a>
-                                
-                            </div>
-                        </i>
-                    </h1>
-                </div>
-            </nav>
-        </header>
-        
-        
-        
+        <nav class="home-head">
+            <div class="topnav">
+                <h1 align="center" id="home-header1"> <div style='float:left' class="dropdown-content">
+                        <a href="/bakery/login_control">Back</a>
+                    </div> Bakery Order management site
+
+
+                </h1>
+            </div>
+        </nav>
         <div align='right'>
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
         </div>
-        <div class="form-contents" style='margin-top:80px;padding:12px 12px'>
-            <h3 align='center'>Update Order Delivery Status</h3>
+        <div class="form-contents" style='margin-top:80px;border-style: dashed;padding:12px 12px;border-color:black'>
+            <h2 align='center'>Update Order Delivery Status</h2>
             <form action="/bakery/res/bakery_res/updateOrder" method='POST'>
                 <div class="input-field" style="text-align: center">
                     <input  name='order_id' id="inputValue"  type="orderNumber" placeholder="Order Number" class="orderNumber" size="35">
