@@ -1,4 +1,10 @@
-
+ .home-body1 {
+           margin:0px;
+           padding:0px;
+           background-image:url("../assets/patty_pic_chef.jpg");
+           background-size:cover;
+        }
+        
 .body{
     background: #E6E6FA;
 }
@@ -19,7 +25,7 @@
 .home-body{
     margin:0px;
     padding:0px;
-    background-image:url("../assets/patty_pic_chef.jpg");
+    background-image:url("../assets/coverPage.jpeg");
     background-size:cover;
     /*background-size:100%;*/
 }

@@ -11,7 +11,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
-                background-color: #E6E6FA;
+              background-image:url("../assets/pexels-mariana-kurnyk-1756062.jpg");;
+               background-size:cover;
             }
             .sf {
                 min-height: 400px;

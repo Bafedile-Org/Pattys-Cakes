@@ -24,8 +24,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
-                background-image:url("assets/management/bakeryStock.jpg");
-                background-size: cover;
+                background-image:url("../assets/pexels-mariana-kurnyk-1756062.jpg");;
+               background-size:cover;
             }
             .sf {
                 min-height: 400px;
@@ -58,7 +58,7 @@
         <div align='right'>
             Today's date: <%= (new java.util.Date())%>
         </div>
-        <div class="form-content" style='margin-top:80px;border-style: dashed;padding:12px 12px;border-color:black'>
+        <div class="form-content" style='margin-top:80px;padding:12px 12px;'>
             <h2 align='center'>Add, Update Or Remove Product</h2>
             <form action="/bakery/res/bakery_res/addStock" method="POST">
                 <div class="input-field" style="text-align: center">
