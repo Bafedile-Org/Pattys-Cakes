@@ -27,4 +27,6 @@ public interface ShoppingCart {
     public void setOrderNumber(String orderNumber);
 
     public List<Order> getAllOrders();
+
+    public void removeAllFromCart(String productId);
 }

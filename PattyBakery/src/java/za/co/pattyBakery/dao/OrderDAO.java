@@ -1,5 +1,6 @@
 package za.co.pattyBakery.dao;
 
+import java.time.LocalDate;
 import java.util.List;
 import za.co.pattyBakery.Order;
 import za.co.pattyBakery.ShoppingCart;
@@ -21,5 +22,9 @@ public interface OrderDAO extends Close {
     public List<Order> getOrderById(String orderId);
 
     public ShoppingCart getShoppingCartByOrderId(String orderId);
+
+    public void updateOrderDeliveryDate(String orderId, LocalDate date);
+
+    public List<String> getOrderAllIds();
 
 }

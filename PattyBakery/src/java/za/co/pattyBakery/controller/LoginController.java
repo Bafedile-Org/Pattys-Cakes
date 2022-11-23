@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import za.co.pattyBakery.Person;
 import za.co.pattyBakery.dao.CustomerDAO;
+import za.co.pattyBakery.dao.EmployeeDAO;
 import za.co.pattyBakery.model.PersonImpl;
 import za.co.pattyBakery.service.impl.CustomerServImpl;
+import za.co.pattyBakery.service.impl.EmployeeServImpl;
 
 /**
  *
@@ -22,6 +24,7 @@ public class LoginController extends BakeryController {
 
     private String email, password, name, surname, tel, conPassword, address, idNum;
     private CustomerDAO customerServImpl = new CustomerServImpl();
+    private EmployeeDAO employeeServImpl = new EmployeeServImpl();
     private Person person;
 
     @Override
@@ -72,6 +75,18 @@ public class LoginController extends BakeryController {
             password = request.getParameter("password");
             customerServImpl.updateCustomerPassword(email, hashPassword(password));
             redirectToPage(request, response, "login");
+        } else if (request.getParameter("admin_login") != null) {
+            person = employeeServImpl.getEmployeeByEmail(email);
+            if (checkIfUserExists()) {
+                String hashedPassword = hashPassword(password);
+                String userPassword = employeeServImpl.getCustomerPassword(person.getPersonId(), email);
+                if (hashedPassword.contains(userPassword)) {
+                    session.setAttribute("customer", person);
+                    redirectToPage(request, response, "admin");
+                }
+            } else {
+                redirectToPage(request, response, "admin/login");
+            }
         }
     }
 

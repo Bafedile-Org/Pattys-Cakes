@@ -230,6 +230,25 @@ public class BakeryController extends HttpServlet {
         }
     }
 
+    public void removeFromCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+        if (request.getParameter("remove") != null) {
+            cart.removeAllFromCart(request.getParameter("remove"));
+            totalItemsInCart = cart.getAllOrders().size();
+            session.setAttribute("totalInCart", totalItemsInCart);
+            session.setAttribute("cart", cart);
+            redirectToPage(request, response, "cart_control");
+        }
+        if (request.getParameter("removeAll") != null) {
+            cart.removeAllFromCart("removeAll");
+            totalItemsInCart = cart.getAllOrders().size();
+            session.setAttribute("totalInCart", totalItemsInCart);
+            session.setAttribute("cart", cart);
+            redirectToPage(request, response, "cart_control");
+        }
+
+    }
+
     public void addOrders(HttpServletRequest request, String param)
             throws ServletException, IOException {
 

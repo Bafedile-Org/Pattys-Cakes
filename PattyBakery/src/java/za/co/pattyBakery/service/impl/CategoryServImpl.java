@@ -2,6 +2,7 @@ package za.co.pattyBakery.service.impl;
 
 import java.util.List;
 import za.co.pattyBakery.dao.CategoryDAO;
+import za.co.pattyBakery.dao.impl.CategoryDAOImpl;
 
 /**
  *
@@ -11,8 +12,8 @@ public class CategoryServImpl implements CategoryDAO {
 
     private CategoryDAO categoryDAOImpl;
 
-    public CategoryServImpl(CategoryDAO categoryDAOImpl) {
-        this.categoryDAOImpl = categoryDAOImpl;
+    public CategoryServImpl() {
+        this.categoryDAOImpl = new CategoryDAOImpl();
     }
 
     @Override
@@ -49,4 +50,8 @@ public class CategoryServImpl implements CategoryDAO {
         return categoryDAOImpl.getCategoryById(categoryId);
     }
 
+    @Override
+    public Integer getCategoryIdByName(String category) {
+        return categoryDAOImpl.getCategoryIdByName(category);
+    }
 }

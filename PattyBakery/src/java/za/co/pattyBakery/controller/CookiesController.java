@@ -3,8 +3,6 @@ package za.co.pattyBakery.controller;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -13,7 +11,6 @@ import za.co.pattyBakery.Order;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.ShoppingCart;
 import static za.co.pattyBakery.controller.BakeryController.cart;
-import static za.co.pattyBakery.controller.CakesController.bakeryOrders;
 import za.co.pattyBakery.service.impl.ProductServImpl;
 
 /**
@@ -46,22 +43,6 @@ public class CookiesController extends BakeryController {
      *
      * Work on the increasing the quantity of the items selected
      */
-    public void removeFromCart(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (request.getParameter("remove") != null) {
-            List<Order> ordersToRemove = new ArrayList<>();
-            for (Order order : bakeryOrders) {
-                if (order.getProduct().getProductId().equals(request.getParameter("remove"))) {
-                    ordersToRemove.add(order);
-                }
-            }
-            bakeryOrders.removeAll(ordersToRemove);
-            cart.setOrders(bakeryOrders);
-            session.setAttribute("cart", cart);
-            redirectToPage(request, response, "cart_control");
-        }
-
-    }
-
     @Override
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
