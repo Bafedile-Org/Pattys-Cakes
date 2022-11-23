@@ -1,17 +1,4 @@
-/*
-    Created on : 03 Nov 2022, 9:11:59 AM
-    Author     : Dimakatso Sebatane
-*/
-/***
-Remember to work on the ingredients overlap in the cookies
-**/
-/*
-    Created on : 03 Nov 2022, 9:11:59 AM
-    Author     : Dimakatso Sebatane
-*/
-/***
-Remember to work on the ingredients overlap in the cookies
-**/
+
 .body{
     background: #E6E6FA;
 }
@@ -32,7 +19,7 @@ Remember to work on the ingredients overlap in the cookies
 .home-body{
     margin:0px;
     padding:0px;
-    background-image:url("../assets/pexels-roman-odintsov-4551198.jpg");
+    background-image:url("../assets/patty_pic_chef.jpg");
     background-size:cover;
     /*background-size:100%;*/
 }
@@ -101,7 +88,6 @@ Remember to work on the ingredients overlap in the cookies
 body{
 
     background:#E6E6FA;
-    /*background:linear-gradient(to top left,#C799BA,whitesmoke);*/
 }
 
 #img_list{
@@ -134,9 +120,6 @@ body{
     margin-top:25%;
 }
 
-/*.cookies_img div article{
-   display:flex;
-}*/
 #img_price{
     clear:left;
     padding:17px 0px;
@@ -474,8 +457,5 @@ a.facebook .facebook-icon{
 .form-contents form{
     margin-top:8%;
 }
-/*
-
-*/
 
 

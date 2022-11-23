@@ -19,7 +19,10 @@
         <script src="js/main.js"></script>
         <style>
         html, body {
-          background-color: #E6E6FA;
+           margin:0px;
+           padding:0px;
+           background-image:url("../assets/patty_pic_chef.jpg");
+           background-size:cover;
         }
         .sf {
           min-height: 400px;

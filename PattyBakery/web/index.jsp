@@ -106,13 +106,15 @@
                         Patty's Bakery
                         <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                             <div class="dropdown-content">
-                                <a href = 'cakes_control'>Cakes</a>
+                                <a href='home'>Home</a>
+                                <a href = 'cakes_control'>Cakes</a>                              
                                 <a href = 'cupcakes_control'>Cupcakes</a>
                                 <a href = 'muffins_control'>Muffins</a>
                                 <a href = 'doughnuts_control'>Doughnuts</a>
                                 <a href = 'pies_control'>Pies</a>
                                 <a href = 'cookies_control'>Cookies</a>
                                 <a  href="aboutUs">About Us</a>
+                                <a  href="cart_control">Checkout</a>
                                 <a  href="stores">Our Stores</a>
                                 <a href="signup">Signup/Signin</a>
                                 

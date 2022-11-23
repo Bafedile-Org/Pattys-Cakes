@@ -30,7 +30,7 @@
             String ingredientsValues = "";
             String nutrientsValues = "";
 
-            out.println(String.format("<header class='home-head'><nav><div class='topnav' ><h1 align='center' id='home-header1' style='font-family:'Prata';'><a href='home'><u> Patty's Bakery</u> </a>"
+            out.println(String.format("<header class='home-head'><nav><div class='topnav' ><h1 align='center' id='home-header1' style='font-family:'Prata''>Patty's Bakery"
                     + "<a href='%s' name='cart'><i class='fa fa-shopping-cart' "
                     + "style='font-size:24px'"
                     + ">%d"
@@ -38,7 +38,7 @@
                     + "<a align='left' href='home' "
                     + "style='float:left;color:black;width:110px;font-family:'Prata''>"
                     + "<i class='fa fa-arrow-left' aria-hidden='true'>"
-                    + "</i></a><pre align='center'><h1><u>%s</u></h1>"
+                    + "</i></a><pre align='center'><u><h1>%s</h1></u>"
                     + "</pre></h1>", control + "?cart=cart", totalInCart, products.get(0).getCategory()));
             for (int i = 0; i < products.size(); i++) {
                 product = products.get(i);

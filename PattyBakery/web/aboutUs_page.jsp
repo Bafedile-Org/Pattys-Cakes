@@ -15,22 +15,32 @@
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
       <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
 </head>
-<body>
-    <header>
-        <div class="topnav" >
+<body style="background: #E6E6FA;font-family:'Prata'">
+    <header class="home-head">
+            <nav>
+                <div class="topnav" >
                     <h1 align="center" id='home-header1'>
-                        Patty's Bakery   
+                        Patty's Bakery
                         <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
                             <div class="dropdown-content">
-                                <a href="home">Home</a>
+                                <a href='home'>Home</a>
+                                <a href = 'cakes_control'>Cakes</a>                              
+                                <a href = 'cupcakes_control'>Cupcakes</a>
+                                <a href = 'muffins_control'>Muffins</a>
+                                <a href = 'doughnuts_control'>Doughnuts</a>
+                                <a href = 'pies_control'>Pies</a>
+                                <a href = 'cookies_control'>Cookies</a>
                                 <a  href="aboutUs">About Us</a>
+                                <a  href="cart_control">Checkout</a>
                                 <a  href="stores">Our Stores</a>
                                 <a href="signup">Signup/Signin</a>
+                                
                             </div>
                         </i>
                     </h1>
                 </div>
-    </header>
+            </nav>
+        </header>
     <section class="background firstsection">
         <div class="box-main">
             <div class="firstHalf" align="center">
