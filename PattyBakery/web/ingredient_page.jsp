@@ -42,19 +42,20 @@
         </script>
     </head>
     <body>
-        <nav class="home-head">
+        <header class="home-head">
+        <nav >
+             <div align='right'>
+            Today's date: <%= (new java.util.Date())%>
+        </div>
             <div class="topnav">
-                <h1 align="center" id="home-header1"> <div style='float:left'class="dropdown-content">
-                        <a href="/bakery/login_control">Back</a>
-                    </div>Bakery Ingredients management site
-
-                </h1>
+                     <a href="/bakery/login_control">Back</a>
+                    <h1 align="center" id="home-header1" style="font-size:44px;"> 
+                        Bakery Ingredient Page 
+                </h1></div>
             </div>
         </nav>
-        <div align='right'>
-            Today's date: <%= (new java.util.Date()).toLocaleString()%>
-        </div>
-        <div class="form-content"  style='margin-top:80px;border-style: dashed;padding:12px 12px;border-color:black'>
+        </header>
+        <div class="form-content"  style='margin-top:-20px;padding:12px 12px;'>
             <form action="res/bakery_res/addIngredient" method="POST">
                 <div class="input-field" style="text-align: center">
                     <input id="inputValue" type="ingredientId" name="ingrId" placeholder="Ingredients ID" class="ingredientId" size="33" value="">
