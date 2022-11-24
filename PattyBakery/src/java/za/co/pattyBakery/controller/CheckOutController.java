@@ -39,7 +39,7 @@ public class CheckOutController extends BakeryController {
             getShoppingCart(request, response);
         }
         if (request.getParameter("confirmOrder") != null) {
-            sendConfirmationEmail("cybertonsecure@outlook.com", "Cybertonsecurity22%", person.getEmail());
+//            sendConfirmationEmail("pattysbakery.shop@gmail.com", "PattyBakery", person.getEmail());
             redirectToPage(request, response, "check-out");
         }
 
@@ -64,7 +64,7 @@ public class CheckOutController extends BakeryController {
 
     private void sendConfirmationEmail(String from, String password, String to) {
         Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.outlook.com");
+        props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.socketFactory.port", "465");
         props.put("mail.smtp.socketFactory.class",
                 "javax.net.ssl.SSLSocketFactory");

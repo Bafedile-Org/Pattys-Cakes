@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="css/confirm.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
-         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
@@ -27,11 +27,7 @@
         <nav class="home-head">
             <div class="topnav">
                 <h1 align="center" id="home-header1"> Check out
-                    <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                        <div class="dropdown-content">
-                            <a href="<%=session.getAttribute("control")%>">Back</a>
-                        </div>
-                    </i>
+                    <a style='float:left' href="cart_control">Back</a>
                 </h1>
             </div>
         </nav>

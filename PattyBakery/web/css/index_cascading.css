@@ -1,0 +1,100 @@
+/*
+    Created on : 24 Nov 2022, 11:43:06 AM
+    Author     : Dimakatso Sebatane
+*/
+
+body {
+    font-family: Prata;
+    padding: 5%;
+    text-align: center;
+}
+
+#slideshow {
+
+    overflow:hidden;
+    height: 650px;
+    width: 100%;
+
+    margin-top: 0%;
+    /*margin-left: -200px;*/
+
+    /*position:absolute;*/
+    /*top: 50%;*/
+    left: 50%;
+}
+
+.slide {
+    float: left;
+    height: 650px;
+    width: 100%;
+
+}
+.slide-number{
+    font-size:20px;
+    font-family:"Prata";
+}
+
+.slide-wrapper {
+
+    width: calc(100% * 5);
+    animation: slide 15s ease infinite;
+}
+
+.slide:nth-child(1) {
+    background-image:url("assets/pexels-marta-dzedyshko-2067424.jpg");
+    background-size: cover;
+}
+
+.slide:nth-child(2) {
+    background-image:url("assets/pexels-quang-nguyen-vinh-2144200.jpg");
+    background-size: cover;
+}
+
+.slide:nth-child(3) {
+    background-image:url("assets/pexels-alisha-mishra-1346263.jpg");
+    background-size: cover;
+}
+
+.slide:nth-child(4) {
+    background-image:url("assets/personal_pies/blueberry pies.jpg");
+    background-size: cover;
+}
+.slide:nth-child(5) {
+    background-image:url("assets/pexels-son-tung-tran-7454368.jpg");
+    background-size: cover;
+}
+
+@keyframes slide {
+
+    20% {
+        margin-left: 0px;
+    }
+    40% {
+        margin-left: calc(-100%* 1);
+    }
+    60% {
+        margin-left: calc(-100%* 2);
+    }
+    80% {
+        margin-left: calc(-100% * 3);
+    }
+    100% {
+        margin-left: calc(-100% * 4);
+    }
+}
+
+.content {
+    padding: 16px;
+}
+
+/* The sticky class is added to the header with JS when it reaches its scroll position */
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%
+}
+
+/* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+.sticky + .content {
+    padding-top: 102px;
+}

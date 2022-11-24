@@ -11,31 +11,35 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home Page</title>
         <style>
+            /*
+                Created on : 24 Nov 2022, 11:43:06 AM
+                Author     : Dimakatso Sebatane
+            */
+
             body {
                 font-family: Prata;
                 padding: 5%;
                 text-align: center;
-                font-size: 50;
             }
 
             #slideshow {
-
                 overflow:hidden;
-                height: 310px;
-                width: 428px;
+                height: 620px;
+                width: 100%;
 
-                margin-top: -100px;
-                margin-left: -200px;
+                margin-top: 0%;
+                /*margin-left: -200px;*/
 
-                position:absolute;
-                top: 50%;
+                /*position:absolute;*/
+                /*top: 50%;*/
                 left: 50%;
             }
 
             .slide {
                 float: left;
-                height: 310px;
-                width: 428px;
+                height: 620px;
+                padding:5px;
+                width: 100%;
 
             }
             .slide-number{
@@ -44,8 +48,9 @@
             }
 
             .slide-wrapper {
+                padding:5px;
 
-                width: calc(428px * 5);
+                width: calc(100% * 5);
                 animation: slide 15s ease infinite;
             }
 
@@ -79,30 +84,45 @@
                     margin-left: 0px;
                 }
                 40% {
-                    margin-left: calc(-428px * 1);
+                    margin-left: calc(-100%* 1);
                 }
                 60% {
-                    margin-left: calc(-428px * 2);
+                    margin-left: calc(-100%* 2);
                 }
                 80% {
-                    margin-left: calc(-428px * 3);
+                    margin-left: calc(-100% * 3);
                 }
                 100% {
-                    margin-left: calc(-428px * 4);
+                    margin-left: calc(-100% * 4);
                 }
+            }
+
+            .content {
+                padding: 16px;
+            }
+
+            /* The sticky class is added to the header with JS when it reaches its scroll position */
+            .sticky {
+                position: fixed;
+                top: 0;
+                width: 100%
+            }
+
+            /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
+            .sticky + .content {
+                padding-top: 102px;
             }
         </style>
         <link rel="stylesheet" href="css/style.css">
+        <!--<link rel="stylesheet" href="css/index_cascading.css">-->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <!--<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">-->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
-        <script src="js/main.js"></script>
     </head>
-    <body class="home-body" style='background-size:cover'>
-        <header class="home-head">
+    <body class="home-body " style='background-size:cover'>
+        <header class="home-head" id='myHeader' style='position:static'>
             <nav>
                 <div class="topnav" >
-                    <h1 align="center" id='home-header1'>
+                    <h1 align="center" id='home-header1' >
                         Patty's Bakery
                         <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
 
@@ -125,7 +145,7 @@
             </nav>
         </header>
 
-        <div id="slideshow">
+        <div id="slideshow" class="content">
             <div class="slide-wrapper">
 
                 <div class="slide" onclick="location.href = 'cookies_control'">
@@ -168,8 +188,25 @@
                         </nav></header>
                 </div>
             </div>
+
         </div>
-        <div class="contact-div">
+        <div style='background-color:red;height:200px;padding:12px;margin-top:2%' >
+
+        </div>
+        <div style='background-color:yellow;height:200px;padding:12px;margin-top:2%' >
+
+        </div>
+        <div style='background-color:green;height:200px;padding:12px;margin-top:2%' >
+
+        </div>
+        <div style='background-color:lightblue;height:200px;padding:12px;margin-top:2%' >
+
+        </div>
+        <div style='background-color:lightgray;height:200px;padding:12px;margin-top:2%' >
+
+        </div>
+
+        <div class="contact-div content">
             <h4 align="center">Contact</h4>
             <div><i class="fa fa-phone" aria-hidden="true">+27712345536</i></div>
             <div><i class="fa fa-envelope" aria-hidden="true">info@pattybakery.com</i></div>
