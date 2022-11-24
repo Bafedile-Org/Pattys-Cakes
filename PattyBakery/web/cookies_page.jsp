@@ -56,9 +56,9 @@
                 }
 
                 out.println(String.format(""
-                        + "<div class='images-container' align='center'><div class='cookies_img' ><div align='center'>"
+                        + "<div class='images-container' ><div class='cookies_img' ><div align='center'>"
                         + "<label id='cookie_label'><strong>%s</strong></label>"
-                        + "<br><img src='%s' alt='cookies' class='center'>"
+                        + "<br><img src='%s' alt='cookies' class='center' >"
                         + "</div><div>"
                         + "<article>"
                         + "<ul>"

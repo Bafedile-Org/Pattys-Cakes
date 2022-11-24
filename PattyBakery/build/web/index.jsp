@@ -20,25 +20,22 @@
                 font-family: Prata;
                 padding: 5%;
                 text-align: center;
+                font-size: 50;
             }
 
             #slideshow {
                 overflow:hidden;
-                height: 620px;
-                width: 100%;
+                height: 320px;
+                width: 430px;
 
-                margin-top: 0%;
-                /*margin-left: -200px;*/
-
-                /*position:absolute;*/
-                /*top: 50%;*/
-                left: 50%;
+                margin-top:-30px;
+                margin-left: -200px;*
             }
 
             .slide {
                 float: left;
-                height: 620px;
-                width: 100%;
+                height: 320px;
+                width: 430px;
 
             }
             .slide-number{
@@ -48,7 +45,7 @@
 
             .slide-wrapper {
 
-                width: calc(100% * 5);
+                width: calc(430px * 5);
                 animation: slide 15s ease infinite;
             }
 
@@ -82,18 +79,26 @@
                     margin-left: 0px;
                 }
                 40% {
-                    margin-left: calc(-100%* 1);
+                    margin-left: calc(-430px* 1);
                 }
                 60% {
-                    margin-left: calc(-100%* 2);
+                    margin-left: calc(-430px* 2);
                 }
                 80% {
-                    margin-left: calc(-100% * 3);
+                    margin-left: calc(-430px% * 3);
                 }
                 100% {
-                    margin-left: calc(-100% * 4);
+                    margin-left: calc(-430px * 4);
                 }
             }
+            .parent{
+    position: relative;
+}
+.content{
+    position: absolute;
+    top: 15%;
+    left: 55%;
+}
 
         </style>
         <link rel="stylesheet" href="css/style.css">
@@ -101,11 +106,11 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
     </head>
-    <body class="home-body " style='background-size:cover'>
+    <body class="home-body " >
         <header class="home-head" id='myHeader' style='position:static'>
             <nav>
                 <div class="topnav" >
-                    <h1 align="center" id='home-header1' >
+                    <h1 align="center" id='home-header1' style=" font-size:70px;" >
                         Patty's Bakery
                         <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
 
@@ -127,8 +132,10 @@
                 </div>
             </nav>
         </header>
-
-        <div id="slideshow" class="content">
+        <div class="parent">
+        <img src="assets/pexels-movidagrafica-barcelona-1475007.jpg" style="width:1400px;height:800px;margin-top:-15px" alt="cover">
+        
+        <div id="slideshow" class="content" >
             <div class="slide-wrapper">
 
                 <div class="slide" onclick="location.href = 'cookies_control'">
@@ -173,23 +180,25 @@
             </div>
 
         </div>
-        <div style='background-color:red;height:200px;padding:12px;margin-top:2%' >
+        </div>
+        <div style='background-color:red;height:300px;padding:12px;margin-top:2%' >
 
         </div>
-        <div style='background-color:yellow;height:200px;padding:12px;margin-top:2%' >
+        <div style='background-color:yellow;height:300px;padding:12px;margin-top:2%' >
 
         </div>
-        <div style='background-color:green;height:200px;padding:12px;margin-top:2%' >
+        <div style='background-color:green;height:300px;padding:12px;margin-top:2%' >
 
         </div>
-        <div style='background-color:lightblue;height:200px;padding:12px;margin-top:2%' >
+        <div style='background-color:lightblue;height:300px;padding:12px;margin-top:2%' >
 
         </div>
-        <div style='background-color:lightgray;height:200px;padding:12px;margin-top:2%' >
+        <div style='background-color:lightgray;height:300px;padding:12px;margin-top:2%' >
 
         </div>
 
-        <div class="contact-div content">
+<!--        <div class="contact-div content" 
+             >
             <h4 align="center">Contact</h4>
             <div><i class="fa fa-phone" aria-hidden="true">+27712345536</i></div>
             <div><i class="fa fa-envelope" aria-hidden="true">info@pattybakery.com</i></div>
@@ -200,6 +209,6 @@
                 <a href='#'><i class="fa fa-instagram" aria-hidden="true"></i></a>
                 <a href='#'><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
             </div>
-        </div>
+        </div>-->
     </body>
 </html>

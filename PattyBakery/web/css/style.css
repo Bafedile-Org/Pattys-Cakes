@@ -19,13 +19,15 @@
     background:lightgray;
 }
 #home-header1{
-    font-size:50px;
+    font-size:70px;
 }
 
 .home-body{
     margin:0px;
     padding:0px;
-    background-image:url("../assets/coverPage.jpeg");
+    background-color:lightgray; 
+        
+    /*background-image:url("../assets/coverPage.jpeg");*/
     background-size:cover;
     /*background-size:100%;*/
 }
