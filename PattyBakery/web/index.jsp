@@ -38,7 +38,6 @@
             .slide {
                 float: left;
                 height: 620px;
-                padding:5px;
                 width: 100%;
 
             }
@@ -48,7 +47,6 @@
             }
 
             .slide-wrapper {
-                padding:5px;
 
                 width: calc(100% * 5);
                 animation: slide 15s ease infinite;
@@ -97,21 +95,6 @@
                 }
             }
 
-            .content {
-                padding: 16px;
-            }
-
-            /* The sticky class is added to the header with JS when it reaches its scroll position */
-            .sticky {
-                position: fixed;
-                top: 0;
-                width: 100%
-            }
-
-            /* Add some top padding to the page content to prevent sudden quick movement (as the header gets a new position at the top of the page (position:fixed and top:0) */
-            .sticky + .content {
-                padding-top: 102px;
-            }
         </style>
         <link rel="stylesheet" href="css/style.css">
         <!--<link rel="stylesheet" href="css/index_cascading.css">-->
