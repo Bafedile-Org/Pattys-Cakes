@@ -116,7 +116,7 @@
                                 <a  href="aboutUs">About Us</a>
                                 <a  href="cart_control">Checkout</a>
                                 <a  href="stores">Our Stores</a>
-                                <a href="signup">Signup/Signin</a>
+                                <a href="signup?ses=ses">Signup/Signin</a>
 
                             </div>
                         </i>

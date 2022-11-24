@@ -52,7 +52,7 @@
 
                             if (shoppingCart != null) {
                                 for (Order order : shoppingCart.getAllOrders()) {
-                                    out.println(String.format("<button class='button'>%s  %.2f x %d</button>",
+                                    out.println(String.format("<button class='button'><img align='left' src='%s' width='50' height='50' style='border-radius:20px'>%s  %.2f x %d</img></button>", order.getProduct().getImageName(),
                                             order.getProduct().getProductName(), order.getProduct().getPrice(), order.getQuantity()));
                                 }
                             }
@@ -99,7 +99,7 @@
             </div>
 
         </div>
-
+        <br><br><br><br>
         <div class="bb">
             <form action="checkout_control" method="POST">
                 <button type="submit" class="button" name="confirmOrder">Confirm order</button>

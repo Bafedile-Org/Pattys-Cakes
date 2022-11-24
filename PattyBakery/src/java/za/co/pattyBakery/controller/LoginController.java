@@ -59,13 +59,19 @@ public class LoginController extends BakeryController {
     private void loginUserIn(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         if (request.getParameter("login") != null) {
+
             logUserIn(request, response);
             if (checkIfUserExists()) {
                 String hashedPassword = hashPassword(password);
                 String userPassword = customerServImpl.getCustomerPassword(person.getPersonId(), email);
                 if (hashedPassword.contains(userPassword)) {
                     session.setAttribute("customer", person);
-                    redirectToPage(request, response, "confirm");
+
+                    if (request.getParameter("checkout") != null) {
+                        redirectToPage(request, response, "confirm");
+                    } else {
+                        redirectToPage(request, response, "home");
+                    }
                 } else {
                     redirectToPage(request, response, "login");
                 }
