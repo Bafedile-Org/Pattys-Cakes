@@ -1,7 +1,7 @@
 <%--
     Document   : index
     Created on : Oct 31, 2022, 8:42:56 AM
-    Author     : Hlawulani Baloyi
+    Author     :Bridget Bapela
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -259,7 +259,7 @@
                 <p> Try us and get indulged in the chewy gooey goodness</p>
            </div>
             <div class="column" align="right" style="margin-top:-145px">
-                 <img src="assets/whiteMuffin.jpg" style="width:49%;height:25%;margin-top: -53px;margin-right: -12px"  alt="Snow">
+                <img src="assets/whiteCookies.jpg" style="width:49%;height:25%;margin-top: -53px;margin-right: -12px"  alt="Snow">
             </div>
         </div>
 
