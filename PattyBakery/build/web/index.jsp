@@ -173,21 +173,21 @@
             </div>
 
         </div>
-        <div style='background-color:red;height:200px;padding:12px;margin-top:2%' >
+        <!--        <div style='background-color:red;height:200px;padding:12px;margin-top:2%' >
 
-        </div>
-        <div style='background-color:yellow;height:200px;padding:12px;margin-top:2%' >
+                </div>
+                <div style='background-color:yellow;height:200px;padding:12px;margin-top:2%' >
 
-        </div>
-        <div style='background-color:green;height:200px;padding:12px;margin-top:2%' >
+                </div>
+                <div style='background-color:green;height:200px;padding:12px;margin-top:2%' >
 
-        </div>
-        <div style='background-color:lightblue;height:200px;padding:12px;margin-top:2%' >
+                </div>
+                <div style='background-color:lightblue;height:200px;padding:12px;margin-top:2%' >
 
-        </div>
-        <div style='background-color:lightgray;height:200px;padding:12px;margin-top:2%' >
+                </div>
+                <div style='background-color:lightgray;height:200px;padding:12px;margin-top:2%' >
 
-        </div>
+                </div>-->
 
         <div class="contact-div content">
             <h4 align="center">Contact</h4>
