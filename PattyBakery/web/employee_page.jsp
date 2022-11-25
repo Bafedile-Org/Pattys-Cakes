@@ -17,7 +17,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
-                background-color: #f4f4f4;
+                 background-image:url("../assets/pexels-mariana-kurnyk-1756062.jpg");;
+               background-size:cover;
             }
             .sf {
                 min-height: 400px;
@@ -39,22 +40,22 @@
         </script>
     </head>
     <body>
-        <nav class="home-head">
+        <header class="home-head">
+        <nav >
+             <div align='right'>
+            Today's date: <%= (new java.util.Date())%>
+        </div>
             <div class="topnav">
-                <h1 align="center" id="home-header1"> <div style='float:left'class="dropdown-content">
-                        <a href="/bakery/login_control">Back</a>
-                    </div>Bakery Employee management site
-
-                </h1>
+                     <a href="/bakery/login_control">Back</a>
+                    <h1 align="center" id="home-header1" style="font-size:44px;"> 
+                        Employee Management 
+                </h1></div>
             </div>
         </nav>
-        <div align='right'>
-            Today's date: <%= (new java.util.Date()).toLocaleString()%>
-        </div>
-        <div class="form-contents">
-
-            <form action="/bakery/res/bakery_res/addEmployee" method="POST">
-                <h1 align='center'>Add An Employee</h1><br>
+        </header>
+        <div class="form-contents" style='margin-top:-20px;padding:12px 12px;'>
+            <u>  <h3 align='center'>Add An Employee</h3></u>
+            <form action="/bakery/res/bakery_res/addEmployee" method="POST">               
                 <div class="input-field" style="text-align: center">
                     <input name='name' type="name" placeholder="Name" class="name" size="50">
                 </div>

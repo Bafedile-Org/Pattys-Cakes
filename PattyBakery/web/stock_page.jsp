@@ -47,19 +47,21 @@
         </script>
     </head>
     <body>
-        <nav class="home-head">
-            <div class="topnav">
-                <h1 align="center" id="home-header1"> <div  style='float:left'class="dropdown-content" align="left">
-                        <a href="/bakery/login_control">Back</a>
-                    </div>Bakery Stock management site
-                </h1>
-            </div>
-        </nav>
-        <div align='right'>
+        <header class="home-head">
+        <nav >
+             <div align='right'>
             Today's date: <%= (new java.util.Date())%>
         </div>
-        <div class="form-content" style='margin-top:80px;padding:12px 12px;'>
-            <h2 align='center'>Add, Update Or Remove Product</h2>
+            <div class="topnav">
+                     <a href="/bakery/login_control">Back</a>
+                    <h1 align="center" id="home-header1" style="font-size:44px;"> 
+                        Stock management  
+                </h1></div>
+            </div>
+        </nav>
+        </header>    
+        <div class="form-content" style='margin-top:-20px;padding:12px 12px;'>
+            <u><h3 align='center'>Add, Update Or Remove Product</h3></u>
             <form action="/bakery/res/bakery_res/addStock" method="POST">
                 <div class="input-field" style="text-align: center">
                     <input  id="inputValue" type="productId" name="prodId" placeholder="Product ID" class="productId" size="33" value="" required>
