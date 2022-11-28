@@ -189,6 +189,15 @@
         <url-pattern>/admin/home</url-pattern>
     </servlet-mapping>
     <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>RecipeManagement</servlet-name>
+        <jsp-file>/recipe_management_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>RecipeManagement</servlet-name>
+        <url-pattern>/admin/recipe</url-pattern>
+    </servlet-mapping>
+    <!-- #######################################################################################-->
     <!--    <servlet>
         <servlet-name>bc</servlet-name>
         <servlet-class>za.co.pattyBakery.controller.BakeryController</servlet-class>

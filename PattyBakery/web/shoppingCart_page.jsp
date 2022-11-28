@@ -46,15 +46,18 @@
         %>
     </div>
     <%
-        if (displayMessage != null && cart != null) {
+        if (displayMessage != null) {
             out.println(displayMessage);
-            out.println(String.format("<div class='checkout' align='center'>Total Amount :R<input type='button' id='totalAmount' value='%s'>"
-                    + "<br><label>Delivery : R%.2f</label><br>Total Amount Due :R<input type='button' id='totalAmountDue' "
-                    + "value='%s'></div><div align='right'><form action='checkout_control' method='POST'>"
-                    + "<button style='width:150px;height:50px;border-radius:12px;background-color:#C799BA' name='checkout'>"
-                    + "Checkout</button></form></div>", String.format("%.2f", cart.getTotalprice()), 100.00, String.format("%.2f", cart.getTotalprice() + 100)));
-        } else {
+            if (cart != null && displayMessage.length() != 0) {
+                out.println(String.format("<div class='checkout' align='center'>Total Amount :R<input type='button' id='totalAmount' value='%s'>"
+                        + "<br><label>Delivery : R%.2f</label><br>Total Amount Due :R<input type='button' id='totalAmountDue' "
+                        + "value='%s'></div><div align='right'><form action='checkout_control' method='POST'>"
+                        + "<button style='width:150px;height:50px;border-radius:12px;background-color:#C799BA' name='checkout'>"
+                        + "Checkout</button></form></div>", String.format("%.2f", cart.getTotalprice()), 100.00, String.format("%.2f", cart.getTotalprice() + 100)));
+
+            }else {
             out.println(String.format("<h1 align='center' style='margin-top:100px;color:RED'>Ooops!!! YOU HAVE NOTHING IN CART"));
+        }
         }
 
     %>

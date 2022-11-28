@@ -37,4 +37,8 @@ public class RecipeServImpl implements RecipeDAO {
         return recipeDaoImpl.getAllRecipieIds();
     }
 
+    @Override
+    public String getRecipeIdByDescription(String description) {
+        return recipeDaoImpl.getRecipeIdByDescription(description);
+    }
 }
