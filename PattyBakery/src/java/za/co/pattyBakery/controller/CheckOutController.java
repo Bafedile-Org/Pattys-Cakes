@@ -23,7 +23,6 @@ import za.co.pattyBakery.Order;
 @WebServlet(name = "CheckOutController", urlPatterns = {"/checkout_control"})
 public class CheckOutController extends BakeryController {
 
-    ShoppingCart cart;
     Person person;
 
     @Override
@@ -44,7 +43,6 @@ public class CheckOutController extends BakeryController {
         }
 
         if (request.getParameter("pay") != null) {
-
             orderServImpl = new OrderServImpl();
             if (cart != null) {
                 orderServImpl.addOrder(cart);

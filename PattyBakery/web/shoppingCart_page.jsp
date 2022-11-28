@@ -43,11 +43,11 @@
         <%
             ShoppingCart cart = (ShoppingCart) session.getAttribute("cart");
             String displayMessage = (String) request.getAttribute("displayMessage");
-            out.println(displayMessage);
         %>
     </div>
     <%
-        if (displayMessage.length() != 0) {
+        if (displayMessage != null && cart != null) {
+            out.println(displayMessage);
             out.println(String.format("<div class='checkout' align='center'>Total Amount :R<input type='button' id='totalAmount' value='%s'>"
                     + "<br><label>Delivery : R%.2f</label><br>Total Amount Due :R<input type='button' id='totalAmountDue' "
                     + "value='%s'></div><div align='right'><form action='checkout_control' method='POST'>"
