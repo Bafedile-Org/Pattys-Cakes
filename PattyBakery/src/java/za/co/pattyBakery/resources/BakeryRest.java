@@ -4,7 +4,9 @@ import java.math.BigInteger;
 import java.net.URISyntaxException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
 import java.time.LocalDate;
+import java.util.List;
 import javax.ws.rs.FormParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -13,15 +15,21 @@ import javax.ws.rs.core.Response;
 import za.co.pattyBakery.Employee;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.dao.EmployeeDAO;
+import za.co.pattyBakery.dao.IngredientsDAO;
 import za.co.pattyBakery.dao.OrderDAO;
 import za.co.pattyBakery.dao.ProductDAO;
+import za.co.pattyBakery.dao.RecipeDAO;
 import za.co.pattyBakery.dao.StockDAO;
+import za.co.pattyBakery.dao.impl.IngredientsDAOImpl;
 import za.co.pattyBakery.dao.impl.OrderDAOImpl;
+import za.co.pattyBakery.dao.impl.RecipeDAOImpl;
 import za.co.pattyBakery.exception.ProductException;
 import za.co.pattyBakery.model.EmployeeImpl;
 import za.co.pattyBakery.model.ProductImpl;
+import za.co.pattyBakery.model.Recipe;
 import za.co.pattyBakery.service.impl.CategoryServImpl;
 import za.co.pattyBakery.service.impl.EmployeeServImpl;
+import za.co.pattyBakery.service.impl.NutrientsServImpl;
 import za.co.pattyBakery.service.impl.ProductServImpl;
 import za.co.pattyBakery.service.impl.StockServImpl;
 
@@ -39,40 +47,73 @@ public class BakeryRest {
 
     @POST
     @Path("/addStock")
-    public Response addStock(@FormParam("prodId") String prodId, @FormParam("quantity") Integer quantity,
+    public Response addStock(@FormParam("quantity") Integer quantity,
             @FormParam("which") String which, @FormParam("prodName") String prodName,
             @FormParam("image") String image,
             @FormParam("price") Double price,
-            @FormParam("cat") String cat, @FormParam("recipeId") String recipeId) {
+            @FormParam("cat") String cat, @FormParam("recipe") String recipe, @FormParam("nutrients") List<String> nutrients) {
         StockDAO stockServImpl = new StockServImpl();
         ProductDAO productServImpl = new ProductServImpl();
+        RecipeDAO recipeServImpl = new RecipeDAOImpl();
+        NutrientsServImpl nutrientsServImpl = new NutrientsServImpl();
         java.net.URI location = null;
         try {
             location = new java.net.URI("http://localhost:8080/bakery/admin/stock");
-            if (prodId == null) {
+            if (prodName == null) {
                 System.out.println("Please enter product Id");
                 return Response.temporaryRedirect(location).build();
             } else {
+                Boolean isValid = false;
+                Product product;
                 switch (which) {
                     case "add":
-                        Product product = new ProductImpl(prodId, prodName, price, new CategoryServImpl().getCategoryIdByName(cat), "1NT", recipeId, String.format("assets/%s/%s", cat.toLowerCase(), image));
+                        String productId = productServImpl.getProductIdByName(prodName);
+                        List< String> productIds = productServImpl.getAllProductsIds();
+                        String prod_id = "";
+                        String recipeId = "";
+                        if (productId == null || productId.length() == 0) {
+                            loop:
+                            while (!isValid) {
+                                Integer randomNumber = new SecureRandom().nextInt(150);
+                                while (randomNumber == 0) {
+                                    randomNumber = new SecureRandom().nextInt(150);
+                                }
+                                prod_id = randomNumber + "PRO";
+                                if (productIds.contains(prod_id)) {
+                                    break loop;
+                                }
+                                isValid = true;
+                            }
+                            productId = prod_id;
+
+                        }
+
+                        recipeId = recipeServImpl.getRecipeIdByDescription(recipe);
+                        if (nutrients != null) {
+                            for (String nutrient : nutrients) {
+                                String nutrientId = nutrientsServImpl.getNutrientIdByName(nutrient);
+                                nutrientsServImpl.addProductNutrient(productId, nutrientId, Double.valueOf(String.format("%.2f", new SecureRandom().nextDouble())));
+                            }
+                        }
+                        product = new ProductImpl(productId, prodName, price, new CategoryServImpl().getCategoryIdByName(cat),
+                                "1NT", recipeId, String.format("assets/%s/%s", cat.toLowerCase(), image));
                         productServImpl.addProduct(product);
-                        stockServImpl.addStockById(prodId, quantity);
+                        stockServImpl.addStockById(productId, quantity);
                         break;
                     case "update":
                         if (quantity != null) {
-                            stockServImpl.updateStockQuantity(prodId, quantity);
+                            stockServImpl.updateStockQuantity(productServImpl.getProductIdByName(prodName), quantity);
                         }
-                        if (prodId != null && price != null) {
-                            productServImpl.updateProductPrice(prodId, price);
+                        if (price != null) {
+                            productServImpl.updateProductPrice(productServImpl.getProductIdByName(prodName), price);
                         }
 
                         break;
                     case "remove":
-                        stockServImpl.removeProductFromStock(prodId);
-                        productServImpl.removeProduct(prodId);
+                        stockServImpl.removeProductFromStock(productServImpl.getProductIdByName(prodName));
+                        productServImpl.removeProduct(productServImpl.getProductIdByName(prodName));
                 }
-                System.out.println("Successfully added to product " + prodId + " " + quantity + " items");
+                System.out.println("Successfully added to product " + productServImpl.getProductIdByName(prodName) + " " + quantity + " items");
             }
         } catch (URISyntaxException | ProductException ex) {
             System.out.println("Error: " + ex.getMessage());
@@ -110,6 +151,85 @@ public class BakeryRest {
     public void removeEmployee(String todo, Integer employeeId) {
         EmployeeDAO employeeSevImpl = new EmployeeServImpl();
         employeeSevImpl.removeEmployee(employeeId);
+    }
+
+    @POST
+    @Path("/addRecipe")
+    public Response addRecipe(@FormParam("recipe") String recipe, @FormParam("ingredients") List<String> ingredients, @FormParam("which") String which) {
+        java.net.URI location = null;
+        try {
+
+            location = new java.net.URI("http://localhost:8080/bakery/admin/recipe");
+            RecipeDAOImpl recipeServImpl = new RecipeDAOImpl();
+            String recipeId = recipeServImpl.getRecipeIdByDescription(recipe);
+            if (which.equalsIgnoreCase("add")) {
+                List<String> recipeIds = recipeServImpl.getAllRecipieIds();
+                String recp_id = "";
+                Boolean isValid = false;
+                if (recipeId == null || recipeId.length() == 0) {
+                    loop:
+                    while (!isValid) {
+                        Integer randomNumber = new SecureRandom().nextInt(150);
+                        while (randomNumber == 0) {
+                            randomNumber = new SecureRandom().nextInt(150);
+                        }
+                        recp_id = randomNumber + "RES";
+                        if (recipeIds.contains(recp_id)) {
+                            break loop;
+                        }
+                        isValid = true;
+                    }
+                }
+                recipeId = recp_id;
+                recipeServImpl.addRecipe(new Recipe(recipeId, ingredients, recipe));
+            } else {
+                recipeServImpl.updateRecipeIngredients(recipeId, ingredients);
+            }
+
+        } catch (URISyntaxException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return Response.temporaryRedirect(location).build();
+    }
+
+    @POST
+    @Path("/addIngredient")
+    public Response addIngredient(@FormParam("ingr") String ingredient, @FormParam("quantity") Integer quantity, @FormParam("which") String which) {
+        java.net.URI location = null;
+        IngredientsDAO ingredientsDAOImpl = new IngredientsDAOImpl();
+        try {
+            location = new java.net.URI("http://localhost:8080/bakery/admin/ingredients");
+            Boolean isValid = false;
+            if (which.equalsIgnoreCase("add")) {
+                String ingredientId = ingredientsDAOImpl.getIngredientByIdName(ingredient);
+                List<String> ingredientIds = ingredientsDAOImpl.getAllIngredientsId();
+                String ingr_id = "";
+                if (ingredientId == null || ingredientId.length() == 0) {
+                    loop:
+                    while (!isValid) {
+                        Integer randomNumber = new SecureRandom().nextInt(150);
+                        while (randomNumber == 0) {
+                            randomNumber = new SecureRandom().nextInt(150);
+                        }
+                        ingr_id = randomNumber + "ING";
+                        if (ingredientIds.contains(ingr_id)) {
+                            break loop;
+                        }
+                        isValid = true;
+                    }
+                }
+                ingredientId = ingr_id;
+                ingredientsDAOImpl.addIngridient(ingredientId, ingredient, quantity);
+
+            } else if (which.equalsIgnoreCase("remove")) {
+                ingredientsDAOImpl.removeIngredient(ingredientsDAOImpl.getIngredientByIdName(ingredient));
+            } else {
+                ingredientsDAOImpl.updateIngredientQuantity(ingredientsDAOImpl.getIngredientByIdName(ingredient), quantity);
+            }
+        } catch (URISyntaxException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return Response.temporaryRedirect(location).build();
     }
 
     @POST

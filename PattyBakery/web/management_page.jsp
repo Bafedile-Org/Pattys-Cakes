@@ -18,9 +18,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script src="js/main.js"></script>
         <style>
-             body {
-                 background-image:url("../assets/patty_pic_chef.jpg");
-               background-size:cover;
+            body {
+                background-image:url("../assets/patty_pic_chef.jpg");
+                background-size:cover;
             }
             .sf {
                 min-height: 400px;
@@ -40,6 +40,7 @@
                                 <a href="/bakery/admin/stock">Stock</a>
                                 <a href="/bakery/admin/employee">Employee</a>
                                 <a href="/bakery/admin/orders">Orders</a>
+                                <a href="/bakery/admin/recipe">Recipe</a>
                                 <a href="/bakery/admin/ingredients">Ingredients</a>
                             </div>
                         </i>
@@ -50,7 +51,7 @@
         </header>
         <div>
             Today's date: <%= (new java.util.Date()).toLocaleString()%>
-        </div>           
         </div>
-    </body>
+    </div>
+</body>
 </html>

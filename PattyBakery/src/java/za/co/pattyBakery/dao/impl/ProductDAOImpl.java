@@ -101,6 +101,26 @@ public class ProductDAOImpl implements ProductDAO {
         return product;
     }
 
+    @Override
+    public String getProductIdByName(String name) {
+        String productId = null;
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT prod_id FROM product WHERE prod_name = ?");
+                preparedStatement.setString(1, name);
+                resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    productId = resultSet.getString("prod_id");
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println(String.format("Error: %s%n", sql.getMessage()));
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+        return productId;
+    }
+
     public String getProductDescriptionById(String recipeId) {
         String description = null;
         try {
@@ -194,6 +214,8 @@ public class ProductDAOImpl implements ProductDAO {
     public List<Product> getAllProducts() {
         List<Product> products = new ArrayList<>();
         Product product = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
         try {
             if (con != null) {
                 preparedStatement = con.prepareStatement("SELECT * FROM product;");

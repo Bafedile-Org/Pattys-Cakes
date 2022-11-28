@@ -17,11 +17,8 @@ public class IngredientsServImpl implements IngredientsDAO {
     }
 
     @Override
-    public void updateIngredient(String ingredientId, String ingredient) {
-        if (ingredient == null || ingredientId == null) {
-            return;
-        }
-        ingredientDAOImpl.updateIngredient(ingredientId, ingredient);
+    public void updateIngredientQuantity(String ingredientId, Integer quantity) {
+        ingredientDAOImpl.updateIngredientQuantity(ingredientId, quantity);
     }
 
     @Override
@@ -57,6 +54,11 @@ public class IngredientsServImpl implements IngredientsDAO {
     public List<String> getAllIngredientsId() {
 
         return ingredientDAOImpl.getAllIngredientsId();
+    }
+
+    @Override
+    public String getIngredientByIdName(String ingredient) {
+        return ingredientDAOImpl.getIngredientByIdName(ingredient);
     }
 
 }

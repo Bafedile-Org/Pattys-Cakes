@@ -72,7 +72,7 @@ public class RecipeIngredientsDAOImpl implements RecipeIngredientsDAO {
         try {
             if (con != null) {
 
-                preparedStatement = con.prepareStatement("INSERT IGNORE INTO recipe_ingredient (ingr_id) VALUES(?)");
+                preparedStatement = con.prepareStatement("INSERT IGNORE INTO recipe_ingredient VALUES(?,?)");
                 preparedStatement.setString(1, recipeId);
                 preparedStatement.setString(2, ingredientId);
                 preparedStatement.executeUpdate();
@@ -83,5 +83,4 @@ public class RecipeIngredientsDAOImpl implements RecipeIngredientsDAO {
             close(preparedStatement, resultSet);
         }
     }
-
 }

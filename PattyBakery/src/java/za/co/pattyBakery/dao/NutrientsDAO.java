@@ -10,6 +10,8 @@ public interface NutrientsDAO extends Close {
 
     public void addNutrient(String nutrientId, String nutrient);
 
+    public String getNutrientIdByName(String nutrient);
+
     public void updateNutrient(String nutrientId, String nutrient);
 
     public void removeNutrient(String nutrientId);

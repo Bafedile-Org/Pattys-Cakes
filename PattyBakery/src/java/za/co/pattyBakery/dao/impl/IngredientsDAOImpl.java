@@ -45,11 +45,11 @@ public class IngredientsDAOImpl implements IngredientsDAO {
     }
 
     @Override
-    public void updateIngredient(String ingredientId, String ingredient) {
+    public void updateIngredientQuantity(String ingredientId, Integer quantity) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("UPDATE ingredients SET ingredient = ? WHERE ingr_id = ?");
-                preparedStatement.setString(1, ingredient);
+                preparedStatement = con.prepareStatement("UPDATE ingredients SET quantity = ? WHERE ingr_id = ?");
+                preparedStatement.setInt(1, quantity);
                 preparedStatement.setString(2, ingredientId);
                 preparedStatement.executeUpdate();
             }
@@ -93,6 +93,26 @@ public class IngredientsDAOImpl implements IngredientsDAO {
             close(preparedStatement, resultSet);
         }
         return ingredient;
+    }
+
+    @Override
+    public String getIngredientByIdName(String ingredient) {
+        String ingredientId = null;
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT ingr_id FROM ingredients WHERE ingredient =?");
+                preparedStatement.setString(1, ingredient);
+                resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    ingredientId = resultSet.getString("ingr_id");
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+        return ingredientId;
     }
 
     @Override
