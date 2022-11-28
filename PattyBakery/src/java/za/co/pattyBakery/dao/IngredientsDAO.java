@@ -10,11 +10,13 @@ public interface IngredientsDAO extends Close {
 
     public void addIngridient(String ingredientId, String ingredient, Integer quantity);
 
-    public void updateIngredient(String ingredientId, String ingredient);
+    public void updateIngredientQuantity(String ingredientId, Integer quantity);
 
     public void removeIngredient(String ingredientId);
 
     public String getIngredientById(String ingredientId);
+
+    public String getIngredientByIdName(String ingredient);
 
     public List<String> getAllIngredient();
 

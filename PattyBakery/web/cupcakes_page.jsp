@@ -9,36 +9,36 @@
 <%@page contentType='text/html' pageEncoding='UTF-8'%>
 <!DOCTYPE html>
 <html>
+    <%List<Product> products = (List<Product>) request.getAttribute("products");
+        Product product = null;
+        List<String> ingredients;
+        List<String> nutrients;
+        String control = (String) request.getAttribute("control");
+        Integer totalInCart = (Integer) request.getAttribute("totalInCart");
+        String ingredientsValues = "";
+        String nutrientsValues = "";%>
     <head>
         <meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
-        <title>Cookies Page</title>
+        <title><%=products.get(0).getCategory()%> Page</title>
         <link rel='stylesheet' href='css/style.css'>
         <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
         <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Pacifico'>
-         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
         <script src='js/main.js'></script>
     </head>
-    <body style="background: #E6E6FA;font-family:'Prata'"> 
+    <body style="background: #E6E6FA;font-family:'Prata'">
 
         <%
-            List<Product> products = (List<Product>) request.getAttribute("products");
-            Product product = null;
-            List<String> ingredients;
-            List<String> nutrients;
-            String control = (String) request.getAttribute("control");
-            Integer totalInCart = (Integer) request.getAttribute("totalInCart");
-            String ingredientsValues = "";
-            String nutrientsValues = "";
 
-            out.println(String.format("<header class='home-head'><nav><div class='topnav' ><h1 align='center' id='home-header1' style='font-family:'Prata';'><a href='home'><u> Patty's Bakery </u></a>"
+            out.println(String.format("<header class='home-head'><nav><div class='topnav' ><h1 align='center' id='home-header1' style='font-family:'Prata''>Patty's Bakery"
                     + "<a href='%s' name='cart'><i class='fa fa-shopping-cart' "
                     + "style='font-size:24px'"
                     + ">%d"
                     + " </i></a></h1></div></nav></header><h1 align='center'>"
                     + "<a align='left' href='home' "
-                    + "style='float:left;color:black;width:110px;style='font-family:'Prata''>"
+                    + "style='float:left;color:black;width:110px;font-family:'Prata''>"
                     + "<i class='fa fa-arrow-left' aria-hidden='true'>"
-                    + "</i></a><pre align='center'><h1 ><u>%s/</u><a href='muffins_control' >Muffins</a></h1>"
+                    + "</i></a><pre align='center'><u><h1>%s</h1></u>"
                     + "</pre></h1>", control + "?cart=cart", totalInCart, products.get(0).getCategory()));
             for (int i = 0; i < products.size(); i++) {
                 product = products.get(i);

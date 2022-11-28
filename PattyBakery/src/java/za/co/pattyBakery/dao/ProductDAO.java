@@ -15,6 +15,8 @@ public interface ProductDAO extends Close {
 
     Product getProductById(String productId);
 
+    public String getProductIdByName(String name);
+
     void removeProduct(String productId);
 
     void updateProductPrice(String productId, Double price);

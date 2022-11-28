@@ -23,7 +23,6 @@ import za.co.pattyBakery.Order;
 @WebServlet(name = "CheckOutController", urlPatterns = {"/checkout_control"})
 public class CheckOutController extends BakeryController {
 
-    ShoppingCart cart;
     Person person;
 
     @Override
@@ -33,17 +32,17 @@ public class CheckOutController extends BakeryController {
         person = (Person) session.getAttribute("customer");
         if (request.getParameter("checkout") != null) {
             if ((Person) session.getAttribute("customer") == null) {
+                request.setAttribute("checkout", "checkout");
                 redirectToPage(request, response, "login");
             }
             getShoppingCart(request, response);
         }
         if (request.getParameter("confirmOrder") != null) {
-//            sendConfirmationEmail(person.getEmail(), cart);
+//            sendConfirmationEmail("pattysbakery.shop@gmail.com", "PattyBakery", person.getEmail());
             redirectToPage(request, response, "check-out");
         }
 
         if (request.getParameter("pay") != null) {
-
             orderServImpl = new OrderServImpl();
             if (cart != null) {
                 orderServImpl.addOrder(cart);
@@ -61,38 +60,26 @@ public class CheckOutController extends BakeryController {
 
     }
 
-    private void sendConfirmationEmail(String customerEmail, ShoppingCart cart) {
-        // Recipient's email ID needs to be mentioned.
-        String to = customerEmail;
-
-        // Sender's email ID needs to be mentioned
-        String from = "ddimakatso30@gmail.com";
-
-        // Assuming you are sending email from localhost
-        String host = "smtp.gmail.com";
-
-        // Get system properties
-        Properties properties = System.getProperties();
-
-        // Setup mail server
-        properties.setProperty("mail.smtp.host", host);
-
-        // Get the default Session object.
-        Session session = Session.getDefaultInstance(properties);
-
+    private void sendConfirmationEmail(String from, String password, String to) {
+        Properties props = new Properties();
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        props.put("mail.smtp.socketFactory.port", "465");
+        props.put("mail.smtp.socketFactory.class",
+                "javax.net.ssl.SSLSocketFactory");
+        props.put("mail.smtp.auth", "true");
+        //get Session   
+        Session ses = Session.getDefaultInstance(props,
+                new javax.mail.Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, password);
+            }
+        });
+        //compose message    
         try {
-            // Create a default MimeMessage object.
-            MimeMessage message = new MimeMessage(session);
-
-            // Set From: header field of the header.
-            message.setFrom(new InternetAddress(from));
-
-            // Set To: header field of the header.
+            MimeMessage message = new MimeMessage(ses);
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-
-            // Set Subject: header field
-            message.setSubject("Order Confirmation");
-
+            message.setSubject("Order Confirmation " + cart.getOrderNumber());
             // Now set the actual message
             String msg = String.format("Dear customer %s%n"
                     + "Your order is confirmed for the following items%n", person.getName());
@@ -100,13 +87,13 @@ public class CheckOutController extends BakeryController {
                 msg += String.format("%s%n", order.getProduct().getProductName());
             }
             message.setText(msg);
-
-            // Send message
+            //send message  
             Transport.send(message);
-            System.out.println("Sent message successfully....");
-        } catch (MessagingException mex) {
-            mex.printStackTrace();
+            System.out.println("message sent successfully");
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
         }
+
     }
 
 }

@@ -1,17 +1,10 @@
-/*
-    Created on : 03 Nov 2022, 9:11:59 AM
-    Author     : Dimakatso Sebatane
-*/
-/***
-Remember to work on the ingredients overlap in the cookies
-**/
-/*
-    Created on : 03 Nov 2022, 9:11:59 AM
-    Author     : Dimakatso Sebatane
-*/
-/***
-Remember to work on the ingredients overlap in the cookies
-**/
+.home-body1 {
+    margin:0px;
+    padding:0px;
+    background-image:url("../assets/patty_pic_chef.jpg");
+    background-size:cover;
+}
+
 .body{
     background: #E6E6FA;
 }
@@ -26,13 +19,15 @@ Remember to work on the ingredients overlap in the cookies
     background:lightgray;
 }
 #home-header1{
-    font-size:50px;
+    font-size:70px;
 }
 
 .home-body{
     margin:0px;
     padding:0px;
-    background-image:url("../assets/pexels-roman-odintsov-4551198.jpg");
+    background-color:lightgray; 
+        
+    /*background-image:url("../assets/coverPage.jpeg");*/
     background-size:cover;
     /*background-size:100%;*/
 }
@@ -40,10 +35,10 @@ Remember to work on the ingredients overlap in the cookies
     margin-left:0%;
 }
 .center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
 }
 .topnav i{
     float:right;
@@ -101,7 +96,6 @@ Remember to work on the ingredients overlap in the cookies
 body{
 
     background:#E6E6FA;
-    /*background:linear-gradient(to top left,#C799BA,whitesmoke);*/
 }
 
 #img_list{
@@ -134,9 +128,6 @@ body{
     margin-top:25%;
 }
 
-/*.cookies_img div article{
-   display:flex;
-}*/
 #img_price{
     clear:left;
     padding:17px 0px;
@@ -161,7 +152,7 @@ body{
 
 .contact-div{
     margin-left:10%;
-    margin-top:50%;
+    margin-top:5%;
     width:400px;
     height:200px;
     background: lightgray;
@@ -474,8 +465,6 @@ a.facebook .facebook-icon{
 .form-contents form{
     margin-top:8%;
 }
-/*
 
-*/
 
 

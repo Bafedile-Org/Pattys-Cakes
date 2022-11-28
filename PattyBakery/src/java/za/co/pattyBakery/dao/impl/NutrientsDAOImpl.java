@@ -95,6 +95,27 @@ public class NutrientsDAOImpl implements NutrientsDAO {
     }
 
     @Override
+    public String getNutrientIdByName(String nutrient) {
+        String nutrientId = null;
+        ResultSet resultSet = null;
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT nutr_id FROM nutrients WHERE nutrient =?");
+                preparedStatement.setString(1, nutrient);
+                resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+                    nutrientId = resultSet.getString("nutr_id");
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+        return nutrientId;
+    }
+
+    @Override
     public List<String> getAllNutrients() {
         List<String> nutrients = new ArrayList<>();
         try {

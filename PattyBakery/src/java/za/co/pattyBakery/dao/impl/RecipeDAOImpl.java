@@ -70,6 +70,8 @@ public class RecipeDAOImpl implements RecipeDAO {
     public List<Recipe> getRecipies() {
         Recipe recipe = null;
         Set<Recipe> recipies = new HashSet<>();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
         try {
             if (con != null) {
                 preparedStatement = con.prepareStatement("SELECT * FROM recipe");
@@ -106,4 +108,38 @@ public class RecipeDAOImpl implements RecipeDAO {
         return recipeIds;
     }
 
+    @Override
+    public String getRecipeIdByDescription(String description) {
+        String recipeId = null;
+        ResultSet resultSet = null;
+        if (con != null) {
+            try {
+                preparedStatement = con.prepareStatement("SELECT recp_id FROM recipe  WHERE descriptions =?");
+                preparedStatement.setString(1, description);
+                resultSet = preparedStatement.executeQuery();
+
+                if (resultSet.next()) {
+                    recipeId = resultSet.getString("recp_id");
+                }
+            } catch (SQLException sql) {
+                System.out.println(String.format("ERROR: %s%n", sql.getMessage()));
+            }
+        }
+        return recipeId;
+    }
+
+    public void updateRecipeIngredients(String recipeId, List<String> ingredients) {
+        List<String> ingredientIds = new ArrayList<>();
+        ingredients.forEach(ingredient -> {
+            ingredientIds.add(new IngredientsDAOImpl().getIngredientByIdName(ingredient));
+        });
+
+        if (con != null) {
+            for (String ingredientId : ingredientIds) {
+                new RecipeIngredientsDAOImpl().addIngredientToRecipe(recipeId, ingredientId);
+            }
+
+        }
+
+    }
 }

@@ -19,8 +19,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
-                background-image:url("assets/management/ingredient.jfif");
-                background-size: cover;
+                background-image:url("../assets/pexels-mariana-kurnyk-1756062.jpg");;
+                background-size:cover;
             }
             .sf {
                 min-height: 400px;
@@ -42,26 +42,27 @@
         </script>
     </head>
     <body>
-        <nav class="home-head">
-            <div class="topnav">
-                <h1 align="center" id="home-header1"> <div style='float:left'class="dropdown-content">
-                        <a href="/bakery/login_control">Back</a>
-                    </div>Bakery Ingredients management site
-
-                </h1>
-            </div>
-        </nav>
-        <div align='right'>
-            Today's date: <%= (new java.util.Date()).toLocaleString()%>
-        </div>
-        <div class="form-content"  style='margin-top:80px;border-style: dashed;padding:12px 12px;border-color:black'>
-            <form action="res/bakery_res/addIngredient" method="POST">
+        <header class="home-head">
+            <nav >
+                <div align='right'>
+                    Today's date: <%= (new java.util.Date())%>
+                </div>
+                <div class="topnav">
+                    <a href="/bakery/login_control">Back</a>
+                    <h1 align="center" id="home-header1" style="font-size:44px;">
+                        Bakery Ingredient Page
+                    </h1></div>
+                </div>
+            </nav>
+        </header>
+        <div class="form-content"  style='margin-top:-20px;padding:12px 12px;'>
+            <form action="/bakery/res/bakery_res/addIngredient" method="POST">
                 <div class="input-field" style="text-align: center">
-                    <input id="inputValue" type="ingredientId" name="ingrId" placeholder="Ingredients ID" class="ingredientId" size="33" value="">
-                    <select id = "myList" onchange = "getDropValue()" >
+                    <input id="inputValue" type="ingredient" name="ingr" placeholder="Ingredient" class="ingredientId" size="33" value="">
+                    <select id = "myList" onchange = "getDropValue()"  required>
                         <option>Select ID type</option>
                         <%
-                            List<String> ingredients = new IngredientsServImpl().getAllIngredientsId();
+                            List<String> ingredients = new IngredientsServImpl().getAllIngredient();
                             if (ingredients != null) {
                                 for (String ingredient : ingredients) {
                                     out.println(String.format("<option value='%s'>%s</option>", ingredient, ingredient));
@@ -70,9 +71,7 @@
                         %>
                     </select>
                 </div>
-                <div class="input-field" style="text-align: center">
-                    <input name="ingredient" type="ingredient" placeholder="Ingredient" class="ingredient" size="50">
-                </div>
+
                 <div class="input-field" style="text-align: center">
                     <input name="quantity" type="quantity" placeholder="Quantity" class="quantity" size="50">
                 </div>

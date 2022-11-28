@@ -4,6 +4,8 @@
     Author     : Bridget Bapela
 --%>
 
+<%@page import="za.co.pattyBakery.service.impl.NutrientsServImpl"%>
+<%@page import="za.co.pattyBakery.model.Recipe"%>
 <%@page import="za.co.pattyBakery.service.impl.RecipeServImpl"%>
 <%@page import="java.util.Collections"%>
 <%@page import="za.co.pattyBakery.service.impl.CategoryServImpl"%>
@@ -24,8 +26,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
-                background-image:url("assets/management/bakeryStock.jpg");
-                background-size: cover;
+                background-image:url("../assets/pexels-mariana-kurnyk-1756062.jpg");;
+                background-size:cover;
             }
             .sf {
                 min-height: 400px;
@@ -47,29 +49,29 @@
         </script>
     </head>
     <body>
-        <nav class="home-head">
-            <div class="topnav">
-                <h1 align="center" id="home-header1"> <div  style='float:left'class="dropdown-content" align="left">
-                        <a href="/bakery/login_control">Back</a>
-                    </div>Bakery Stock management site
-                </h1>
-            </div>
-        </nav>
-        <div align='right'>
-            Today's date: <%= (new java.util.Date())%>
-        </div>
-        <div class="form-content" style='margin-top:80px;border-style: dashed;padding:12px 12px;border-color:black'>
-            <h2 align='center'>Add, Update Or Remove Product</h2>
+        <header class="home-head">
+            <nav >
+                <div align='right'>
+                    Today's date: <%= (new java.util.Date())%>
+                </div>
+                <div class="topnav">
+                    <a href="/bakery/login_control">Back</a>
+                    <h1 align="center" id="home-header1" style="font-size:44px;">
+                        Stock management
+                    </h1></div>
+            </nav>
+        </header>
+        <div class="form-content" style='margin-top:-20px;padding:12px 12px;'>
+            <u><h3 align='center'>Add, Update Or Remove Product</h3></u>
             <form action="/bakery/res/bakery_res/addStock" method="POST">
                 <div class="input-field" style="text-align: center">
-                    <input  id="inputValue" type="productId" name="prodId" placeholder="Product ID" class="productId" size="33" value="" required>
-                    <select id = "myList" onchange = "getDropValue('myList', 'inputValue')"  >
-                        <option>Select ID type</option>
+                    <input  id="inputValue" type="productId" name="prodName" placeholder="Product Name" class="productId" size="15" value="" required>
+                    <select id = "myList" onchange = "getDropValue('myList', 'inputValue')" >
+                        <option size='15'>Select Product Name type</option>
                         <%
-                            List<String> products = new ProductServImpl().getAllProductsIds();
-                            Collections.sort(products);
-                            for (String product : products) {
-                                out.println(String.format("<option value='%s'>%s</option>", product, product));
+                            List<Product> products = new ProductServImpl().getAllProducts();
+                            for (Product product : products) {
+                                out.println(String.format("<option value='%s' size='15'>%s</option>", product.getProductName(), product.getProductName()));
                             }
 
                         %>
@@ -89,19 +91,29 @@
                     </select>
                 </div>
                 <div class="input-field" style="text-align: center">
-                    <input  id="inputValue3" type="text" name="recipeId" placeholder="Product Category" class="productId" size="31" value="" readonly>
+                    <input  id="inputValue3" type="text" name="recipe" placeholder="Product Recipe" class="productId" size="15" value="" readonly>
                     <select id = "myList3" onchange = "getDropValue('myList3', 'inputValue3')"  >
-                        <option>Select Recipe Id</option>
-                        <%                            List<String> recipeIds = new RecipeServImpl().getAllRecipieIds();
-                            for (String recipeId : recipeIds) {
-                                out.println(String.format("<option value='%s'>%s</option>", recipeId, recipeId));
+                        <option>Select Recipe</option>
+                        <%                            List<Recipe> recipies = new RecipeServImpl().getRecipies();
+                            for (Recipe recipe : recipies) {
+                                out.println(String.format("<option value='%s'>%s</option>", recipe.getDescription(), recipe.getDescription()));
                             }
 
                         %>
                     </select>
                 </div>
                 <div class="input-field" style="text-align: center">
-                    <input type="text" name="prodName" placeholder="Product Name" class="quantity" size="50">
+                    <!--<input  id="inputValue4" type="text" name="nutrient" placeholder="Product Nutrients" class="productId" size="30" value="" readonly>-->
+                    <p style='color:black;'><b>Hold down Ctrl to select multiple nutrients</b></p>
+                    <select id = "myList4" onchange = "getDropValue('myList4', 'inputValue4')" multiple style='width:360px;height:150px' name='nutrients' >
+                        <option>Select Nutrients</option>
+                        <%                            List<String> nutrients = new NutrientsServImpl().getAllNutrients();
+                            for (String nutrient : nutrients) {
+                                out.println(String.format("<option value='%s'>%s</option>", nutrient, nutrient));
+                            }
+
+                        %>
+                    </select>
                 </div>
                 <div class="input-field" style="text-align: center">
                     <input type="text" name="price" placeholder="Product Price" class="quantity" size="50">

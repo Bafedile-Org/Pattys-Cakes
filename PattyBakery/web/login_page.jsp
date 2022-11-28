@@ -6,12 +6,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="css/style.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
-         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
-                background-color: #E6E6FA;
+                background-image:url("../assets/pexels-mariana-kurnyk-1756062.jpg");;
+                background-size:cover;
             }
             .sf {
                 min-height: 400px;
@@ -39,7 +40,15 @@
             <div class="form login">
                 <div class="form-content">
                     <header>Login</header>
-                    <form action="login_control" method="POST">
+                        <% String action = "login_control";
+                            String checkout = (String) request.getAttribute("checkout");
+                            if (checkout != null) {
+                                if (checkout.equalsIgnoreCase("checkout")) {
+                                    action += "?checkout=checkout";
+                                }
+                            }
+                        %>
+                    <form action='<%=action%>' method="POST">
                         <div class="field input-field">
                             <input type="email" name='email'placeholder="Email" class="inputbox" required>
                         </div>

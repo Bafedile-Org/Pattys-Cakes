@@ -12,7 +12,7 @@
         <link rel="stylesheet" href="css/confirm.css">
         <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
-         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Prata">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
@@ -27,11 +27,7 @@
         <nav class="home-head">
             <div class="topnav">
                 <h1 align="center" id="home-header1"> Check out
-                    <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                        <div class="dropdown-content">
-                            <a href="<%=session.getAttribute("control")%>">Back</a>
-                        </div>
-                    </i>
+                    <a style='float:left' href="cart_control">Back</a>
                 </h1>
             </div>
         </nav>
@@ -49,7 +45,7 @@
                             <p>Cardholder Name</p>
                             <input type="text" class="inputbox" name="name" required />
                             <p>Card Number</p>
-                            <input type="number" class="inputbox" minlength="20" maxlength='20' name="card_number" id="card_number" required />
+                            <input type="text" class="inputbox" minlength="20" maxlength='20' name="card_number" id="card_number" required />
 
                             <p>Card Type </p>
                             <select class="inputbox" name="card_type" id="card_type" required>
@@ -61,7 +57,7 @@
                             <div class="expcvv">
 
                                 <p class="expcvv_text">Expiry</p>
-                                <input type="month" class="inputbox" name="exp_date" id="exp_date" required />
+                                <input type="month"  min="1997-01-01" max="2030-12-31"  class="inputbox" name="exp_date" id="exp_date" required />
 
                                 <p class="expcvv_text2">CVV</p>
                                 <input type="password" class="inputbox" minlength='3' maxlength='3' name="cvv" id="cvv" required />

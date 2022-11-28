@@ -29,8 +29,10 @@ public class CartController extends BakeryController {
     public void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         cart = (ShoppingCart) session.getAttribute("cart");
-        orders = cart.getAllOrders();
-        getProducts();
+        if (cart != null) {
+            orders = cart.getAllOrders();
+            getProducts();
+        }
         displayMsg = display(products, orderQuantitiesMap, controlsMap);
         request.setAttribute("displayMessage", displayMsg);
         displayMsg = "";
@@ -48,7 +50,7 @@ public class CartController extends BakeryController {
 
     String display(Product[] products, Map<String, Integer> quantitiesMap, Map<String, String> controlsMap) {
         String msg = "";
-        if (quantitiesMap != null) {
+        if (quantitiesMap != null && products != null) {
             for (int i = 0; i < products.length; i++) {
                 if (products[i] != null) {
                     msg = msg.concat(String.format("<div class='item' id='div'>"
