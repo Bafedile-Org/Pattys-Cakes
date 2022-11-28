@@ -134,4 +134,23 @@ public class NutrientsDAOImpl implements NutrientsDAO {
         return nutrients;
     }
 
+    @Override
+    public List<String> getAllNutrientsIds() {
+        List<String> nutrientIds = new ArrayList<>();
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT nutr_id FROM nutrients");
+                resultSet = preparedStatement.executeQuery();
+                while (resultSet.next()) {
+                    nutrientIds.add(resultSet.getString("nutr_id"));
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+        return nutrientIds;
+    }
+
 }

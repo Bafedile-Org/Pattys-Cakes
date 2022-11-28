@@ -16,12 +16,14 @@ import za.co.pattyBakery.Employee;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.dao.EmployeeDAO;
 import za.co.pattyBakery.dao.IngredientsDAO;
+import za.co.pattyBakery.dao.NutrientsDAO;
 import za.co.pattyBakery.dao.OrderDAO;
 import za.co.pattyBakery.dao.ProductDAO;
 import za.co.pattyBakery.dao.RecipeDAO;
 import za.co.pattyBakery.dao.StockDAO;
 import za.co.pattyBakery.dao.impl.IngredientsDAOImpl;
 import za.co.pattyBakery.dao.impl.OrderDAOImpl;
+import za.co.pattyBakery.dao.impl.ProductNutrientDAOImpl;
 import za.co.pattyBakery.dao.impl.RecipeDAOImpl;
 import za.co.pattyBakery.exception.ProductException;
 import za.co.pattyBakery.model.EmployeeImpl;
@@ -59,6 +61,8 @@ public class BakeryRest {
         java.net.URI location = null;
         try {
             location = new java.net.URI("http://localhost:8080/bakery/admin/stock");
+            String productId = productServImpl.getProductIdByName(prodName);
+            List< String> productIds = productServImpl.getAllProductsIds();
             if (prodName == null) {
                 System.out.println("Please enter product Id");
                 return Response.temporaryRedirect(location).build();
@@ -67,8 +71,7 @@ public class BakeryRest {
                 Product product;
                 switch (which) {
                     case "add":
-                        String productId = productServImpl.getProductIdByName(prodName);
-                        List< String> productIds = productServImpl.getAllProductsIds();
+
                         String prod_id = "";
                         String recipeId = "";
                         if (productId == null || productId.length() == 0) {
@@ -102,10 +105,14 @@ public class BakeryRest {
                         break;
                     case "update":
                         if (quantity != null) {
-                            stockServImpl.updateStockQuantity(productServImpl.getProductIdByName(prodName), quantity);
+                            stockServImpl.updateStockQuantity(productId, quantity);
                         }
                         if (price != null) {
-                            productServImpl.updateProductPrice(productServImpl.getProductIdByName(prodName), price);
+                            productServImpl.updateProductPrice(productId, price);
+                        }
+
+                        if (image != null) {
+                            productServImpl.updateProductImage(productId, String.format("assets/%s/%s", cat.toLowerCase(), image));
                         }
 
                         break;
@@ -233,8 +240,48 @@ public class BakeryRest {
     }
 
     @POST
+    @Path("/addNutrient")
+    public Response addNutrient(@FormParam("nutrient") String nutrient, @FormParam("which") String which) {
+        java.net.URI location = null;
+        try {
+            location = new java.net.URI("http://localhost:8080/bakery/admin/nutrients");
+            NutrientsDAO nutrientServImpl = new NutrientsServImpl();
+            String nutrientId = nutrientServImpl.getNutrientIdByName(nutrient);
+            if (which.equalsIgnoreCase("add")) {
+                List<String> nutrientIds = nutrientServImpl.getAllNutrientsIds();
+                String nutr_id = "";
+                Boolean isValid = false;
+                if (nutrientId == null || nutrientId.length() == 0) {
+                    loop:
+                    while (!isValid) {
+                        Integer randomNumber = new SecureRandom().nextInt(150);
+                        while (randomNumber == 0) {
+                            randomNumber = new SecureRandom().nextInt(150);
+                        }
+                        nutr_id = randomNumber + "NT";
+                        if (nutrientIds.contains(nutr_id)) {
+                            break loop;
+                        }
+                        isValid = true;
+                    }
+                }
+                nutrientId = nutr_id;
+                nutrientServImpl.addNutrient(nutrientId, nutrient);
+            } else {
+
+                nutrientServImpl.removeNutrient(nutrientServImpl.getNutrientIdByName(nutrient));
+            }
+        } catch (URISyntaxException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        return Response.temporaryRedirect(location).build();
+    }
+
+    @POST
     @Path("/updateOrder")
-    public Response updateOrder(@FormParam("order_id") String orderId, @FormParam("status") String status, @FormParam("date") String date) {
+    public Response updateOrder(@FormParam("order_id") String orderId,
+            @FormParam("status") String status,
+            @FormParam("date") String date) {
         java.net.URI location = null;
         OrderDAO orderDAOImpl = new OrderDAOImpl();
 

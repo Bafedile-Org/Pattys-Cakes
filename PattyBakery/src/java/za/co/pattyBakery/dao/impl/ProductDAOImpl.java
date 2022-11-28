@@ -177,6 +177,23 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
+    public void updateProductImage(String productId, String image) {
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("UPDATE product SET  image_name =?  WHERE prod_id = ?");
+                preparedStatement.setString(1, image);
+                preparedStatement.setString(2, productId);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException sql) {
+            System.out.println(String.format("Error: %s%n", sql.getMessage()));
+        } finally {
+            close(preparedStatement, resultSet);
+
+        }
+    }
+
+    @Override
     public void updateProductIngredient(String productId, String ingredient) {
         try {
             if (con != null) {
