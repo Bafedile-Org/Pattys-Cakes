@@ -19,4 +19,6 @@ public interface NutrientsDAO extends Close {
     public String getNutrientById(String nutrientId);
 
     public List<String> getAllNutrients();
+
+    public List<String> getAllNutrientsIds();
 }

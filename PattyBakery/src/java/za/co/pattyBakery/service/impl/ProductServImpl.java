@@ -93,4 +93,9 @@ public class ProductServImpl implements ProductDAO {
         return productDAOImpl.getProductIdByName(name);
     }
     
+    @Override
+    public void updateProductImage(String productId, String image) {
+        productDAOImpl.updateProductImage(productId, image);
+    }
+    
 }

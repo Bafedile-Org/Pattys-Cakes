@@ -198,6 +198,15 @@
         <url-pattern>/admin/recipe</url-pattern>
     </servlet-mapping>
     <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>NutrientManagement</servlet-name>
+        <jsp-file>/nutrient_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NutrientManagement</servlet-name>
+        <url-pattern>/admin/nutrients</url-pattern>
+    </servlet-mapping>
+    <!-- #######################################################################################-->
     <!--    <servlet>
         <servlet-name>bc</servlet-name>
         <servlet-class>za.co.pattyBakery.controller.BakeryController</servlet-class>
