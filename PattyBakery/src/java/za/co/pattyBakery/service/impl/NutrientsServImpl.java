@@ -46,6 +46,11 @@ public class NutrientsServImpl implements NutrientsDAO, ProductNutrientDAO {
     }
 
     @Override
+    public List<String> getAllNutrientsIds() {
+        return nutrientsDAOImpl.getAllNutrientsIds();
+    }
+
+    @Override
     public String getNutrientIdByName(String nutrient) {
         return nutrientsDAOImpl.getNutrientIdByName(nutrient);
     }

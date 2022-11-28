@@ -41,6 +41,7 @@
                                 <a href="/bakery/admin/employee">Employee</a>
                                 <a href="/bakery/admin/orders">Orders</a>
                                 <a href="/bakery/admin/recipe">Recipe</a>
+                                <a href="/bakery/admin/nutrients">Nutrients</a>
                                 <a href="/bakery/admin/ingredients">Ingredients</a>
                             </div>
                         </i>
