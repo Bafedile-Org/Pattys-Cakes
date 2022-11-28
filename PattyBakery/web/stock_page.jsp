@@ -24,7 +24,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <style>
             html, body {
-                background-image:url("../assets/pexels-mariana-kurnyk-1756062.jpg");;
+                background-image:url("../assets/pexels-mariana-kurnyk-1756062.jpg");
                background-size:cover;
             }
             .sf {
@@ -55,7 +55,7 @@
             <div class="topnav">
                      <a href="/bakery/login_control">Back</a>
                     <h1 align="center" id="home-header1" style="font-size:44px;"> 
-                        Stock management  
+                        Stock Management  
                 </h1></div>
             </div>
         </nav>

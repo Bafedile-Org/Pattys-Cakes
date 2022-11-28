@@ -2,6 +2,7 @@ package za.co.pattyBakery.service.impl;
 
 import java.util.List;
 import za.co.pattyBakery.dao.NutrientsDAO;
+import za.co.pattyBakery.dao.impl.NutrientsDAOImpl;
 
 /**
  *
@@ -11,33 +12,33 @@ public class NutrientsServImpl implements NutrientsDAO {
 
     private NutrientsDAO nutrientsDAOImpl;
 
-    public NutrientsServImpl(NutrientsDAO nutrientsDAOImpl) {
-        this.nutrientsDAOImpl = nutrientsDAOImpl;
+    public NutrientsServImpl() {
+        this.nutrientsDAOImpl = new NutrientsDAOImpl();
     }
 
     @Override
     public void addNutrient(String nutrientId, String nutrient) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        nutrientsDAOImpl.addNutrient(nutrientId, nutrient);
     }
 
     @Override
     public void updateNutrient(String nutrientId, String nutrient) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        nutrientsDAOImpl.updateNutrient(nutrientId, nutrient);
     }
 
     @Override
     public void removeNutrient(String nutrientId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        nutrientsDAOImpl.removeNutrient(nutrientId);
     }
 
     @Override
     public String getNutrientById(String nutrientId) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return nutrientsDAOImpl.getNutrientById(nutrientId);
     }
 
     @Override
     public List<String> getAllNutrients() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        return nutrientsDAOImpl.getAllNutrients();
     }
 
 }

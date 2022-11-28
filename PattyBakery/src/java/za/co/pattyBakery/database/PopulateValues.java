@@ -172,7 +172,7 @@ public class PopulateValues {
     //---------------------------------------------------------Recipies
     public void addCakeRecipies() {
 
-        String[] description = {"Caramel Cake", "Marigue Cake", "Chocolate Cake"};
+        String[] description = {"Caramel Cake Recipe", "Marigue Cake Recipe", "Chocolate Cake Recipe"};
         String[] respId = {"1RES", "2RES", "3RES"};
         try {
 
@@ -187,7 +187,7 @@ public class PopulateValues {
 
     public void addDoughnutRecipies() {
 
-        String[] description = {"glazed Simpson Doughnuts", "glazed Simpson Love Doughnuts", "Chocolate Cream Doughnuts"};
+        String[] description = {"glazed Simpson Doughnuts Recipe", "glazed Simpson Love Doughnuts Recipe", "Chocolate Cream Doughnuts Recipe"};
         String[] respId = {"4RES", "5RES", "6RES"};
         try {
 
@@ -202,7 +202,7 @@ public class PopulateValues {
 
     public void addCookiesRecipies() {
 
-        String[] description = {"Vanilla Cookies", "Chocolate Cookies", "Plain Coffee Cookies"};
+        String[] description = {"Vanilla Cookies Recipe", "Chocolate Cookies Recipe", "Plain Coffee Cookies Recipe"};
         String[] respId = {"16RES", "18RES", "17RES"};
         try {
 
@@ -217,7 +217,7 @@ public class PopulateValues {
 
     public void addCupcakesRecipies() {
 
-        String[] description = {"Coffee and Walnut Cupcakes", "Gluten Free Chocolate Cupcakes", "Vegan Vanilla Cupcakes"};
+        String[] description = {"Coffee and Walnut Cupcakes Recipe", "Gluten Free Chocolate Cupcakes Recipe", "Vegan Vanilla Cupcakes Recipe"};
         String[] respId = {"7RES", "8RES", "9RES"};
         try {
 
@@ -232,7 +232,7 @@ public class PopulateValues {
 
     public void addMuffinsRecipies() {
 
-        String[] description = {"Blue Berries Muffins", "Carot Muffins", "Cranberries Muffins"};
+        String[] description = {"Blue Berries Muffins Recipe", "Carot Muffins Recipe", "Cranberries Muffins Recipe"};
         String[] respId = {"10RES", "11RES", "12RES"};
         try {
 
@@ -247,7 +247,7 @@ public class PopulateValues {
 
     public void addPersonalPiesRecipies() {
 
-        String[] description = {"Blue Berries Pie", "Strawberry Pie", "Apple Pie"};
+        String[] description = {"Blue Berries Pie Recipe", "Strawberry Pie Recipe", "Apple Pie Recipe"};
         String[] respId = {"13RES", "14RES", "15RES"};
         try {
 
