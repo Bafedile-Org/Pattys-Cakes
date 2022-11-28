@@ -1,0 +1,151 @@
+/* 
+    Created on : Nov 8, 2022, 10:47:24 AM
+    Author     : Bridget Bapela
+*/
+* {
+    .topnav{
+        
+    }
+  box-sizing: border-box;
+  background: #E6E6FA;
+}
+.item {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color:#E6E6FA;
+  font-family: "Prata";
+  clear:left;
+}
+.item div{
+    float: left;
+}
+.shopping-cart {
+  width: 750px;
+  height: 423px;
+  margin: 80px auto;
+  background: #E6E6FA;
+  box-shadow: 1px 2px 3px 0px rgba(0,0,0,0.10);
+  border-radius: 6px;
+ 
+  display: flex;
+  flex-direction: column;
+}
+.image {
+  margin-right: 50px;
+}
+ 
+.description {
+  padding-top: 10px;
+  margin-right: 60px;
+  width: 215px;
+}
+ 
+.description span {
+  display: block;
+  font-size: 14px;
+  color: #000000;
+  font-weight: 400;
+}
+ 
+.description span:first-child {
+  margin-bottom: 5px;
+  
+}
+.description span:last-child {
+  font-weight: 300;
+  margin-top: 8px;
+  color: #000000;
+}
+.quantity {
+  padding-top: 20px;
+  margin-right: 60px;
+}
+.quantity input {
+  -webkit-appearance: none;
+  border:activeborder;
+  text-align: center;
+  width: 55px;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+}
+
+.checkout{
+    clear: left;
+     text-align: center;
+}
+button[class*=btn] {
+  width: 30px;
+  height: 30px;
+  background-color: #EAD2E9;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+.minus-btn img {
+  margin-bottom: 1px;
+}
+.plus-btn img {
+  margin-top: 1px;
+}
+ 
+button:focus,
+input:focus {
+  outline:0;
+}
+.total-price {
+  width: 83px;
+  padding-top: 27px;
+  text-align: center;
+  font-size: 16px;
+  color: #43484D;
+  font-weight: 300;
+}
+@media (max-width: 800px) {
+  .shopping-cart {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  .item {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .image img {
+    width: 60%;
+  }
+  .image,
+  .quantity,
+  .description {
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+  }
+  .buttons {
+    margin-right: 20px;
+  }
+}
+.Header{
+ margin: auto;
+ width: 90%;
+ height: 15%;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.Heading{
+ font-size: 20px;
+ font-family: ‘Open Sans’;
+ font-weight: 700;
+ color: #2F3841;
+}
+.Action{
+ font-size: 14px;
+ font-family: "Prata";
+ font-weight: 600;
+ color: #E44C4C;
+ cursor: pointer;
+ border-bottom: 1px solid #E44C4C;
+}
