@@ -63,7 +63,9 @@ public class NutrientsDAOImpl implements NutrientsDAO {
     public void removeNutrient(String nutrientId) {
         try {
             if (con != null) {
-                preparedStatement = con.prepareStatement("DELETE FROM nutrients WHERE ingr_id = ?");
+
+                new ProductNutrientDAOImpl(con).removeNutrient(nutrientId);
+                preparedStatement = con.prepareStatement("DELETE FROM nutrients WHERE nutr_id = ?");
                 preparedStatement.setString(1, nutrientId);
                 preparedStatement.executeUpdate();
             }

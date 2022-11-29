@@ -32,9 +32,10 @@ public class CartController extends BakeryController {
         if (cart != null) {
             orders = cart.getAllOrders();
             getProducts();
+            displayMsg = display(products, orderQuantitiesMap, controlsMap);
+            request.setAttribute("displayMessage", displayMsg);
+
         }
-        displayMsg = display(products, orderQuantitiesMap, controlsMap);
-        request.setAttribute("displayMessage", displayMsg);
         displayMsg = "";
         redirectToPage(request, response, "cart");
     }
