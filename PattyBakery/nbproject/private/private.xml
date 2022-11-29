@@ -3,12 +3,19 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/JavaProgs/PattyBakeryWebProject/Pattys-Cakes/PattyBakery/src/java/za/co/pattyBakery/dao/NutrientsDAO.java</file>
-            <file>file:/C:/JavaProgs/PattyBakeryWebProject/Pattys-Cakes/PattyBakery/src/java/za/co/pattyBakery/resources/BakeryRest.java</file>
-            <file>file:/C:/JavaProgs/PattyBakeryWebProject/Pattys-Cakes/PattyBakery/src/java/za/co/pattyBakery/dao/impl/NutrientsDAOImpl.java</file>
-            <file>file:/C:/JavaProgs/PattyBakeryWebProject/Pattys-Cakes/PattyBakery/web/management_page.jsp</file>
-            <file>file:/C:/JavaProgs/PattyBakeryWebProject/Pattys-Cakes/PattyBakery/web/nutrient_page.jsp</file>
-            <file>file:/C:/JavaProgs/PattyBakeryWebProject/Pattys-Cakes/PattyBakery/src/java/za/co/pattyBakery/service/impl/NutrientsServImpl.java</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/web/nutrient_page.jsp</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/src/java/za/co/pattyBakery/database/DatabaseConnect.java</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/src/java/za/co/pattyBakery/database/PopulateValues.java</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/src/java/za/co/pattyBakery/Employee.java</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/src/java/za/co/pattyBakery/service/impl/NutrientsServImpl.java</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/web/stock_page.jsp</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/web/index.jsp</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/web/assets/pexels-pixabay-372851.jpg</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/web/thankYou.jsp</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/src/java/za/co/pattyBakery/Product.java</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/src/java/za/co/pattyBakery/resources/BakeryRest.java</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/web/employee_page.jsp</file>
+            <file>file:/C:/Javaprogs/Pattys-Cakes/PattyBakery/test/Main.java</file>
         </group>
     </open-files>
 </project-private>
