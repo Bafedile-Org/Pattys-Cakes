@@ -55,9 +55,11 @@
                         + "<button style='width:150px;height:50px;border-radius:12px;background-color:#C799BA' name='checkout'>"
                         + "Checkout</button></form></div>", String.format("%.2f", cart.getTotalprice()), 100.00, String.format("%.2f", cart.getTotalprice() + 100)));
 
-            }else {
+            } else {
+                out.println(String.format("<h1 align='center' style='margin-top:100px;color:RED'>Ooops!!! YOU HAVE NOTHING IN CART"));
+            }
+        } else {
             out.println(String.format("<h1 align='center' style='margin-top:100px;color:RED'>Ooops!!! YOU HAVE NOTHING IN CART"));
-        }
         }
 
     %>
