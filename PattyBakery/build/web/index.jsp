@@ -92,13 +92,13 @@
                 }
             }
             .parent{
-    position: relative;
-}
-.content{
-    position: absolute;
-    top: 15%;
-    left: 55%;
-}
+                position: relative;
+            }
+            .content{
+                position: absolute;
+                top: 15%;
+                left: 55%;
+            }
 
         </style>
         <link rel="stylesheet" href="css/style.css">
@@ -134,57 +134,57 @@
         </header>
         <div class="parent">
             <img src="assets/whiteCover.jpg" style="width:1400px;height:800px;margin-top:-15px" alt="cover">
-        
-        <div id="slideshow" class="content" >
-            <div class="slide-wrapper">
 
-                <div class="slide" onclick="location.href = 'cookies_control'">
-                    <header class="home-head">
-                        <nav>
-                            <h1 class="slide-number">
-                                View our Cookies
-                            </h1>
-                        </nav></header>
+            <div id="slideshow" class="content" >
+                <div class="slide-wrapper">
+
+                    <div class="slide" onclick="location.href = 'cookies_control'">
+                        <header class="home-head">
+                            <nav>
+                                <h1 class="slide-number">
+                                    View our Cookies
+                                </h1>
+                            </nav></header>
+                    </div>
+                    <div class="slide" onclick="location.href = 'cakes_control'">
+                        <header class="home-head">
+                            <nav>
+                                <h1 class="slide-number">
+                                    View our Cakes
+                                </h1>
+                            </nav></header> </div>
+                    <div class="slide" onclick="location.href = 'doughnuts_control'">
+                        <header class="home-head">
+                            <nav>
+                                <h1 class="slide-number">
+                                    View our Doughnuts
+                                </h1>
+                            </nav></header>
+                    </div>
+                    <div class="slide" onclick="location.href = 'pies_control'">
+                        <header class="home-head">
+                            <nav>
+                                <h1 class="slide-number">
+                                    View our Pies
+                                </h1>
+                            </nav></header>
+                    </div>
+                    <div class="slide" onclick="location.href = 'cupcakes_control'">
+                        <header class="home-head">
+                            <nav>
+                                <h1 class="slide-number">
+                                    View our Cupcakes&Muffins
+                                </h1>
+                            </nav></header>
+                    </div>
                 </div>
-                <div class="slide" onclick="location.href = 'cakes_control'">
-                    <header class="home-head">
-                        <nav>
-                            <h1 class="slide-number">
-                                View our Cakes
-                            </h1>
-                        </nav></header> </div>
-                <div class="slide" onclick="location.href = 'doughnuts_control'">
-                    <header class="home-head">
-                        <nav>
-                            <h1 class="slide-number">
-                                View our Doughnuts
-                            </h1>
-                        </nav></header>
-                </div>
-                <div class="slide" onclick="location.href = 'pies_control'">
-                    <header class="home-head">
-                        <nav>
-                            <h1 class="slide-number">
-                                View our Pies
-                            </h1>
-                        </nav></header>
-                </div>
-                <div class="slide" onclick="location.href = 'cupcakes_control'">
-                    <header class="home-head">
-                        <nav>
-                            <h1 class="slide-number">
-                                View our Cupcakes&Muffins
-                            </h1>
-                        </nav></header>
-                </div>
+
             </div>
-
-        </div>
         </div>
         <div style='background-color:lightblue;height:404px;padding:13px;margin-top:2%' >
-           <div class="column" align="left">
-               <img src="assets/whiteCcake.jpg" style="width:49%;height:30%;margin-top: -25px;margin-left: -20px"  alt="Snow">
-           </div>
+            <div class="column" align="left">
+                <img src="assets/whiteCcake.jpg" style="width:49%;height:30%;margin-top: -25px;margin-left: -20px"  alt="Snow">
+            </div>
             <div  style="width:49%;height:30%;margin-top: -335px;margin-left: 580px">
                 <h2>Cupcakes</h2><br><br>
                 <p>What makes the perfect cupcake? High quality natural</p>
@@ -193,26 +193,26 @@
                 <p>It is home baking done patty's way.</p>
             </div>
         </div>
-        
-        
+
+
         <div style='background-color:lightyellow;height:404px;padding:13px;margin-top:2%' >
             <div  style='margin-left: 20px;margin-top:90px;width:40%;'>
-              <h2>Cakes</h2><br><br>
-              <p>Sometimes only a cake will do and for these occasions,</p>
-              <p>we've got you covered! Our cakes bring layers of joy</p>
-              <p>( and rich buttercream) to any occasion. From classics </p>
-              <p>to show stopping center pieces, all of our beautiful decorated</p>
-              <p>cakes are made the old fashion way: from scratch and with love.</p>
-           </div>
+                <h2>Cakes</h2><br><br>
+                <p>Sometimes only a cake will do and for these occasions,</p>
+                <p>we've got you covered! Our cakes bring layers of joy</p>
+                <p>( and rich buttercream) to any occasion. From classics </p>
+                <p>to show stopping center pieces, all of our beautiful decorated</p>
+                <p>cakes are made the old fashion way: from scratch and with love.</p>
+            </div>
             <div class="column" align="right" style="margin-top:-110px">
-                 <img src="assets/whiteCake.jpg" style="width:52%;height:25%;margin-top: -165px;margin-right: -12px"  alt="Snow">
+                <img src="assets/whiteCake.jpg" style="width:52%;height:25%;margin-top: -165px;margin-right: -12px"  alt="Snow">
             </div>
         </div>
-        
-        
+
+
         <div style='background-color:lightpink;height:404px;padding:13px;margin-top:2%' >
             <div class="column" align="left">
-            <img src="assets/whitePie.jpg" style="width:49%;height:30%;margin-top: -25px;margin-left: -20px"  alt="Snow">
+                <img src="assets/whitePie.jpg" style="width:49%;height:30%;margin-top: -25px;margin-left: -20px"  alt="Snow">
             </div>
             <div  style='width: 51%;margin-top:-335px;margin-left: 580px'>
                 <h2>Pies</h2><br><br>
@@ -220,27 +220,27 @@
                 <p>are made with top quality crispy pastry and packed with</p>
                 <p>scrumptious sinful fresh ingredients that that will make.</p>
                 <p>you swoon.</p>
-                
+
             </div>
         </div>
-        
-        
+
+
         <div style='background-color:lightgreen;height:411px;padding:13px;margin-top:2%' >
-              <div  style='margin-left: 20px;margin-top:70px;width:40%;'>
-                  <h2>Muffins</h2><br><br>
-                  <p>A bad day eating muffins is better than a good day doing anything</p>
-                  <p>else. Baked with the freshest ingredients and filled with love to</p>
-                  <p>sooth your soul. You can never go wrong with Patty's muffins</p>
-           </div>
-             <div class="column" align="right" style="margin-top:-110px">
-                 <img src="assets/whiteMuffin.jpg" style="width:50%;height:25%;margin-top: -107px;margin-right: -12px"  alt="Snow">
+            <div  style='margin-left: 20px;margin-top:70px;width:40%;'>
+                <h2>Muffins</h2><br><br>
+                <p>A bad day eating muffins is better than a good day doing anything</p>
+                <p>else. Baked with the freshest ingredients and filled with love to</p>
+                <p>sooth your soul. You can never go wrong with Patty's muffins</p>
+            </div>
+            <div class="column" align="right" style="margin-top:-110px">
+                <img src="assets/whiteMuffin.jpg" style="width:50%;height:25%;margin-top: -107px;margin-right: -12px"  alt="Snow">
             </div>
         </div>
-        
+
         <div style='background-color:lightsalmon;height:404px;padding:13px;margin-top:2%' >
- <div class="column" align="left">
-     <img src="assets/whiteDoughnut.jpg" style="width:49%;height:30%;margin-top: -25px;margin-left: -20px"  alt="Snow">
-           </div>
+            <div class="column" align="left">
+                <img src="assets/whiteDoughnut.jpg" style="width:49%;height:30%;margin-top: -25px;margin-left: -20px"  alt="Snow">
+            </div>
             <div  style='width: 51%;margin-top:-335px;margin-left: 580px'>
                 <h2>Doughnuts</h2><br><br>
                 <p> You can’t buy happiness but you can buy donuts. And that’s kind of</p>
@@ -249,7 +249,7 @@
                 <p></p>             
             </div>
         </div>
-        
+
         <div style='background-color:lightblue;height:404px;padding:13px;margin-top:2%' >
             <div  style='margin-left: 20px;margin-top:70px;width:40%;'>
                 <h2>Cookies</h2>
@@ -257,22 +257,26 @@
                 <p>make when the cookies crumble.We offer the best quality homemade</p>
                 <p> cookies freshly baked from our oven to your door step everyday.</p>
                 <p> Try us and get indulged in the chewy gooey goodness</p>
-           </div>
+            </div>
             <div class="column" align="right" style="margin-top:-145px">
                 <img src="assets/whiteCookies.jpg" style="width:49%;height:25%;margin-top: -53px;margin-right: -12px"  alt="Snow">
             </div>
         </div>
 
-        <div class="contact-div content" style='margin-left: -700px;margin-top: 605px'>
-            <h4 align="center">Contact</h4>
+        <div class="contact-div content" style='margin-left: -700px;margin-top: 580px'>
+            <u><h4 align="center">Contact</h4></u>
             <div><i class="fa fa-phone" aria-hidden="true">+27712345536</i></div>
             <div><i class="fa fa-envelope" aria-hidden="true">info@pattybakery.com</i></div>
             <div>
-                <i class="fa fa-globe" aria-hidden="true"></i>
-                <a href='#'><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                <a href='#'> <i class="fa fa-facebook-official" aria-hidden="true"></i></a>
-                <a href='#'><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                <a href='#'><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                <div style="margin-left:-315px;margin-top:-35px">
+                    <img src="assets/Patty'sLink.png" style="width:25%;height:2%;margin-top: -107px;">
+                </div>
+                    <div>
+<!--                    <a href="https://wa.me/%2B27797637038?text=Hello%2C%0AI%20would%20like%20to%20inquire%20about%20your%20products"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                    <a href='#'> <i class="fa fa-facebook-official" aria-hidden="true"></i></a>
+                    <a href='#'><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                    <a href='#'><i class="fa fa-whatsapp" aria-hidden="true"></i></a>-->
+                    </div>
             </div>
         </div>
     </body>
