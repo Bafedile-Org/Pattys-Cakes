@@ -28,14 +28,14 @@
         </style>
     </head>
     <body class="home-body1">
-        <header class='home-head'>
+        <header class='home-head' >
             <nav>
-                <div class="topnav">
+                <div class="topnav" >
                     <h1 align="center" id='home-header1'>
                         Patty's Bakery Management
 
-                        <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px">
-                            <div class="dropdown-content" align="left">
+                        <i class="fa fa-bars dropdown" aria-hidden="true" style="font-size:24px; padding-right: 24px;">
+                            <div class="dropdown-content" align="left" style="background:lightgray">
                                 <a href="/bakery/admin">Logout</a>
                                 <a href="/bakery/admin/stock">Stock</a>
                                 <a href="/bakery/admin/employee">Employee</a>
@@ -43,6 +43,8 @@
                                 <a href="/bakery/admin/recipe">Recipe</a>
                                 <a href="/bakery/admin/nutrients">Nutrients</a>
                                 <a href="/bakery/admin/ingredients">Ingredients</a>
+                                <a href="/bakery/admin/productReport">Product Report</a>
+                                <a href="/bakery/admin/ingredientReport">Ingredients Report</a>
                             </div>
                         </i>
                     </h1>

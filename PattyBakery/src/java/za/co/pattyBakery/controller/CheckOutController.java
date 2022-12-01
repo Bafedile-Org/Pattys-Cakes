@@ -46,7 +46,6 @@ public class CheckOutController extends BakeryController {
             getShoppingCart(request, response);
         }
         if (request.getParameter("confirmOrder") != null) {
-            sendConfirmationEmail("pattysbakery.shop@gmail.com", "hnetsedhsxyhqtsx", person.getEmail());
             redirectToPage(request, response, "check-out");
         }
 
@@ -58,6 +57,7 @@ public class CheckOutController extends BakeryController {
             cart = null;
             session.setAttribute("cart", cart);
             totalItemsInCart = 0;
+            sendConfirmationEmail("pattysbakery.shop@gmail.com", "hnetsedhsxyhqtsx", person.getEmail());
             response.sendRedirect("home");
         }
     }
