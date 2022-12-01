@@ -55,10 +55,8 @@
                                 <option value="MasterCard">MasterCard</option>
                             </select></p>
                             <div class="expcvv">
-
                                 <p class="expcvv_text">Expiry</p>
-                                <input type="month"  min="1997-01-01" max="2030-12-31"  class="inputbox" name="exp_date" id="exp_date" required />
-
+                                <input type="date" class="inputbox" id="exp_date" required />
                                 <p class="expcvv_text2">CVV</p>
                                 <input type="password" class="inputbox" minlength='3' maxlength='3' name="cvv" id="cvv" required />
                             </div>

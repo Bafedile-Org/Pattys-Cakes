@@ -6,8 +6,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import za.co.pattyBakery.database.DatabaseConnect;
 import za.co.pattyBakery.dao.IngredientsDAO;
+import za.co.pattyBakery.database.DatabaseConnect;
 
 /**
  *
@@ -151,5 +151,28 @@ public class IngredientsDAOImpl implements IngredientsDAO {
             close(preparedStatement, resultSet);
         }
         return ingridientsId;
+    }
+
+    @Override
+    public Integer getQuantityByID(String ingredientId) {
+        int quantity = 0;
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT quantity FROM ingredients WHERE ingr_id=?");
+                preparedStatement.setString(1, ingredientId);
+                resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+
+                    quantity = resultSet.getInt("quantity");
+
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+        return quantity;
+
     }
 }

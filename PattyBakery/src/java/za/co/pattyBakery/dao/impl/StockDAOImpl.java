@@ -116,4 +116,25 @@ public class StockDAOImpl implements StockDAO {
         return stocks;
     }
 
+    public Integer getQuantityByID(String productId) {
+        int quantity = 0;
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("SELECT quantity FROM stock WHERE prod_id=?");
+                preparedStatement.setString(1, productId);
+                resultSet = preparedStatement.executeQuery();
+                if (resultSet.next()) {
+
+                    quantity = resultSet.getInt("quantity");
+
+                }
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+        return quantity;
+    }
+
 }

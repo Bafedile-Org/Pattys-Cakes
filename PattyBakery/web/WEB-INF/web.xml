@@ -207,6 +207,24 @@
         <url-pattern>/admin/nutrients</url-pattern>
     </servlet-mapping>
     <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>ProductReport</servlet-name>
+        <jsp-file>/productReport_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ProductReport</servlet-name>
+        <url-pattern>/admin/productReport</url-pattern>
+    </servlet-mapping>
+    <!-- #######################################################################################-->
+    <servlet>
+        <servlet-name>IngredientReport</servlet-name>
+        <jsp-file>/ingredientsReport_page.jsp</jsp-file>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IngredientReport</servlet-name>
+        <url-pattern>/admin/ingredientReport</url-pattern>
+    </servlet-mapping>
+    <!-- #######################################################################################-->
     <!--    <servlet>
         <servlet-name>bc</servlet-name>
         <servlet-class>za.co.pattyBakery.controller.BakeryController</servlet-class>

@@ -70,8 +70,10 @@ public class CookiesController extends BakeryController {
             }
         }
         bakeryCart = (ShoppingCart) session.getAttribute("cart");
-        if (bakeryCart.getAllOrders() != null) {
-            totalItemsInCart = bakeryCart.getAllOrders().size();
+        if (bakeryCart != null) {
+            if (bakeryCart.getAllOrders() != null) {
+                totalItemsInCart = bakeryCart.getAllOrders().size();
+            }
         }
         request.setAttribute("totalInCart", totalItemsInCart);
 

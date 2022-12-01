@@ -18,6 +18,8 @@ public interface IngredientsDAO extends Close {
 
     public String getIngredientByIdName(String ingredient);
 
+    public Integer getQuantityByID(String ingredientId);
+
     public List<String> getAllIngredient();
 
     public List<String> getAllIngredientsId();

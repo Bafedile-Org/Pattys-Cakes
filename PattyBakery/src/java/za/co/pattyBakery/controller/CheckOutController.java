@@ -1,20 +1,28 @@
 package za.co.pattyBakery.controller;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import za.co.pattyBakery.Order;
 import za.co.pattyBakery.Person;
+import za.co.pattyBakery.Product;
 import za.co.pattyBakery.ShoppingCart;
 import static za.co.pattyBakery.controller.BakeryController.orderServImpl;
 import static za.co.pattyBakery.controller.BakeryController.session;
 import static za.co.pattyBakery.controller.BakeryController.totalItemsInCart;
 import za.co.pattyBakery.service.impl.OrderServImpl;
-import javax.mail.*;
-import javax.mail.internet.*;
-import za.co.pattyBakery.Order;
 
 /**
  *
@@ -38,7 +46,6 @@ public class CheckOutController extends BakeryController {
             getShoppingCart(request, response);
         }
         if (request.getParameter("confirmOrder") != null) {
-//            sendConfirmationEmail("pattysbakery.shop@gmail.com", "PattyBakery", person.getEmail());
             redirectToPage(request, response, "check-out");
         }
 
@@ -50,6 +57,7 @@ public class CheckOutController extends BakeryController {
             cart = null;
             session.setAttribute("cart", cart);
             totalItemsInCart = 0;
+            sendConfirmationEmail("pattysbakery.shop@gmail.com", "hnetsedhsxyhqtsx", person.getEmail());
             response.sendRedirect("home");
         }
     }
@@ -61,39 +69,72 @@ public class CheckOutController extends BakeryController {
     }
 
     private void sendConfirmationEmail(String from, String password, String to) {
-        Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.gmail.com");
-        props.put("mail.smtp.socketFactory.port", "465");
-        props.put("mail.smtp.socketFactory.class",
-                "javax.net.ssl.SSLSocketFactory");
-        props.put("mail.smtp.auth", "true");
-        //get Session   
-        Session ses = Session.getDefaultInstance(props,
-                new javax.mail.Authenticator() {
-            @Override
+        // Assuming you are sending email from through gmails smtp
+        String host = "smtp.gmail.com";
+        // Get system properties
+        Properties properties = System.getProperties();
+        // Setup mail server
+        properties.put("mail.smtp.host", host);
+        properties.put("mail.smtp.port", "465");
+        properties.put("mail.smtp.ssl.enable", "true");
+        properties.put("mail.smtp.auth", "true");
+        // Get the Session object.// and pass username and password
+        Session session = Session.getInstance(properties, new javax.mail.Authenticator() {
             protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(from, password);
+                return new PasswordAuthentication(from, password);  //special GMAIL generated password for your email account
             }
         });
-        //compose message    
+        // Used to debug SMTP issues
+        session.setDebug(true);
         try {
-            MimeMessage message = new MimeMessage(ses);
+            // Create a default MimeMessage object.
+            MimeMessage message = new MimeMessage(session);
+            // Set From: header field of the header.
+            message.setFrom(new InternetAddress(from));
+            // Set To: header field of the header.
             message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setSubject("Order Confirmation " + cart.getOrderNumber());
-            // Now set the actual message
-            String msg = String.format("Dear customer %s%n"
-                    + "Your order is confirmed for the following items%n", person.getName());
-            for (Order order : cart.getAllOrders()) {
-                msg += String.format("%s%n", order.getProduct().getProductName());
-            }
-            message.setText(msg);
-            //send message  
-            Transport.send(message);
-            System.out.println("message sent successfully");
-        } catch (MessagingException e) {
-            throw new RuntimeException(e);
-        }
 
+            // Set Subject: header field
+            message.setSubject("Order Confirmation");
+
+            List<Order> orders = cart.getAllOrders();
+
+            String msg = String.format("<table><tr>"
+                    + "<th style='width:90px'>Items</th>"
+                    + "<th style='width:90px'>Quantity</th>"
+                    + "<th style='width:90px'>Total Price</th>"
+                    + "</tr>");
+            for (int i = 0; i < orders.size(); i++) {
+                Product product = orders.get(i).getProduct();
+                msg += String.format("<tr><td style='width:90px'>%s</td><td style='width:90px'>%s</td><td style='width:90px'>%s</td></tr>", product.getProductName(), orders.get(i).getQuantity(), orders.get(i).getTotalPrice());
+            }
+            msg += String.format("</table><h3>Total Price R%.2f</h3>", cart.getTotalprice());
+            message.setContent(msg, "text/html");
+            // Now set the actual message
+//            message.setText(msg);
+            // ----------------------------------------------
+            //This is to send an attachemnet --
+//            Multipart multipart = new MimeMultipart();
+//            MimeBodyPart attachmentPart = new MimeBodyPart();
+//            MimeBodyPart textPart = new MimeBodyPart();
+//            try {
+//                File f = new File("C:\\Users\\TRAIN 08\\Downloads\\Evaluation_of_possibilities_of_java.pdf");
+//                attachmentPart.attachFile(f);
+//                textPart.setText("This is text and I have sent you something attached");
+//                multipart.addBodyPart(textPart);
+//                multipart.addBodyPart(attachmentPart);
+//            } catch (IOException e) {
+//                e.printStackTrace();
+//            }
+//            message.setContent(multipart);
+            // ----------------------------------------------
+            System.out.println("sending...");
+            // Send message
+            Transport.send(message);
+            System.out.println("Sent message successfully....");
+        } catch (MessagingException mex) {
+            mex.printStackTrace();
+        }
     }
 
 }

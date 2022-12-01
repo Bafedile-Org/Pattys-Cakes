@@ -11,6 +11,8 @@ import za.co.pattyBakery.Order;
 import za.co.pattyBakery.Product;
 import za.co.pattyBakery.ShoppingCart;
 import static za.co.pattyBakery.controller.BakeryController.orderQuantitiesMap;
+import static za.co.pattyBakery.controller.BakeryController.totalItemsInCart;
+import static za.co.pattyBakery.controller.CookiesController.bakeryCart;
 import za.co.pattyBakery.service.impl.ProductServImpl;
 
 /**
@@ -63,8 +65,13 @@ public class MuffinsController extends BakeryController {
             }
         }
         bakeryCart = (ShoppingCart) session.getAttribute("cart");
-        totalItemsInCart = bakeryCart.getAllOrders().size();
-        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, controlsMap, bakery_control);
+        if (bakeryCart != null) {
+            if (bakeryCart.getAllOrders() != null) {
+                totalItemsInCart = bakeryCart.getAllOrders().size();
+            }
+        }
+//        totalItemsInCart = bakeryCart.getAllOrders().size();
+//        addQuantities(bakeryOrders, bakeryProductIds, orderQuantitiesMap, controlsMap, bakery_control);
         request.setAttribute("totalInCart", totalItemsInCart);
 
     }
