@@ -70,4 +70,18 @@ public class ProductNutrientDAOImpl implements ProductNutrientDAO {
         return nutrients.stream().collect(Collectors.toList());
     }
 
+    @Override
+    public void removeNutrient(String nutrientId) {
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("DELETE FROM product_nutrient WHERE nutr_id = ?");
+                preparedStatement.setString(1, nutrientId);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+    }
 }
