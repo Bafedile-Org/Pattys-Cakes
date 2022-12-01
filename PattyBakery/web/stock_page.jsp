@@ -40,7 +40,7 @@
 
             }
         </style>
-        <script >
+        <script>
             function getDropValue(myList, inputValue) {
                 var element = document.getElementById(myList);
                 var text = document.getElementById(inputValue);
@@ -73,7 +73,6 @@
                             for (Product product : products) {
                                 out.println(String.format("<option value='%s' size='15'>%s</option>", product.getProductName(), product.getProductName()));
                             }
-
                         %>
                     </select>
                 </div>
@@ -85,8 +84,6 @@
                             for (String category : productCategory) {
                                 out.println(String.format("<option value='%s'>%s</option>", category, category));
                             }
-
-
                         %>
                     </select>
                 </div>
@@ -98,7 +95,6 @@
                             for (Recipe recipe : recipies) {
                                 out.println(String.format("<option value='%s'>%s</option>", recipe.getDescription(), recipe.getDescription()));
                             }
-
                         %>
                     </select>
                 </div>
@@ -111,7 +107,6 @@
                             for (String nutrient : nutrients) {
                                 out.println(String.format("<option value='%s'>%s</option>", nutrient, nutrient));
                             }
-
                         %>
                     </select>
                 </div>
