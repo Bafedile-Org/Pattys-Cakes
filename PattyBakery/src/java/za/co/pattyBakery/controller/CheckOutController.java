@@ -101,13 +101,13 @@ public class CheckOutController extends BakeryController {
             List<Order> orders = cart.getAllOrders();
 
             String msg = String.format("<table><tr>"
-                    + "<th style='width:90px'>Items</th>"
-                    + "<th style='width:90px'>Quantity</th>"
-                    + "<th style='width:90px'>Total Price</th>"
+                    + "<th style='width:120px'>Items</th>"
+                    + "<th style='width:120px'>Quantity</th>"
+                    + "<th style='width:120px'>Total Price</th>"
                     + "</tr>");
             for (int i = 0; i < orders.size(); i++) {
                 Product product = orders.get(i).getProduct();
-                msg += String.format("<tr><td style='width:90px'>%s</td><td style='width:90px'>%s</td><td style='width:90px'>%s</td></tr>", product.getProductName(), orders.get(i).getQuantity(), orders.get(i).getTotalPrice());
+                msg += String.format("<tr><td style='width:120px'>%s</td><td style='width:120px'>%s</td><td style='width:120px'>%s</td></tr>", product.getProductName(), orders.get(i).getQuantity(), orders.get(i).getTotalPrice());
             }
             msg += String.format("</table><h3>Total Price R%.2f</h3>", cart.getTotalprice());
             message.setContent(msg, "text/html");
