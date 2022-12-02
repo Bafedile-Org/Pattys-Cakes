@@ -84,4 +84,19 @@ public class ProductNutrientDAOImpl implements ProductNutrientDAO {
             close(preparedStatement, resultSet);
         }
     }
+
+    @Override
+    public void removeProduct(String productId) {
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("DELETE FROM product_nutrient WHERE prod_id = ?");
+                preparedStatement.setString(1, productId);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException sql) {
+            System.out.println("Error: " + sql.getMessage());
+        } finally {
+            close(preparedStatement, resultSet);
+        }
+    }
 }

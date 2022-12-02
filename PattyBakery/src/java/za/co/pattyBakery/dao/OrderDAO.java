@@ -25,6 +25,8 @@ public interface OrderDAO extends Close {
 
     public void updateOrderDeliveryDate(String orderId, LocalDate date);
 
+    public void removeOrderByProductId(String productId);
+
     public List<String> getOrderAllIds();
 
 }

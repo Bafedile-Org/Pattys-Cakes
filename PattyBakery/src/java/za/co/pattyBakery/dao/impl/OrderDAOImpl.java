@@ -110,6 +110,22 @@ public class OrderDAOImpl implements OrderDAO {
     }
 
     @Override
+    public void removeOrderByProductId(String productId) {
+        try {
+            if (con != null) {
+                preparedStatement = con.prepareStatement("DELETE  FROM orders WHERE prod_id = ?");
+                preparedStatement.setString(1, productId);
+                preparedStatement.executeUpdate();
+            }
+        } catch (SQLException sql) {
+            System.out.println(String.format("Error: %s%n", sql.getMessage()));
+        } finally {
+            close(preparedStatement, resultSet);
+
+        }
+    }
+
+    @Override
     public List<ShoppingCart> getAllOrders() {
         Set<ShoppingCart> orders = new HashSet<>();
         ShoppingCart order;

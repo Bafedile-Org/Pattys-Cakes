@@ -147,6 +147,7 @@ public class ProductDAOImpl implements ProductDAO {
     public void removeProduct(String productId) {
         try {
             if (con != null) {
+                new OrderDAOImpl().removeOrderByProductId(productId);
                 preparedStatement = con.prepareStatement("DELETE  FROM product WHERE prod_id = ?");
                 preparedStatement.setString(1, productId);
                 preparedStatement.executeUpdate();
@@ -155,7 +156,6 @@ public class ProductDAOImpl implements ProductDAO {
             System.out.println(String.format("Error: %s%n", sql.getMessage()));
         } finally {
             close(preparedStatement, resultSet);
-
         }
     }
 

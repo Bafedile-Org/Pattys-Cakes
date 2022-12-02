@@ -54,10 +54,11 @@ public class CheckOutController extends BakeryController {
             if (cart != null) {
                 orderServImpl.addOrder(cart);
             }
+            sendConfirmationEmail("pattysbakery.shop@gmail.com", "hnetsedhsxyhqtsx", person.getEmail());
             cart = null;
             session.setAttribute("cart", cart);
             totalItemsInCart = 0;
-            sendConfirmationEmail("pattysbakery.shop@gmail.com", "hnetsedhsxyhqtsx", person.getEmail());
+
             response.sendRedirect("home");
         }
     }

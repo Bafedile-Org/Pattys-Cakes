@@ -116,9 +116,11 @@ public class BakeryRest {
                         }
 
                         break;
-                    case "remove":
-                        stockServImpl.removeProductFromStock(productServImpl.getProductIdByName(prodName));
-                        productServImpl.removeProduct(productServImpl.getProductIdByName(prodName));
+                    default:
+                        stockServImpl.removeProductFromStock(productId);
+                        new ProductNutrientDAOImpl().removeProduct(productId);
+                        productServImpl.removeProduct(productId);
+                        break;
                 }
                 System.out.println("Successfully added to product " + productServImpl.getProductIdByName(prodName) + " " + quantity + " items");
             }
