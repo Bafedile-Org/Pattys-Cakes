@@ -12,5 +12,7 @@ public interface ProductNutrientDAO extends Close {
 
     public void removeNutrient(String nutrientId);
 
+    public void removeProduct(String productId);
+
     public List<String> getNutrientsByProductId(String productId);
 }

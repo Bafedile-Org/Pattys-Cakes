@@ -68,4 +68,9 @@ public class OrderServImpl implements OrderDAO {
         orderDAOImpl.updateOrderDeliveryDate(orderId, date);
     }
     
+    @Override
+    public void removeOrderByProductId(String productId) {
+        orderDAOImpl.removeOrderByProductId(productId);
+    }
+    
 }
