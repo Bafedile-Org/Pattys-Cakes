@@ -80,7 +80,7 @@
                 <div class="input-field" style="text-align: center">
                     <p style='color:black;'><b>Hold down Ctrl to select multiple ingredients</b></p>
                     <select id = "myList4" onchange = "getDropValue('myList4', 'inputValue4')" multiple style='width:360px;height:150px' name='ingredients' >
-                        <option>Select Nutrients</option>
+                        <option>Select Ingredients</option>
                         <%                            List<String> ingredients = new IngredientsServImpl().getAllIngredient();
                             for (String ingredient : ingredients) {
                                 out.println(String.format("<option value='%s'>%s</option>", ingredient, ingredient));
@@ -89,7 +89,6 @@
                         %>
                     </select>
                 </div>
-
 
 
                 <div class="btn-group" style="text-align: center">

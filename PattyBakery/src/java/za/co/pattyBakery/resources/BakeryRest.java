@@ -23,7 +23,6 @@ import za.co.pattyBakery.dao.RecipeDAO;
 import za.co.pattyBakery.dao.StockDAO;
 import za.co.pattyBakery.dao.impl.IngredientsDAOImpl;
 import za.co.pattyBakery.dao.impl.OrderDAOImpl;
-import za.co.pattyBakery.dao.impl.ProductNutrientDAOImpl;
 import za.co.pattyBakery.dao.impl.RecipeDAOImpl;
 import za.co.pattyBakery.exception.ProductException;
 import za.co.pattyBakery.model.EmployeeImpl;
@@ -63,15 +62,11 @@ public class BakeryRest {
             location = new java.net.URI("http://localhost:8080/bakery/admin/stock");
             String productId = productServImpl.getProductIdByName(prodName);
             List< String> productIds = productServImpl.getAllProductsIds();
-            if (prodName == null) {
-                System.out.println("Please enter product Id");
-                return Response.temporaryRedirect(location).build();
-            } else {
+            if (prodName != null) {
                 Boolean isValid = false;
                 Product product;
                 switch (which) {
                     case "add":
-
                         String prod_id = "";
                         String recipeId = "";
                         if (productId == null || productId.length() == 0) {
@@ -83,7 +78,7 @@ public class BakeryRest {
                                 }
                                 prod_id = randomNumber + "PRO";
                                 if (productIds.contains(prod_id)) {
-                                    break loop;
+                                    break;
                                 }
                                 isValid = true;
                             }
@@ -92,16 +87,17 @@ public class BakeryRest {
                         }
 
                         recipeId = recipeServImpl.getRecipeIdByDescription(recipe);
+                        product = new ProductImpl(productId, prodName, price, new CategoryServImpl().getCategoryIdByName(cat),
+                                "1NT", recipeId, String.format("assets/%s/%s", cat.toLowerCase(), image));
+                        productServImpl.addProduct(product);
+                        stockServImpl.addStockById(productId, quantity);
                         if (nutrients != null) {
                             for (String nutrient : nutrients) {
                                 String nutrientId = nutrientsServImpl.getNutrientIdByName(nutrient);
                                 nutrientsServImpl.addProductNutrient(productId, nutrientId, Double.valueOf(String.format("%.2f", new SecureRandom().nextDouble())));
                             }
                         }
-                        product = new ProductImpl(productId, prodName, price, new CategoryServImpl().getCategoryIdByName(cat),
-                                "1NT", recipeId, String.format("assets/%s/%s", cat.toLowerCase(), image));
-                        productServImpl.addProduct(product);
-                        stockServImpl.addStockById(productId, quantity);
+
                         break;
                     case "update":
                         if (quantity != null) {
@@ -182,7 +178,7 @@ public class BakeryRest {
                         }
                         recp_id = randomNumber + "RES";
                         if (recipeIds.contains(recp_id)) {
-                            break loop;
+                            break;
                         }
                         isValid = true;
                     }
