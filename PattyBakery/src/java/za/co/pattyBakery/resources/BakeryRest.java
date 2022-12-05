@@ -23,6 +23,7 @@ import za.co.pattyBakery.dao.RecipeDAO;
 import za.co.pattyBakery.dao.StockDAO;
 import za.co.pattyBakery.dao.impl.IngredientsDAOImpl;
 import za.co.pattyBakery.dao.impl.OrderDAOImpl;
+import za.co.pattyBakery.dao.impl.ProductNutrientDAOImpl;
 import za.co.pattyBakery.dao.impl.RecipeDAOImpl;
 import za.co.pattyBakery.exception.ProductException;
 import za.co.pattyBakery.model.EmployeeImpl;
